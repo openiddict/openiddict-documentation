@@ -23,8 +23,9 @@ after_build:
             git config --global user.email $env:op_build_user_email
             git config --global user.name $env:op_build_user
             git clone https://github.com/openiddict/openiddict-documentation.git -b gh-pages origin_site -q
-            Copy-Item origin_site/.git _site -recurse
+            Copy-Item origin_site/.git _site -Recurse
             CD _site
+            Remove-Item docfx.console.2.24.0 -Force -Recurse
             git add -A 2>&1
             git commit -m "Update the documentation pages" -q
             git push origin gh-pages -q
