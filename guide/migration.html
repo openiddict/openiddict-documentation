@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>What's new in OpenIddict RC2? </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="What's new in OpenIddict RC2? ">
+    <meta name="generator" content="docfx 2.24.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="whats-new-in-openiddict-rc2">What&#39;s new in OpenIddict RC2?</h1>
+
+<p>The full list of changes can be found <a href="https://github.com/openiddict/openiddict-core/milestone/8?closed=1">here</a>. It includes <strong>bug fixes</strong> (including a bug fix in the refresh token handling) and new features like <strong>application permissions</strong>, that allow limiting the OpenID Connect features (endpoints and flows) an application is able to use.</p>
+<h1 id="migrate-to-openiddict-rc2">Migrate to OpenIddict RC2</h1>
+<p><strong>Migrating to OpenIddict RC2 (<code>1.0.0-rc2-*</code> and <code>2.0.0-rc2-*</code>) requires making changes in your database</strong>: existing properties have been reworked (e.g <a href="https://github.com/openiddict/openiddict-core/issues/497">to work around a MySQL limitation</a>) and new ones have been added to support the new features. This procedure is quite easy and only requires a few minutes.</p>
+<blockquote><p>Note: this guide assumes your application uses the OpenIddict Entity Framework Core 2.x stores. If you use a custom store, changes will have to be made manually. A list of added/updated/renamed columns is available at the end of this guide.</p>
+</blockquote>
+<h2 id="ensure-migrations-are-correctly-enabled-for-your-project">Ensure migrations are correctly enabled for your project</h2>
+<p><strong>Before migrating to OpenIddict RC2, make sure migrations are already enabled for your application</strong>. If you have a <code>Migrations</code> folder in your application root folder and an <code>__EFMigrationsHistory</code> table in your database, you&#39;re good to go.</p>
+<p>If you don&#39;t have these Entity Framework Core artificats, migrations are likely not enabled. To fix that, add the following entries in your <code>.csproj</code>:</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Design&quot;
+                    Version=&quot;2.0.0&quot; PrivateAssets=&quot;All&quot; /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;DotNetCliToolReference Include=&quot;Microsoft.EntityFrameworkCore.Tools.DotNet&quot;
+                          Version=&quot;2.0.0&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><p>Then, open a new command line and add an initial migration using <code>dotnet ef migrations add InitialMigration</code> (<strong>but don&#39;t apply it!</strong>).</p>
+<h2 id="update-your-packages-references">Update your packages references</h2>
+<p>For that, simply update your <code>.csproj</code> file to point to the newest OpenIddict packages:</p>
+<h3 id="aspnet-core-1x">ASP.NET Core 1.x</h3>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;1.0.0-rc2-*&quot; /&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;1.0.0-rc2-*&quot; /&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.Mvc&quot; Version=&quot;1.0.0-rc2-*&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><h3 id="aspnet-core-2x">ASP.NET Core 2.x</h3>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;2.0.0-rc2-*&quot; /&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;2.0.0-rc2-*&quot; /&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.Mvc&quot; Version=&quot;2.0.0-rc2-*&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><h2 id="add-a-new-migration">Add a new migration</h2>
+<ol>
+<li>First, open a new command line and run <code>dotnet ef migrations add MigrateToOpenIddictRc2</code>.</li>
+<li><strong>If you created an initial migration at step 1, remove it from the <code>Migrations</code> folder</strong>.</li>
+<li>Apply the <code>MigrateToOpenIddictRc2</code> migration using <code>dotnet ef database update MigrateToOpenIddictRc2</code>.</li>
+</ol>
+<h2 id="run-the-migration-script-to-convert-columns-to-the-new-format">Run the migration script to convert columns to the new format</h2>
+<p>For that, add the following snippet to your <code>Startup</code> class:</p>
+<pre><code class="lang-csharp">private async Task UpdateOpenIddictTablesAsync(IServiceProvider services)
+{
+    using (var scope = services.GetRequiredService&lt;IServiceScopeFactory&gt;().CreateScope())
+    {
+        // Change ApplicationDbContext to match your context name if you&#39;ve changed it.
+        var context = scope.ServiceProvider.GetRequiredService&lt;ApplicationDbContext&gt;();
+        await context.Database.EnsureCreatedAsync();
+
+        // If you use a different entity type or a custom key,
+        // change this line (e.g OpenIddictApplication&lt;long&gt;).
+        foreach (var application in context.Set&lt;OpenIddictApplication&gt;())
+        {
+            // Convert the space-separated PostLogoutRedirectUris property to JSON.
+            if (!string.IsNullOrEmpty(application.PostLogoutRedirectUris) &amp;&amp;
+                 application.PostLogoutRedirectUris[0] != &#39;[&#39;)
+            {
+                var addresses = application.PostLogoutRedirectUris.Split(
+                    new[] { &quot; &quot; }, StringSplitOptions.RemoveEmptyEntries);
+
+                application.PostLogoutRedirectUris =
+                    new JArray(addresses).ToString(Formatting.None);
+            }
+
+            // Convert the space-separated RedirectUris property to JSON.
+            if (!string.IsNullOrEmpty(application.RedirectUris) &amp;&amp;
+                 application.RedirectUris[0] != &#39;[&#39;)
+            {
+                var addresses = application.RedirectUris.Split(
+                    new[] { &quot; &quot; }, StringSplitOptions.RemoveEmptyEntries);
+
+                application.RedirectUris = new JArray(addresses).ToString(Formatting.None);
+            }
+
+            // Grant the application all the permissions. Don&#39;t hesitate to update
+            // the list to only grant the permissions really needed by the application.
+            if (string.IsNullOrEmpty(application.Permissions))
+            {
+                var permissions = new[]
+                {
+                    OpenIddictConstants.Permissions.Endpoints.Authorization,
+                    OpenIddictConstants.Permissions.Endpoints.Introspection,
+                    OpenIddictConstants.Permissions.Endpoints.Logout,
+                    OpenIddictConstants.Permissions.Endpoints.Revocation,
+                    OpenIddictConstants.Permissions.Endpoints.Token,
+
+                    OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.Permissions.GrantTypes.Implicit,
+                    OpenIddictConstants.Permissions.GrantTypes.Password,
+                    OpenIddictConstants.Permissions.GrantTypes.RefreshToken
+                };
+
+                application.Permissions = new JArray(permissions).ToString(Formatting.None);
+            }
+        }
+
+        // If you use a different entity type or a custom key,
+        // change this line (e.g OpenIddictAuthorization&lt;long&gt;).
+        foreach (var authorization in context.Set&lt;OpenIddictAuthorization&gt;())
+        {
+            // Convert the space-separated Scopes property to JSON.
+            if (!string.IsNullOrEmpty(authorization.Scopes) &amp;&amp; authorization.Scopes[0] != &#39;[&#39;)
+            {
+                var scopes = authorization.Scopes.Split(
+                    new[] { &quot; &quot; }, StringSplitOptions.RemoveEmptyEntries);
+
+                authorization.Scopes = new JArray(scopes).ToString(Formatting.None);
+            }
+        }
+
+        await context.SaveChangesAsync();
+    }
+}
+</code></pre><p>Then, at the end of the <code>public void Configure(IApplicationBuilder app)</code> method, add the following line:</p>
+<pre><code class="lang-csharp">public void Configure(IApplicationBuilder app)
+{
+    app.UseDeveloperExceptionPage();
+
+    app.UseStaticFiles();
+
+    app.UseStatusCodePagesWithReExecute(&quot;/error&quot;);
+
+    app.UseAuthentication();
+
+    app.UseMvcWithDefaultRoute();
+
+    // Run the migration script synchronously.
+    UpdateOpenIddictTablesAsync(app.ApplicationServices).GetAwaiter().GetResult();
+}
+</code></pre><p>Run your application. Once it&#39;s correctly started, stop it and remove the migration script.</p>
+<h2 id="list-of-changes-for-applications-using-custom-stores">List of changes (for applications using custom stores)</h2>
+<h3 id="renamed-properties">Renamed properties</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Old column name</th>
+<th>New column name</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictApplications</td>
+<td>Timestamp</td>
+<td>ConcurrencyToken</td>
+<td>The column type was changed to nvarchar to work around a MySQL limitation.</td>
+</tr>
+<tr>
+<td>OpenIddictAuthorizations</td>
+<td>Timestamp</td>
+<td>ConcurrencyToken</td>
+<td>The column type was changed to nvarchar to work around a MySQL limitation.</td>
+</tr>
+<tr>
+<td>OpenIddictScopes</td>
+<td>Timestamp</td>
+<td>ConcurrencyToken</td>
+<td>The column type was changed to nvarchar to work around a MySQL limitation.</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>Timestamp</td>
+<td>ConcurrencyToken</td>
+<td>The column type was changed to nvarchar to work around a MySQL limitation.</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>Ciphertext</td>
+<td>Payload</td>
+<td></td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>Hash</td>
+<td>ReferenceId</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="added-properties">Added properties</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Column name</th>
+<th>Type</th>
+<th>Nullable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictApplications</td>
+<td>Properties</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictApplications</td>
+<td>Permissions</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictAuthorizations</td>
+<td>Properties</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictScopes</td>
+<td>Properties</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>Properties</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/guide/migration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
