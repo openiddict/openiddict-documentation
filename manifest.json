@@ -104,7 +104,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/migration.html",
-          "hash": "CE/SnB1CWsQYD3y5GPuFuA=="
+          "hash": "LslsCYsgYfBwjVuKYi3brg=="
         }
       },
       "is_incremental": false,
@@ -172,13 +172,13 @@
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
         "RestApiDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
           "incrementalPhase": "build"
         },
         "TocDocumentProcessor": {

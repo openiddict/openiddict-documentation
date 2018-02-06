@@ -199,8 +199,61 @@
     UpdateOpenIddictTablesAsync(app.ApplicationServices).GetAwaiter().GetResult();
 }
 </code></pre><p>Run your application. Once it&#39;s correctly started, stop it and remove the migration script.</p>
-<h2 id="list-of-changes-for-applications-using-custom-stores">List of changes (for applications using custom stores)</h2>
-<h3 id="renamed-properties">Renamed properties</h3>
+<h2 id="if-necessary-update-your-code-to-grant-applications-the-required-permissions">If necessary, update your code to grant applications the required permissions</h2>
+<p>If you have code that relies on <code>OpenIddictApplicationManager.CreateAsync(OpenIddictApplicationDescriptor)</code>,
+make sure that the appropriate set of permissions is granted.</p>
+<p>For instance, to allow a client application to use the password and refresh token flows, you must grant the following permissions:</p>
+<pre><code class="lang-csharp">var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.Password,
+        OpenIddictConstants.Permissions.GrantTypes.RefreshToken
+    }
+};
+
+await manager.CreateAsync(descriptor);
+</code></pre><p>For the authorization code flow, the following permissions are required:</p>
+<pre><code class="lang-csharp">var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Authorization,
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode
+    }
+};
+
+await manager.CreateAsync(descriptor);
+</code></pre><p>For custom flows, use the <code>OpenIddictConstants.Permissions.Prefixes.GrantType</code> constant:</p>
+<pre><code class="lang-csharp">var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.Prefixes.GrantType + &quot;google_token_exchange&quot;
+    }
+};
+
+await manager.CreateAsync(descriptor);
+</code></pre><p>If your application uses introspection or revocation, these endpoints must also be enable. E.g:</p>
+<pre><code class="lang-csharp">var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Introspection,
+        OpenIddictConstants.Permissions.Endpoints.Revocation
+    }
+};
+
+await manager.CreateAsync(descriptor);
+</code></pre><h1 id="list-of-changes-for-applications-using-custom-stores">List of changes (for applications using custom stores)</h1>
+<h2 id="renamed-properties">Renamed properties</h2>
 <table>
 <thead>
 <tr>
@@ -249,7 +302,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="added-properties">Added properties</h3>
+<h2 id="added-properties">Added properties</h2>
 <table>
 <thead>
 <tr>
