@@ -161,9 +161,80 @@ public void Configure(IApplicationBuilder app)
 
 Run your application. Once it's correctly started, stop it and remove the migration script.
 
-## List of changes (for applications using custom stores)
+## If necessary, update your code to grant applications the required permissions
 
-### Renamed properties
+If you have code that relies on `OpenIddictApplicationManager.CreateAsync(OpenIddictApplicationDescriptor)`,
+make sure that the appropriate set of permissions is granted.
+
+For instance, to allow a client application to use the password and refresh token flows, you must grant the following permissions:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.Password,
+        OpenIddictConstants.Permissions.GrantTypes.RefreshToken
+    }
+};
+
+await manager.CreateAsync(descriptor);
+```
+
+For the authorization code flow, the following permissions are required:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Authorization,
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode
+    }
+};
+
+await manager.CreateAsync(descriptor);
+```
+
+For custom flows, use the `OpenIddictConstants.Permissions.Prefixes.GrantType` constant:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.Prefixes.GrantType + "google_token_exchange"
+    }
+};
+
+await manager.CreateAsync(descriptor);
+```
+
+If your application uses introspection or revocation, these endpoints must also be enable. E.g:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    // ...
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Introspection,
+        OpenIddictConstants.Permissions.Endpoints.Revocation
+    }
+};
+
+await manager.CreateAsync(descriptor);
+```
+
+# List of changes (for applications using custom stores)
+
+## Renamed properties
 
 | Table                    | Old column name | New column name  | Observations                                                               |
 |--------------------------|-----------------|------------------|----------------------------------------------------------------------------|
@@ -174,7 +245,7 @@ Run your application. Once it's correctly started, stop it and remove the migrat
 | OpenIddictTokens         | Ciphertext      | Payload          |                                                                            |
 | OpenIddictTokens         | Hash            | ReferenceId      |                                                                            |
 
-### Added properties
+## Added properties
 
 | Table                    | Column name | Type          | Nullable |
 |--------------------------|-------------|---------------|----------|
