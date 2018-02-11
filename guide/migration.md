@@ -95,28 +95,6 @@ private async Task UpdateOpenIddictTablesAsync(IServiceProvider services)
 
                 application.RedirectUris = new JArray(addresses).ToString(Formatting.None);
             }
-
-            // Grant the application all the permissions. Don't hesitate to update
-            // the list to only grant the permissions really needed by the application.
-            if (string.IsNullOrEmpty(application.Permissions))
-            {
-                var permissions = new[]
-                {
-                    OpenIddictConstants.Permissions.Endpoints.Authorization,
-                    OpenIddictConstants.Permissions.Endpoints.Introspection,
-                    OpenIddictConstants.Permissions.Endpoints.Logout,
-                    OpenIddictConstants.Permissions.Endpoints.Revocation,
-                    OpenIddictConstants.Permissions.Endpoints.Token,
-
-                    OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
-                    OpenIddictConstants.Permissions.GrantTypes.Implicit,
-                    OpenIddictConstants.Permissions.GrantTypes.Password,
-                    OpenIddictConstants.Permissions.GrantTypes.RefreshToken
-                };
-
-                application.Permissions = new JArray(permissions).ToString(Formatting.None);
-            }
         }
 
         // If you use a different entity type or a custom key,
@@ -161,76 +139,12 @@ public void Configure(IApplicationBuilder app)
 
 Run your application. Once it's correctly started, stop it and remove the migration script.
 
-## If necessary, update your code to grant applications the required permissions
+## Optionally, update your code to grant applications the minimum required permissions
 
-If you have code that relies on `OpenIddictApplicationManager.CreateAsync(OpenIddictApplicationDescriptor)`,
-make sure that the appropriate set of permissions is granted.
+Starting with RC2, OpenIddict includes an optional feature codenamed "app permissions" that allows
+controlling and limiting the OAuth2/OpenID Connect features a client application is able to use.
 
-For instance, to allow a client application to use the password and refresh token flows, you must grant the following permissions:
-
-```csharp
-var descriptor = new OpenIddictApplicationDescriptor
-{
-    // ...
-    Permissions =
-    {
-        OpenIddictConstants.Permissions.Endpoints.Token,
-        OpenIddictConstants.Permissions.GrantTypes.Password,
-        OpenIddictConstants.Permissions.GrantTypes.RefreshToken
-    }
-};
-
-await manager.CreateAsync(descriptor);
-```
-
-For the authorization code flow, the following permissions are required:
-
-```csharp
-var descriptor = new OpenIddictApplicationDescriptor
-{
-    // ...
-    Permissions =
-    {
-        OpenIddictConstants.Permissions.Endpoints.Authorization,
-        OpenIddictConstants.Permissions.Endpoints.Token,
-        OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode
-    }
-};
-
-await manager.CreateAsync(descriptor);
-```
-
-For custom flows, use the `OpenIddictConstants.Permissions.Prefixes.GrantType` constant:
-
-```csharp
-var descriptor = new OpenIddictApplicationDescriptor
-{
-    // ...
-    Permissions =
-    {
-        OpenIddictConstants.Permissions.Endpoints.Token,
-        OpenIddictConstants.Permissions.Prefixes.GrantType + "google_token_exchange"
-    }
-};
-
-await manager.CreateAsync(descriptor);
-```
-
-If your application uses introspection or revocation, these endpoints must also be enable. E.g:
-
-```csharp
-var descriptor = new OpenIddictApplicationDescriptor
-{
-    // ...
-    Permissions =
-    {
-        OpenIddictConstants.Permissions.Endpoints.Introspection,
-        OpenIddictConstants.Permissions.Endpoints.Revocation
-    }
-};
-
-await manager.CreateAsync(descriptor);
-```
+To learn more about this feature, read the [Application permissions documentation](~/features/application-permissions.md).
 
 # List of changes (for applications using custom stores)
 
