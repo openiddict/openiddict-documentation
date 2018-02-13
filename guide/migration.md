@@ -12,7 +12,7 @@ The full list of changes can be found [here](https://github.com/openiddict/openi
 
 **Before migrating to OpenIddict RC2, make sure migrations are already enabled for your application**. If you have a `Migrations` folder in your application root folder and an `__EFMigrationsHistory` table in your database, you're good to go.
 
-If you don't have these Entity Framework Core artificats, migrations are likely not enabled. To fix that, add the following entries in your `.csproj`:
+If you don't have these Entity Framework Core artifacts, migrations are likely not enabled. To fix that, add the following entries in your `.csproj`:
 
 ```xml
 <ItemGroup>
@@ -138,6 +138,20 @@ public void Configure(IApplicationBuilder app)
 ```
 
 Run your application. Once it's correctly started, stop it and remove the migration script.
+
+## If your authorization server uses introspection, make sure resources are set in the authentication ticket
+
+**Setting an explicit list of resources is now required to allow client applications to introspect a token.**
+For that, call `ticket.SetResources()` with the list of the client identifiers allowed to validate the token. E.g:
+
+```csharp
+var ticket = new AuthenticationTicket(
+    new ClaimsPrincipal(identity),
+    new AuthenticationProperties(),
+    OpenIdConnectServerDefaults.AuthenticationScheme);
+
+ticket.SetResources("tracking_api", "marketing_api");
+```
 
 ## Optionally, update your code to grant applications the minimum required permissions
 
