@@ -166,5 +166,7 @@ To learn more about this feature, read the [Application permissions documentatio
 | OpenIddictApplications   | Properties  | nvarchar(max) | Yes      |
 | OpenIddictApplications   | Permissions | nvarchar(max) | Yes      |
 | OpenIddictAuthorizations | Properties  | nvarchar(max) | Yes      |
+| OpenIddictScopes         | DisplayName | nvarchar(max) | Yes      |
 | OpenIddictScopes         | Properties  | nvarchar(max) | Yes      |
+| OpenIddictScopes         | Resources   | nvarchar(max) | Yes      |
 | OpenIddictTokens         | Properties  | nvarchar(max) | Yes      |
