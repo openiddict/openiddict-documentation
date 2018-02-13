@@ -76,7 +76,7 @@
 </blockquote>
 <h2 id="ensure-migrations-are-correctly-enabled-for-your-project">Ensure migrations are correctly enabled for your project</h2>
 <p><strong>Before migrating to OpenIddict RC2, make sure migrations are already enabled for your application</strong>. If you have a <code>Migrations</code> folder in your application root folder and an <code>__EFMigrationsHistory</code> table in your database, you&#39;re good to go.</p>
-<p>If you don&#39;t have these Entity Framework Core artificats, migrations are likely not enabled. To fix that, add the following entries in your <code>.csproj</code>:</p>
+<p>If you don&#39;t have these Entity Framework Core artifacts, migrations are likely not enabled. To fix that, add the following entries in your <code>.csproj</code>:</p>
 <pre><code class="lang-xml">&lt;ItemGroup&gt;
   &lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Design&quot;
                     Version=&quot;2.0.0&quot; PrivateAssets=&quot;All&quot; /&gt;
@@ -177,7 +177,16 @@
     UpdateOpenIddictTablesAsync(app.ApplicationServices).GetAwaiter().GetResult();
 }
 </code></pre><p>Run your application. Once it&#39;s correctly started, stop it and remove the migration script.</p>
-<h2 id="optionally-update-your-code-to-grant-applications-the-minimum-required-permissions">Optionally, update your code to grant applications the minimum required permissions</h2>
+<h2 id="if-your-authorization-server-uses-introspection-make-sure-resources-are-set-in-the-authentication-ticket">If your authorization server uses introspection, make sure resources are set in the authentication ticket</h2>
+<p><strong>Setting an explicit list of resources is now required to allow client applications to introspect a token.</strong>
+For that, call <code>ticket.SetResources()</code> with the list of the client identifiers allowed to validate the token. E.g:</p>
+<pre><code class="lang-csharp">var ticket = new AuthenticationTicket(
+    new ClaimsPrincipal(identity),
+    new AuthenticationProperties(),
+    OpenIdConnectServerDefaults.AuthenticationScheme);
+
+ticket.SetResources(&quot;tracking_api&quot;, &quot;marketing_api&quot;);
+</code></pre><h2 id="optionally-update-your-code-to-grant-applications-the-minimum-required-permissions">Optionally, update your code to grant applications the minimum required permissions</h2>
 <p>Starting with RC2, OpenIddict includes an optional feature codenamed &quot;app permissions&quot; that allows
 controlling and limiting the OAuth2/OpenID Connect features a client application is able to use.</p>
 <p>To learn more about this feature, read the <a href="../features/application-permissions.html">Application permissions documentation</a>.</p>
@@ -262,7 +271,19 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
 </tr>
 <tr>
 <td>OpenIddictScopes</td>
+<td>DisplayName</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictScopes</td>
 <td>Properties</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictScopes</td>
+<td>Resources</td>
 <td>nvarchar(max)</td>
 <td>Yes</td>
 </tr>

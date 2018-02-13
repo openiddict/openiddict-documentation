@@ -140,7 +140,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/migration.html",
-          "hash": "LpaDiniOjh3+v0brkllWeQ=="
+          "hash": "Q+8Q9qt2+kQUAMVTDE5Hqw=="
         }
       },
       "is_incremental": false,
@@ -217,13 +217,13 @@
           "can_incremental": false,
           "incrementalPhase": "build"
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }
