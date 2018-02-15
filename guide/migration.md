@@ -173,10 +173,19 @@ To learn more about this feature, read the [Application permissions documentatio
 | OpenIddictTokens         | Ciphertext      | Payload          |                                                                            |
 | OpenIddictTokens         | Hash            | ReferenceId      |                                                                            |
 
+## Updated properties
+
+| Table                    | Column name            | Observations                                                                |
+|--------------------------|------------------------|-----------------------------------------------------------------------------|
+| OpenIddictApplications   | PostLogoutRedirectUris | Values are now formatted as JSON arrays instead of space-separated strings. |
+| OpenIddictApplications   | RedirectUris           | Values are now formatted as JSON arrays instead of space-separated strings. |
+| OpenIddictAuthorizations | Scopes                 | Values are now formatted as JSON arrays instead of space-separated strings. |
+
 ## Added properties
 
 | Table                    | Column name | Type          | Nullable |
 |--------------------------|-------------|---------------|----------|
+| OpenIddictApplications   | ConsentType | nvarchar(max) | Yes      |
 | OpenIddictApplications   | Properties  | nvarchar(max) | Yes      |
 | OpenIddictApplications   | Permissions | nvarchar(max) | Yes      |
 | OpenIddictAuthorizations | Properties  | nvarchar(max) | Yes      |
