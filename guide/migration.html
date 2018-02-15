@@ -240,6 +240,33 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
 </tr>
 </tbody>
 </table>
+<h2 id="updated-properties">Updated properties</h2>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Column name</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictApplications</td>
+<td>PostLogoutRedirectUris</td>
+<td>Values are now formatted as JSON arrays instead of space-separated strings.</td>
+</tr>
+<tr>
+<td>OpenIddictApplications</td>
+<td>RedirectUris</td>
+<td>Values are now formatted as JSON arrays instead of space-separated strings.</td>
+</tr>
+<tr>
+<td>OpenIddictAuthorizations</td>
+<td>Scopes</td>
+<td>Values are now formatted as JSON arrays instead of space-separated strings.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="added-properties">Added properties</h2>
 <table>
 <thead>
@@ -251,6 +278,12 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>OpenIddictApplications</td>
+<td>ConsentType</td>
+<td>nvarchar(max)</td>
+<td>Yes</td>
+</tr>
 <tr>
 <td>OpenIddictApplications</td>
 <td>Properties</td>
@@ -302,9 +335,6 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/guide/migration.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
