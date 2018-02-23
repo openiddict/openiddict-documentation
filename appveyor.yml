@@ -6,7 +6,7 @@ environment:
 
 install:
   - ps: |
-        git submodule update --init --recursive
+        git submodule update -q --init --recursive
         
 build_script:
   - ps: |
