@@ -4,6 +4,10 @@ environment:
   access_token:
     secure: YusB3g3MzZkV+HZr30L99yz+LgFJkN9cJrxHhvZpjThKGFJMZHO2TpXxWsdgi+7L
 
+install:
+  - ps: |
+        git submodule update --init --recursive
+        
 build_script:
   - ps: |
         nuget install docfx.console -Version 2.24.0
