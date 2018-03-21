@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "**/*.cs" ],
+          "files": [ "src/**/*.cs" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
           "cwd": "../openiddict-core"
         }
