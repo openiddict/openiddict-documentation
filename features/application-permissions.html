@@ -69,23 +69,24 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="application-permissions">Application permissions</h1>
 
-<p>Starting with RC2, OpenIddict includes an optional feature codenamed &quot;app permissions&quot; that allows
-controlling and limiting the OAuth2/OpenID Connect features a client application is able to use.</p>
+<p>Starting with RC2, OpenIddict includes a built-in feature codenamed &quot;application permissions&quot; that
+<strong>allows controlling and limiting the OAuth2/OpenID Connect features a client application is able to use</strong>.</p>
 <p>3 categories of permissions are currently supported:</p>
 <ul>
 <li>Endpoint permissions</li>
 <li>Grant type/flow permissions</li>
 <li>Scope permissions.</li>
 </ul>
-<blockquote><p>Configuring application permissions is recommended when dealing with
-third-party clients, to ensure they can only use the features they need. </p>
-</blockquote>
+<div class="WARNING"><h5>Warning</h5><p>Note: <strong>prior to OpenIddict RC3, application permissions were mostly optional</strong> and OpenIddict had a fallback mechanism
+called &quot;implicit permissions&quot; it used to determine whether an application could perform the requested action.</p>
+<p>If no permission was explicitly attached to the application, it was considered fully trusted and was granted all the permissions.
+Similarly, if you granted the &quot;token endpoint&quot; permission to an application but NO &quot;grant type&quot; permission,
+it was assumed the client application was allowed to use the password or client credentials grants.</p>
+<p>Retrospectively, this logic was too complex and it removed in RC3 and <strong>application permissions MUST now be explicitly granted</strong>.</p>
+</div>
 <h2 id="endpoint-permissions">Endpoint permissions</h2>
 <h3 id="definition">Definition</h3>
 <p>Endpoint permissions limit the endpoints a client application can use.</p>
-<blockquote><p>If no endpoint permission is explicitly granted, the client application
-is allowed to use all the endpoints enabled in <code>Startup.ConfigureServices()</code>.</p>
-</blockquote>
 <h3 id="supported-permissions">Supported permissions</h3>
 <table>
 <thead>
@@ -137,12 +138,16 @@ token endpoints but will get an error when trying to send an introspection or re
         }
     });
 }
+</code></pre><h3 id="disabling-endpoint-permissions">Disabling endpoint permissions</h3>
+<p>If you don&#39;t want to use endpoint permissions, call <code>options.IgnoreEndpointPermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreEndpointPermissions();
+    });
 </code></pre><h2 id="grant-type-permissions">Grant type permissions</h2>
 <h3 id="definition">Definition</h3>
 <p>Grant type permissions limit the flows a client application is allowed to use.</p>
-<blockquote><p>If no grant type permission is explictly attached to an application, all the flows enabled in <code>Startup.ConfigureServices()</code>
-can be freely used by the application (as long as the authorization or token endpoint permissions are granted).</p>
-</blockquote>
 <h3 id="supported-permissions">Supported permissions</h3>
 <table>
 <thead>
@@ -188,6 +193,9 @@ while <code>console</code> is restricted to the <code>password</code> and <code>
         RedirectUris = { new Uri(&quot;https://www.getpostman.com/oauth2/callback&quot;) },
         Permissions =
         {
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.Endpoints.Token,
+
             OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode
         }
     });
@@ -201,21 +209,28 @@ if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
         DisplayName = &quot;Console&quot;,
         Permissions =
         {
+            OpenIddictConstants.Permissions.Endpoints.Token,
+
             OpenIddictConstants.Permissions.GrantTypes.Password,
             OpenIddictConstants.Permissions.GrantTypes.RefreshToken
         }
     });
 }
+</code></pre><h3 id="disabling-grant-type-permissions">Disabling grant type permissions</h3>
+<p>If you don&#39;t want to use grant type permissions, call <code>options.IgnoreGrantTypePermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreGrantTypePermissions();
+    });
 </code></pre><h2 id="scope-permissions">Scope permissions</h2>
 <h3 id="definition">Definition</h3>
 <p>Scope permissions limit the scopes (standard or custom) a client application is allowed to use.</p>
-<blockquote><p>Like the other permissions, <strong>scope permissions are optional</strong>: if no scope permission is explictly attached,
-a client application is free to specify any scope in the authorization or token requests.</p>
-<p>The <code>openid</code> and <code>offline_access</code> scopes are special-cased by OpenIddict and don&#39;t require explicit permissions.</p>
+<blockquote><p>The <code>openid</code> and <code>offline_access</code> scopes are special-cased by OpenIddict and don&#39;t require explicit permissions.</p>
 </blockquote>
 <h3 id="example">Example</h3>
 <p>In the following sample, the <code>angular</code> client is allowed to request the <code>address</code>,
-<code>profile</code> and <code>custom</code> scopes: any other scope will result in an error being returned.</p>
+<code>profile</code> and <code>marketing_api</code> scopes: any other scope will result in an error being returned.</p>
 <pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;angular&quot;) == null)
 {
     await manager.CreateAsync(new OpenIddictApplicationDescriptor
@@ -225,16 +240,22 @@ a client application is free to specify any scope in the authorization or token 
         RedirectUris = { new Uri(&quot;https://localhost:34422/callback&quot;) },
         Permissions =
         {
-            OpenIddictConstants.Permissions.Prefixes.Scope +
-                OpenIdConnectConstants.Scopes.Address,
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.GrantTypes.Implicit,
 
-            OpenIddictConstants.Permissions.Prefixes.Scope +
-                OpenIdConnectConstants.Scopes.Profile,
-
-            OpenIddictConstants.Permissions.Prefixes.Scope + &quot;custom&quot;
+            OpenIddictConstants.Permissions.Scopes.Address,
+            OpenIddictConstants.Permissions.Scopes.Profile,
+            OpenIddictConstants.Permissions.Prefixes.Scope + &quot;marketing_api&quot;
         }
     });
 }
+</code></pre><h3 id="disabling-scope-permissions">Disabling scope permissions</h3>
+<p>If you don&#39;t want to use scope permissions, call <code>options.IgnoreScopePermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreScopePermissions();
+    });
 </code></pre></article>
           </div>
           
@@ -242,6 +263,9 @@ a client application is free to specify any scope in the authorization or token 
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/features/application-permissions.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
