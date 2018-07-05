@@ -1,6 +1,23 @@
 {
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "src/**/*.cs" ],
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "cwd": "../openiddict-core"
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
   "build": {
     "content": [
+      {
+        "files": [ "**/*.yml" ],
+        "src": "obj/api",
+        "dest": "api"
+      },
       {
         "files": [
           "**/*.md",
@@ -10,7 +27,8 @@
           "appveyor.yml",
           "README.md",
           "obj/**",
-          "_site/**"
+          "_site/**",
+          "openiddict-core/**/*.yml"
         ]
       }
     ],

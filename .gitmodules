@@ -1,0 +1,4 @@
+[submodule "openiddict-core"]
+	path = openiddict-core
+	url = https://github.com/openiddict/openiddict-core
+	branch = dev
