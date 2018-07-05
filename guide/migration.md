@@ -1,16 +1,271 @@
-# What's new in OpenIddict RC2?
+# Migrate to OpenIddict RC3
 
-The full list of changes can be found [here](https://github.com/openiddict/openiddict-core/milestone/8?closed=1). It includes **bug fixes** (including a bug fix in the refresh token handling) and new features like **application permissions**, that allow limiting the OpenID Connect features (endpoints and flows) an application is able to use.
+## What's new in OpenIddict RC3?
 
+The announcement listing the changes introduced in this milestone can be found [here](https://kevinchalet.com/2018/06/20/openiddict-rc3-is-out/).
+
+## Update your packages references
+
+For that, simply update your `.csproj` file to point to the newest OpenIddict packages:
+
+### ASP.NET Core 1.x
+
+```xml
+<ItemGroup>
+  <PackageReference Include="OpenIddict" Version="1.0.0-rc3-final" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="1.0.0-rc3-final" />
+</ItemGroup>
+```
+
+### ASP.NET Core 2.x
+
+```xml
+<ItemGroup>
+  <PackageReference Include="OpenIddict" Version="2.0.0-rc3-final" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.0-rc3-final" />
+</ItemGroup>
+```
+
+> [!TIP]
+> Note: if you have an explicit reference to `AspNet.Security.OAuth.Validation` or `OpenIddict.Mvc`,
+> you can safely remove these dependencies: they are now transitively referenced by the `OpenIddict` metapackage.
+
+> [!IMPORTANT]
+> Note: if your application references `OpenIddict.Models` or `OpenIddict.Stores`, you MUST remove them as these packages are no longer used in RC3.
+
+## Use the new OpenIddict services registration APIs
+
+To offer a better user experience, the registrations APIs exposed by OpenIddict have been reworked. Updating your code should be quite straightforward:
+
+```csharp
+// In OpenIddict RC2, all the options used to be grouped.
+services.AddOpenIddict(options =>
+{
+    options.AddEntityFrameworkCoreStores<ApplicationDbContext>();
+
+    options.AddMvcBinders();
+
+    options.EnableAuthorizationEndpoint("/connect/authorize")
+           .EnableLogoutEndpoint("/connect/logout")
+           .EnableTokenEndpoint("/connect/token")
+           .EnableUserinfoEndpoint("/api/userinfo");
+
+    options.AllowAuthorizationCodeFlow()
+           .AllowPasswordFlow()
+           .AllowRefreshTokenFlow();
+
+    options.RegisterScopes(OpenIdConnectConstants.Scopes.Email,
+                           OpenIdConnectConstants.Scopes.Profile,
+                           OpenIddictConstants.Scopes.Roles);
+
+    options.RequireClientIdentification();
+
+    options.EnableRequestCaching();
+
+    options.EnableScopeValidation();
+
+    options.DisableHttpsRequirement();
+});
+```
+
+```csharp
+// In OpenIddict RC3, the options are now split into 3 categories:
+// the core services, the server services and the validation services.
+services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        // AddEntityFrameworkCoreStores() is now UseEntityFrameworkCore().
+        options.UseEntityFrameworkCore()
+               .UseDbContext<ApplicationDbContext>();
+    })
+
+    .AddServer(options =>
+    {
+        // AddMvcBinders() is now UseMvc().
+        options.UseMvc();
+
+        options.EnableAuthorizationEndpoint("/connect/authorize")
+               .EnableLogoutEndpoint("/connect/logout")
+               .EnableTokenEndpoint("/connect/token")
+               .EnableUserinfoEndpoint("/api/userinfo");
+
+        options.AllowAuthorizationCodeFlow()
+               .AllowPasswordFlow()
+               .AllowRefreshTokenFlow();
+
+        options.RegisterScopes(OpenIdConnectConstants.Scopes.Email,
+                               OpenIdConnectConstants.Scopes.Profile,
+                               OpenIddictConstants.Scopes.Roles);
+
+        // This API was removed as client identification is now
+        // required by default. You can remove or comment this line.
+        //
+        // options.RequireClientIdentification();
+
+        options.EnableRequestCaching();
+
+        // This API was removed as scope validation is now enforced
+        // by default. You can safely remove or comment this line.
+        //
+        // options.EnableScopeValidation();
+
+        options.DisableHttpsRequirement();
+    });
+```
+
+## Move to the OpenIddict validation handler (optional)
+
+While not required, moving to the new validation handler is recommended:
+
+```csharp
+// Replace...
+services.AddAuthentication()
+    .AddOAuthValidation();
+
+// ... by:
+services.AddOpenIddict()
+    .AddValidation();
+```
+
+> [!TIP]
+> Note: the OpenIddict validation handler lives in the `OpenIddict.Validation` package, which is referenced by the `OpenIddict` metapackage.
+> You don't have to explicitly add a new `PackageReference` in your `.csproj` file to be able to use it.
+
+## If necessary, create new application entries
+
+OpenIddict now rejects unauthenticated token/revocation requests by default.
+
+If, after migrating to RC3, you see errors similar to this one:
+
+> **invalid_request** : The mandatory 'client_id' parameter is missing.
+
+Add an application entry for the client application and send the corresponding `client_id` as part of the token request:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    ClientId = "postman",
+    DisplayName = "Postman",
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.Password,
+        OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
+        OpenIddictConstants.Permissions.Scopes.Email,
+        OpenIddictConstants.Permissions.Scopes.Profile,
+        OpenIddictConstants.Permissions.Scopes.Roles
+    }
+};
+
+await _applicationManager.CreateAsync(descriptor);
+```
+
+If you prefer accepting anonymous clients, use `options.AcceptAnonymousClients()`:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.AcceptAnonymousClients();
+    });
+```
+
+## If necessary, register the scopes used by your clients
+
+Starting with RC3, OpenIddict will reject unrecognized scopes by default.
+
+If, after migrating to RC3, you see errors similar to this one:
+
+> **invalid_scope** : The specified 'scope' parameter is not valid.
+
+Simply add the scopes you want to use to the list of registered scopes:
+
+```csharp
+services.AddOpenIddict()
+
+    // Register the OpenIddict server handler.
+    .AddServer(options =>
+    {
+        options.RegisterScopes(OpenIdConnectConstants.Scopes.Email,
+                               OpenIdConnectConstants.Scopes.Profile,
+                               OpenIddictConstants.Scopes.Roles);
+    });
+```
+
+If you prefer disabling scope validation, use `options.DisableScopeValidation()`:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.DisableScopeValidation();
+    });
+```
+
+## If necessary, adjust the permissions granted to your clients
+
+**Starting with RC3, permissions are no longer optional nor implicit**:
+if you don't explicitly grant an application the necessary permissions, it will be blocked by OpenIddict.
+
+To attach permissions to an application, use `OpenIddictApplicationManager`:
+
+```csharp
+var descriptor = new OpenIddictApplicationDescriptor
+{
+    ClientId = "mvc",
+    ClientSecret = "901564A5-E7FE-42CB-B10D-61EF6A8F3654",
+    DisplayName = "MVC client application",
+    PostLogoutRedirectUris = { new Uri("http://localhost:53507/signout-callback-oidc") },
+    RedirectUris = { new Uri("http://localhost:53507/signin-oidc") },
+    Permissions =
+    {
+        OpenIddictConstants.Permissions.Endpoints.Authorization,
+        OpenIddictConstants.Permissions.Endpoints.Logout,
+        OpenIddictConstants.Permissions.Endpoints.Token,
+        OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
+        OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
+        OpenIddictConstants.Permissions.Scopes.Email,
+        OpenIddictConstants.Permissions.Scopes.Profile,
+        OpenIddictConstants.Permissions.Scopes.Roles
+    }
+};
+
+await _applicationManager.CreateAsync(descriptor);
+```
+
+If you don't care about permissions (e.g because you don't have third-party clients), you can instead disable them:
+
+```csharp
+services.AddOpenIddict()
+
+    // Register the OpenIddict server handler.
+    .AddServer(options =>
+    {
+        options.IgnoreEndpointPermissions()
+               .IgnoreGrantTypePermissions()
+               .IgnoreScopePermissions();
+    });
+```
+
+---------------------------
 # Migrate to OpenIddict RC2
 
-**Migrating to OpenIddict RC2 (`1.0.0-rc2-*` and `2.0.0-rc2-*`) requires making changes in your database**: existing properties have been reworked (e.g [to work around a MySQL limitation](https://github.com/openiddict/openiddict-core/issues/497)) and new ones have been added to support the new features. This procedure is quite easy and only requires a few minutes.
+## What's new in OpenIddict RC2?
 
-> Note: this guide assumes your application uses the OpenIddict Entity Framework Core 2.x stores. If you use a custom store, changes will have to be made manually. A list of added/updated/renamed columns is available at the end of this guide.
+The full list of changes can be found [here](https://github.com/openiddict/openiddict-core/milestone/8?closed=1). It includes **bug fixes** (including a bug fix in the refresh token handling)
+and new features like **application permissions**, that allow limiting the OpenID Connect features (endpoints and flows) an application is able to use.
+
+**Migrating to OpenIddict RC2 (`1.0.0-rc2-final` and `2.0.0-rc2-final`) requires making changes in your database**: existing properties have been reworked
+(e.g [to work around a MySQL limitation](https://github.com/openiddict/openiddict-core/issues/497)) and new ones have been added to support the new features.
+This procedure is quite easy and only requires a few minutes.
+
+> Note: this guide assumes your application uses the OpenIddict Entity Framework Core 2.x stores. If you use a custom store, changes will have to be made manually.
+A list of added/updated/renamed columns is available at the end of this guide.
 
 ## Ensure migrations are correctly enabled for your project
 
-**Before migrating to OpenIddict RC2, make sure migrations are already enabled for your application**. If you have a `Migrations` folder in your application root folder and an `__EFMigrationsHistory` table in your database, you're good to go.
+**Before migrating to OpenIddict RC2, make sure migrations are already enabled for your application**. If you have a `Migrations`
+folder in your application root folder and an `__EFMigrationsHistory` table in your database, you're good to go.
 
 If you don't have these Entity Framework Core artifacts, migrations are likely not enabled. To fix that, add the following entries in your `.csproj`:
 
@@ -36,9 +291,9 @@ For that, simply update your `.csproj` file to point to the newest OpenIddict pa
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="OpenIddict" Version="1.0.0-rc2-*" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="1.0.0-rc2-*" />
-  <PackageReference Include="OpenIddict.Mvc" Version="1.0.0-rc2-*" />
+  <PackageReference Include="OpenIddict" Version="1.0.0-rc2-final" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="1.0.0-rc2-final" />
+  <PackageReference Include="OpenIddict.Mvc" Version="1.0.0-rc2-final" />
 </ItemGroup>
 ```
 
@@ -46,9 +301,9 @@ For that, simply update your `.csproj` file to point to the newest OpenIddict pa
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="OpenIddict" Version="2.0.0-rc2-*" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.0-rc2-*" />
-  <PackageReference Include="OpenIddict.Mvc" Version="2.0.0-rc2-*" />
+  <PackageReference Include="OpenIddict" Version="2.0.0-rc2-final" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.0-rc2-final" />
+  <PackageReference Include="OpenIddict.Mvc" Version="2.0.0-rc2-final" />
 </ItemGroup>
 ```
 
@@ -160,9 +415,9 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
 
 To learn more about this feature, read the [Application permissions documentation](~/features/application-permissions.md).
 
-# List of changes (for applications using custom stores)
+## List of changes (for applications using custom stores)
 
-## Renamed properties
+### Renamed properties
 
 | Table                    | Old column name | New column name  | Observations                                                               |
 |--------------------------|-----------------|------------------|----------------------------------------------------------------------------|
@@ -173,7 +428,7 @@ To learn more about this feature, read the [Application permissions documentatio
 | OpenIddictTokens         | Ciphertext      | Payload          |                                                                            |
 | OpenIddictTokens         | Hash            | ReferenceId      |                                                                            |
 
-## Updated properties
+### Updated properties
 
 | Table                    | Column name            | Observations                                                                |
 |--------------------------|------------------------|-----------------------------------------------------------------------------|
@@ -181,7 +436,7 @@ To learn more about this feature, read the [Application permissions documentatio
 | OpenIddictApplications   | RedirectUris           | Values are now formatted as JSON arrays instead of space-separated strings. |
 | OpenIddictAuthorizations | Scopes                 | Values are now formatted as JSON arrays instead of space-separated strings. |
 
-## Added properties
+### Added properties
 
 | Table                    | Column name | Type          | Nullable |
 |--------------------------|-------------|---------------|----------|
