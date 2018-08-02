@@ -6,3 +6,7 @@
   href: migration.md
 - name: Samples
   href: samples.md
+- name: Understanding the different token formats
+  href: token-formats.md
+- name: Token setup and API validation
+  href: token-setup-and-validation.md
