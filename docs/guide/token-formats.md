@@ -30,7 +30,7 @@ We use this format for authorization codes and refresh tokens. They are only mea
 - Token expiration is in the token itself, so even if users sign out their tokens will still be valid until they reach their expiration
 
 ### Setup and API validation configuration
-[Here](token-setup-and-validation.md#default-configuration-opaque-tokens)
+[Here](../configuration/token-setup-and-validation.md#default-configuration-opaque-tokens)
 
 ---
 
@@ -51,7 +51,7 @@ When using reference token format, authorization codes, access tokens and refres
 - Because only ids are in the access tokens, a call to the database is required for every request
 
 ### Setup and API validation configuration
-[Here](token-setup-and-validation.md#reference-token-format)
+[Here](../configuration/token-setup-and-validation.md#reference-token-format)
 
 ---
 
@@ -69,6 +69,6 @@ These are standard tokens verifiable by third parties, used by Azure Active Dire
 - Token expiration is in the token itself, so even if users sign out their tokens will still be valid until they reach their expiration
 
 ### Setup and API validation configuration
-[Here](token-setup-and-validation.md#jwts)
+[Here](../configuration/token-setup-and-validation.md#jwts)
  
  

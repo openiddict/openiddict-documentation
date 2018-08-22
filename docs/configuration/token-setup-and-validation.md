@@ -1,6 +1,6 @@
 # Token setup and validation
 
-For an overview of the different token formats, see: [here](token-formats.md)
+For an overview of the different token formats, see: [here](../guide/token-formats.md)
 
 In OpenID Connect there are three types of tokens: access tokens, id tokens, and refresh tokens [See spec](https://openid.net/specs/openid-connect-core-1_0.html#Introduction). When this guide refers to _tokens_ it is referring to access tokens.
 

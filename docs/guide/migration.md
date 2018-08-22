@@ -413,7 +413,7 @@ ticket.SetResources("tracking_api", "marketing_api");
 Starting with RC2, OpenIddict includes an optional feature codenamed "app permissions" that allows
 controlling and limiting the OAuth2/OpenID Connect features a client application is able to use.
 
-To learn more about this feature, read the [Application permissions documentation](application-permissions.md).
+To learn more about this feature, read the [Application permissions documentation](../configuration/application-permissions.md).
 
 ## List of changes (for applications using custom stores)
 
