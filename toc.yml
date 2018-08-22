@@ -1,8 +1,2 @@
 - name: User guide
   href: guide/index.md
-
-- name: Migration guide
-  href: guide/migration.md
-
-- name: Features
-  href: features/index.md
