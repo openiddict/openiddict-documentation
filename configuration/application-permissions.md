@@ -152,6 +152,21 @@ Scope permissions limit the scopes (standard or custom) a client application is 
 
 > The `openid` and `offline_access` scopes are special-cased by OpenIddict and don't require explicit permissions.
 
+### Supported permissions
+
+|  Scope  |                     Constant                     |
+|:-------:|:------------------------------------------------:|
+| address | `OpenIddictConstants.Permissions.Scopes.Address` |
+| email   | `OpenIddictConstants.Permissions.Scopes.Email`   |
+| phone   | `OpenIddictConstants.Permissions.Scopes.Phone`   |
+| profile | `OpenIddictConstants.Permissions.Scopes.Profile` |
+| roles   | `OpenIddictConstants.Permissions.Scopes.Roles`   |
+
+To add a custom scope permission, you can use the following pattern:
+```csharp
+OpenIddictConstants.Permissions.Prefixes.Scope + "custom_scope_name"
+```
+
 ### Example
 
 In the following sample, the `angular` client is allowed to request the `address`,
