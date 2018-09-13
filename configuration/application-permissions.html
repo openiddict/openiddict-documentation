@@ -228,7 +228,40 @@ if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
 <p>Scope permissions limit the scopes (standard or custom) a client application is allowed to use.</p>
 <blockquote><p>The <code>openid</code> and <code>offline_access</code> scopes are special-cased by OpenIddict and don&#39;t require explicit permissions.</p>
 </blockquote>
-<h3 id="example">Example</h3>
+<h3 id="supported-permissions">Supported permissions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Scope</th>
+<th style="text-align:center">Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">address</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Address</code></td>
+</tr>
+<tr>
+<td style="text-align:center">email</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Email</code></td>
+</tr>
+<tr>
+<td style="text-align:center">phone</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Phone</code></td>
+</tr>
+<tr>
+<td style="text-align:center">profile</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Profile</code></td>
+</tr>
+<tr>
+<td style="text-align:center">roles</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Roles</code></td>
+</tr>
+</tbody>
+</table>
+<p>To add a custom scope permission, you can use the following pattern:</p>
+<pre><code class="lang-csharp">OpenIddictConstants.Permissions.Prefixes.Scope + &quot;custom_scope_name&quot;
+</code></pre><h3 id="example">Example</h3>
 <p>In the following sample, the <code>angular</code> client is allowed to request the <code>address</code>,
 <code>profile</code> and <code>marketing_api</code> scopes: any other scope will result in an error being returned.</p>
 <pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;angular&quot;) == null)
