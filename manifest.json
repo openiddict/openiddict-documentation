@@ -5,6 +5,54 @@
   "files": [
     {
       "type": "Conceptual",
+      "source_relative_path": "configuration/application-permissions.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/application-permissions.html",
+          "hash": "bKUoTWvuQdArH/6SAvdCnw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/index.html",
+          "hash": "qF3RmMBpfcXNp5Ejs0whhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "configuration/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/toc.html",
+          "hash": "m67AAcKiDQVnxBgYAmTIUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/token-setup-and-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/token-setup-and-validation.html",
+          "hash": "j2Rd3f4apImdla2dwzMPGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docfx.console.2.24.0/content/api/index.md",
       "output": {
         ".html": {
@@ -76,11 +124,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/configuration/application-permissions.md",
+      "source_relative_path": "guide/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "docs/configuration/application-permissions.html",
-          "hash": "MIDxJiBnduouBjs9QeRUKg=="
+          "relative_path": "guide/getting-started.html",
+          "hash": "0wyHg87zimUQBVUd+YBcoA=="
         }
       },
       "is_incremental": false,
@@ -88,11 +136,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/configuration/token-setup-and-validation.md",
+      "source_relative_path": "guide/index.md",
       "output": {
         ".html": {
-          "relative_path": "docs/configuration/token-setup-and-validation.html",
-          "hash": "djMasJKU5uEA8Plrk5d1cQ=="
+          "relative_path": "guide/index.html",
+          "hash": "RPB+31ltfkC/6PHrk4fVAQ=="
         }
       },
       "is_incremental": false,
@@ -100,11 +148,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/guide/getting-started.md",
+      "source_relative_path": "guide/migration.md",
       "output": {
         ".html": {
-          "relative_path": "docs/guide/getting-started.html",
-          "hash": "G3s+Y2hNtiSrt13ggdV3TA=="
+          "relative_path": "guide/migration.html",
+          "hash": "pPtuiMkHHvw3DJVajS8QSw=="
         }
       },
       "is_incremental": false,
@@ -112,47 +160,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/guide/index.md",
+      "source_relative_path": "guide/samples.md",
       "output": {
         ".html": {
-          "relative_path": "docs/guide/index.html",
-          "hash": "aqqwwaeXCfrrBXPsL7UcSw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/guide/migration.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/guide/migration.html",
-          "hash": "W8f59OZF/uJTY6zZ8M48fg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/guide/samples.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/guide/samples.html",
-          "hash": "TSCbeqzgTR4rwJIzWk9D0Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/guide/token-formats.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/guide/token-formats.html",
-          "hash": "nwWbgT85kFl1EQUgekgJBg=="
+          "relative_path": "guide/samples.html",
+          "hash": "KV9on+AGPqCnWLmPoBs8iQ=="
         }
       },
       "is_incremental": false,
@@ -160,11 +172,23 @@
     },
     {
       "type": "Toc",
-      "source_relative_path": "docs/toc.yml",
+      "source_relative_path": "guide/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "docs/toc.html",
-          "hash": "lv9Do47KycpxWdiyZbLKNw=="
+          "relative_path": "guide/toc.html",
+          "hash": "dFaJd5/AdBmX/LsgzYS1cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/token-formats.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/token-formats.html",
+          "hash": "8OgSEbqbIVV4B7bdPzjVeQ=="
         }
       },
       "is_incremental": false,
@@ -176,7 +200,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Vc9YNC/mkPQkU1G877oo3w=="
+          "hash": "1YD9m73tKl+jRwB6uIAnVg=="
         }
       },
       "is_incremental": false,
@@ -188,7 +212,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "tlhe4LxQO0b94lLmCaKBZA=="
+          "hash": "8zBbcxLrM9ZNbv/ISAzFcQ=="
         }
       },
       "is_incremental": false,
@@ -208,18 +232,18 @@
           "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "TocDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
