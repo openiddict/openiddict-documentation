@@ -1,2 +1,5 @@
-- name: User guide
-  href: docs/
+- name: User guides
+  href: guide/index.md
+
+- name: Configuration and settings
+  href: configuration/index.md

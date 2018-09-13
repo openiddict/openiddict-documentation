@@ -6,7 +6,7 @@ OpenIddict aims at providing a **simple and easy-to-use solution** to implement 
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="docs/guide/index.md">Introduction</a></strong></p>
+                <p><strong><a href="guide/index.md">Introduction</a></strong></p>
                 <p>Read an introduction on OpenIddict and the reason it was created.</p>
             </div>
         </div>
@@ -14,7 +14,7 @@ OpenIddict aims at providing a **simple and easy-to-use solution** to implement 
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="docs/guide/getting-started.md">Getting started</a></strong></p>
+                <p><strong><a href="guide/getting-started.md">Getting started</a></strong></p>
                 <p>Get started quickly by working through this step-by-step guide.</p>
             </div>
         </div>
@@ -22,7 +22,7 @@ OpenIddict aims at providing a **simple and easy-to-use solution** to implement 
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="docs/guide/samples.md">Samples</a></strong></p>
+                <p><strong><a href="guide/samples.md">Samples</a></strong></p>
                 <p>View samples implementing the various authorization flows.</p>
             </div>
         </div>
