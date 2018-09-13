@@ -16,7 +16,7 @@ Starting with RC2, OpenIddict includes a built-in feature codenamed "application
 > Similarly, if you granted the "token endpoint" permission to an application but NO "grant type" permission,
 > it was assumed the client application was allowed to use the password or client credentials grants.
 >
-> Retrospectively, this logic was too complex and it removed in RC3 and **application permissions MUST now be explicitly granted**.
+> Retrospectively, this logic was too complex and was removed in RC3: **application permissions MUST now be explicitly granted**.
 
 ## Endpoint permissions
 
