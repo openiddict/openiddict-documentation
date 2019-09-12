@@ -5,7 +5,7 @@
 OpenIddict aims at providing a **simple and easy-to-use solution** to implement an **OpenID Connect server in any ASP.NET Core 1.x or 2.x application**.
 
 OpenIddict is based on
-**[AspNet.Security.OpenIdConnect.Server (codenamed ASOS)](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server)** to control the OpenID Connect authentication flow and can be used with any membership stack, **including [ASP.NET Core Identity](https://github.com/aspnet/Identity)**.
+**[AspNet.Security.OpenIdConnect.Server (codenamed ASOS)](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server)** to control the OpenID Connect authentication flow and can be used with any membership stack, **including [ASP.NET Core Identity](https://github.com/aspnet/AspNetCore/tree/master/src/Identity)**.
 
 OpenIddict fully supports the **[code/implicit/hybrid flows](http://openid.net/specs/openid-connect-core-1_0.html)** and the **[client credentials/resource owner password grants](https://tools.ietf.org/html/rfc6749)**. You can also create your own custom grant types.
 
