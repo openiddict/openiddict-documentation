@@ -11,7 +11,7 @@ This repository provides the documentation for the [OpenIddict](https://github.c
 
 ## Contributors
 
-**OpenIddict** is actively maintained by **[Kévin Chalet](https://github.com/PinpointTownes)**. Contributions are welcome and can be submitted using pull requests.
+**OpenIddict** is actively maintained by **[Kévin Chalet](https://github.com/kevinchalet)**. Contributions are welcome and can be submitted using pull requests.
 
 ## License
 
