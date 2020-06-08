@@ -2,7 +2,7 @@ environment:
   op_build_user: "OpenIddict Bot"
   op_build_user_email: "32257313+openiddict-bot@users.noreply.github.com"
   access_token:
-    secure: YusB3g3MzZkV+HZr30L99yz+LgFJkN9cJrxHhvZpjThKGFJMZHO2TpXxWsdgi+7L
+    secure: Etj0OTTBw8r5cNT7jyc0y4LfQXhbtDwNngD2rVfitEj8h92XxN5HvSa7E/AnmXA+
 
 build_script:
   - ps: |
