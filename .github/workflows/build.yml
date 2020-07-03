@@ -9,43 +9,24 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ windows-latest ]
-        include:
-          - os: windows-latest
-            os_name: windows
+    name: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup DocFX
-      shell: pwsh
-      run: |
-        nuget install docfx.console -Version 2.24.0
-        docfx.console.2.24.0\tools\docfx docfx.json
-        if ($lastexitcode -ne 0)
-        {
-            throw [System.Exception] "docfx build failed with exit code $lastexitcode."
-        }
+    - name: Build documentation
+      uses: nikeee/docfx-action@master
+      with:
+        args: docfx.json
 
-    - name: Update the documentation pages
-      shell: pwsh
-      run: |
-        git config --global core.autocrlf false
-        git config --global credential.helper store
-        Add-Content "$env:USERPROFILE\.git-credentials" "https://${{ secrets.GH_PAGES_ACCESS_TOKEN }}:x-oauth-basic@github.com`n"
-        git config --global user.email "OpenIddict Bot"
-        git config --global user.name "32257313+openiddict-bot@users.noreply.github.com"
-        git clone https://github.com/openiddict/openiddict-documentation.git -b gh-pages origin_site -q
-        Copy-Item origin_site/.git _site -Recurse
-        CD _site
-        Remove-Item docfx.console.2.24.0 -Force -Recurse
-        git add -A 2>&1
-        git commit -m "Update the documentation pages" -q
-        git push origin gh-pages -q
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GH_PAGES_ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: _site
+        GIT_CONFIG_NAME: OpenIddict Bot
+        GIT_CONFIG_EMAIL: 32257313+openiddict-bot@users.noreply.github.com
+        COMMIT_MESSAGE: Update the documentation pages
