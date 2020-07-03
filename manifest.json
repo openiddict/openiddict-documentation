@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/projects/openiddict-documentation",
+  "source_base_path": "/github/workspace",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/application-permissions.html",
-          "hash": "y78P3+7bCwRlnNtXWh2z6g=="
+          "hash": "unaFZIma6NrKTD1qHZhccw=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/index.html",
-          "hash": "qF3RmMBpfcXNp5Ejs0whhQ=="
+          "hash": "ORDiSiwLuj/qCUldUDq8iw=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "m67AAcKiDQVnxBgYAmTIUA=="
+          "hash": "wpuOXWR08LMoFmhQp3UJ8A=="
         }
       },
       "is_incremental": false,
@@ -45,78 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/token-setup-and-validation.html",
-          "hash": "j2Rd3f4apImdla2dwzMPGA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx.console.2.24.0/content/api/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx.console.2.24.0/content/api/index.html",
-          "hash": "vZUtKskqnVmuRNs2Sv+lQw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx.console.2.24.0/content/articles/intro.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx.console.2.24.0/content/articles/intro.html",
-          "hash": "bpZc6vqcbT8cJX1mlpAwrA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "docfx.console.2.24.0/content/articles/toc.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx.console.2.24.0/content/articles/toc.html",
-          "hash": "D6rx80VNLRiYQhvcoPk0qg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx.console.2.24.0/content/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx.console.2.24.0/content/index.html",
-          "hash": "qLnUmlcAcyotqfgMLQkzPA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "docfx.console.2.24.0/content/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "docfx.console.2.24.0/content/toc.html",
-          "hash": "VOi3U8ZNGP3eCu8ta3j8ng=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "docfx.console.2.24.0/tools/docfx.exe",
-      "output": {
-        "resource": {
-          "relative_path": "docfx.console.2.24.0/tools/docfx.exe"
+          "hash": "SqJ9vgWiX+R1OUhK60ML1A=="
         }
       },
       "is_incremental": false,
@@ -128,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/getting-started.html",
-          "hash": "0wyHg87zimUQBVUd+YBcoA=="
+          "hash": "g+HGy8TAzkc07i36wiH2xA=="
         }
       },
       "is_incremental": false,
@@ -140,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/index.html",
-          "hash": "FEynGkc7zbVVh2fc3DBf8Q=="
+          "hash": "TI0h+gKANjcFilPg8eAY/w=="
         }
       },
       "is_incremental": false,
@@ -152,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/migration.html",
-          "hash": "pPtuiMkHHvw3DJVajS8QSw=="
+          "hash": "RQ6Gwlu3/Xx7HtX9QQZJrw=="
         }
       },
       "is_incremental": false,
@@ -164,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/samples.html",
-          "hash": "KV9on+AGPqCnWLmPoBs8iQ=="
+          "hash": "D5fWr71Gsrw7X9GGeRL9yg=="
         }
       },
       "is_incremental": false,
@@ -176,19 +105,22 @@
       "output": {
         ".html": {
           "relative_path": "guide/toc.html",
-          "hash": "dFaJd5/AdBmX/LsgzYS1cg=="
+          "hash": "XybmKrpykKDovVa+x2xtXw=="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidYamlHeader"
+      ],
       "type": "Conceptual",
       "source_relative_path": "guide/token-formats.md",
       "output": {
         ".html": {
           "relative_path": "guide/token-formats.html",
-          "hash": "8OgSEbqbIVV4B7bdPzjVeQ=="
+          "hash": "8gY7U3PXs/cOqFNSN0Y3Ow=="
         }
       },
       "is_incremental": false,
@@ -200,7 +132,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "1YD9m73tKl+jRwB6uIAnVg=="
+          "hash": "dZimbO+BmDcqNM1XH/SYWw=="
         }
       },
       "is_incremental": false,
@@ -212,7 +144,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "8zBbcxLrM9ZNbv/ISAzFcQ=="
+          "hash": "Pu3USoXIgM2Rr0Z6lnld9A=="
         }
       },
       "is_incremental": false,
@@ -224,31 +156,24 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build"
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "RestApiDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
-          "incrementalPhase": "build"
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 9,
+          "skipped_file_count": 0
         }
       }
     },
@@ -256,7 +181,9 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
-        "incrementalPhase": "postProcessing"
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
       },
       "processors": {}
     }
