@@ -13,6 +13,21 @@ To use OpenIddict, you need to:
     <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.0-*" />
     ```
 
+  - **OPTIONAL: If you want to try out the latest features and bug fixes,** there is a MyGet feed with nightly builds
+    of OpenIddict.
+
+    To reference the OpenIddict MyGet feed, **create a `NuGet.config` file** (at the root of your solution):
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+        <packageSources>
+            <add key="nuget" value="https://api.nuget.org/v3/index.json" />
+            <add key="openiddict" value="https://www.myget.org/F/openiddict/api/v3/index.json" />
+        </packageSources>
+    </configuration>
+    ```
+
   - **Configure the OpenIddict services** in `Startup.ConfigureServices`:
 
     ```csharp
