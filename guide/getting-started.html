@@ -79,6 +79,17 @@
 <pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;2.0.0-*&quot; /&gt;
 &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;2.0.0-*&quot; /&gt;
 </code></pre></li>
+<li><p><strong>OPTIONAL: If you want to try out the latest features and bug fixes,</strong> there is a MyGet feed with nightly builds
+of OpenIddict.</p>
+<p>To reference the OpenIddict MyGet feed, <strong>create a <code>NuGet.config</code> file</strong> (at the root of your solution):</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+    &lt;packageSources&gt;
+        &lt;add key=&quot;nuget&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
+        &lt;add key=&quot;openiddict&quot; value=&quot;https://www.myget.org/F/openiddict/api/v3/index.json&quot; /&gt;
+    &lt;/packageSources&gt;
+&lt;/configuration&gt;
+</code></pre></li>
 <li><p><strong>Configure the OpenIddict services</strong> in <code>Startup.ConfigureServices</code>:</p>
 <pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
 {
