@@ -2,9 +2,15 @@
 
 This repository provides the documentation for the [OpenIddict](https://github.com/openiddict) project.
 
+## Security policy
+
+Security issues and bugs should be reported privately by emailing contact@kevinchalet.com.
+You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
+
 ## Support
 
-**Need help or wanna share your thoughts?** Don't hesitate to join us on Gitter or ask your question on StackOverflow:
+If you need support, please make sure you [sponsor the project](https://github.com/sponsors/kevinchalet) before creating a GitHub ticket.
+If you're not a sponsor, you can post your questions on Gitter or StackOverflow:
 
 - **Gitter: [https://gitter.im/openiddict/openiddict-core](https://gitter.im/openiddict/openiddict-core)**
 - **StackOverflow: [https://stackoverflow.com/questions/tagged/openiddict](https://stackoverflow.com/questions/tagged/openiddict)**
