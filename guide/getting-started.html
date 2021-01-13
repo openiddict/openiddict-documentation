@@ -210,16 +210,16 @@ Here&#39;s an example for the client credentials grant:</p>
         var request = HttpContext.GetOpenIddictServerRequest();
         if (!request.IsClientCredentialsGrantType())
         {
-            throw new NotImplementedException(&quot;The specified grant type is not implemented.&quot;);
+            throw new NotImplementedException(&quot;The specified grant is not implemented.&quot;);
         }
 
         // Note: the client credentials are automatically validated by OpenIddict:
         // if client_id or client_secret are invalid, this action won&#39;t be invoked.
 
         var application = await _applicationManager.FindByClientIdAsync(request.ClientId);
-        if (application == null)
+        if (application is null)
         {
-            throw new InvalidOperationException(&quot;The application details cannot be found in the database.&quot;);
+            throw new InvalidOperationException(&quot;The application details cannot be found.&quot;);
         }
 
         // Create a new ClaimsIdentity containing the claims that
@@ -229,13 +229,16 @@ Here&#39;s an example for the client credentials grant:</p>
             Claims.Name, Claims.Role);
 
         // Use the client_id as the subject identifier.
-        identity.AddClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application),
+        identity.AddClaim(Claims.Subject,
+            await _applicationManager.GetClientIdAsync(application),
             Destinations.AccessToken, Destinations.IdentityToken);
 
-        identity.AddClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application),
+        identity.AddClaim(Claims.Name,
+            await _applicationManager.GetDisplayNameAsync(application),
             Destinations.AccessToken, Destinations.IdentityToken);
 
-        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return SignIn(new ClaimsPrincipal(identity),
+            OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 }
 </code></pre></li>
@@ -254,7 +257,8 @@ Here&#39;s an example for the client credentials grant:</p>
         var context = scope.ServiceProvider.GetRequiredService&lt;ApplicationDbContext&gt;();
         await context.Database.EnsureCreatedAsync();
 
-        var manager = scope.ServiceProvider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
+        var manager =
+            scope.ServiceProvider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
 
         if (await manager.FindByClientIdAsync(&quot;console&quot;) is null)
         {
