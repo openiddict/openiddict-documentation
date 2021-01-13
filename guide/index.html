@@ -69,19 +69,13 @@
 <h1 id="introduction">Introduction</h1>
 
 <h2 id="whats-openiddict">What&#39;s OpenIddict?</h2>
-<p>OpenIddict aims at providing a <strong>simple and easy-to-use solution</strong> to implement an <strong>OpenID Connect server in any ASP.NET Core 1.x or 2.x application</strong>.</p>
-<p>OpenIddict is based on
-<strong><a href="https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server">AspNet.Security.OpenIdConnect.Server (codenamed ASOS)</a></strong> to control the OpenID Connect authentication flow and can be used with any membership stack, <strong>including <a href="https://github.com/aspnet/AspNetCore/tree/master/src/Identity">ASP.NET Core Identity</a></strong>.</p>
-<p>OpenIddict fully supports the <strong><a href="http://openid.net/specs/openid-connect-core-1_0.html">code/implicit/hybrid flows</a></strong> and the <strong><a href="https://tools.ietf.org/html/rfc6749">client credentials/resource owner password grants</a></strong>. You can also create your own custom grant types.</p>
-<p>Note: OpenIddict natively supports <strong><a href="https://github.com/aspnet/EntityFramework">Entity Framework Core</a></strong> and <strong><a href="https://github.com/aspnet/EntityFramework6">Entity Framework 6</a></strong> out-of-the-box, but you can also provide your own stores.</p>
-<blockquote><p>Note: <strong>the OpenIddict 2.x packages are only compatible with ASP.NET Core 2.x</strong>.
-If your application targets ASP.NET Core 1.x, use the OpenIddict 1.x packages.</p>
-</blockquote>
+<p>OpenIddict was born in late 2015 and was initially based on <strong><a href="https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server">AspNet.Security.OpenIdConnect.Server</a></strong>
+(codenamed ASOS), a low-level OpenID Connect server middleware forked from OWIN/Katana&#39;s <code>OAuthAuthorizationServerMiddleware</code>. In 2020, ASOS was merged into OpenIddict 3.0
+to form a unified stack under the OpenIddict umbrella, while still offering an easy-to-use approach for new users and a low-level experience for advanced users.</p>
 <h2 id="why-an-openid-connect-server">Why an OpenID Connect server?</h2>
 <p>Adding an OpenID Connect server to your application <strong>allows you to support token authentication</strong>.
-It also allows you to manage all your users using local password or an external identity provider
-(e.g. Facebook or Google) for all your applications in one central place,
-with the power to control who can access your API and the information that is exposed to each client.</p>
+It also allows you to manage all your users using local password or an external identity provider (e.g. Facebook or Google) for all your
+applications in one central place, with the power to control who can access your API and the information that is exposed to each client.</p>
 </article>
           </div>
           
