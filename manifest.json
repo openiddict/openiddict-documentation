@@ -110,15 +110,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "mf66lbYDYJ1ueuRq2UsFNQ=="
+          "hash": "Kbs+jJDnhfVRQiN6461RJw=="
         }
       },
       "is_incremental": false,
@@ -130,7 +127,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "c81Ur29RlisdhGArITEfFw=="
+          "hash": "Z69MCVNfc1ygKvC6OWg2Ow=="
         }
       },
       "is_incremental": false,
