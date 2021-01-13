@@ -198,7 +198,7 @@ services.AddOpenIddict()
 
 ## Response type permissions
 
--> [!NOTE]
+> [!NOTE]
 > Response type permissions were introduced in OpenIddict 3.0.
 
 ### Definition

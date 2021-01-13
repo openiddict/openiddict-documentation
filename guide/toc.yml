@@ -4,8 +4,5 @@
 - name: Getting started
   href: getting-started.md
 
-- name: Samples
-  href: samples.md
-
 - name: Migration guide
   href: migration.md
