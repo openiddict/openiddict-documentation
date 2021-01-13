@@ -171,29 +171,29 @@ Here&#39;s an example for the client credentials grant, used in machine-to-machi
     // to replace the default OpenIddict entities.
     options.UseOpenIddict();
 });
-</code></pre></li>
-</ul>
-<p>-&gt; [!WARNING]</p>
-<blockquote><p>Important: if you change the default entity primary key (e.g. to <code>int</code> or <code>Guid</code> instead of <code>string</code>), make sure you use the <code>options.ReplaceDefaultEntities&lt;TKey&gt;()</code>
-core extension accepting a <code>TKey</code> generic argument and use the generic <code>options.UseOpenIddict&lt;TKey&gt;()</code> overload to configure Entity Framework Core to use the specified key type:</p>
-<pre><code class="lang-csharp">services.AddOpenIddict()
-    .AddCore(options =&gt;
-    {
-        // Configure OpenIddict to use the default entities with a custom key type.
-        options.UseEntityFrameworkCore()
-               .UseDbContext&lt;ApplicationDbContext&gt;()
-               .ReplaceDefaultEntities&lt;Guid&gt;();
-    });
-
-services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
-{
-    // Configure the context to use Microsoft SQL Server.
-    options.UseSqlServer(configuration[&quot;Data:DefaultConnection:ConnectionString&quot;]);
-
-    options.UseOpenIddict&lt;Guid&gt;();
-});
-</code></pre></blockquote>
-<ul>
+</code></pre><p>-&gt; [!WARNING]
+-&gt; Important: if you change the default entity primary key (e.g. to <code>int</code> or <code>Guid</code> instead of <code>string</code>), make sure you use the <code>options.ReplaceDefaultEntities&lt;TKey&gt;()</code>
+-&gt; core extension accepting a <code>TKey</code> generic argument and use the generic <code>options.UseOpenIddict&lt;TKey&gt;()</code> overload to configure EF Core to use the specified type:
+-&gt;
+-&gt;    <code>csharp
+-&gt;    services.AddOpenIddict()
+-&gt;        .AddCore(options =&gt;
+-&gt;        {
+-&gt;            // Configure OpenIddict to use the default entities with a custom key type.
+-&gt;            options.UseEntityFrameworkCore()
+-&gt;                   .UseDbContext&lt;ApplicationDbContext&gt;()
+-&gt;                   .ReplaceDefaultEntities&lt;Guid&gt;();
+-&gt;        });
+-&gt;
+-&gt;    services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+-&gt;    {
+-&gt;        // Configure the context to use Microsoft SQL Server.
+-&gt;        options.UseSqlServer(configuration[&quot;Data:DefaultConnection:ConnectionString&quot;]);
+-&gt;
+-&gt;        options.UseOpenIddict&lt;Guid&gt;();
+-&gt;    });
+-&gt;</code></p>
+</li>
 <li><p><strong>Create your own authorization controller:</strong>
 Implementing a custom authorization controller is required to allow OpenIddict to create tokens based on the identities and claims you provide.
 Here&#39;s an example for the client credentials grant:</p>
