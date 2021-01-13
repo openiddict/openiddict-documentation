@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "SECURITY.html",
-          "hash": "y5d0rdJ39CLRJkxiTIJpHA=="
+          "hash": "SBT7/lyH9Qv2hWV+myAr5A=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/application-permissions.html",
-          "hash": "AOMx9zc2oHaRHeGBUhTg0g=="
+          "hash": "nfNApmmD0Tx2XnIWGsKa/Q=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/index.html",
-          "hash": "ZCVOO+qApWpteHFy39QYWg=="
+          "hash": "dZ+fTg4yyUtnPaefozkD/w=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/token-setup-and-validation.html",
-          "hash": "qambi8DOkJdX0XqV2l00BQ=="
+          "hash": "wriPTtiES12cWm3wou7NZw=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/getting-started.html",
-          "hash": "OOldJKpDhyNSy0VVUXkaWw=="
+          "hash": "jaHXwu1fAe0VHGatPsyF+w=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/index.html",
-          "hash": "yawlZlAaaVmzkh7dQ0NBtg=="
+          "hash": "FHMcGouIKFpigwxNOODXdg=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/migration.html",
-          "hash": "L2u2xxC3VR0gf/8Ko/eM7Q=="
+          "hash": "E8/4+AcAzBZVyiJ2+cGS9A=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/samples.html",
-          "hash": "y7easpaJVIFQVgrD2i4OaA=="
+          "hash": "+zYnDYYkDcKvUJDbMqeJkA=="
         }
       },
       "is_incremental": false,
@@ -132,7 +132,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/token-formats.html",
-          "hash": "4r7qf+/j08iieVBWLUDOOQ=="
+          "hash": "BYYdFLkZTH0mpETuUsWJQw=="
         }
       },
       "is_incremental": false,
@@ -151,10 +151,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/logo.svg",
+      "source_relative_path": "images/logo.png",
       "output": {
         "resource": {
-          "relative_path": "images/logo.svg"
+          "relative_path": "images/logo.png"
         }
       },
       "is_incremental": false,
@@ -166,7 +166,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "xv3ocUVnwZMbVoS9xmDEUQ=="
+          "hash": "lTG1m0+L91SaorRkTxUaHg=="
         }
       },
       "is_incremental": false,
