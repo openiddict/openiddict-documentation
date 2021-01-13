@@ -9,6 +9,3 @@
 
 - name: Migration guide
   href: migration.md
-
-- name: Understanding the different token formats
-  href: token-formats.md

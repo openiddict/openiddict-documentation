@@ -1,8 +1,5 @@
 - name: Introduction
   href: index.md
 
-- name: Token setup and API validation
-  href: token-setup-and-validation.md
-
 - name: Application permissions
   href: application-permissions.md

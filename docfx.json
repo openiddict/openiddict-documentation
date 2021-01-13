@@ -9,6 +9,7 @@
         "exclude": [
           "appveyor.yml",
           "README.md",
+          "SECURITY.md",
           "obj/**",
           "_site/**"
         ]
