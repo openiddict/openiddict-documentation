@@ -17,6 +17,7 @@
     "resource": [
       {
         "files": [
+          "images/**",
           "**/*.png",
           "**/*.jpg",
           "**/*.gif",
@@ -33,6 +34,10 @@
     ],
     "dest": "_site",
     "globalMetadataFiles": [],
+    "globalMetadata": {
+      "_appFaviconPath": "images/favicon.ico",
+      "_appLogoPath": "images/logo.png"
+    },
     "fileMetadataFiles": [],
     "template": [
       "default",
