@@ -3,3 +3,6 @@
 
 - name: Configuration and settings
   href: configuration/index.md
+
+- name: Samples
+  href: https://github.com/openiddict/openiddict-samples

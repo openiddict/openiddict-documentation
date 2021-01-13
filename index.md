@@ -27,7 +27,7 @@ OpenIddict natively supports **[Entity Framework Core](https://www.nuget.org/pac
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="guide/samples.md">Samples</a></strong></p>
+                <p><strong><a href="https://github.com/openiddict/openiddict-samples">Samples</a></strong></p>
                 <p>View samples implementing the various authorization flows.</p>
             </div>
         </div>
