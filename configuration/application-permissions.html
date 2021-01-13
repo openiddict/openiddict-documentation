@@ -68,21 +68,15 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="application-permissions">Application permissions</h1>
 
-<p>Starting with RC2, OpenIddict includes a built-in feature codenamed &quot;application permissions&quot; that
-<strong>allows controlling and limiting the OAuth2/OpenID Connect features a client application is able to use</strong>.</p>
-<p>3 categories of permissions are currently supported:</p>
+<p>OpenIddict includes a built-in feature codenamed &quot;application permissions&quot; that
+<strong>allows controlling and limiting the OAuth 2.0/OpenID Connect features each registered client application is able to use</strong>.</p>
+<p>4 categories of permissions are currently supported:</p>
 <ul>
-<li>Endpoint permissions</li>
-<li>Grant type/flow permissions</li>
+<li>Endpoint permissions.</li>
+<li>Grant type permissions.</li>
 <li>Scope permissions.</li>
+<li>Response type permissions (<em>introduced in OpenIddict 3.0</em>).</li>
 </ul>
-<div class="WARNING"><h5>Warning</h5><p>Note: <strong>prior to OpenIddict RC3, application permissions were mostly optional</strong> and OpenIddict had a fallback mechanism
-called &quot;implicit permissions&quot; it used to determine whether an application could perform the requested action.</p>
-<p>If no permission was explicitly attached to the application, it was considered fully trusted and was granted all the permissions.
-Similarly, if you granted the &quot;token endpoint&quot; permission to an application but NO &quot;grant type&quot; permission,
-it was assumed the client application was allowed to use the password or client credentials grants.</p>
-<p>Retrospectively, this logic was too complex and was removed in RC3: <strong>application permissions MUST now be explicitly granted</strong>.</p>
-</div>
 <h2 id="endpoint-permissions">Endpoint permissions</h2>
 <h3 id="definition">Definition</h3>
 <p>Endpoint permissions limit the endpoints a client application can use.</p>
@@ -96,23 +90,23 @@ it was assumed the client application was allowed to use the password or client 
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Authorization endpoint</td>
+<td style="text-align:center">Authorization</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Authorization</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Introspection endpoint</td>
+<td style="text-align:center">Introspection</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Introspection</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Logout/end session endpoint</td>
+<td style="text-align:center">Logout/end session</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Logout</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Revocation endpoint</td>
+<td style="text-align:center">Revocation</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Revocation</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Token endpoint</td>
+<td style="text-align:center">Token</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Token</code></td>
 </tr>
 </tbody>
@@ -120,7 +114,7 @@ it was assumed the client application was allowed to use the password or client 
 <h3 id="example">Example</h3>
 <p>In the following example, the <code>mvc</code> application is allowed to use the authorization, logout and
 token endpoints but will get an error when trying to send an introspection or revocation request:</p>
-<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;mvc&quot;) == null)
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;mvc&quot;) is null)
 {
     await manager.CreateAsync(new OpenIddictApplicationDescriptor
     {
@@ -146,7 +140,7 @@ token endpoints but will get an error when trying to send an introspection or re
     });
 </code></pre><h2 id="grant-type-permissions">Grant type permissions</h2>
 <h3 id="definition-1">Definition</h3>
-<p>Grant type permissions limit the flows a client application is allowed to use.</p>
+<p>Grant type permissions limit the grant types a client application is allowed to use.</p>
 <h3 id="supported-permissions-1">Supported permissions</h3>
 <table>
 <thead>
@@ -157,33 +151,33 @@ token endpoints but will get an error when trying to send an introspection or re
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Authorization code flow</td>
+<td style="text-align:center">Authorization code</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Client credentials flow</td>
+<td style="text-align:center">Client credentials</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.ClientCredentials</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Implicit flow</td>
+<td style="text-align:center">Implicit</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.Implicit</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Password flow</td>
+<td style="text-align:center">Password</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.Password</code></td>
 </tr>
 <tr>
-<td style="text-align:center">Refresh token flow</td>
+<td style="text-align:center">Refresh token</td>
 <td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.RefreshToken</code></td>
 </tr>
 </tbody>
 </table>
-<p>To add a custom flow permission, you can use the following pattern:</p>
+<p>To add a custom grant type permission, you can use the following pattern:</p>
 <pre><code class="lang-csharp">OpenIddictConstants.Permissions.Prefixes.GrantType + &quot;custom_flow_name&quot;
 </code></pre><h3 id="example-1">Example</h3>
-<p>In the following example, the <code>postman</code> application can only use the authorization code flow
-while <code>console</code> is restricted to the <code>password</code> and <code>refresh_token</code> flows:</p>
-<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;postman&quot;) == null)
+<p>In the following example, the <code>postman</code> application can only use the authorization code grant
+while <code>console</code> is restricted to the <code>password</code> and <code>refresh_token</code> grants:</p>
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;postman&quot;) is null)
 {
     await manager.CreateAsync(new OpenIddictApplicationDescriptor
     {
@@ -200,7 +194,7 @@ while <code>console</code> is restricted to the <code>password</code> and <code>
     });
 }
 
-if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
+if (await manager.FindByClientIdAsync(&quot;console&quot;) is null)
 {
     await manager.CreateAsync(new OpenIddictApplicationDescriptor
     {
@@ -263,7 +257,7 @@ if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
 </code></pre><h3 id="example-2">Example</h3>
 <p>In the following sample, the <code>angular</code> client is allowed to request the <code>address</code>,
 <code>profile</code> and <code>marketing_api</code> scopes: any other scope will result in an error being returned.</p>
-<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;angular&quot;) == null)
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;angular&quot;) is null)
 {
     await manager.CreateAsync(new OpenIddictApplicationDescriptor
     {
@@ -287,6 +281,79 @@ if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
     .AddServer(options =&gt;
     {
         options.IgnoreScopePermissions();
+    });
+</code></pre><h2 id="response-type-permissions-introduced-in-openiddict-30">Response type permissions (<em>introduced in OpenIddict 3.0</em>)</h2>
+<h3 id="definition-3">Definition</h3>
+<p>Response type permissions limit the response types a client application is allowed to use when implementing an interactive flow like code, implicit or hybrid.</p>
+<h3 id="supported-permissions-3">Supported permissions</h3>
+<table>
+<thead>
+<tr>
+<th>Response type</th>
+<th>Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.Code</code></td>
+</tr>
+<tr>
+<td>code id_token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdToken</code></td>
+</tr>
+<tr>
+<td>code id_token token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken</code></td>
+</tr>
+<tr>
+<td>code token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeToken</code></td>
+</tr>
+<tr>
+<td>id_token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.IdToken</code></td>
+</tr>
+<tr>
+<td>id_token token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.IdTokenToken</code></td>
+</tr>
+<tr>
+<td>none</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.None</code></td>
+</tr>
+<tr>
+<td>token</td>
+<td><code>OpenIddictConstants.Permissions.ResponseTypes.Token</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3">Example</h3>
+<p>In the following example, the <code>postman</code> application can only use the <code>code id_token</code> response type:</p>
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;postman&quot;) is null)
+{
+    await manager.CreateAsync(new OpenIddictApplicationDescriptor
+    {
+        ClientId = &quot;postman&quot;,
+        DisplayName = &quot;Postman&quot;,
+        RedirectUris = { new Uri(&quot;https://www.getpostman.com/oauth2/callback&quot;) },
+        Permissions =
+        {
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.Endpoints.Token,
+
+            OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
+
+            OpenIddictConstants.Permissions.ResponseTypes.CodeIdToken
+        }
+    });
+}
+</code></pre><h3 id="disabling-response-type-permissions">Disabling response type permissions</h3>
+<p>If you don&#39;t want to use response type permissions, call <code>options.IgnoreResponseTypePermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreResponseTypePermissions();
     });
 </code></pre></article>
           </div>
