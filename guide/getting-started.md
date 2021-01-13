@@ -118,7 +118,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
     ```
 
     > [!WARNING]
-    > Important: if you change the default entity primary key (e.g. to `int` or `Guid` instead of `string`), make sure you use the `options.ReplaceDefaultEntities<TKey>()`
+    > If you change the default entity primary key (e.g. to `int` or `Guid` instead of `string`), make sure you use the `options.ReplaceDefaultEntities<TKey>()`
     > core extension accepting a `TKey` generic argument and use the generic `options.UseOpenIddict<TKey>()` overload to configure EF Core to use the specified type:
     >
     >    ```csharp
