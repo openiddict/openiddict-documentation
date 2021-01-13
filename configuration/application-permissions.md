@@ -196,7 +196,10 @@ services.AddOpenIddict()
     });
 ```
 
-## Response type permissions (*introduced in OpenIddict 3.0*)
+## Response type permissions
+
+-> [!NOTE]
+> Response type permissions were introduced in OpenIddict 3.0.
 
 ### Definition
 
@@ -205,7 +208,7 @@ Response type permissions limit the response types a client application is allow
 ### Supported permissions
 
 | Response type       | Constant                                                         |
-|---------------------|------------------------------------------------------------------|
+|:-------------------:|:----------------------------------------------------------------:|
 | code                | `OpenIddictConstants.Permissions.ResponseTypes.Code`             |
 | code id_token       | `OpenIddictConstants.Permissions.ResponseTypes.CodeIdToken`      |
 | code id_token token | `OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken` |
