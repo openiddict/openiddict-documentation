@@ -171,7 +171,9 @@ Here&#39;s an example for the client credentials grant, used in machine-to-machi
     // to replace the default OpenIddict entities.
     options.UseOpenIddict();
 });
-</code></pre><p>-&gt; [!WARNING]
+</code></pre></li>
+</ul>
+<p>-&gt; [!WARNING]
 -&gt; Important: if you change the default entity primary key (e.g. to <code>int</code> or <code>Guid</code> instead of <code>string</code>), make sure you use the <code>options.ReplaceDefaultEntities&lt;TKey&gt;()</code>
 -&gt; core extension accepting a <code>TKey</code> generic argument and use the generic <code>options.UseOpenIddict&lt;TKey&gt;()</code> overload to configure EF Core to use the specified type:
 -&gt;
@@ -193,7 +195,7 @@ Here&#39;s an example for the client credentials grant, used in machine-to-machi
 -&gt;        options.UseOpenIddict&lt;Guid&gt;();
 -&gt;    });
 -&gt;</code></p>
-</li>
+<ul>
 <li><p><strong>Create your own authorization controller:</strong>
 Implementing a custom authorization controller is required to allow OpenIddict to create tokens based on the identities and claims you provide.
 Here&#39;s an example for the client credentials grant:</p>
