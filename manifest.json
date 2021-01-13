@@ -5,18 +5,6 @@
   "files": [
     {
       "type": "Conceptual",
-      "source_relative_path": "SECURITY.md",
-      "output": {
-        ".html": {
-          "relative_path": "SECURITY.html",
-          "hash": "EywQDi/SIKw91YK4YdLOpQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "configuration/application-permissions.md",
       "output": {
         ".html": {
@@ -28,12 +16,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "configuration/index.md",
       "output": {
         ".html": {
           "relative_path": "configuration/index.html",
-          "hash": "phS22gLEe1qVY8bWJfqu+g=="
+          "hash": "wOymSthH3qputrjOn7ZyNg=="
         }
       },
       "is_incremental": false,
@@ -45,19 +36,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "q5VWqYzUY0T5ZU4V2FsTqQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "configuration/token-setup-and-validation.md",
-      "output": {
-        ".html": {
-          "relative_path": "configuration/token-setup-and-validation.html",
-          "hash": "V/u4BWZZsAbcJ229Atd8Ww=="
+          "hash": "wN//5mFhXCdCcxKCvR3Wzg=="
         }
       },
       "is_incremental": false,
@@ -117,22 +96,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/toc.html",
-          "hash": "rt8VgwDfiE4itNGfiTxHjA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "log_codes": [
-        "InvalidYamlHeader"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "guide/token-formats.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/token-formats.html",
-          "hash": "1mdV3WuTa4mzM9yvM6s1Wg=="
+          "hash": "epsbDuVdI5yEtqtUWQIS9g=="
         }
       },
       "is_incremental": false,
@@ -199,7 +163,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 10,
+          "total_file_count": 7,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
