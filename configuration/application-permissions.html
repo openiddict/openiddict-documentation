@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Application permissions </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Application permissions ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="application-permissions">Application permissions</h1>
+
+<p>Starting with RC2, OpenIddict includes a built-in feature codenamed &quot;application permissions&quot; that
+<strong>allows controlling and limiting the OAuth2/OpenID Connect features a client application is able to use</strong>.</p>
+<p>3 categories of permissions are currently supported:</p>
+<ul>
+<li>Endpoint permissions</li>
+<li>Grant type/flow permissions</li>
+<li>Scope permissions.</li>
+</ul>
+<div class="WARNING"><h5>Warning</h5><p>Note: <strong>prior to OpenIddict RC3, application permissions were mostly optional</strong> and OpenIddict had a fallback mechanism
+called &quot;implicit permissions&quot; it used to determine whether an application could perform the requested action.</p>
+<p>If no permission was explicitly attached to the application, it was considered fully trusted and was granted all the permissions.
+Similarly, if you granted the &quot;token endpoint&quot; permission to an application but NO &quot;grant type&quot; permission,
+it was assumed the client application was allowed to use the password or client credentials grants.</p>
+<p>Retrospectively, this logic was too complex and was removed in RC3: <strong>application permissions MUST now be explicitly granted</strong>.</p>
+</div>
+<h2 id="endpoint-permissions">Endpoint permissions</h2>
+<h3 id="definition">Definition</h3>
+<p>Endpoint permissions limit the endpoints a client application can use.</p>
+<h3 id="supported-permissions">Supported permissions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Endpoint</th>
+<th style="text-align:center">Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Authorization endpoint</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Authorization</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Introspection endpoint</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Introspection</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Logout/end session endpoint</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Logout</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Revocation endpoint</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Revocation</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Token endpoint</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Endpoints.Token</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example</h3>
+<p>In the following example, the <code>mvc</code> application is allowed to use the authorization, logout and
+token endpoints but will get an error when trying to send an introspection or revocation request:</p>
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;mvc&quot;) == null)
+{
+    await manager.CreateAsync(new OpenIddictApplicationDescriptor
+    {
+        ClientId = &quot;mvc&quot;,
+        ClientSecret = &quot;901564A5-E7FE-42CB-B10D-61EF6A8F3654&quot;,
+        DisplayName = &quot;MVC client application&quot;,
+        PostLogoutRedirectUris = { new Uri(&quot;http://localhost:53507/signout-callback-oidc&quot;) },
+        RedirectUris = { new Uri(&quot;http://localhost:53507/signin-oidc&quot;) },
+        Permissions =
+        {
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.Endpoints.Logout,
+            OpenIddictConstants.Permissions.Endpoints.Token
+        }
+    });
+}
+</code></pre><h3 id="disabling-endpoint-permissions">Disabling endpoint permissions</h3>
+<p>If you don&#39;t want to use endpoint permissions, call <code>options.IgnoreEndpointPermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreEndpointPermissions();
+    });
+</code></pre><h2 id="grant-type-permissions">Grant type permissions</h2>
+<h3 id="definition-1">Definition</h3>
+<p>Grant type permissions limit the flows a client application is allowed to use.</p>
+<h3 id="supported-permissions-1">Supported permissions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Grant type</th>
+<th style="text-align:center">Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Authorization code flow</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Client credentials flow</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.ClientCredentials</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Implicit flow</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.Implicit</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Password flow</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.Password</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Refresh token flow</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.GrantTypes.RefreshToken</code></td>
+</tr>
+</tbody>
+</table>
+<p>To add a custom flow permission, you can use the following pattern:</p>
+<pre><code class="lang-csharp">OpenIddictConstants.Permissions.Prefixes.GrantType + &quot;custom_flow_name&quot;
+</code></pre><h3 id="example-1">Example</h3>
+<p>In the following example, the <code>postman</code> application can only use the authorization code flow
+while <code>console</code> is restricted to the <code>password</code> and <code>refresh_token</code> flows:</p>
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;postman&quot;) == null)
+{
+    await manager.CreateAsync(new OpenIddictApplicationDescriptor
+    {
+        ClientId = &quot;postman&quot;,
+        DisplayName = &quot;Postman&quot;,
+        RedirectUris = { new Uri(&quot;https://www.getpostman.com/oauth2/callback&quot;) },
+        Permissions =
+        {
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.Endpoints.Token,
+
+            OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode
+        }
+    });
+}
+
+if (await manager.FindByClientIdAsync(&quot;console&quot;) == null)
+{
+    await manager.CreateAsync(new OpenIddictApplicationDescriptor
+    {
+        ClientId = &quot;console&quot;,
+        DisplayName = &quot;Console&quot;,
+        Permissions =
+        {
+            OpenIddictConstants.Permissions.Endpoints.Token,
+
+            OpenIddictConstants.Permissions.GrantTypes.Password,
+            OpenIddictConstants.Permissions.GrantTypes.RefreshToken
+        }
+    });
+}
+</code></pre><h3 id="disabling-grant-type-permissions">Disabling grant type permissions</h3>
+<p>If you don&#39;t want to use grant type permissions, call <code>options.IgnoreGrantTypePermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreGrantTypePermissions();
+    });
+</code></pre><h2 id="scope-permissions">Scope permissions</h2>
+<h3 id="definition-2">Definition</h3>
+<p>Scope permissions limit the scopes (standard or custom) a client application is allowed to use.</p>
+<blockquote><p>The <code>openid</code> and <code>offline_access</code> scopes are special-cased by OpenIddict and don&#39;t require explicit permissions.</p>
+</blockquote>
+<h3 id="supported-permissions-2">Supported permissions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Scope</th>
+<th style="text-align:center">Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">address</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Address</code></td>
+</tr>
+<tr>
+<td style="text-align:center">email</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Email</code></td>
+</tr>
+<tr>
+<td style="text-align:center">phone</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Phone</code></td>
+</tr>
+<tr>
+<td style="text-align:center">profile</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Profile</code></td>
+</tr>
+<tr>
+<td style="text-align:center">roles</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.Scopes.Roles</code></td>
+</tr>
+</tbody>
+</table>
+<p>To add a custom scope permission, you can use the following pattern:</p>
+<pre><code class="lang-csharp">OpenIddictConstants.Permissions.Prefixes.Scope + &quot;custom_scope_name&quot;
+</code></pre><h3 id="example-2">Example</h3>
+<p>In the following sample, the <code>angular</code> client is allowed to request the <code>address</code>,
+<code>profile</code> and <code>marketing_api</code> scopes: any other scope will result in an error being returned.</p>
+<pre><code class="lang-csharp">if (await manager.FindByClientIdAsync(&quot;angular&quot;) == null)
+{
+    await manager.CreateAsync(new OpenIddictApplicationDescriptor
+    {
+        ClientId = &quot;angular&quot;,
+        DisplayName = &quot;Angular&quot;,
+        RedirectUris = { new Uri(&quot;https://localhost:34422/callback&quot;) },
+        Permissions =
+        {
+            OpenIddictConstants.Permissions.Endpoints.Authorization,
+            OpenIddictConstants.Permissions.GrantTypes.Implicit,
+
+            OpenIddictConstants.Permissions.Scopes.Address,
+            OpenIddictConstants.Permissions.Scopes.Profile,
+            OpenIddictConstants.Permissions.Prefixes.Scope + &quot;marketing_api&quot;
+        }
+    });
+}
+</code></pre><h3 id="disabling-scope-permissions">Disabling scope permissions</h3>
+<p>If you don&#39;t want to use scope permissions, call <code>options.IgnoreScopePermissions()</code> to ignore them:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.IgnoreScopePermissions();
+    });
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/configuration/application-permissions.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

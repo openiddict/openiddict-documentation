@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting started </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting started ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started">Getting started</h1>
+
+<p>To use OpenIddict, you need to:</p>
+<ul>
+<li><p><strong>Install the latest <a href="https://www.microsoft.com/net/download">.NET Core 2.x tooling</a> and update your packages to reference the ASP.NET Core 2.x packages</strong>.</p>
+</li>
+<li><p><strong>Have an existing project or create a new one</strong>: when creating a new project using Visual Studio&#39;s default ASP.NET Core template, using <strong>individual user accounts authentication</strong> is strongly recommended. When updating an existing project, you must provide your own <code>AccountController</code> to handle the registration process and the authentication flow.</p>
+</li>
+<li><p><strong>Update your <code>.csproj</code> file</strong> to reference the <code>OpenIddict</code> packages:</p>
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;2.0.0-*&quot; /&gt;
+&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;2.0.0-*&quot; /&gt;
+</code></pre></li>
+<li><p><strong>OPTIONAL: If you want to try out the latest features and bug fixes,</strong> there is a MyGet feed with nightly builds
+of OpenIddict.</p>
+<p>To reference the OpenIddict MyGet feed, <strong>create a <code>NuGet.config</code> file</strong> (at the root of your solution):</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+    &lt;packageSources&gt;
+        &lt;add key=&quot;nuget&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
+        &lt;add key=&quot;openiddict&quot; value=&quot;https://www.myget.org/F/openiddict/api/v3/index.json&quot; /&gt;
+    &lt;/packageSources&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p><strong>Configure the OpenIddict services</strong> in <code>Startup.ConfigureServices</code>:</p>
+<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+
+    services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+    {
+        // Configure the context to use Microsoft SQL Server.
+        options.UseSqlServer(configuration[&quot;Data:DefaultConnection:ConnectionString&quot;]);
+
+        // Register the entity sets needed by OpenIddict.
+        // Note: use the generic overload if you need
+        // to replace the default OpenIddict entities.
+        options.UseOpenIddict();
+    });
+
+    // Register the Identity services.
+    services.AddIdentity&lt;ApplicationUser, IdentityRole&gt;()
+        .AddEntityFrameworkStores&lt;ApplicationDbContext&gt;()
+        .AddDefaultTokenProviders();
+
+    // Register the OpenIddict services.
+    services.AddOpenIddict()
+        .AddCore(options =&gt;
+        {
+            // Configure OpenIddict to use the Entity Framework Core stores and entities.
+            options.UseEntityFrameworkCore()
+                   .UseDbContext&lt;ApplicationDbContext&gt;();
+        })
+
+        .AddServer(options =&gt;
+        {
+            // Register the ASP.NET Core MVC binder used by OpenIddict.
+            // Note: if you don&#39;t call this method, you won&#39;t be able to
+            // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
+            options.UseMvc();
+
+            // Enable the token endpoint (required to use the password flow).
+            options.EnableTokenEndpoint(&quot;/connect/token&quot;);
+
+            // Allow client applications to use the grant_type=password flow.
+            options.AllowPasswordFlow();
+
+            // During development, you can disable the HTTPS requirement.
+            options.DisableHttpsRequirement();
+
+            // Accept token requests that don&#39;t specify a client_id.
+            options.AcceptAnonymousClients();
+        })
+
+        .AddValidation();
+}
+</code></pre></li>
+<li><p><strong>Make sure the authentication middleware is registered before all the other middleware, including <code>app.UseMvc()</code></strong>:</p>
+<pre><code class="lang-csharp">public void Configure(IApplicationBuilder app)
+{
+    app.UseAuthentication();
+
+    app.UseMvc();
+}
+</code></pre></li>
+<li><p><strong>Update your Entity Framework Core context registration to register the OpenIddict entities</strong>:</p>
+<pre><code class="lang-csharp">services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+{
+    // Configure the context to use Microsoft SQL Server.
+    options.UseSqlServer(configuration[&quot;Data:DefaultConnection:ConnectionString&quot;]);
+
+    // Register the entity sets needed by OpenIddict.
+    // Note: use the generic overload if you need
+    // to replace the default OpenIddict entities.
+    options.UseOpenIddict();
+});
+</code></pre></li>
+</ul>
+<blockquote><p><strong>Note:</strong> if you change the default entity primary key (e.g. to <code>int</code> or <code>Guid</code> instead of <code>string</code>), make sure you use the <code>options.ReplaceDefaultEntities&lt;TKey&gt;()</code> core extension accepting a <code>TKey</code> generic argument and use the generic <code>options.UseOpenIddict&lt;TKey&gt;()</code> overload to configure Entity Framework Core to use the specified key type:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        // Configure OpenIddict to use the default entities with a custom key type.
+        options.UseEntityFrameworkCore()
+               .UseDbContext&lt;ApplicationDbContext&gt;()
+               .ReplaceDefaultEntities&lt;Guid&gt;();
+    });
+
+services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+{
+    // Configure the context to use Microsoft SQL Server.
+    options.UseSqlServer(configuration[&quot;Data:DefaultConnection:ConnectionString&quot;]);
+
+    options.UseOpenIddict&lt;Guid&gt;();
+});
+</code></pre></blockquote>
+<ul>
+<li><strong>Create your own authorization controller</strong>:</li>
+</ul>
+<p>To <strong>support the password or the client credentials flow, you must provide your own token endpoint action</strong>.
+To enable authorization code/implicit flows support, you&#39;ll similarly have to create your own authorization endpoint action and your own views/view models.</p>
+<p>The <strong>Mvc.Server sample comes with an <a href="https://github.com/openiddict/openiddict-core/blob/dev/samples/Mvc.Server/Controllers/AuthorizationController.cs"><code>AuthorizationController</code> that supports both the password flow and the authorization code flow and that you can easily reuse in your application</a></strong>.</p>
+<ul>
+<li><p><strong>Enable the corresponding flows in the OpenIddict options</strong>:</p>
+<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
+{
+    // Register the OpenIddict services.
+    services.AddOpenIddict()
+        .AddCore(options =&gt;
+        {
+            // Configure OpenIddict to use the Entity Framework Core stores and entities.
+            options.UseEntityFrameworkCore()
+                   .UseDbContext&lt;ApplicationDbContext&gt;();
+        })
+
+        .AddServer(options =&gt;
+        {
+            // Register the ASP.NET Core MVC binder used by OpenIddict.
+            // Note: if you don&#39;t call this method, you won&#39;t be able to
+            // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
+            options.UseMvc();
+
+            // Enable the authorization/token endpoints (required to use the code flow).
+            options.EnableAuthorizationEndpoint(&quot;/connect/authorize&quot;)
+                   .EnableTokenEndpoint(&quot;/connect/token&quot;);
+
+            // Allow client applications to use the code flow.
+            options.AllowAuthorizationCodeFlow();
+
+            // During development, you can disable the HTTPS requirement.
+            options.DisableHttpsRequirement();
+        })
+
+        .AddValidation();
+}
+</code></pre></li>
+<li><p><strong>Register your client application</strong>:</p>
+<pre><code class="lang-csharp">// Create a new service scope to ensure the database context
+// is correctly disposed when this methods returns.
+using (var scope = app.ApplicationServices.CreateScope())
+{
+    var provider = scope.ServiceProvider;
+    var context = provider.GetRequiredService&lt;ApplicationDbContext&gt;();
+    await context.Database.EnsureCreatedAsync();
+
+    var manager = provider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
+
+    if (await manager.FindByClientIdAsync(&quot;[client identifier]&quot;) == null)
+    {
+        var descriptor = new OpenIddictApplicationDescriptor
+        {
+            ClientId = &quot;[client identifier]&quot;,
+            ClientSecret = &quot;[client secret]&quot;,
+            RedirectUris = { new Uri(&quot;[redirect uri]&quot;) }
+        };
+
+        await manager.CreateAsync(descriptor);
+    }
+}
+</code></pre></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/guide/getting-started.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

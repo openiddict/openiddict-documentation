@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Token setup and validation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Token setup and validation ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="token-setup-and-validation">Token setup and validation</h1>
+
+<p>For an overview of the different token formats, see: <a href="../guide/token-formats.html">here</a></p>
+<p>In OpenID Connect there are three types of tokens: access tokens, id tokens, and refresh tokens <a href="https://openid.net/specs/openid-connect-core-1_0.html#Introduction">See spec</a>. When this guide refers to <em>tokens</em> it is referring to access tokens.</p>
+<p>Authorization servers are responsible for token generation. Clients (server app or web app) request tokens and then use tokens to request resources. For example, a javascript web application may make API calls that require authorization, so the token is sent along in the header of every request.</p>
+<p>Token validation needs to be configured for servers that have API endpoints that require authorization. This could be authorization servers or standalone servers, called resource servers. An example authorization server API endpoint may be &#39;/api/User&#39; that returns the current user. A resource server API endpoint for a note-taking app may be &#39;/notes&#39; that returns the user&#39;s notes.</p>
+<p>Below shows code snippets for token generation and token validation for each token format.</p>
+<h1 id="default-configuration-opaque-tokens">Default configuration: Opaque tokens</h1>
+<h2 id="default-token-generation">Default token generation</h2>
+<h3 id="authorization-server">Authorization server</h3>
+<pre><code class="lang-csharp">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    //If tokens need to be validated in a separate resource server, configure a shared ASP.NET Core DataProtection with shared key store and application name
+    //See https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-2.1&amp;tabs=aspnetcore2x#setapplicationname
+    services.AddDataProtection()
+        .PersistKeysToFileSystem(new System.IO.DirectoryInfo(@&quot;[UNC PATH]&quot;))
+        .SetApplicationName(&quot;[APP NAME]&quot;);
+
+    // Register the OpenIddict services.
+    // Additional configuration is only needed if using Introspection on resource servers
+    services.AddOpenIddict()
+        .AddCore(...)
+
+        .AddServer(options =&gt; 
+        {
+            //...
+            //This is required if using introspection on resource servers
+            //This is not needed if resource servers will use shared ASP.NET Core DataProtection
+            //options.EnableIntrospectionEndpoint(&quot;/connect/introspect&quot;);
+        })
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+
+    //must come before using MVC
+    app.UseAuthentication();
+
+    //...
+}
+</code></pre><h2 id="default-token-validation">Default token validation</h2>
+<h3 id="authorization-server-1">Authorization server</h3>
+<pre><code class="lang-csharp">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddOpenIddict()
+        .AddCore(...)
+
+        .AddServer(...)
+
+        .AddValidation();
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="resource-server-shared-aspnet-core-dataprotection">Resource server shared ASP.NET Core DataProtection</h3>
+<pre><code class="lang-csharp">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    //If tokens need to be validated in a separate resource server, configure a shared ASP.NET Core DataProtection with shared key store and application name
+    //See https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-2.1&amp;tabs=aspnetcore2x#setapplicationname
+    services.AddDataProtection()
+        .PersistKeysToFileSystem(new System.IO.DirectoryInfo(@&quot;[UNC PATH]&quot;))
+        .SetApplicationName(&quot;[APP NAME]&quot;);
+
+    services.AddOpenIddict()
+        //This adds a &quot;Bearer&quot; authentication scheme
+        .AddValidation();
+
+    //Optionally set Bearer token authentication as default
+    //services.AddAuthentication(options =&gt;
+    //{
+    //    options.DefaultAuthenticateScheme = OpenIddictValidationDefaults.AuthenticationScheme;
+    //    options.DefaultChallengeScheme = OpenIddictValidationDefaults.AuthenticationScheme;
+    //});
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="resource-server---introspection">Resource server - introspection</h3>
+<pre><code class="lang-csharp">// Introspection requires a request to auth server for every token so shared ASP.NET Core DataProtection is preferred.
+// To use introspection, you need to create a new client application and grant it the introspection endpoint permission.
+// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(options =&gt;
+    {
+        options.DefaultScheme = OAuthIntrospectionDefaults.AuthenticationScheme;
+    })
+    .AddOAuthIntrospection(options =&gt;
+    {
+        //example settings
+        options.Authority = new Uri(&quot;http://localhost:12345/&quot;);
+        options.Audiences.Add(&quot;resource-server-1&quot;);
+        options.ClientId = &quot;resource-server-1&quot;;
+        options.ClientSecret = &quot;846B62D0-DEF9-4215-A99D-86E6B8DAB342&quot;;
+        options.RequireHttpsMetadata = false;
+
+        // Note: you can override the default name and role claims:
+        // options.NameClaimType = &quot;custom_name_claim&quot;;
+        // options.RoleClaimType = &quot;custom_role_claim&quot;;
+    });
+
+    //Optionally set Bearer token authentication as default
+    //services.AddAuthentication(options =&gt;
+    //{
+    //    options.DefaultAuthenticateScheme = OAuthIntrospectionDefaults.AuthenticationScheme;
+    //    options.DefaultChallengeScheme = OAuthIntrospectionDefaults.AuthenticationScheme;
+    //});
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="api-controller">Api controller</h3>
+<pre><code class="lang-csharp">//specify &quot;Bearer&quot; authentication scheme if it&#39;s not set as default
+[Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
+//or if using introspection on resource server: 
+// [Authorize(AuthenticationSchemes = OAuthIntrospectionDefaults.AuthenticationScheme)]
+public class MyController : Controller
+</code></pre><h1 id="reference-token-format">Reference token format</h1>
+<h2 id="reference-token-generation">Reference token generation</h2>
+<h3 id="authorization-server-2">Authorization server</h3>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register OpenIddict stores
+    services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+    {
+        options.UseSqlServer(Configuration.GetConnectionString(&quot;DefaultConnection&quot;));
+        options.UseOpenIddict();
+    });
+
+    // Register the OpenIddict services.
+    services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        options.UseEntityFrameworkCore()
+            .UseDbContext&lt;ApplicationDbContext&gt;();
+    })
+
+    .AddServer(options =&gt; 
+    {
+        //...
+        options.UseReferenceTokens();
+    });
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h2 id="reference-token-validation">Reference token validation</h2>
+<h3 id="authorization-server-3">Authorization server</h3>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddOpenIddict()
+        .AddCore(...) //see above
+
+        .AddServer(...) // see above
+
+        .AddValidation(options =&gt; 
+        {
+            options.UseReferenceTokens();
+        });
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="resource-server">Resource server</h3>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register OpenIddict stores
+    services.AddDbContext&lt;AuthServerDbContext&gt;(options =&gt;
+    {
+        options.UseSqlServer(Configuration.GetConnectionString(&quot;AuthServerConnection&quot;));
+        options.UseOpenIddict();
+    });
+
+
+    services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        // Register the Entity Framework entities and stores.
+        options.UseEntityFrameworkCore()
+               .UseDbContext&lt;AuthServerDbContext&gt;();
+    })
+
+    //This adds a &quot;Bearer&quot; authentication scheme
+    .AddValidation(options =&gt; 
+    {
+        options.UseReferenceTokens();
+    });
+
+    //Optionally set Bearer token authentication as default
+    //services.AddAuthentication(options =&gt;
+    //{
+    //    options.DefaultAuthenticateScheme = OpenIddictValidationDefaults.AuthenticationScheme;
+    //    options.DefaultChallengeScheme = OpenIddictValidationDefaults.AuthenticationScheme;
+    //});
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="api-controller-1">Api controller</h3>
+<pre><code class="lang-c#">// Note: both OpenIddictValidationDefaults.AuthenticationScheme and JwtBearerDefaults.AuthenticationScheme are &quot;Bearer&quot;
+//If you did not set the default authentication scheme then specify it here.
+//If you get a 302 redirect to login page instead of a 401 Unauthorized then Cookie authentication is handling the request
+//so scheme must be specified
+[Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
+public class MyController : Controller
+</code></pre><h1 id="jwts">JWTs</h1>
+<h2 id="jwt-generation">JWT generation</h2>
+<h3 id="authorization-server-4">Authorization server</h3>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddOpenIddict()
+        .AddCore(...)
+
+        .AddServer(options =&gt;
+        {
+            //...
+            options.UseJsonWebTokens();
+            //JWTs must be signed by a self-signing certificate or a symmetric key
+            //Here a certificate is used. I used IIS to create a self-signed certificate
+            //and saved it in /FolderName folder. See below for .csproj configuration
+            options.AddSigningCertificate(
+                    assembly: typeof(Startup).GetTypeInfo().Assembly,
+                    resource: &quot;AppName.FolderName.certname.pfx&quot;,
+                    password: &quot;anypassword&quot;);
+
+        });
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+
+// .csproj
+// if using a certificate and its stored in your app&#39;s Resources then make sure it&#39;s published
+//&lt;ItemGroup&gt;
+//    &lt;EmbeddedResource Include=&quot;FolderName\certname.pfx&quot; /&gt;
+//  &lt;/ItemGroup&gt;
+</code></pre><h2 id="jwt-validation">JWT validation</h2>
+<h3 id="authorization-server-5">Authorization server</h3>
+<div class="WARNING"><h5>Warning</h5><p>Remember, this is only needed if you have API endpoints that require token authorization. If your authorization server generates tokens that are only used by separate resource servers, then this is not needed.</p>
+</div>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    //this must come after registering ASP.NET Core Identity
+    JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+    JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+    services.AddAuthentication()
+        .AddJwtBearer(options =&gt;
+        {
+            //Authority must be a url. It does not have a default value.
+            options.Authority = &quot;this server&#39;s url, e.g. http://localhost:5051/ or https://auth.example.com/&quot;;
+            options.Audience = &quot;example: auth_server_api&quot;; //This must be included in ticket creation
+            options.RequireHttpsMetadata = false;
+            options.IncludeErrorDetails = true; //
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                NameClaimType = OpenIdConnectConstants.Claims.Subject,
+                RoleClaimType = OpenIdConnectConstants.Claims.Role,
+            };
+        });
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    //...
+    //must come before using MVC
+    app.UseAuthentication();
+    //...
+}
+</code></pre><h3 id="resource-server-1">Resource server</h3>
+<pre><code class="lang-c#">// Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+    JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+    //Add authentication and set default authentication scheme
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) //same as &quot;Bearer&quot;
+        .AddJwtBearer(options =&gt;
+        {
+            //Authority must be a url. It does not have a default value.
+            options.Authority = &quot;auth server&#39;s url, e.g. http://localhost:5051/ or https://auth.example.com/&quot;;
+            options.Audience = &quot;example: api_server_1&quot;; //This must be included in ticket creation
+            options.RequireHttpsMetadata = false;
+            options.IncludeErrorDetails = true; //
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                NameClaimType = OpenIdConnectConstants.Claims.Subject,
+                RoleClaimType = OpenIdConnectConstants.Claims.Role,
+            };
+        });
+}
+</code></pre><h3 id="api-controller-2">Api controller</h3>
+<pre><code class="lang-c#">// Note: both OpenIddictValidationDefaults.AuthenticationScheme and JwtBearerDefaults.AuthenticationScheme are &quot;Bearer&quot;
+//If you didn&#39;t set the default authentication scheme then specify it here.
+//If you get a 302 redirect to login page instead of a 401 Unauthorized then Cookie authentication is handling the request
+//so scheme must be specified
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+public class MyController : Controller
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/configuration/token-setup-and-validation.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

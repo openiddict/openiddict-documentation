@@ -2,7 +2,167 @@
   "homepages": [],
   "source_base_path": "/github/workspace",
   "xrefmap": "xrefmap.yml",
-  "files": [],
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "SECURITY.md",
+      "output": {
+        ".html": {
+          "relative_path": "SECURITY.html",
+          "hash": "m6354PE8590XN4nyBDWsjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/application-permissions.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/application-permissions.html",
+          "hash": "0kLhEd0u1i5zA2DRkuBSZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/index.html",
+          "hash": "XSKeQr2yPbNTyYiIrFNlMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "configuration/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/toc.html",
+          "hash": "q5VWqYzUY0T5ZU4V2FsTqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/token-setup-and-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/token-setup-and-validation.html",
+          "hash": "dGoeIKG3m+GaqlMTaFFfWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/getting-started.html",
+          "hash": "DPdcE+Lc9duO6swcr6Kh1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/index.html",
+          "hash": "isU5p0n/0spcW0KGootcZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/migration.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/migration.html",
+          "hash": "xIIEBtdTnkd/phPBOUvWTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/samples.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/samples.html",
+          "hash": "1q6Ei6mM6V3yjfSnCftGLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "guide/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "guide/toc.html",
+          "hash": "rt8VgwDfiE4itNGfiTxHjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidYamlHeader"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "guide/token-formats.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/token-formats.html",
+          "hash": "RHMOKRrRnPaY/+VBh2jiSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "4FubcwH50NLqHtO75wP2Rw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "c81Ur29RlisdhGArITEfFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
   "incremental_info": [
     {
       "status": {
