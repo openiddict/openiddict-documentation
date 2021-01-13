@@ -213,11 +213,9 @@ Here&#39;s an example for the client credentials grant:</p>
         // Note: the client credentials are automatically validated by OpenIddict:
         // if client_id or client_secret are invalid, this action won&#39;t be invoked.
 
-        var application = await _applicationManager.FindByClientIdAsync(request.ClientId);
-        if (application is null)
-        {
-            throw new InvalidOperationException(&quot;The application details cannot be found.&quot;);
-        }
+        var application =
+            await _applicationManager.FindByClientIdAsync(request.ClientId) ??
+            throw new InvalidOperationException(&quot;The application cannot be found.&quot;);
 
         // Create a new ClaimsIdentity containing the claims that
         // will be used to create an id_token, a token or a code.
