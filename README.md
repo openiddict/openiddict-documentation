@@ -1,4 +1,4 @@
-# OpenIddict.Documentation
+# OpenIddict documentation
 
 This repository provides the documentation for the [OpenIddict](https://github.com/openiddict) project.
 
