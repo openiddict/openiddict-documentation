@@ -282,49 +282,52 @@ if (await manager.FindByClientIdAsync(&quot;console&quot;) is null)
     {
         options.IgnoreScopePermissions();
     });
-</code></pre><h2 id="response-type-permissions-introduced-in-openiddict-30">Response type permissions (<em>introduced in OpenIddict 3.0</em>)</h2>
+</code></pre><h2 id="response-type-permissions">Response type permissions</h2>
+<p>-&gt; [!NOTE]</p>
+<blockquote><p>Response type permissions were introduced in OpenIddict 3.0.</p>
+</blockquote>
 <h3 id="definition-3">Definition</h3>
 <p>Response type permissions limit the response types a client application is allowed to use when implementing an interactive flow like code, implicit or hybrid.</p>
 <h3 id="supported-permissions-3">Supported permissions</h3>
 <table>
 <thead>
 <tr>
-<th>Response type</th>
-<th>Constant</th>
+<th style="text-align:center">Response type</th>
+<th style="text-align:center">Constant</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>code</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.Code</code></td>
+<td style="text-align:center">code</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.Code</code></td>
 </tr>
 <tr>
-<td>code id_token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdToken</code></td>
+<td style="text-align:center">code id_token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdToken</code></td>
 </tr>
 <tr>
-<td>code id_token token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken</code></td>
+<td style="text-align:center">code id_token token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken</code></td>
 </tr>
 <tr>
-<td>code token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.CodeToken</code></td>
+<td style="text-align:center">code token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.CodeToken</code></td>
 </tr>
 <tr>
-<td>id_token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.IdToken</code></td>
+<td style="text-align:center">id_token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.IdToken</code></td>
 </tr>
 <tr>
-<td>id_token token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.IdTokenToken</code></td>
+<td style="text-align:center">id_token token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.IdTokenToken</code></td>
 </tr>
 <tr>
-<td>none</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.None</code></td>
+<td style="text-align:center">none</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.None</code></td>
 </tr>
 <tr>
-<td>token</td>
-<td><code>OpenIddictConstants.Permissions.ResponseTypes.Token</code></td>
+<td style="text-align:center">token</td>
+<td style="text-align:center"><code>OpenIddictConstants.Permissions.ResponseTypes.Token</code></td>
 </tr>
 </tbody>
 </table>
