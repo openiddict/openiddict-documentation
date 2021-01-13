@@ -16,15 +16,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "configuration/index.md",
       "output": {
         ".html": {
           "relative_path": "configuration/index.html",
-          "hash": "wOymSthH3qputrjOn7ZyNg=="
+          "hash": "qDvEP42qFXZ/nTaih53RrA=="
         }
       },
       "is_incremental": false,
