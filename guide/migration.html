@@ -98,10 +98,10 @@
   &lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;2.0.0-rc3-final&quot; /&gt;
   &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;2.0.0-rc3-final&quot; /&gt;
 &lt;/ItemGroup&gt;
-</code></pre><div class="TIP"><h5>Tip</h5><p>Note: if you have an explicit reference to <code>AspNet.Security.OAuth.Validation</code> or <code>OpenIddict.Mvc</code>,
+</code></pre><div class="TIP"><h5>Tip</h5><p>If you have an explicit reference to <code>AspNet.Security.OAuth.Validation</code> or <code>OpenIddict.Mvc</code>,
 you can safely remove these dependencies: they are now transitively referenced by the <code>OpenIddict</code> metapackage.</p>
 </div>
-<div class="IMPORTANT"><h5>Important</h5><p>Note: if your application references <code>OpenIddict.Models</code> or <code>OpenIddict.Stores</code>, you MUST remove them as these packages are no longer used in rc3.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>If your application references <code>OpenIddict.Models</code> or <code>OpenIddict.Stores</code>, you MUST remove them as these packages are no longer used in rc3.</p>
 </div>
 <h2 id="use-the-new-openiddict-services-registration-apis">Use the new OpenIddict services registration APIs</h2>
 <p>To offer a better user experience, the registrations APIs exposed by OpenIddict have been reworked. Updating your code should be quite straightforward:</p>
@@ -184,7 +184,7 @@ services.AddAuthentication()
 // ... by:
 services.AddOpenIddict()
     .AddValidation();
-</code></pre><div class="TIP"><h5>Tip</h5><p>Note: the OpenIddict validation handler lives in the <code>OpenIddict.Validation</code> package, which is referenced by the <code>OpenIddict</code> metapackage.
+</code></pre><div class="TIP"><h5>Tip</h5><p>The OpenIddict validation handler lives in the <code>OpenIddict.Validation</code> package, which is referenced by the <code>OpenIddict</code> metapackage.
 You don&#39;t have to explicitly add a new <code>PackageReference</code> in your <code>.csproj</code> file to be able to use it.</p>
 </div>
 <h2 id="if-necessary-create-new-application-entries">If necessary, create new application entries</h2>
@@ -279,9 +279,9 @@ and new features like <strong>application permissions</strong>, that allow limit
 <p><strong>Migrating to OpenIddict rc2 (<code>1.0.0-rc2-final</code> and <code>2.0.0-rc2-final</code>) requires making changes in your database</strong>: existing properties have been reworked
 (e.g <a href="https://github.com/openiddict/openiddict-core/issues/497">to work around a MySQL limitation</a>) and new ones have been added to support the new features.
 This procedure is quite easy and only requires a few minutes.</p>
-<blockquote><p>Note: this guide assumes your application uses the OpenIddict Entity Framework Core 2.x stores. If you use a custom store, changes will have to be made manually.
+<div class="TIP"><h5>Tip</h5><p>This guide assumes your application uses the OpenIddict Entity Framework Core 2.x stores. If you use a custom store, changes will have to be made manually.
 A list of added/updated/renamed columns is available at the end of this guide.</p>
-</blockquote>
+</div>
 <h2 id="ensure-migrations-are-correctly-enabled-for-your-project">Ensure migrations are correctly enabled for your project</h2>
 <p><strong>Before migrating to OpenIddict rc2, make sure migrations are already enabled for your application</strong>. If you have a <code>Migrations</code>
 folder in your application root folder and an <code>__EFMigrationsHistory</code> table in your database, you&#39;re good to go.</p>
