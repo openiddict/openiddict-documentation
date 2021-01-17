@@ -10644,12 +10644,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "AeMRaX763m1+xvQPD8J/rg=="
+          "hash": "uxRqaNBL1bwbL+VMFsE4eg=="
         }
       },
       "is_incremental": false,
