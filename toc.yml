@@ -6,3 +6,6 @@
 
 - name: Samples
   href: https://github.com/openiddict/openiddict-samples
+
+- name: API documentation
+  href: api/
