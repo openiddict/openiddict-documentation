@@ -1,0 +1,1917 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IOpenIddictScopeManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IOpenIddictScopeManager
+   ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>    </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager">
+  
+  
+  <h1 id="OpenIddict_Abstractions_IOpenIddictScopeManager" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager" class="text-break">Interface IOpenIddictScopeManager
+  </h1>
+  <div class="markdown level0 summary"><p>Provides methods allowing to manage the scopes stored in the store.
+Note: this interface is not meant to be implemented by custom managers,
+that should inherit from the generic OpenIddictScopeManager class.
+It is primarily intended to be used by services that cannot easily
+depend on the generic scope manager. The actual scope entity type is
+automatically determined at runtime based on the OpenIddict core options.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OpenIddict.Abstractions.html">OpenIddict.Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OpenIddict_Abstractions_IOpenIddictScopeManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IOpenIddictScopeManager</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_CountAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CountAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_CountAsync_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CountAsync(CancellationToken)">CountAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Determines the number of scopes that exist in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;long&gt; CountAsync(CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the number of scopes in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_CountAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CountAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_CountAsync__1_System_Func_IQueryable_System_Object__IQueryable___0___CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CountAsync``1(System.Func{IQueryable{System.Object},IQueryable{``0}},CancellationToken)">CountAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;Object&gt;, IQueryable&lt;TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Determines the number of scopes that match the specified query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;long&gt; CountAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;object&gt;, IQueryable&lt;TResult&gt;&gt; query, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">IQueryable</span>&lt;<span class="xref">System.Object</span>&gt;, <span class="xref">IQueryable</span>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The query to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the number of scopes that match the specified query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The result type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_CreateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CreateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_CreateAsync_OpenIddict_Abstractions_OpenIddictScopeDescriptor_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CreateAsync(OpenIddict.Abstractions.OpenIddictScopeDescriptor,CancellationToken)">CreateAsync(OpenIddictScopeDescriptor, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new scope based on the specified descriptor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;object&gt; CreateAsync(OpenIddictScopeDescriptor descriptor, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenIddict.Abstractions.OpenIddictScopeDescriptor.html">OpenIddictScopeDescriptor</a></td>
+        <td><span class="parametername">descriptor</span></td>
+        <td><p>The scope descriptor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation, whose result returns the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_CreateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CreateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_CreateAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.CreateAsync(System.Object,CancellationToken)">CreateAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask CreateAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_DeleteAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.DeleteAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_DeleteAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.DeleteAsync(System.Object,CancellationToken)">DeleteAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Removes an existing scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask DeleteAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByIdAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByIdAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByIdAsync_System_String_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByIdAsync(System.String,CancellationToken)">FindByIdAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a scope using its unique identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;object&gt; FindByIdAsync(string identifier, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td><p>The unique identifier associated with the scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the scope corresponding to the identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByNameAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByNameAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByNameAsync_System_String_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByNameAsync(System.String,CancellationToken)">FindByNameAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a scope using its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;object&gt; FindByNameAsync(string name, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name associated with the scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the scope corresponding to the specified name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByNamesAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByNamesAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByNamesAsync_ImmutableArray_System_String__CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByNamesAsync(ImmutableArray{System.String},CancellationToken)">FindByNamesAsync(ImmutableArray&lt;String&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of scopes using their name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;object&gt; FindByNamesAsync(ImmutableArray&lt;string&gt; names, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ImmutableArray</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">names</span></td>
+        <td><p>The names associated with the scopes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>The scopes corresponding to the specified names.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByResourceAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByResourceAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_FindByResourceAsync_System_String_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.FindByResourceAsync(System.String,CancellationToken)">FindByResourceAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves all the scopes that contain the specified resource.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;object&gt; FindByResourceAsync(string resource, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource associated with the scopes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>The scopes associated with the specified resource.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetAsync__1_System_Func_IQueryable_System_Object__IQueryable___0___CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetAsync``1(System.Func{IQueryable{System.Object},IQueryable{``0}},CancellationToken)">GetAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;Object&gt;, IQueryable&lt;TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the specified query and returns the first element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;TResult&gt; GetAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;object&gt;, IQueryable&lt;TResult&gt;&gt; query, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">IQueryable</span>&lt;<span class="xref">System.Object</span>&gt;, <span class="xref">IQueryable</span>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The query to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;TResult&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the first element returned when executing the query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The result type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetAsync__2_System_Func_IQueryable_System_Object____0_IQueryable___1_____0_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetAsync``2(System.Func{IQueryable{System.Object},``0,IQueryable{``1}},``0,CancellationToken)">GetAsync&lt;TState, TResult&gt;(Func&lt;IQueryable&lt;Object&gt;, TState, IQueryable&lt;TResult&gt;&gt;, TState, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the specified query and returns the first element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;TResult&gt; GetAsync&lt;TState, TResult&gt;(Func&lt;IQueryable&lt;object&gt;, TState, IQueryable&lt;TResult&gt;&gt; query, TState state, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">IQueryable</span>&lt;<span class="xref">System.Object</span>&gt;, TState, <span class="xref">IQueryable</span>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The query to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TState</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The optional state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;TResult&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation,
+whose result returns the first element returned when executing the query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TState</span></td>
+        <td><p>The state type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The result type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDescriptionAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDescriptionAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDescriptionAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDescriptionAsync(System.Object,CancellationToken)">GetDescriptionAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the description associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetDescriptionAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the description associated with the specified scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDescriptionsAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDescriptionsAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDescriptionsAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDescriptionsAsync(System.Object,CancellationToken)">GetDescriptionsAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized descriptions associated with an scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;ImmutableDictionary&lt;CultureInfo, string&gt;&gt; GetDescriptionsAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">ImmutableDictionary</span>&lt;<span class="xref">CultureInfo</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns all the localized descriptions associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDisplayNameAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDisplayNameAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDisplayNameAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDisplayNameAsync(System.Object,CancellationToken)">GetDisplayNameAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the display name associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetDisplayNameAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the display name associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDisplayNamesAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDisplayNamesAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetDisplayNamesAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetDisplayNamesAsync(System.Object,CancellationToken)">GetDisplayNamesAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized display names associated with an scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;ImmutableDictionary&lt;CultureInfo, string&gt;&gt; GetDisplayNamesAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">ImmutableDictionary</span>&lt;<span class="xref">CultureInfo</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns all the localized display names associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetIdAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetIdAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetIdAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetIdAsync(System.Object,CancellationToken)">GetIdAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the unique identifier associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetIdAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the unique identifier associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDescriptionAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDescriptionAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDescriptionAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDescriptionAsync(System.Object,CancellationToken)">GetLocalizedDescriptionAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized description associated with an scope
+and corresponding to the current UI culture or one of its parents.
+If no matching value can be found, the non-localized value is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetLocalizedDescriptionAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the matching localized description associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDescriptionAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDescriptionAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDescriptionAsync_System_Object_CultureInfo_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDescriptionAsync(System.Object,CultureInfo,CancellationToken)">GetLocalizedDescriptionAsync(Object, CultureInfo, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized description associated with an scope
+and corresponding to the specified culture or one of its parents.
+If no matching value can be found, the non-localized value is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetLocalizedDescriptionAsync(object scope, CultureInfo culture, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CultureInfo</span></td>
+        <td><span class="parametername">culture</span></td>
+        <td><p>The culture (typically <see cref="!:CultureInfo.CurrentUICulture"></see>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the matching localized description associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDisplayNameAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDisplayNameAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDisplayNameAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDisplayNameAsync(System.Object,CancellationToken)">GetLocalizedDisplayNameAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized display name associated with an scope
+and corresponding to the current UI culture or one of its parents.
+If no matching value can be found, the non-localized value is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetLocalizedDisplayNameAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the display name associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDisplayNameAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDisplayNameAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetLocalizedDisplayNameAsync_System_Object_CultureInfo_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetLocalizedDisplayNameAsync(System.Object,CultureInfo,CancellationToken)">GetLocalizedDisplayNameAsync(Object, CultureInfo, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the localized display name associated with an scope
+and corresponding to the specified culture or one of its parents.
+If no matching value can be found, the non-localized value is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetLocalizedDisplayNameAsync(object scope, CultureInfo culture, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CultureInfo</span></td>
+        <td><span class="parametername">culture</span></td>
+        <td><p>The culture (typically <see cref="!:CultureInfo.CurrentUICulture"></see>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the display name associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetNameAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetNameAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetNameAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetNameAsync(System.Object,CancellationToken)">GetNameAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the name associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; GetNameAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns the name associated with the specified scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetPropertiesAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetPropertiesAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetPropertiesAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetPropertiesAsync(System.Object,CancellationToken)">GetPropertiesAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the additional properties associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;ImmutableDictionary&lt;string, JsonElement&gt;&gt; GetPropertiesAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">ImmutableDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">JsonElement</span>&gt;&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns all the additional properties associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetResourcesAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetResourcesAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_GetResourcesAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.GetResourcesAsync(System.Object,CancellationToken)">GetResourcesAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the resources associated with a scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;ImmutableArray&lt;string&gt;&gt; GetResourcesAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span>&lt;<span class="xref">ImmutableArray</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask&lt;TResult&gt;</span> that can be used to monitor the asynchronous operation,
+whose result returns all the resources associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},CancellationToken)">ListAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the specified query and returns all the corresponding elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;object&gt; ListAsync(int? count = default(int? ), int? offset = default(int? ), CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of results to return.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The number of results to skip.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>All the elements returned when executing the specified query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync__1_System_Func_IQueryable_System_Object__IQueryable___0___CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync``1(System.Func{IQueryable{System.Object},IQueryable{``0}},CancellationToken)">ListAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;Object&gt;, IQueryable&lt;TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the specified query and returns all the corresponding elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;TResult&gt; ListAsync&lt;TResult&gt;(Func&lt;IQueryable&lt;object&gt;, IQueryable&lt;TResult&gt;&gt; query, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">IQueryable</span>&lt;<span class="xref">System.Object</span>&gt;, <span class="xref">IQueryable</span>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The query to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TResult&gt;</td>
+        <td><p>All the elements returned when executing the specified query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The result type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListAsync__2_System_Func_IQueryable_System_Object____0_IQueryable___1_____0_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListAsync``2(System.Func{IQueryable{System.Object},``0,IQueryable{``1}},``0,CancellationToken)">ListAsync&lt;TState, TResult&gt;(Func&lt;IQueryable&lt;Object&gt;, TState, IQueryable&lt;TResult&gt;&gt;, TState, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Executes the specified query and returns all the corresponding elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;TResult&gt; ListAsync&lt;TState, TResult&gt;(Func&lt;IQueryable&lt;object&gt;, TState, IQueryable&lt;TResult&gt;&gt; query, TState state, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">IQueryable</span>&lt;<span class="xref">System.Object</span>&gt;, TState, <span class="xref">IQueryable</span>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The query to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TState</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The optional state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TResult&gt;</td>
+        <td><p>All the elements returned when executing the specified query.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TState</span></td>
+        <td><p>The state type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The result type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListResourcesAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListResourcesAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_ListResourcesAsync_ImmutableArray_System_String__CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ListResourcesAsync(ImmutableArray{System.String},CancellationToken)">ListResourcesAsync(ImmutableArray&lt;String&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all the resources associated with the specified scopes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;string&gt; ListResourcesAsync(ImmutableArray&lt;string&gt; scopes, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ImmutableArray</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">scopes</span></td>
+        <td><p>The scopes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>All the resources associated with the specified scopes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_PopulateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.PopulateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_PopulateAsync_OpenIddict_Abstractions_OpenIddictScopeDescriptor_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.PopulateAsync(OpenIddict.Abstractions.OpenIddictScopeDescriptor,System.Object,CancellationToken)">PopulateAsync(OpenIddictScopeDescriptor, Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Populates the specified descriptor using the properties exposed by the scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask PopulateAsync(OpenIddictScopeDescriptor descriptor, object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenIddict.Abstractions.OpenIddictScopeDescriptor.html">OpenIddictScopeDescriptor</a></td>
+        <td><span class="parametername">descriptor</span></td>
+        <td><p>The descriptor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_PopulateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.PopulateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_PopulateAsync_System_Object_OpenIddict_Abstractions_OpenIddictScopeDescriptor_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.PopulateAsync(System.Object,OpenIddict.Abstractions.OpenIddictScopeDescriptor,CancellationToken)">PopulateAsync(Object, OpenIddictScopeDescriptor, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Populates the scope using the specified descriptor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask PopulateAsync(object scope, OpenIddictScopeDescriptor descriptor, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenIddict.Abstractions.OpenIddictScopeDescriptor.html">OpenIddictScopeDescriptor</a></td>
+        <td><span class="parametername">descriptor</span></td>
+        <td><p>The descriptor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_UpdateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.UpdateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_UpdateAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.UpdateAsync(System.Object,CancellationToken)">UpdateAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates an existing scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask UpdateAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_UpdateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.UpdateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_UpdateAsync_System_Object_OpenIddict_Abstractions_OpenIddictScopeDescriptor_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.UpdateAsync(System.Object,OpenIddict.Abstractions.OpenIddictScopeDescriptor,CancellationToken)">UpdateAsync(Object, OpenIddictScopeDescriptor, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates an existing scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask UpdateAsync(object scope, OpenIddictScopeDescriptor descriptor, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenIddict.Abstractions.OpenIddictScopeDescriptor.html">OpenIddictScopeDescriptor</a></td>
+        <td><span class="parametername">descriptor</span></td>
+        <td><p>The descriptor used to update the scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OpenIddict_Abstractions_IOpenIddictScopeManager_ValidateAsync_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ValidateAsync*"></a>
+  <h4 id="OpenIddict_Abstractions_IOpenIddictScopeManager_ValidateAsync_System_Object_CancellationToken_" data-uid="OpenIddict.Abstractions.IOpenIddictScopeManager.ValidateAsync(System.Object,CancellationToken)">ValidateAsync(Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Validates the scope to ensure it&apos;s in a consistent state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAsyncEnumerable&lt;ValidationResult&gt; ValidateAsync(object scope, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">scope</span></td>
+        <td><p>The scope.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to abort the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">ValidationResult</span>&gt;</td>
+        <td><p>The validation error encountered when validating the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
