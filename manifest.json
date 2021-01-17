@@ -122,6 +122,688 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/package-icon.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/package-icon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/ASP-NET-Banners-01.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/ASP-NET-Banners-01.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/ASP-NET-Banners-02.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/ASP-NET-Banners-02.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/Banner-01-Azure.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/Banner-01-Azure.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/Banner-02-VS.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/images/Banner-02-VS.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/favicon.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/assets/ico/favicon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/carousel.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/carousel.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/grid.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/grid.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/jumbotron-narrow.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/jumbotron-narrow.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/jumbotron.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/jumbotron.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/justified-nav.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/justified-nav.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar-fixed.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar-fixed.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar-static.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar-static.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/navbar.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/non-responsive.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/non-responsive.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/offcanvas.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/offcanvas.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sign-in.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sign-in.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/starter-template.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/starter-template.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sticky-footer-navbar.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sticky-footer-navbar.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sticky-footer.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/sticky-footer.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/theme.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/bootstrap/examples/screenshots/theme.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/captcha/images/button.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/captcha/images/button.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/bg.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/bg.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/checked.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/checked.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/cmxform-divider.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/cmxform-divider.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/cmxform-fieldset.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/cmxform-fieldset.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/loading.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/loading.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/unchecked.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/images/unchecked.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/bg.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/bg.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/header1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/header1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/page.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/page.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/required_star.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/login/images/required_star.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/backRequiredGray.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/backRequiredGray.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/back_green-fade.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/back_green-fade.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/back_nav_blue.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/back_nav_blue.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/blank.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/blank.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/button-submit.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/button-submit.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/help.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/help.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/left-nav-callout-long.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/left-nav-callout-long.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/login-sprite.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/login-sprite.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/logo_marketo.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/logo_marketo.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/sf.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/sf.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step1-24.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step1-24.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step2-24.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step2-24.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step3-24.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/step3-24.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/tab-sprite.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/tab-sprite.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/tab_green.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/tab_green.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/time.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/time.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/toggle.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/toggle.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/warning.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/marketo/images/warning.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/bg.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/bg.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/left_white.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/left_white.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/milk.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/milk.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/right_white.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/milk/right_white.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/tinymce/themes/simple/img/icons.gif",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/demo/tinymce/themes/simple/img/icons.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/errorIcon.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/errorIcon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/infoIcon.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/infoIcon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/warningIcon.png",
+      "output": {
+        "resource": {
+          "relative_path": "submodules/openiddict-core/samples/Mvc.Server/wwwroot/lib/jquery-validation/test/firebug/warningIcon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
