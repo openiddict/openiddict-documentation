@@ -72,7 +72,7 @@
   
   <h1 id="OpenIddict_Server_OpenIddictServerHandlers_ValidateClientId" data-uid="OpenIddict.Server.OpenIddictServerHandlers.ValidateClientId" class="text-break">Class OpenIddictServerHandlers.ValidateClientId
   </h1>
-  <div class="markdown level0 summary"><p>Contains the logic responsible of rejecting token requests that use an invalid client_id.
+  <div class="markdown level0 summary"><p>Contains the logic responsible of rejecting device requests that use an invalid client_id.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -83,8 +83,8 @@ Note: this handler is not used when the degraded mode is enabled.</p>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateTokenRequestContext</span>&gt;</div>
     <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateDeviceRequestContext</span>&gt;</div>
+    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateTokenRequestContext</span>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -114,7 +114,7 @@ Note: this handler is not used when the degraded mode is enabled.</p>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="OpenIddict_Server_OpenIddictServerHandlers_ValidateClientId_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidateClientId : IOpenIddictServerHandler&lt;ValidateTokenRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateDeviceRequestContext&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class ValidateClientId : IOpenIddictServerHandler&lt;ValidateDeviceRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateTokenRequestContext&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -286,8 +286,8 @@ Note: this handler is not used when the degraded mode is enabled.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A <see cref="!:ValueTask"></see> that can be used to monitor the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
@@ -330,8 +330,8 @@ Note: this handler is not used when the degraded mode is enabled.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A <see cref="!:ValueTask"></see> that can be used to monitor the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>

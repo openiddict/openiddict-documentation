@@ -82,7 +82,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.ProcessRequestContext.html">OpenIddictValidationEvents.ProcessRequestContext</a>&gt;</div>
+    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ProcessRequestContext</span>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -112,7 +112,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="OpenIddict_Server_OpenIddictServerHandlers_Exchange_HandleTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HandleTokenRequest : IOpenIddictServerHandler&lt;OpenIddictValidationEvents.ProcessRequestContext&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class HandleTokenRequest : IOpenIddictServerHandler&lt;ProcessRequestContext&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -176,13 +176,13 @@
   
   
   <a id="OpenIddict_Server_OpenIddictServerHandlers_Exchange_HandleTokenRequest_HandleAsync_" data-uid="OpenIddict.Server.OpenIddictServerHandlers.Exchange.HandleTokenRequest.HandleAsync*"></a>
-  <h4 id="OpenIddict_Server_OpenIddictServerHandlers_Exchange_HandleTokenRequest_HandleAsync_OpenIddict_Validation_OpenIddictValidationEvents_ProcessRequestContext_" data-uid="OpenIddict.Server.OpenIddictServerHandlers.Exchange.HandleTokenRequest.HandleAsync(OpenIddict.Validation.OpenIddictValidationEvents.ProcessRequestContext)">HandleAsync(OpenIddictValidationEvents.ProcessRequestContext)</h4>
+  <h4 id="OpenIddict_Server_OpenIddictServerHandlers_Exchange_HandleTokenRequest_HandleAsync_ProcessRequestContext_" data-uid="OpenIddict.Server.OpenIddictServerHandlers.Exchange.HandleTokenRequest.HandleAsync(ProcessRequestContext)">HandleAsync(ProcessRequestContext)</h4>
   <div class="markdown level1 summary"><p>Processes the event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValueTask HandleAsync(OpenIddictValidationEvents.ProcessRequestContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValueTask HandleAsync(ProcessRequestContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,7 +195,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.ProcessRequestContext.html">OpenIddictValidationEvents.ProcessRequestContext</a></td>
+        <td><span class="xref">ProcessRequestContext</span></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -211,8 +211,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A <see cref="!:ValueTask"></see> that can be used to monitor the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>

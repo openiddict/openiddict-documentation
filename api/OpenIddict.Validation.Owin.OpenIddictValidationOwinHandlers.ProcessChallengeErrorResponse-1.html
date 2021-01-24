@@ -113,7 +113,7 @@ Note: this handler is not used when the OpenID Connect request is not initially 
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="OpenIddict_Validation_Owin_OpenIddictValidationOwinHandlers_ProcessChallengeErrorResponse_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ProcessChallengeErrorResponse&lt;TContext&gt; : IOpenIddictValidationHandler&lt;TContext&gt; where TContext : OpenIddictValidationEvents.BaseRequestContext</code></pre>
+    <pre><code class="lang-csharp hljs">public class ProcessChallengeErrorResponse&lt;TContext&gt; : IOpenIddictValidationHandler&lt;TContext&gt; where TContext : BaseRequestContext</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -199,8 +199,8 @@ Note: this handler is not used when the OpenID Connect request is not initially 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.ValueTask</span> that can be used to monitor the asynchronous operation.</p>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A <see cref="!:ValueTask"></see> that can be used to monitor the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
