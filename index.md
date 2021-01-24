@@ -1,3 +1,6 @@
+> [!NOTE]
+> This documentation is a work-in-progress. To contribute, please visit https://github.com/openiddict/openiddict-documentation.
+
 # OpenIddict: the OpenID Connect stack you'll be addicted to
 
 OpenIddict aims at providing a **versatile solution** to implement an **OpenID Connect server and token validation in any ASP.NET Core 2.1, 3.1 and 5.0 application**,
