@@ -69,9 +69,10 @@
 <h1 id="token-formats">Token formats</h1>
 
 <h2 id="json-web-token">JSON Web Token</h2>
-<p>OpenIddict 3.0 implements the JSON Web Token, JSON Web Signature and JSON Web Encryption standards and relies on the
+<p>OpenIddict 3.0 implements the <a href="https://tools.ietf.org/html/rfc7519">JSON Web Token</a>, <a href="https://tools.ietf.org/html/rfc7515">JSON Web Signature</a>
+and <a href="https://tools.ietf.org/html/rfc7516">JSON Web Encryption</a> standards and relies on the
 <a href="https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/">Azure Active Directory IdentityModel Extensions for .NET library</a>
-developed and maintained by Microsoft to generate signed and encrypted JWT tokens using the encryption and signing credentials registered in the server options.</p>
+developed and maintained by Microsoft to generate signed and encrypted tokens using the credentials registered in the server options.</p>
 <h3 id="jwt-token-types">JWT token types</h3>
 <p>To protect against token substitution and confused deputy attacks, <strong>OpenIddict 3.0 uses the standard <code>typ</code> JWT header to convey the actual token type</strong>.
 This mechanism replaces the private <code>token_usage</code> claim used for the same purpose in previous versions of OpenIddict.</p>
@@ -89,7 +90,8 @@ Access token encryption can also be disabled if the resource servers receiving t
     });
 </code></pre><h2 id="aspnet-core-data-protection">ASP.NET Core Data Protection</h2>
 <p>OpenIddict 3.0 can also be configured to use <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction">ASP.NET Core Data Protection</a> to create
-Data Protection tokens instead of JWT tokens. ASP.NET Core Data Protection is supported for all types of tokens, except identity tokens, that are always JWT tokens.</p>
+Data Protection tokens instead of JWT tokens. ASP.NET Core Data Protection uses its own key ring to encrypt and protect tokens against tampering and is supported for all
+types of tokens, except identity tokens, that are always JWT tokens.</p>
 <p>Unlike JWT, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the ASP.NET team rather than on a standard like JWT.
 While this prevents using such tokens in scenarios where interoperability is needed, opting for ASP.NET Core Data Protection rather than JWT has actually a few advantages:</p>
 <ul>
