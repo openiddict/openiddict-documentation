@@ -112,7 +112,39 @@ Such authorizations are typically created in the authorization code flow to link
 so that they can be automatically revoked if the authorization code was redeemed multiple times (which may indicate a token leakage).
 In the same vein, ad-hoc authorizations are also created when a refresh token is returned during a resource owner password credentials grant request.
 
-> [!INFO]
+> [!NOTE]
 > When using the [OpenIddict.Quartz](https://www.nuget.org/packages/OpenIddict.Quartz/) integration, ad-hoc authorizations are automatically
 > removed from the database after a short period of time (14 days by default). Unlike ad-hoc authorizations, permanent authorizations
-> never removed from the database.
+> are never removed from the database.
+
+## Enabling authorization entry validation at the API level
+
+**For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of an authorization entry when receiving an API request**: access tokens are considered
+valid even if the attached authorization was revoked. For scenarios that require immediate authorization revocation, the OpenIddict validation handler can be configured
+to enforce authorization entry validation for each API request:
+
+> [!NOTE]
+> Enabling authorization entry validation requires that the OpenIddict validation handler have a direct access to the server database where authorizations are stored, which makes it
+> better suited for APIs located in the same application as the authorization server. For external applications, consider using introspection instead of local validation.
+>
+> In both cases, additional latency – caused by the additional DB request and the HTTP call for introspection – is expected.
+
+```csharp
+services.AddOpenIddict()
+    .AddValidation(options =>
+    {
+        options.EnableAuthorizationEntryValidation();
+    });
+```
+
+## Disabling authorization storage
+
+While STRONGLY discouraged, authorization storage can be disabled in the server options:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.DisableAuthorizationStorage();
+    });
+```

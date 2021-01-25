@@ -4,8 +4,11 @@
 - name: Application permissions
   href: application-permissions.md
 
+- name: Authorization storage
+  href: authorization-storage.md
+
 - name: Token formats
   href: token-formats.md
 
-- name: Authorization storage
-  href: authorization-storage.md
+- name: Token storage
+  href: token-storage.md

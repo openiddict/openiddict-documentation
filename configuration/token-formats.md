@@ -1,5 +1,11 @@
 # Token formats
 
+> [!NOTE]
+> In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
+> regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer
+>
+> For more information about reference tokens, read [Token storage](token-storage.md).
+
 ## JSON Web Token
 
 OpenIddict 3.0 implements the [JSON Web Token](https://tools.ietf.org/html/rfc7519), [JSON Web Signature](https://tools.ietf.org/html/rfc7515)
