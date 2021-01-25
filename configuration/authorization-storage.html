@@ -170,7 +170,7 @@ so that they can be automatically revoked if the authorization code was redeemed
 In the same vein, ad-hoc authorizations are also created when a refresh token is returned during a resource owner password credentials grant request.</p>
 <div class="NOTE"><h5>Note</h5><p>When using the <a href="https://www.nuget.org/packages/OpenIddict.Quartz/">OpenIddict.Quartz</a> integration, ad-hoc authorizations are automatically
 removed from the database after a short period of time (14 days by default). Unlike ad-hoc authorizations, permanent authorizations
-never removed from the database.</p>
+are never removed from the database.</p>
 </div>
 <h2 id="enabling-authorization-entry-validation-at-the-api-level">Enabling authorization entry validation at the API level</h2>
 <p><strong>For performance reasons, OpenIddict 3.0 doesn&#39;t check, by default, the status of an authorization entry when receiving an API request</strong>: access tokens are considered
