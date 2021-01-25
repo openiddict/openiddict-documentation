@@ -1,3 +1,6 @@
+> [!NOTE]
+> This documentation is a work-in-progress. To contribute, please visit https://github.com/openiddict/openiddict-documentation.
+
 # Migrate to OpenIddict 1.0/2.0
 
 ## What's new?
