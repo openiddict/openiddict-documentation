@@ -168,20 +168,18 @@ but no explicit permanent authorization was attached by the developer to the <co
 <p>Such authorizations are typically created in the authorization code flow to link all the tokens associated with the original authorization code,
 so that they can be automatically revoked if the authorization code was redeemed multiple times (which may indicate a token leakage).
 In the same vein, ad-hoc authorizations are also created when a refresh token is returned during a resource owner password credentials grant request.</p>
-<blockquote><p>[!INFO]
-When using the <a href="https://www.nuget.org/packages/OpenIddict.Quartz/">OpenIddict.Quartz</a> integration, ad-hoc authorizations are automatically
+<div class="NOTE"><h5>Note</h5><p>When using the <a href="https://www.nuget.org/packages/OpenIddict.Quartz/">OpenIddict.Quartz</a> integration, ad-hoc authorizations are automatically
 removed from the database after a short period of time (14 days by default). Unlike ad-hoc authorizations, permanent authorizations
 never removed from the database.</p>
-</blockquote>
+</div>
 <h2 id="enabling-authorization-entry-validation-at-the-api-level">Enabling authorization entry validation at the API level</h2>
 <p><strong>For performance reasons, OpenIddict 3.0 doesn&#39;t check, by default, the status of an authorization entry when receiving an API request</strong>: access tokens are considered
 valid even if the attached authorization was revoked. For scenarios that require immediate authorization revocation, the OpenIddict validation handler can be configured
 to enforce authorization entry validation for each API request:</p>
-<blockquote><p>[!INFO]
-Enabling authorization entry validation requires that the OpenIddict validation handler have a direct access to the server database where authorizations are stored, which makes it
+<div class="NOTE"><h5>Note</h5><p>Enabling authorization entry validation requires that the OpenIddict validation handler have a direct access to the server database where authorizations are stored, which makes it
 better suited for APIs located in the same application as the authorization server. For external applications, consider using introspection instead of local validation.</p>
 <p>In both cases, additional latency – caused by the additional DB request and the HTTP call for introspection – is expected.</p>
-</blockquote>
+</div>
 <pre><code class="lang-csharp">services.AddOpenIddict()
     .AddValidation(options =&gt;
     {
