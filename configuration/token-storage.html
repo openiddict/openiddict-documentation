@@ -77,10 +77,9 @@ except for authorization codes (that are short-lived), device and user codes (ex
 <p>Such tokens – called reference tokens – are not returned as-is to the caller: instead, their payload is stored in the database entry and a crypto-secure random 256-bit identifier
 – called reference identifier – is returned as a base64url-encoded string and serves as the &quot;final&quot; token used by the client application when communicating with OpenIddict&#39;s endpoints
 or with resource servers (if reference access tokens are enabled in the server options).</p>
-<blockquote><p>[!INFO]
-In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
+<div class="NOTE"><h5>Note</h5><p>In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
 regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer.</p>
-</blockquote>
+</div>
 <h2 id="enabling-reference-access-andor-refresh-tokens">Enabling reference access and/or refresh tokens</h2>
 <p>Reference access and refresh tokens can be manually enabled in the server options for developers who prefer returning
 shorter access and/or refresh tokens or need to deal with limits that would prevent sending large tokens over the wire.</p>
@@ -100,11 +99,10 @@ they were stolen from the database. For more information on how to enable ASP.NE
 </code></pre><h2 id="enabling-token-entry-validation-at-the-api-level">Enabling token entry validation at the API level</h2>
 <p><strong>For performance reasons, OpenIddict 3.0 doesn&#39;t check, by default, the status of a token entry when receiving an API request</strong>: access tokens are considered valid until they expire.
 For scenarios that require immediate access token revocation, the OpenIddict validation handler can be configured to enforce token entry validation for each API request:</p>
-<blockquote><p>[!INFO]
-Enabling token entry validation requires that the OpenIddict validation handler have a direct access to the server database where tokens are stored, which makes it
+<div class="NOTE"><h5>Note</h5><p>Enabling token entry validation requires that the OpenIddict validation handler have a direct access to the server database where tokens are stored, which makes it
 better suited for APIs located in the same application as the authorization server. For external applications, consider using introspection instead of local validation.</p>
 <p>In both cases, additional latency – caused by the additional DB request and the HTTP call for introspection – is expected.</p>
-</blockquote>
+</div>
 <pre><code class="lang-csharp">services.AddOpenIddict()
     .AddValidation(options =&gt;
     {
