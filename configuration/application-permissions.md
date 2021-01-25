@@ -79,6 +79,7 @@ Grant type permissions limit the grant types a client application is allowed to 
 | Refresh token      | `OpenIddictConstants.Permissions.GrantTypes.RefreshToken`      |
 
 To add a custom grant type permission, you can use the following pattern:
+
 ```csharp
 OpenIddictConstants.Permissions.Prefixes.GrantType + "custom_flow_name"
 ```
@@ -141,6 +142,7 @@ services.AddOpenIddict()
 
 Scope permissions limit the scopes (standard or custom) a client application is allowed to use.
 
+> [!NOTE]
 > The `openid` and `offline_access` scopes are special-cased by OpenIddict and don't require explicit permissions.
 
 ### Supported permissions
@@ -154,6 +156,7 @@ Scope permissions limit the scopes (standard or custom) a client application is 
 | roles   | `OpenIddictConstants.Permissions.Scopes.Roles`   |
 
 To add a custom scope permission, you can use the following pattern:
+
 ```csharp
 OpenIddictConstants.Permissions.Prefixes.Scope + "custom_scope_name"
 ```
