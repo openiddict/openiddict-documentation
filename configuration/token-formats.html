@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Token formats </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Token formats ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>    </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="token-formats">Token formats</h1>
+
+<h2 id="json-web-token">JSON Web Token</h2>
+<p>OpenIddict 3.0 implements the JSON Web Token, JSON Web Signature and JSON Web Encryption standards and relies on the
+<a href="https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/">Azure Active Directory IdentityModel Extensions for .NET library</a>
+developed and maintained by Microsoft to generate signed and encrypted JWT tokens using the encryption and signing credentials registered in the server options.</p>
+<h3 id="jwt-token-types">JWT token types</h3>
+<p>To protect against token substitution and confused deputy attacks, <strong>OpenIddict 3.0 uses the standard <code>typ</code> JWT header to convey the actual token type</strong>.
+This mechanism replaces the private <code>token_usage</code> claim used for the same purpose in previous versions of OpenIddict.</p>
+<p>As required by the <a href="https://tools.ietf.org/html/draft-ietf-oauth-access-token-jwt-04#section-2.1">JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens draft</a>,
+<strong>access tokens produced by OpenIddict 3.0 are always issued with a <code>&quot;typ&quot;: &quot;at+jwt&quot;</code> header</strong> while identity tokens still use <code>&quot;typ&quot;: &quot;JWT&quot;</code> for backward compatibility.
+Other types of tokens – only accepted by OpenIddict&#39;s own endpoints – use private token types prefixed by <code>oi_</code>.</p>
+<h3 id="disabling-jwt-access-token-encryption">Disabling JWT access token encryption</h3>
+<p>By default, <strong>OpenIddict enforces encryption for all the token types it supports</strong>. While this enforcement cannot be disabled for authorization codes,
+refresh tokens and device codes for security reasons, it can be relaxed for access tokens when integration with third-party APIs/resource servers is desired.
+Access token encryption can also be disabled if the resource servers receiving the access tokens don&#39;t fully support JSON Web Encryption.</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.DisableAccessTokenEncryption();
+    });
+</code></pre><h2 id="aspnet-core-data-protection">ASP.NET Core Data Protection</h2>
+<p>OpenIddict 3.0 can also be configured to use <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction">ASP.NET Core Data Protection</a> to create
+Data Protection tokens instead of JWT tokens. ASP.NET Core Data Protection is supported for all types of tokens, except identity tokens, that are always JWT tokens.</p>
+<p>Unlike JWT, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the ASP.NET team rather than on a standard like JWT.
+While this prevents using such tokens in scenarios where interoperability is needed, opting for ASP.NET Core Data Protection rather than JWT has actually a few advantages:</p>
+<ul>
+<li>ASP.NET Core Data Protection tokens don&#39;t use a JSON representation and therefore are generally a bit shorter.</li>
+<li>ASP.NET Core Data Protection has been designed to achieve high throughput as it&#39;s natively used by ASP.NET Core for authentication cookies,
+antiforgery tokens and session cookies.</li>
+</ul>
+<div class="WARNING"><h5>Warning</h5><p>Despite its name, ASP.NET Core Data Protection is not tied to ASP.NET Core and can be used in any
+.NET Standard 2.0-compatible application, including legacy ASP.NET 4.x applications using <code>Microsoft.Owin</code>.</p>
+<p>To enable ASP.NET Core Data Protection support in the OpenIddict OWIN server and validation hosts, you need to
+manually reference the <code>OpenIddict.Server.DataProtection</code> and <code>OpenIddict.Validation.DataProtection</code> packages.</p>
+</div>
+<h3 id="switching-to-data-protection-tokens">Switching to Data Protection tokens</h3>
+<p>ASP.NET Core Data Protection support is provided by the <code>OpenIddict.Server.DataProtection</code> and <code>OpenIddict.Validation.DataProtection</code> packages.
+These packages are referenced by the <code>OpenIddict.AspNetCore</code> metapackage and therefore don&#39;t have to be referenced explicitly.</p>
+<p>To enable ASP.NET Core Data Protection support, call <code>options.UseDataProtection()</code> in <strong>both the server and validation options</strong>:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseDataProtection();
+    })
+
+    .AddValidation(options =&gt;
+    {
+        options.UseDataProtection();
+    });
+</code></pre><div class="NOTE"><h5>Note</h5><p>Switching to ASP.NET Core Data Protection tokens doesn&#39;t prevent JWT tokens issued before Data Protection support was enabled from being validated:
+existing tokens can still be used alongside newly issued ASP.NET Core Data Protection tokens until they expire. When sending a refresh token request containing
+a JWT refresh token, the application will receive an ASP.NET Core Data Protection refresh token and the previous one will be automatically marked as redeemed.</p>
+</div>
+<p>By default, enabling ASP.NET Core Data Protection support will automatically switch the token format from JWT to Data Protection for all tokens, except JWT tokens.
+The OpenIddict/Data Protection integration can be configured to prefer JWT when creating new tokens, <strong>which can be useful to use the ASP.NET Core Data Protection
+format for specific token types only</strong> (e.g for authorization codes and refresh tokens, but not for access tokens).</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseDataProtection()
+               .PreferDefaultAccessTokenFormat()
+               .PreferDefaultAuthorizationCodeFormat()
+               .PreferDefaultDeviceCodeFormat()
+               .PreferDefaultRefreshTokenFormat()
+               .PreferDefaultUserCodeFormat();
+    });
+</code></pre><div class="WARNING"><h5>Warning</h5><p>When the authorization and API/resource servers are not part of the same application, ASP.NET Core Data Protection MUST be configured to use
+the same application name and share the same key ring to allow OpenIddict validation&#39;s handler to read ASP.NET Core Data Protection tokens
+generated by an authorization server located in another project.</p>
+<p>For more information, read <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview">Configure ASP.NET Core Data Protection</a>.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/configuration/token-formats.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
