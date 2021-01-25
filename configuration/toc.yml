@@ -6,3 +6,6 @@
 
 - name: Token formats
   href: token-formats.md
+
+- name: Authorization storage
+  href: authorization-storage.md
