@@ -9861,7 +9861,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/authorization-storage.html",
-          "hash": "OFSAAR/675OwAhhWVsS24w=="
+          "hash": "Hd7zZtB6quLlA6PuvtaxWA=="
         }
       },
       "is_incremental": false,
@@ -9885,7 +9885,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "xW+gHghpmAoEGBDFX0tdAQ=="
+          "hash": "UPFXOaji27N3tvRcJTgSow=="
         }
       },
       "is_incremental": false,
@@ -9897,7 +9897,19 @@
       "output": {
         ".html": {
           "relative_path": "configuration/token-formats.html",
-          "hash": "qsPzTXi/sPCUwwXKdhcF5w=="
+          "hash": "eAWnxe/vobBoHyPOHuKRmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/token-storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/token-storage.html",
+          "hash": "Ld32xASqmME3EFn+1T/RrQ=="
         }
       },
       "is_incremental": false,
@@ -10694,7 +10706,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 8,
+          "total_file_count": 9,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

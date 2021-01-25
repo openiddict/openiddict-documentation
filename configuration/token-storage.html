@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Token storage </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Token storage ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>    </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="token-storage">Token storage</h1>
+
+<p>To keep track of all the tokens produced by its server services, OpenIddict 3.0 creates a token entry in the database for each generated token.
+A token entry contains metadata like the subject of the token, the client identifier of the application it was issued to or its creation and expiration dates.</p>
+<p>By default, the token payload – generated using either the
+<a href="https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/">Azure Active Directory IdentityModel Extensions for .NET library</a> for JWT tokens or
+<a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction">ASP.NET Core Data Protection</a> for Data Protection tokens – is never stored in the database,
+except for authorization codes (that are short-lived), device and user codes (exclusively used in the device code flow).</p>
+<p>Such tokens – called reference tokens – are not returned as-is to the caller: instead, their payload is stored in the database entry and a crypto-secure random 256-bit identifier
+– called reference identifier – is returned as a base64url-encoded string and serves as the &quot;final&quot; token used by the client application when communicating with OpenIddict&#39;s endpoints
+or with resource servers (if reference access tokens are enabled in the server options).</p>
+<blockquote><p>[!INFO]
+In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
+regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer.</p>
+</blockquote>
+<h2 id="enabling-reference-access-andor-refresh-tokens">Enabling reference access and/or refresh tokens</h2>
+<p>Reference access and refresh tokens can be manually enabled in the server options for developers who prefer returning
+shorter access and/or refresh tokens or need to deal with limits that would prevent sending large tokens over the wire.</p>
+<div class="CAUTION"><h5>Caution</h5><p>When enabling reference access and/or refresh tokens support, it is STRONGLY recommended to either:</p>
+<ul>
+<li>Use the ASP.NET Core Data Protection format for access and refresh tokens, as they benefit from additional security measures that would prevent them from being sent as-is if
+they were stolen from the database. For more information on how to enable ASP.NET Core Data Protection, read <a href="token-formats.html">Token formats</a>.</li>
+<li>Enable column encryption/data at rest encryption to protect the <code>Payload</code> column of token entries.</li>
+</ul>
+</div>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseReferenceAccessTokens()
+               .UseReferenceRefreshTokens();
+    });
+</code></pre><h2 id="enabling-token-entry-validation-at-the-api-level">Enabling token entry validation at the API level</h2>
+<p><strong>For performance reasons, OpenIddict 3.0 doesn&#39;t check, by default, the status of a token entry when receiving an API request</strong>: access tokens are considered valid until they expire.
+For scenarios that require immediate access token revocation, the OpenIddict validation handler can be configured to enforce token entry validation for each API request:</p>
+<blockquote><p>[!INFO]
+Enabling token entry validation requires that the OpenIddict validation handler have a direct access to the server database where tokens are stored, which makes it
+better suited for APIs located in the same application as the authorization server. For external applications, consider using introspection instead of local validation.</p>
+<p>In both cases, additional latency – caused by the additional DB request and the HTTP call for introspection – is expected.</p>
+</blockquote>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddValidation(options =&gt;
+    {
+        options.EnableTokenEntryValidation();
+    });
+</code></pre><h2 id="disabling-token-storage">Disabling token storage</h2>
+<p>While STRONGLY discouraged, token storage can be disabled in the server options:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.DisableTokenStorage();
+    });
+</code></pre><div class="WARNING"><h5>Warning</h5><p>Disabling token storage prevents reference access or refresh tokens support from being enabled, as this requires storing the tokens in the database.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/configuration/token-storage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
