@@ -118,8 +118,6 @@ foreach (var claim in principal.Claims)
             OpenIddictConstants.Destinations.AccessToken
         }
     });
-
-    claim.SetDestinations(GetDestinations(claim, principal));
 }
 
 return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
