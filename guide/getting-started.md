@@ -9,11 +9,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Have an existing project or create a new one**: when creating a new project using Visual Studio's default ASP.NET Core template,
   using **individual user accounts authentication** is strongly recommended as it automatically includes the default ASP.NET Core Identity UI, based on Razor Pages.
 
-  - **Update your `.csproj` file** to reference the `OpenIddict` packages:
+  - **Update your `.csproj` file** to reference the latest `OpenIddict` packages:
 
     ```xml
-    <PackageReference Include="OpenIddict.AspNetCore" Version="3.0.0" />
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="OpenIddict.AspNetCore" Version="3.0.1" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="3.0.1" />
     ```
 
   - **Configure the OpenIddict core, server and validation services** in `Startup.ConfigureServices`.
