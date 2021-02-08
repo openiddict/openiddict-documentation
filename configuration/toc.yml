@@ -7,6 +7,9 @@
 - name: Authorization storage
   href: authorization-storage.md
 
+- name: Claim destinations
+  href: claim-destinations.md
+
 - name: Token formats
   href: token-formats.md
 
