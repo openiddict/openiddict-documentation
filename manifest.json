@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.html",
-          "hash": "qHTlXzy9CSYJfwexBsqNLg=="
+          "hash": "7UURhaX8ZGh+RF2nzzgHJw=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictCoreExtensions.html",
-          "hash": "Fz/5u2jvfXwJG+NqgwuuLw=="
+          "hash": "NfEtVr3MTxhG/w2UmuT4Kw=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictEntityFrameworkBuilder.html",
-          "hash": "xdA+Zq39lxa2kHmFOiHC+Q=="
+          "hash": "H0Bu8qltW3gzkXK+yd3YRg=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictEntityFrameworkCoreBuilder.html",
-          "hash": "3fLGAEmk1prE8KydKTypnw=="
+          "hash": "w64w2l0uMln9TtEdthTnzA=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictEntityFrameworkCoreExtensions.html",
-          "hash": "shmGT/RR4w5e3FAE0XxDiw=="
+          "hash": "DurhW4PzxNTJal9B2Ydc/Q=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictEntityFrameworkExtensions.html",
-          "hash": "omOVPqjzAyUWBSQioeHfOg=="
+          "hash": "7DkmNTxxMjYM5vY7F1xJbw=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictExtensions.html",
-          "hash": "Z7kQuvph14NTl6NERSOg6g=="
+          "hash": "hCYliUlE6pAkNLnm+6WcKA=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictMongoDbBuilder.html",
-          "hash": "B8Gr6zreQf6lALcDIIj3Kw=="
+          "hash": "PMKUtRAAWmDzYcXluiJqKw=="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictMongoDbExtensions.html",
-          "hash": "Dil5Xtef9WexVpIif4v2dA=="
+          "hash": "1dqPUj3wPVvaS3i1bgbafA=="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictQuartzBuilder.html",
-          "hash": "nWzFfIss9mH/Ykm/QxqEVQ=="
+          "hash": "Wt2AWEUmijXdeKE4CjFEGw=="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictQuartzExtensions.html",
-          "hash": "KtibvirP7zNQQmt+UWM8Pw=="
+          "hash": "lb0yhNUXNYUIGbIIXbygLQ=="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerAspNetCoreBuilder.html",
-          "hash": "x38RbFOjZ5GszeZkGliWvA=="
+          "hash": "dvU400ItE1+5sd70qQQlyw=="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerAspNetCoreExtensions.html",
-          "hash": "43FC3MooSv/4Y3LR90du0g=="
+          "hash": "jL/6/HPqWO2LhtCIkqW+eg=="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.html",
-          "hash": "JFBiKRWGW/LEBIizsKoEaQ=="
+          "hash": "jd670sMn4b64IdybPDokCA=="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerDataProtectionBuilder.html",
-          "hash": "e+2XwEo9dVAhXvauQcsqjw=="
+          "hash": "7+DscTk/V13IkggLlhJWnw=="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerDataProtectionExtensions.html",
-          "hash": "eL4pkYJoj5fLGYQUT6jwPA=="
+          "hash": "X3sNjJD2LA/la9O5ZTawUg=="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerExtensions.html",
-          "hash": "tmn4Ccxr00uBXyC5Ac6zbQ=="
+          "hash": "Okj9o9ywkRT9rLybPKWDtA=="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerOwinBuilder.html",
-          "hash": "5M1WOru+OaEflOoRBeFlxA=="
+          "hash": "Om3W1eaj338RlaqN4Gk3Ig=="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictServerOwinExtensions.html",
-          "hash": "ITWrDXtQj7KP+xOobG1Mdw=="
+          "hash": "6DpYKy+0wFOPfVAd+8BXIQ=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationAspNetCoreBuilder.html",
-          "hash": "isp/k9J+sEPwV2zswBxVMg=="
+          "hash": "GR9SZn3iiiFMwf0BATLaKg=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationAspNetCoreExtensions.html",
-          "hash": "vsxQBeGi4iYr3G4BplDEUQ=="
+          "hash": "vDi03kUcaU5ZvvEK1egbfg=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.html",
-          "hash": "r9mifap2Ku2TS5TBd2pYnA=="
+          "hash": "Em44Ldnm9EjP1IwiZwBYBA=="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationDataProtectionBuilder.html",
-          "hash": "hJQdqR4lztx36we1LqYrEA=="
+          "hash": "F8uB/S63XR+eL+riQgFQ3Q=="
         }
       },
       "is_incremental": false,
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationDataProtectionExtensions.html",
-          "hash": "6x071mVHOhlfvFjLOQts6w=="
+          "hash": "+9/oOCggus77AkpB5k4Xig=="
         }
       },
       "is_incremental": false,
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationExtensions.html",
-          "hash": "5fe+wmLN/3KUp2Z0B/1tew=="
+          "hash": "l0sG4wvhQ8Lf4BpUHk748w=="
         }
       },
       "is_incremental": false,
@@ -381,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationOwinBuilder.html",
-          "hash": "TybxcdnLFGkGiAD+lBBuMA=="
+          "hash": "qmwDMQx/JuOKCjFCq0UjvQ=="
         }
       },
       "is_incremental": false,
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationOwinExtensions.html",
-          "hash": "z9+qWfrDLYIaKO89h96k8A=="
+          "hash": "w2adxKvJZNlAJLXWa4RKWQ=="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationServerIntegrationBuilder.html",
-          "hash": "pnR1oLIKwXaaWNUBDetFMg=="
+          "hash": "L9W02lnSnMmRdTGFVawFaA=="
         }
       },
       "is_incremental": false,
@@ -417,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationServerIntegrationExtensions.html",
-          "hash": "hyV9FKFsxY9j5tHXJaIynQ=="
+          "hash": "pbqRrR62qt/n/kNvHC3NFw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationSystemNetHttpBuilder.html",
-          "hash": "YFh2DfwYk3fyWM/BqIRmkw=="
+          "hash": "hFJbmxw697AR5rRKZAGG0w=="
         }
       },
       "is_incremental": false,
@@ -441,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.OpenIddictValidationSystemNetHttpExtensions.html",
-          "hash": "TPPD7+CYLPktUdzFj0cPJA=="
+          "hash": "hC+JNJDkgJWrd+HMmz7nRg=="
         }
       },
       "is_incremental": false,
@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictApplicationManager.html",
-          "hash": "OUnx0PkGMMmGxMZuBtZE8A=="
+          "hash": "f9m8rTUCj0uhqvo8vN0llw=="
         }
       },
       "is_incremental": false,
@@ -489,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictApplicationStore-1.html",
-          "hash": "piO+Ri4UyWefQSNGJJQlEg=="
+          "hash": "s2OUSiIvs8JZ+qX3D59btw=="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictApplicationStoreResolver.html",
-          "hash": "vWSHYf92fpjZM1dp9Img1w=="
+          "hash": "+Itk8+H7l13Q3uIZFygtqA=="
         }
       },
       "is_incremental": false,
@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictAuthorizationManager.html",
-          "hash": "5DB9lWxue3PwDJx9E8T4Bg=="
+          "hash": "jiB81rDnNOdE8zgFewe66A=="
         }
       },
       "is_incremental": false,
@@ -537,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictAuthorizationStore-1.html",
-          "hash": "CNGJK+IfzX3MifQy4ZMypw=="
+          "hash": "LKJh5KTcLNez3uJIgJeG5g=="
         }
       },
       "is_incremental": false,
@@ -549,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictAuthorizationStoreResolver.html",
-          "hash": "0phTKp6DRbXfDqjdXVYbVA=="
+          "hash": "n+Qt0rd2/IGB3wiWZKnyqQ=="
         }
       },
       "is_incremental": false,
@@ -573,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictScopeManager.html",
-          "hash": "17OHMCES4uwz7cPa4GPPHA=="
+          "hash": "QeO8w+VqB/46AH2ZwFFCUw=="
         }
       },
       "is_incremental": false,
@@ -585,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictScopeStore-1.html",
-          "hash": "JYmGr29DQS8dp9W5WUdEkg=="
+          "hash": "/QBxr6fONeDXzw+KLZxUJg=="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictScopeStoreResolver.html",
-          "hash": "herWVzOwCHk3qSs4cytcDA=="
+          "hash": "ifuDc5AzBYKqGcWfly9K2w=="
         }
       },
       "is_incremental": false,
@@ -621,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictTokenManager.html",
-          "hash": "cI8gphu3PkyOjFa2f2yq7g=="
+          "hash": "gCnDT1DD6DB+1pMOvJVw2A=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictTokenStore-1.html",
-          "hash": "9wCQ06tx8FNnjc7hEIQzdQ=="
+          "hash": "DaHuQ6aXN4nKbhLANCuk9w=="
         }
       },
       "is_incremental": false,
@@ -645,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.IOpenIddictTokenStoreResolver.html",
-          "hash": "bLgEGQPNXdR6FOs0m5/JwA=="
+          "hash": "AAMin0JFAaBELM3vXvOmiw=="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictAuthorizationDescriptor.html",
-          "hash": "U9B5/Ih7+OeguxiZBvTTgw=="
+          "hash": "mgfs9bVQS1QSLTm5PcxUSw=="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictConverter.html",
-          "hash": "frs4QD/N+GQW6TIYcS+veA=="
+          "hash": "ZMkUtbsGnOazLfzZJ7HbWA=="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictExceptions.ConcurrencyException.html",
-          "hash": "/tKk7YZPJwvHDS9tR9i3Ag=="
+          "hash": "9K8qiN8MpGQmvgJLmg8Tng=="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictExceptions.GenericException.html",
-          "hash": "4eSuBml8gh/mF9921NeNew=="
+          "hash": "hFKlvLh7fPU0zSWc36A94w=="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictExceptions.ValidationException.html",
-          "hash": "4FZzydGz0No1NYd3WPGw7g=="
+          "hash": "St6hxBn50UO5Ft08IMZm6g=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictExtensions.html",
-          "hash": "O653frhMuYcJaQx9p2RACA=="
+          "hash": "zv783yCw2Qb+YIj0Qq7gpg=="
         }
       },
       "is_incremental": false,
@@ -1233,7 +1233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictParameter.html",
-          "hash": "AuOmygjagMMGBum0COfcBg=="
+          "hash": "m/0wUgRjESgktveAYKM0hA=="
         }
       },
       "is_incremental": false,
@@ -1281,7 +1281,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Abstractions.OpenIddictTokenDescriptor.html",
-          "hash": "lKc0x8NXlRcXUS6YAP64Kw=="
+          "hash": "rEAY4wgMeJYHNjUdcedR6A=="
         }
       },
       "is_incremental": false,
@@ -1305,7 +1305,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictApplicationCache-1.html",
-          "hash": "64AiYGxrI64qKn7wjmz2NQ=="
+          "hash": "OYBTM9T0xortIUxnPdoEmA=="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictApplicationManager-1.html",
-          "hash": "VQQhs/DuQ46ARbwZ5f14EA=="
+          "hash": "qWfUD+7Y2BPrQ6FPWHpchw=="
         }
       },
       "is_incremental": false,
@@ -1329,7 +1329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictApplicationStoreResolver.html",
-          "hash": "MLgr5WtOvv7UPG/YyAF4Vg=="
+          "hash": "Yb0wteu8uRz5Vrk4ThRxNw=="
         }
       },
       "is_incremental": false,
@@ -1341,7 +1341,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictAuthorizationCache-1.html",
-          "hash": "Ik8jEovfz2dq3BLn7Q2O8g=="
+          "hash": "8+IckIfhzmWFh0eZU0v7ZQ=="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictAuthorizationManager-1.html",
-          "hash": "N2e+ZesUsji+fc+lGsSwQw=="
+          "hash": "Tj8/Lk6GtZ40B7cxW1zEIA=="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1365,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictAuthorizationStoreResolver.html",
-          "hash": "OjLy+UNdsC/3DAfkGSz3Iw=="
+          "hash": "P0feMhPzJOYEKd69fkhTDA=="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictCoreOptions.html",
-          "hash": "eal7+6/aZiWKeoRuQO2l4Q=="
+          "hash": "TVurE70UXHxoZDsBPkb1EQ=="
         }
       },
       "is_incremental": false,
@@ -1389,7 +1389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictScopeCache-1.html",
-          "hash": "QzumT0QHuQz/K9rBL0vGrQ=="
+          "hash": "9GpOt1Hf9X2gZQq7m3BPrQ=="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictScopeManager-1.html",
-          "hash": "2HtlPnmoqX0mDvV/OJzuuQ=="
+          "hash": "4QAWdgcaduxpaA7k6Kzfhw=="
         }
       },
       "is_incremental": false,
@@ -1413,7 +1413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictScopeStoreResolver.html",
-          "hash": "QOc81nh2/mpDm7sQ5CwKww=="
+          "hash": "CRrqmHOmqskWNrZ2HuSbDA=="
         }
       },
       "is_incremental": false,
@@ -1425,7 +1425,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictTokenCache-1.html",
-          "hash": "j7Jq5yo5UqP99BdzykVDDw=="
+          "hash": "i6DbYKwblNzyn9xWLnF57A=="
         }
       },
       "is_incremental": false,
@@ -1437,7 +1437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictTokenManager-1.html",
-          "hash": "bzRMDopqIWnnm2+88YWPHg=="
+          "hash": "64OQS8VEGzJOse9JAx6h6Q=="
         }
       },
       "is_incremental": false,
@@ -1449,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Core.OpenIddictTokenStoreResolver.html",
-          "hash": "gkxin+YwSnepLUoqkmdKew=="
+          "hash": "Ijpf/p0zqclyk0htcaeUeQ=="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.Models.OpenIddictEntityFrameworkAuthorization-3.html",
-          "hash": "3tv2SFigzHUkTH/+z71MUw=="
+          "hash": "eHlmigYJH6TtnheKQc5G1w=="
         }
       },
       "is_incremental": false,
@@ -1545,7 +1545,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.Models.OpenIddictEntityFrameworkToken-3.html",
-          "hash": "A8gHMvLIzmK1C1/tBmEPkw=="
+          "hash": "MrZ14ic+e1ouE4fIgljjCQ=="
         }
       },
       "is_incremental": false,
@@ -1593,7 +1593,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkApplicationStore-1.html",
-          "hash": "m+etrr08Uzl6zenkQmw5TA=="
+          "hash": "JccKwan1ymPxJSNU3Z9VwQ=="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkApplicationStore-5.html",
-          "hash": "pdx5G/2mibadFi5y9HwdJg=="
+          "hash": "dD9szyApVqbY7fUzfSsLYg=="
         }
       },
       "is_incremental": false,
@@ -1629,7 +1629,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkApplicationStoreResolver.html",
-          "hash": "n0vQui1BXDJYOkilvvtDeQ=="
+          "hash": "IBoKNmpDiIruvtoikZi4fA=="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkAuthorizationStore-1.html",
-          "hash": "13WYR92KvJiGex0XY2ZenQ=="
+          "hash": "xtZeKriK/sQGHzuXADArhA=="
         }
       },
       "is_incremental": false,
@@ -1665,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkAuthorizationStore-5.html",
-          "hash": "Dw+CAn0S9Iv+LkmbifXT2w=="
+          "hash": "k65oWjcP9uHlJ4R59NmvWA=="
         }
       },
       "is_incremental": false,
@@ -1689,7 +1689,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkAuthorizationStoreResolver.html",
-          "hash": "DdU6NEBgK+3sXHqG1E4dvg=="
+          "hash": "fcwlwyl2tPwS64fD/Vd9kg=="
         }
       },
       "is_incremental": false,
@@ -1701,7 +1701,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkOptions.html",
-          "hash": "3xzi8DrfwkD91+Ea6dCPTA=="
+          "hash": "dSBkC1PsKmBTP8tQBXIAvA=="
         }
       },
       "is_incremental": false,
@@ -1725,7 +1725,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkScopeStore-1.html",
-          "hash": "0iAUUMQFrXT3LITSbu4x/g=="
+          "hash": "GcRZjp/4OoKWQV9bIUD7Rg=="
         }
       },
       "is_incremental": false,
@@ -1737,7 +1737,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkScopeStore-3.html",
-          "hash": "hNmtlnpLmHBYxijvCM0anA=="
+          "hash": "ZkuF1nX2BGZsbXGDVQ8ZXA=="
         }
       },
       "is_incremental": false,
@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkScopeStoreResolver.html",
-          "hash": "5oIngZzltDiJurNQgFXOmw=="
+          "hash": "Aj0O1SBCSE27enjh/0mWQw=="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1785,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkTokenStore-1.html",
-          "hash": "/926cpaRpyou/Wlp8L9xww=="
+          "hash": "Dg70msCoSGUo8ZzBGMBzbQ=="
         }
       },
       "is_incremental": false,
@@ -1797,7 +1797,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkTokenStore-5.html",
-          "hash": "XRP9UhtmJvc5M5B+CCmokw=="
+          "hash": "5FfWdTMeGnfUHSuU7uxKBQ=="
         }
       },
       "is_incremental": false,
@@ -1821,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFramework.OpenIddictEntityFrameworkTokenStoreResolver.html",
-          "hash": "/RM3oLdTPuAv76QNBufkBg=="
+          "hash": "XIIBYiRNS/waHjExCSJK+A=="
         }
       },
       "is_incremental": false,
@@ -1893,7 +1893,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.Models.OpenIddictEntityFrameworkCoreAuthorization-3.html",
-          "hash": "DvAIo7vYbbIj8i0IfiVk9Q=="
+          "hash": "3es8m34XX1xNu2PLEecCaA=="
         }
       },
       "is_incremental": false,
@@ -1953,7 +1953,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.Models.OpenIddictEntityFrameworkCoreToken-3.html",
-          "hash": "HmIq7rS5n6FHpY1+9BZfIg=="
+          "hash": "DA2hPFMhzTu+7tHa+lXAjA=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreApplicationStore-1.html",
-          "hash": "9RzzTXts+ksuhxmfrHjPRA=="
+          "hash": "DXVcEvtlwk8eEgvit8jbcQ=="
         }
       },
       "is_incremental": false,
@@ -2013,7 +2013,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreApplicationStore-2.html",
-          "hash": "O0W88bYuGC9wScbwvnjIaA=="
+          "hash": "HhxXLdE605LAJafgepFluQ=="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreApplicationStore-5.html",
-          "hash": "BSbzvI1FwwaTc0UsubReuA=="
+          "hash": "qclRPkj2vLN/la+S1tkAVg=="
         }
       },
       "is_incremental": false,
@@ -2049,7 +2049,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreApplicationStoreResolver.html",
-          "hash": "JEJIoRvwcKcKsS8e9JTsxg=="
+          "hash": "mlkvfhgDu6E7KH9sekAbkA=="
         }
       },
       "is_incremental": false,
@@ -2073,7 +2073,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreAuthorizationStore-1.html",
-          "hash": "1VQYSdoJJXq8foSwRpqlDA=="
+          "hash": "RmHs6EfoiPp2rp3Ldblh9g=="
         }
       },
       "is_incremental": false,
@@ -2085,7 +2085,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreAuthorizationStore-2.html",
-          "hash": "7VrL4z/2ZXJRYDsPAvma7A=="
+          "hash": "I9VUgiF0efxmOmGTlleLAA=="
         }
       },
       "is_incremental": false,
@@ -2097,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreAuthorizationStore-5.html",
-          "hash": "GUXSYqTh6llNf7N0lwP0Fw=="
+          "hash": "hbYDLT6k6sQMRZ+fDauz1g=="
         }
       },
       "is_incremental": false,
@@ -2121,7 +2121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreAuthorizationStoreResolver.html",
-          "hash": "E2URcO21bqfTVXDQogTA2w=="
+          "hash": "UUHJtYcbyxa/9WGKT/DtUA=="
         }
       },
       "is_incremental": false,
@@ -2145,7 +2145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreOptions.html",
-          "hash": "2pp9DjVjDEICdhD5wiH9xw=="
+          "hash": "xQnTDcYtR44d/LwHjSfHeg=="
         }
       },
       "is_incremental": false,
@@ -2169,7 +2169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreScopeStore-1.html",
-          "hash": "eLTIO3j44KI2lGRAK9mfFA=="
+          "hash": "sZZYVX0xI7s8mkuUdubIPA=="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreScopeStore-2.html",
-          "hash": "r9umsJjn2GNTQzhxAdlFdQ=="
+          "hash": "qFJPAM63+hpyC9jfWhoU9A=="
         }
       },
       "is_incremental": false,
@@ -2193,7 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreScopeStore-3.html",
-          "hash": "4iBgB0wCmUx18f6WxQtddw=="
+          "hash": "pWVvQYI5hDehR1xdyoYu7A=="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2217,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreScopeStoreResolver.html",
-          "hash": "GeGuGoXsbKiD2X+cx3Q4jw=="
+          "hash": "FFFMah4l1U11p7O3yNSPpw=="
         }
       },
       "is_incremental": false,
@@ -2241,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreTokenStore-1.html",
-          "hash": "W8wyGqIPQJsndvBs6V2B3Q=="
+          "hash": "d6CIe+449dEcPehZlbWf0w=="
         }
       },
       "is_incremental": false,
@@ -2253,7 +2253,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreTokenStore-2.html",
-          "hash": "Gd9425CDgAwhjF1dpFAm8A=="
+          "hash": "LWLyhLU9seV0ooJVOrPNbg=="
         }
       },
       "is_incremental": false,
@@ -2265,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreTokenStore-5.html",
-          "hash": "PgNrn7xuZtLVAb9d/NQd/Q=="
+          "hash": "zPBcQLl61TxGAxExrXWFog=="
         }
       },
       "is_incremental": false,
@@ -2289,7 +2289,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.EntityFrameworkCore.OpenIddictEntityFrameworkCoreTokenStoreResolver.html",
-          "hash": "kLubjaEt7xNg9gSDSqM1Ug=="
+          "hash": "ZDKThIeI+KdglvQMoFA7Ww=="
         }
       },
       "is_incremental": false,
@@ -2337,7 +2337,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.Models.OpenIddictMongoDbAuthorization.html",
-          "hash": "p03sOTw6NGYIpl+f9P1mgw=="
+          "hash": "2BijXFCAkNh2n1k0t7FjCg=="
         }
       },
       "is_incremental": false,
@@ -2361,7 +2361,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.Models.OpenIddictMongoDbToken.html",
-          "hash": "v540Zyd5/VOXCp5hFAkAIw=="
+          "hash": "2m66CtA0wISiJG80ISRrHg=="
         }
       },
       "is_incremental": false,
@@ -2385,7 +2385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbApplicationStore-1.html",
-          "hash": "n9DadAqJguy93ewPhpHP0Q=="
+          "hash": "DqDnMNs3qi7MQjW1H+tESA=="
         }
       },
       "is_incremental": false,
@@ -2397,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbApplicationStoreResolver.html",
-          "hash": "LMmfnqu8ESQfuJ1CRYCf7Q=="
+          "hash": "zaz6Adh5uphcIlb5C3NJjg=="
         }
       },
       "is_incremental": false,
@@ -2409,7 +2409,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbAuthorizationStore-1.html",
-          "hash": "ayBXfq/J9LM5YUkIJwIEuQ=="
+          "hash": "/QsUL96HiwGnIrBTC+gyCg=="
         }
       },
       "is_incremental": false,
@@ -2421,7 +2421,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbAuthorizationStoreResolver.html",
-          "hash": "leJd3QyFK7NfI3gp14+4UA=="
+          "hash": "76uded5MCyBwhr6oXBx6qA=="
         }
       },
       "is_incremental": false,
@@ -2433,7 +2433,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbContext.html",
-          "hash": "yekQ1uF/y1eWb/6uczcLIw=="
+          "hash": "ESo/n17cgNkgkczZwplMMA=="
         }
       },
       "is_incremental": false,
@@ -2457,7 +2457,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbScopeStore-1.html",
-          "hash": "0oetExj11Yepfh4rBreztg=="
+          "hash": "x7v2FJ7oqpc9/sA99PTcIw=="
         }
       },
       "is_incremental": false,
@@ -2469,7 +2469,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbScopeStoreResolver.html",
-          "hash": "EPSLVp1HhV3i9dmuVY5pqA=="
+          "hash": "AnSCAVwZOC0t7FmE68qIzw=="
         }
       },
       "is_incremental": false,
@@ -2481,7 +2481,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbTokenStore-1.html",
-          "hash": "h7BZfovkTEiCUzFeaJmX+g=="
+          "hash": "0VLsj+pgemetUxRP/mYyTg=="
         }
       },
       "is_incremental": false,
@@ -2493,7 +2493,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.MongoDb.OpenIddictMongoDbTokenStoreResolver.html",
-          "hash": "8eJUF2wTRzke/E8IWSAwkg=="
+          "hash": "a2YfguN4lEqsrCDbmc1a2A=="
         }
       },
       "is_incremental": false,
@@ -2529,7 +2529,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Quartz.OpenIddictQuartzJob.html",
-          "hash": "h5gzBTqoNhx7h8OxouslCA=="
+          "hash": "uKq0LSyg4k83GO4CctL0yQ=="
         }
       },
       "is_incremental": false,
@@ -2541,7 +2541,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Quartz.OpenIddictQuartzOptions.html",
-          "hash": "ziDMmvIo/cE0jh1umF1FRg=="
+          "hash": "0VLMmMDVnCJmMne6NCQprQ=="
         }
       },
       "is_incremental": false,
@@ -3777,7 +3777,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerDispatcher.html",
-          "hash": "To93OACmSnWIWarCNdvqUQ=="
+          "hash": "lF54FajOFDd/p9+dPOPIFA=="
         }
       },
       "is_incremental": false,
@@ -4149,7 +4149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerEvents.HandleIntrospectionRequestContext.html",
-          "hash": "MurEge0X8R2q5WDPBhc2nw=="
+          "hash": "PJ+gdQKQmTWtfFxwBoJyiw=="
         }
       },
       "is_incremental": false,
@@ -4437,7 +4437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandler-1.html",
-          "hash": "ysmm1SYba2odSephlNjyrg=="
+          "hash": "Is6qdu3i9XRiEADm8zEasw=="
         }
       },
       "is_incremental": false,
@@ -4449,7 +4449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlerDescriptor.Builder-1.html",
-          "hash": "oyAJQ3Xp1Z6vVJ6B+FZ7Zw=="
+          "hash": "ma2X7LFTSE8RCgKbuYgNyw=="
         }
       },
       "is_incremental": false,
@@ -4461,7 +4461,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlerDescriptor.html",
-          "hash": "+5+isBrHpwLJIXGpANosDg=="
+          "hash": "lFUeia1dGxO/jMSsdvlkeg=="
         }
       },
       "is_incremental": false,
@@ -6813,7 +6813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateClientId.html",
-          "hash": "YtQt7O42eHd0/Vgray0MMg=="
+          "hash": "0jUS5eEVjay0PMrL1HPhDg=="
         }
       },
       "is_incremental": false,
@@ -6825,7 +6825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateClientSecret.html",
-          "hash": "DBqALu+hHs08gqvSBs1RVw=="
+          "hash": "+xqM++/Oz8NnNt+tbqGrwQ=="
         }
       },
       "is_incremental": false,
@@ -6837,7 +6837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateClientType.html",
-          "hash": "9Peydb6zAQ8Oj7sBAGclcA=="
+          "hash": "zCCRhL9cz1vmsZOf/svRUg=="
         }
       },
       "is_incremental": false,
@@ -6861,7 +6861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateEndpointPermissions.html",
-          "hash": "+aCk5Lhgj/mMZk9fIUJQ0g=="
+          "hash": "F45i8ZtQ5p/7newf83/SIg=="
         }
       },
       "is_incremental": false,
@@ -6885,7 +6885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateGrantTypePermissions.html",
-          "hash": "OmSb4fdpLwYKhgiLjG1/Cg=="
+          "hash": "An481YtsDPCu42880C4TLQ=="
         }
       },
       "is_incremental": false,
@@ -6945,7 +6945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateProofKeyForCodeExchangeRequirement.html",
-          "hash": "xR6uor2broYOrlHjV5Ltlw=="
+          "hash": "DqDPwO6H7oZaJJW1ZfXULQ=="
         }
       },
       "is_incremental": false,
@@ -6993,7 +6993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerHandlers.ValidateScopePermissions.html",
-          "hash": "Rz2dQifTfCuJYsxVYTQMGg=="
+          "hash": "EH9R1vgl8gzUlp5IrGXB5A=="
         }
       },
       "is_incremental": false,
@@ -7089,7 +7089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.OpenIddictServerOptions.html",
-          "hash": "rT0yhUX7KsxkQ6C++lAXCQ=="
+          "hash": "tVSaMNmgrnPHbSY4dJyoTw=="
         }
       },
       "is_incremental": false,
@@ -7833,7 +7833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.Owin.OpenIddictServerOwinMiddlewareFactory.html",
-          "hash": "O5fPKC0E6H0Z3u+kwd9KSA=="
+          "hash": "NZbs2I8z1mvreNL4tV0sHg=="
         }
       },
       "is_incremental": false,
@@ -7881,7 +7881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Server.html",
-          "hash": "ICZyLBrRwAnHdHHTRRKaQA=="
+          "hash": "3T5HRWkGQtcI2wcHxXvpPA=="
         }
       },
       "is_incremental": false,
@@ -8409,7 +8409,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.OpenIddictValidationDispatcher.html",
-          "hash": "CWZ3KHMguFCx40aM21TbSA=="
+          "hash": "dkD0DC3rXkBXQ4wneYF96Q=="
         }
       },
       "is_incremental": false,
@@ -8697,7 +8697,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.OpenIddictValidationHandler-1.html",
-          "hash": "gqJ3rxcSJBx+ubaqjgHaKQ=="
+          "hash": "ac4SMhpagFaqZqIlGRfBBw=="
         }
       },
       "is_incremental": false,
@@ -8709,7 +8709,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.OpenIddictValidationHandlerDescriptor.Builder-1.html",
-          "hash": "uIJMGEM+xRpBn83mD5xhLw=="
+          "hash": "8mnbg6aOr0NT9qiKSfhfxQ=="
         }
       },
       "is_incremental": false,
@@ -8721,7 +8721,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.OpenIddictValidationHandlerDescriptor.html",
-          "hash": "VzNLD9TTwqpbNeALKRzB1w=="
+          "hash": "dOPoWttiNo2dzbnNGBfzfg=="
         }
       },
       "is_incremental": false,
@@ -9177,7 +9177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.OpenIddictValidationService.html",
-          "hash": "Gn8WykgUh5IgfMWnvu153A=="
+          "hash": "Z3KMyfwyWY52CDrIAPNcvA=="
         }
       },
       "is_incremental": false,
@@ -9465,7 +9465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.Owin.OpenIddictValidationOwinMiddlewareFactory.html",
-          "hash": "Uhx8ScN14KDLsRqaWQS+SQ=="
+          "hash": "bNOtMfXmwO8LMiL+FEV1Cg=="
         }
       },
       "is_incremental": false,
@@ -9537,7 +9537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OpenIddict.Validation.SystemNetHttp.OpenIddictValidationSystemNetHttpConfiguration.html",
-          "hash": "RCp3QUXsy1Rw/QJBZU6ADA=="
+          "hash": "Izr+tYgVbLYrEnQNPSF9ag=="
         }
       },
       "is_incremental": false,
@@ -9862,6 +9862,18 @@
         ".html": {
           "relative_path": "configuration/authorization-storage.html",
           "hash": "klp+k2O0tciz5DQuxVYHaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/claim-destinations.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/claim-destinations.html",
+          "hash": "4xErel33Ient0HRgIObAew=="
         }
       },
       "is_incremental": false,
@@ -10706,7 +10718,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 9,
+          "total_file_count": 10,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

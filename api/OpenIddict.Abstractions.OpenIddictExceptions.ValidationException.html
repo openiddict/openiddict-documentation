@@ -78,76 +78,13 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">System.Exception</span></div>
-    <div class="level2"><span class="xref">OpenIddictExceptions.ValidationException</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
-    <div><span class="xref">System.Runtime.InteropServices._Exception</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Exception.GetBaseException()</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.Message</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.Data</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.InnerException</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.TargetSite</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.StackTrace</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.HelpLink</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.Source</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.HResult</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.SerializeObjectState</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
+    <div class="level1"><span class="xref">OpenIddictExceptions.ValidationException</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OpenIddict.Abstractions.html">OpenIddict.Abstractions</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="OpenIddict_Abstractions_OpenIddictExceptions_ValidationException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidationException : Exception, ISerializable, _Exception</code></pre>
+    <pre><code class="lang-csharp hljs">public class ValidationException : Exception</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -218,13 +155,13 @@
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExceptions_ValidationException__ctor_" data-uid="OpenIddict.Abstractions.OpenIddictExceptions.ValidationException.#ctor*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExceptions_ValidationException__ctor_System_String_ImmutableArray_ValidationResult__System_Exception_" data-uid="OpenIddict.Abstractions.OpenIddictExceptions.ValidationException.#ctor(System.String,ImmutableArray{ValidationResult},System.Exception)">ValidationException(String, ImmutableArray&lt;ValidationResult&gt;, Exception)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExceptions_ValidationException__ctor_System_String_ImmutableArray_ValidationResult__System_Nullable_Exception__" data-uid="OpenIddict.Abstractions.OpenIddictExceptions.ValidationException.#ctor(System.String,ImmutableArray{ValidationResult},System.Nullable{Exception})">ValidationException(String, ImmutableArray&lt;ValidationResult&gt;, Nullable&lt;Exception&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="OpenIddict.Abstractions.OpenIddictExceptions.ValidationException.html">OpenIddictExceptions.ValidationException</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ValidationException(string message, ImmutableArray&lt;ValidationResult&gt; results, Exception exception)</code></pre>
+    <pre><code class="lang-csharp hljs">public ValidationException(string message, ImmutableArray&lt;ValidationResult&gt; results, Exception? exception)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -249,7 +186,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Exception</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Exception</span>&gt;</td>
         <td><span class="parametername">exception</span></td>
         <td><p>The inner exception.</p>
 </td>
@@ -284,13 +221,6 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">System.Runtime.Serialization.ISerializable</span>
-  </div>
-  <div>
-      <span class="xref">System.Runtime.InteropServices._Exception</span>
-  </div>
 </article>
           </div>
           

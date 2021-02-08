@@ -941,15 +941,15 @@ Note: this handler is not used when the degraded mode is enabled.</p>
       <section><p>Contains the logic responsible of rejecting challenge demands made from unsupported endpoints.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateClientId.html">OpenIddictServerHandlers.ValidateClientId</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests that use an invalid client_id.
+      <section><p>Contains the logic responsible of rejecting token requests that use an invalid client_id.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateClientSecret.html">OpenIddictServerHandlers.ValidateClientSecret</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests specifying an invalid client secret.
+      <section><p>Contains the logic responsible of rejecting token requests specifying an invalid client secret.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateClientType.html">OpenIddictServerHandlers.ValidateClientType</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests made by applications
+      <section><p>Contains the logic responsible of rejecting token requests made by applications
 whose client type is not compatible with the requested grant type.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
@@ -957,8 +957,8 @@ Note: this handler is not used when the degraded mode is enabled.</p>
       <section><p>Contains the logic responsible of rejecting token requests that specify an invalid code verifier.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateEndpointPermissions.html">OpenIddictServerHandlers.ValidateEndpointPermissions</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests made by
-applications that haven&apos;t been granted the device endpoint permission.
+      <section><p>Contains the logic responsible of rejecting token requests made by
+applications that haven&apos;t been granted the token endpoint permission.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateExpirationDate.html">OpenIddictServerHandlers.ValidateExpirationDate</a></h4>
@@ -969,8 +969,9 @@ Note: this handler is not used when the degraded mode is enabled.</p>
 were not initially granted by the resource owner during the authorization request.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateGrantTypePermissions.html">OpenIddictServerHandlers.ValidateGrantTypePermissions</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests made by unauthorized applications.
-Note: this handler is not used when the degraded mode is enabled or when grant type permissions are disabled.</p>
+      <section><p>Contains the logic responsible of rejecting token requests made by applications
+that haven&apos;t been granted the appropriate grant type permissions.
+Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateIdentityModelToken.html">OpenIddictServerHandlers.ValidateIdentityModelToken</a></h4>
       <section><p>Contains the logic responsible of validating tokens generated using IdentityModel.</p>
@@ -983,7 +984,7 @@ a device code or a refresh token that was issued for a different client applicat
       <section><p>Contains the logic responsible of rejecting authentication demands for which no valid principal was resolved.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateProofKeyForCodeExchangeRequirement.html">OpenIddictServerHandlers.ValidateProofKeyForCodeExchangeRequirement</a></h4>
-      <section><p>Contains the logic responsible of rejecting authorization requests made by
+      <section><p>Contains the logic responsible of rejecting token requests made by
 applications for which proof key for code exchange (PKCE) was enforced.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
@@ -999,7 +1000,7 @@ Note: this handler is not used when the degraded mode is enabled.</p>
 Note: this handler is not used when the degraded mode is enabled or when grant type permissions are disabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlers.ValidateScopePermissions.html">OpenIddictServerHandlers.ValidateScopePermissions</a></h4>
-      <section><p>Contains the logic responsible of rejecting device requests made by applications
+      <section><p>Contains the logic responsible of rejecting token requests made by applications
 that haven&apos;t been granted the appropriate grant type permission.
 Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
