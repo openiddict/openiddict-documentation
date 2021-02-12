@@ -196,7 +196,7 @@ Implementing a custom authorization controller is required to allow OpenIddict t
 Here&#39;s an example for the client credentials grant:</p>
 <pre><code class="lang-csharp">public class AuthorizationController : Controller
 {
-    private readonly IOpenIddictApplicationManager_applicationManager;
+    private readonly IOpenIddictApplicationManager _applicationManager;
 
     public AuthorizationController(IOpenIddictApplicationManager applicationManager)
         =&gt; _applicationManager = applicationManager;

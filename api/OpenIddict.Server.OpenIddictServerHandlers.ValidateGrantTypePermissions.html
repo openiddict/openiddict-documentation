@@ -72,9 +72,8 @@
   
   <h1 id="OpenIddict_Server_OpenIddictServerHandlers_ValidateGrantTypePermissions" data-uid="OpenIddict.Server.OpenIddictServerHandlers.ValidateGrantTypePermissions" class="text-break">Class OpenIddictServerHandlers.ValidateGrantTypePermissions
   </h1>
-  <div class="markdown level0 summary"><p>Contains the logic responsible of rejecting token requests made by applications
-that haven&apos;t been granted the appropriate grant type permissions.
-Note: this handler is not used when the degraded mode is enabled.</p>
+  <div class="markdown level0 summary"><p>Contains the logic responsible of rejecting authorization requests made by unauthorized applications.
+Note: this handler is not used when the degraded mode is enabled or when grant type permissions are disabled.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,9 +83,9 @@ Note: this handler is not used when the degraded mode is enabled.</p>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateAuthorizationRequestContext</span>&gt;</div>
     <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateTokenRequestContext</span>&gt;</div>
     <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateDeviceRequestContext</span>&gt;</div>
-    <div><a class="xref" href="OpenIddict.Server.IOpenIddictServerHandler-1.html">IOpenIddictServerHandler</a>&lt;<span class="xref">ValidateAuthorizationRequestContext</span>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -116,7 +115,7 @@ Note: this handler is not used when the degraded mode is enabled.</p>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="OpenIddict_Server_OpenIddictServerHandlers_ValidateGrantTypePermissions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ValidateGrantTypePermissions : IOpenIddictServerHandler&lt;ValidateTokenRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateDeviceRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateAuthorizationRequestContext&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class ValidateGrantTypePermissions : IOpenIddictServerHandler&lt;ValidateAuthorizationRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateTokenRequestContext&gt;, IOpenIddictServerHandler&lt;ValidateDeviceRequestContext&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
