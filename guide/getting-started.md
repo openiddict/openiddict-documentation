@@ -147,7 +147,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
     ```csharp
     public class AuthorizationController : Controller
     {
-        private readonly IOpenIddictApplicationManager_applicationManager;
+        private readonly IOpenIddictApplicationManager _applicationManager;
 
         public AuthorizationController(IOpenIddictApplicationManager applicationManager)
             => _applicationManager = applicationManager;
