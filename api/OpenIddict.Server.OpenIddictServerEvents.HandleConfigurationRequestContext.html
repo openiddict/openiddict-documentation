@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class OpenIddictServerEvents.HandleConfigurationRequestContext
    ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,55 +79,13 @@ to allow the user code to decide how the request should be handled.</p>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html">OpenIddictServerEvents.BaseContext</a></div>
-    <div class="level2"><a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext.html">OpenIddictServerEvents.BaseRequestContext</a></div>
-    <div class="level3"><a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html">OpenIddictServerEvents.BaseValidatingContext</a></div>
+    <div class="level1"><span class="xref">OpenIddict.Server.OpenIddictServerEvents.BaseContext</span></div>
+    <div class="level2"><span class="xref">OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext</span></div>
+    <div class="level3"><span class="xref">OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext</span></div>
     <div class="level4"><span class="xref">OpenIddictServerEvents.HandleConfigurationRequestContext</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseValidatingContext_IsRejected">OpenIddictServerEvents.BaseValidatingContext.IsRejected</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseValidatingContext_Error">OpenIddictServerEvents.BaseValidatingContext.Error</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseValidatingContext_ErrorDescription">OpenIddictServerEvents.BaseValidatingContext.ErrorDescription</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseValidatingContext_ErrorUri">OpenIddictServerEvents.BaseValidatingContext.ErrorUri</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseValidatingContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseValidatingContext_Reject_System_String_System_String_System_String_">OpenIddictServerEvents.BaseValidatingContext.Reject(String, String, String)</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseRequestContext_IsRequestHandled">OpenIddictServerEvents.BaseRequestContext.IsRequestHandled</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseRequestContext_IsRequestSkipped">OpenIddictServerEvents.BaseRequestContext.IsRequestSkipped</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseRequestContext_HandleRequest">OpenIddictServerEvents.BaseRequestContext.HandleRequest()</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseRequestContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseRequestContext_SkipRequest">OpenIddictServerEvents.BaseRequestContext.SkipRequest()</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseContext_Transaction">OpenIddictServerEvents.BaseContext.Transaction</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseContext_Issuer">OpenIddictServerEvents.BaseContext.Issuer</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseContext_EndpointType">OpenIddictServerEvents.BaseContext.EndpointType</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseContext_Logger">OpenIddictServerEvents.BaseContext.Logger</a>
-    </div>
-    <div>
-      <a class="xref" href="OpenIddict.Server.OpenIddictServerEvents.BaseContext.html#OpenIddict_Server_OpenIddictServerEvents_BaseContext_Options">OpenIddictServerEvents.BaseContext.Options</a>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -197,7 +155,7 @@ to allow the user code to decide how the request should be handled.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? AuthorizationEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri AuthorizationEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,7 +167,7 @@ to allow the user code to decide how the request should be handled.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -276,7 +234,7 @@ supported by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? CryptographyEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri CryptographyEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -288,7 +246,7 @@ supported by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -302,7 +260,7 @@ supported by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? DeviceEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri DeviceEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -314,7 +272,7 @@ supported by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -382,7 +340,7 @@ authorization server for signing the identity tokens.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? IntrospectionEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri IntrospectionEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -394,7 +352,7 @@ authorization server for signing the identity tokens.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -435,7 +393,7 @@ the introspection endpoint provided by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? LogoutEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri LogoutEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -447,7 +405,7 @@ the introspection endpoint provided by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -473,7 +431,7 @@ the introspection endpoint provided by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">OpenIddictParameter</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">OpenIddictParameter</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -567,7 +525,7 @@ supported by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? RevocationEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri RevocationEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -579,7 +537,7 @@ supported by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -674,7 +632,7 @@ supported by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? TokenEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri TokenEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -686,7 +644,7 @@ supported by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -727,7 +685,7 @@ the token endpoint provided by the authorization server.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri? UserinfoEndpoint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Uri UserinfoEndpoint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -739,7 +697,7 @@ the token endpoint provided by the authorization server.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Uri</span>&gt;</td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
