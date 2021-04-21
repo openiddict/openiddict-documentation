@@ -107,8 +107,6 @@ by their `System.Text.Json` equivalent: `JsonSerializer.Serialize()`/`JsonSerial
 
 If your application uses Entity Framework Core or Entity Framework 6, add a migration to react to the schema changes listed below and apply it.
 
-## List of schema changes (for applications using custom stores)
-
 ### Updated properties
 
 | Table                    | Column name    | Observations                                                                |
@@ -124,6 +122,26 @@ If your application uses Entity Framework Core or Entity Framework 6, add a migr
 |--------------------------|----------------|----------|----------|
 | OpenIddictAuthorizations | CreationDate   | DateTime | Yes      |
 | OpenIddictTokens         | RedemptionDate | DateTime | Yes      |
+
+## If necessary, enable hybrid flow support in the server options
+
+In 2.0, the hybrid flow was automatically enabled if both the authorization code and implicit flows were enabled. In 3.0, this is no longer true
+and the hybrid flow MUST be explicitly opted in. If you use the hybrid flow, make sure your application calls the `options.AllowHybridFlow()` method:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.AllowHybridFlow();
+    });
+```
+
+## Update your applications to grant them the appropriate response type permissions
+
+New response type permissions - enforced by default - [have been introduced in 3.0](/configuration/application-permissions.html#response-type-permissions).
+
+If you have many applications to migrate, you can use [this script](https://github.com/openiddict/openiddict-core/issues/1138#issuecomment-713681158)
+to infer appropriate response type permissions using the already granted grant types.
 
 # Migrate to OpenIddict 1.0/2.0
 
