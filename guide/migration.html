@@ -179,7 +179,6 @@ consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.
 by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serialize()</code>/<code>JsonSerializer.Deserialize()</code>.</p>
 <h2 id="add-an-apply-migrations-if-necessary">Add an apply migrations, if necessary</h2>
 <p>If your application uses Entity Framework Core or Entity Framework 6, add a migration to react to the schema changes listed below and apply it.</p>
-<h2 id="list-of-schema-changes-for-applications-using-custom-stores">List of schema changes (for applications using custom stores)</h2>
 <h3 id="updated-properties">Updated properties</h3>
 <table>
 <thead>
@@ -237,6 +236,18 @@ by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serializ
 </tr>
 </tbody>
 </table>
+<h2 id="if-necessary-enable-hybrid-flow-support-in-the-server-options">If necessary, enable hybrid flow support in the server options</h2>
+<p>In 2.0, the hybrid flow was automatically enabled if both the authorization code and implicit flows were enabled. In 3.0, this is no longer true
+and the hybrid flow MUST be explicitly opted in. If you use the hybrid flow, make sure your application calls the <code>options.AllowHybridFlow()</code> method:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.AllowHybridFlow();
+    });
+</code></pre><h2 id="update-your-applications-to-grant-them-the-appropriate-response-type-permissions">Update your applications to grant them the appropriate response type permissions</h2>
+<p>New response type permissions - enforced by default - <a href="/configuration/application-permissions.html#response-type-permissions">have been introduced in 3.0</a>.</p>
+<p>If you have many applications to migrate, you can use <a href="https://github.com/openiddict/openiddict-core/issues/1138#issuecomment-713681158">this script</a>
+to infer appropriate response type permissions using the already granted grant types.</p>
 <h1 id="migrate-to-openiddict-1020">Migrate to OpenIddict 1.0/2.0</h1>
 <h2 id="whats-new-1">What&#39;s new?</h2>
 <p>The announcement listing the changes introduced in this milestone can be found <a href="https://kevinchalet.com/2018/11/01/openiddict-1-0-and-2-0-general-availability/">here</a>.</p>
@@ -569,7 +580,7 @@ ticket.SetResources(&quot;tracking_api&quot;, &quot;marketing_api&quot;);
 <p>Starting with rc2, OpenIddict includes an optional feature codenamed &quot;app permissions&quot; that allows
 controlling and limiting the OAuth2/OpenID Connect features a client application is able to use.</p>
 <p>To learn more about this feature, read the <a href="../configuration/application-permissions.html">Application permissions documentation</a>.</p>
-<h2 id="list-of-schema-changes-for-applications-using-custom-stores-1">List of schema changes (for applications using custom stores)</h2>
+<h2 id="list-of-schema-changes-for-applications-using-custom-stores">List of schema changes (for applications using custom stores)</h2>
 <h3 id="renamed-properties">Renamed properties</h3>
 <table>
 <thead>
