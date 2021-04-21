@@ -1,5 +1,129 @@
-> [!NOTE]
-> This documentation is a work-in-progress. To contribute, please visit https://github.com/openiddict/openiddict-documentation.
+# Migrate to OpenIddict 3.0
+
+## What's new?
+
+The announcement listing the changes introduced in this milestone can be found [here](https://kevinchalet.com/2020/12/23/openiddict-3-0-general-availability/).
+
+> [!IMPORTANT]
+> **Migrating to OpenIddict 3.0 requires making changes to your database**: existing properties have been reworked and new ones have been added to support the new features.
+
+## Update your packages references
+
+For that, update your `.csproj` file to reference the `OpenIddict.AspNetCore` 3.x metapackage:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="OpenIddict.AspNetCore" Version="3.0.3" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="3.0.3" />
+</ItemGroup>
+```
+
+## Ensure your application doesn't reference legacy/unsupported packages
+
+As part of the AspNet.Security.OpenIdConnect.Server/OpenIddict merge, the ASOS packages and 2 OpenIddict packages have been marked as legacy
+and are no longer supported. Make sure your application (or intermediate libraries) don't reference any of these packages:
+
+| Package name                             |
+|------------------------------------------|
+| AspNet.Security.OpenIdConnect.Extensions |
+| AspNet.Security.OpenIdConnect.Primitives |
+| AspNet.Security.OpenIdConnect.Server     |
+|                                          |
+| Owin.Security.OpenIdConnect.Extensions   |
+| Owin.Security.OpenIdConnect.Server       |
+|                                          |
+| AspNet.Security.OAuth.Introspection      |
+| AspNet.Security.OAuth.Validation         |
+|                                          |
+| Owin.Security.OAuth.Introspection        |
+| Owin.Security.OAuth.Validation           |
+|                                          |
+| OpenIddict.Models                        |
+| OpenIddict.Mvc                           |
+
+## Update the references to the Entity Framework Core/Entity Framework 6/MongoDB models
+
+If your application references the `OpenIddictApplication`, `OpenIddictAuthorization`, `OpenIddictScope` or `OpenIddictToken` models, update these reference to use
+their new names: `OpenIddict[provider name]Application`, `OpenIddict[provider name]Authorization`, `OpenIddict[provider name]Scope` and `OpenIddict[provider name]Token`
+(e.g when using MongoDB: `OpenIddictMongoDbApplication`, `OpenIddictMongoDbAuthorization`, `OpenIddictMongoDbScope` and `OpenIddictMongoDbToken`).
+
+## Enable ASP.NET Core integration in the server and validation options
+
+With the base server and validation stacks being decoupled from ASP.NET Core, you now have to explicitly register the ASP.NET Core host in the server/validation options:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.UseAspNetCore();
+    })
+    .AddValidation(options =>
+    {
+        options.UseAspNetCore();
+    });
+```
+
+## Enable the authorization, logout and token endpoints pass-through mode
+
+Unless you're using OpenIddict's events model to handle authorization, logout and token requests, you'll need to enable
+the pass-through mode for these endpoints, so that requests can reach your authorization controller as in the previous versions:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.UseAspNetCore()
+              .EnableAuthorizationEndpointPassthrough()
+              .EnableLogoutEndpointPassthrough()
+              .EnableTokenEndpointPassthrough();
+    });
+```
+
+## Enable ASP.NET Core Data Protection support to ensure existing tokens can still be validated
+
+For that, call `options.UseDataProtection()` in both the server and validation options:
+
+```csharp
+services.AddOpenIddict()
+    .AddServer(options =>
+    {
+        options.UseDataProtection();
+    })
+    .AddValidation(options =>
+    {
+        options.UseDataProtection();
+    });
+```
+
+## Replace JSON.NET by `System.Text.Json`
+
+If you use JSON.NET to serialize or deserialize `OpenIdConnectMessage`, `OpenIdConnectRequest` or `OpenIdConnectResponse` instances,
+consider moving to `System.Text.Json` when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET `JsonConverter` for these types.
+
+In most cases, this should be as simple as replacing `JsonConvert.SerializeObject()`/`JsonConvert.DeserializeObject()`
+by their `System.Text.Json` equivalent: `JsonSerializer.Serialize()`/`JsonSerializer.Deserialize()`.
+
+## Add an apply migrations, if necessary
+
+If your application uses Entity Framework Core or Entity Framework 6, add a migration to react to the schema changes listed below and apply it.
+
+## List of schema changes (for applications using custom stores)
+
+### Updated properties
+
+| Table                    | Column name    | Observations                                                                |
+|--------------------------|----------------|-----------------------------------------------------------------------------|
+| OpenIddictAuthorizations | Subject        | The column is now nullable to support the device authorization flow.        |
+| OpenIddictTokens         | CreationDate   | For broader database support, this column is a now a `DateTime` instance.   |
+| OpenIddictTokens         | ExpirationDate | For broader database support, this column is a now a `DateTime` instance.   |
+| OpenIddictTokens         | Subject        | The column is now nullable to support the device authorization flow.        |
+
+### Added properties
+
+| Table                    | Column name    | Type     | Nullable |
+|--------------------------|----------------|----------|----------|
+| OpenIddictAuthorizations | CreationDate   | DateTime | Yes      |
+| OpenIddictTokens         | RedemptionDate | DateTime | Yes      |
 
 # Migrate to OpenIddict 1.0/2.0
 
@@ -288,7 +412,7 @@ services.AddOpenIddict()
 The full list of changes can be found [here](https://github.com/openiddict/openiddict-core/milestone/8?closed=1). It includes **bug fixes** (including a bug fix in the refresh token handling)
 and new features like **application permissions**, that allow limiting the OpenID Connect features (endpoints and flows) an application is able to use.
 
-**Migrating to OpenIddict rc2 (`1.0.0-rc2-final` and `2.0.0-rc2-final`) requires making changes in your database**: existing properties have been reworked
+**Migrating to OpenIddict rc2 (`1.0.0-rc2-final` and `2.0.0-rc2-final`) requires making changes to your database**: existing properties have been reworked
 (e.g [to work around a MySQL limitation](https://github.com/openiddict/openiddict-core/issues/497)) and new ones have been added to support the new features.
 This procedure is quite easy and only requires a few minutes.
 
@@ -449,7 +573,7 @@ controlling and limiting the OAuth2/OpenID Connect features a client application
 
 To learn more about this feature, read the [Application permissions documentation](../configuration/application-permissions.md).
 
-## List of changes (for applications using custom stores)
+## List of schema changes (for applications using custom stores)
 
 ### Renamed properties
 
