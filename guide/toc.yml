@@ -8,3 +8,10 @@
   items:
     - name: Migration from 2.0 to 3.0
       href: migration/20-to-30.md
+
+- name: External resources
+  items:
+    - name: OAuth 2.0 specification
+      href: https://tools.ietf.org/html/rfc6749
+    - name: OpenID Connect specification
+      href: https://openid.net/specs/openid-connect-core-1_0.html
