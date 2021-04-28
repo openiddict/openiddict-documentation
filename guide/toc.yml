@@ -4,5 +4,7 @@
 - name: Getting started
   href: getting-started.md
 
-- name: Migration guide
-  href: migration.md
+- name: Migration guides
+  items:
+    - name: Migration from 2.0 to 3.0
+      href: migration/20-to-30.md
