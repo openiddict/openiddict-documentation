@@ -11380,15 +11380,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "guide/toc.yml",
       "output": {
         ".html": {
           "relative_path": "guide/toc.html",
-          "hash": "210OrPCFCWtBnC5pCk0qdA=="
+          "hash": "rJbXLozWbxxqJAUn5RdF3Q=="
         }
       },
       "is_incremental": false,
