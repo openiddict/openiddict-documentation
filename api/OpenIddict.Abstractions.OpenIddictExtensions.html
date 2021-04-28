@@ -296,7 +296,7 @@ and <a class="xref" href="OpenIddict.Abstractions.OpenIddictResponse.html">OpenI
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_ClaimsIdentity_System_Func_Claim_System_Boolean__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone(ClaimsIdentity,System.Func{Claim,System.Boolean})">Clone(ClaimsIdentity, Func&lt;Claim, Boolean&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_ClaimsIdentity_Func_Claim_System_Boolean__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone(ClaimsIdentity,Func{Claim,System.Boolean})">Clone(ClaimsIdentity, Func&lt;Claim, Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Clones an identity by filtering its claims and the claims of its actor, recursively.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -321,7 +321,7 @@ and <a class="xref" href="OpenIddict.Abstractions.OpenIddictResponse.html">OpenI
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;<span class="xref">Claim</span>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">Claim</span>, <span class="xref">System.Boolean</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
         <td><p>The delegate filtering the claims: return <code>true</code>
 to accept the claim, <code>false</code> to remove it.</p>
@@ -347,7 +347,7 @@ to accept the claim, <code>false</code> to remove it.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_ClaimsPrincipal_System_Func_Claim_System_Boolean__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone(ClaimsPrincipal,System.Func{Claim,System.Boolean})">Clone(ClaimsPrincipal, Func&lt;Claim, Boolean&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_Clone_ClaimsPrincipal_Func_Claim_System_Boolean__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.Clone(ClaimsPrincipal,Func{Claim,System.Boolean})">Clone(ClaimsPrincipal, Func&lt;Claim, Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Clones a principal by filtering its identities.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -372,7 +372,7 @@ to accept the claim, <code>false</code> to remove it.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;<span class="xref">Claim</span>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">Claim</span>, <span class="xref">System.Boolean</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
         <td><p>The delegate filtering the claims: return <code>true</code>
 to accept the claim, <code>false</code> to remove it.</p>
@@ -434,7 +434,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The access token lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -568,7 +568,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The authorization code lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -862,7 +862,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTimeOffset</span>&gt;</td>
         <td><p>The creation date or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -997,7 +997,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The device code lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -1042,7 +1042,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTimeOffset</span>&gt;</td>
         <td><p>The expiration date or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -1087,7 +1087,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The identity token lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -1221,7 +1221,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The refresh token lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -1534,7 +1534,7 @@ to accept the claim, <code>false</code> to remove it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><p>The user code lifetime or <code>null</code> if the claim cannot be found.</p>
 </td>
       </tr>
@@ -2809,7 +2809,7 @@ See <a href="http://tools.ietf.org/html/rfc6749#section-6">http://tools.ietf.org
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetAccessTokenLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAccessTokenLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetAccessTokenLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAccessTokenLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetAccessTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetAccessTokenLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAccessTokenLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetAccessTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the access token lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2834,7 +2834,7 @@ See <a href="http://tools.ietf.org/html/rfc6749#section-6">http://tools.ietf.org
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The access token lifetime to store.</p>
 </td>
@@ -3016,7 +3016,7 @@ Note: this method automatically excludes duplicate audiences.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetAuthorizationCodeLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAuthorizationCodeLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetAuthorizationCodeLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAuthorizationCodeLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetAuthorizationCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetAuthorizationCodeLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetAuthorizationCodeLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetAuthorizationCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the authorization code lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3041,7 +3041,7 @@ Note: this method automatically excludes duplicate audiences.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The authorization code lifetime to store.</p>
 </td>
@@ -3346,7 +3346,7 @@ Note: this method automatically excludes duplicate audiences.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetCreationDate_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetCreationDate*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetCreationDate_ClaimsPrincipal_System_Nullable_System_DateTimeOffset__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetCreationDate(ClaimsPrincipal,System.Nullable{System.DateTimeOffset})">SetCreationDate(ClaimsPrincipal, Nullable&lt;DateTimeOffset&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetCreationDate_ClaimsPrincipal_System_Nullable_DateTimeOffset__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetCreationDate(ClaimsPrincipal,System.Nullable{DateTimeOffset})">SetCreationDate(ClaimsPrincipal, Nullable&lt;DateTimeOffset&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the creation date in the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3371,7 +3371,7 @@ Note: this method automatically excludes duplicate audiences.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTimeOffset</span>&gt;</td>
         <td><span class="parametername">date</span></td>
         <td><p>The creation date</p>
 </td>
@@ -3598,7 +3598,7 @@ Note: this method automatically excludes duplicate audiences.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetDeviceCodeLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetDeviceCodeLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetDeviceCodeLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetDeviceCodeLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetDeviceCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetDeviceCodeLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetDeviceCodeLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetDeviceCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the device code lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3623,7 +3623,7 @@ Note: this method automatically excludes duplicate audiences.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The device code lifetime to store.</p>
 </td>
@@ -3649,7 +3649,7 @@ Note: this method automatically excludes duplicate audiences.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetExpirationDate_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetExpirationDate*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetExpirationDate_ClaimsPrincipal_System_Nullable_System_DateTimeOffset__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetExpirationDate(ClaimsPrincipal,System.Nullable{System.DateTimeOffset})">SetExpirationDate(ClaimsPrincipal, Nullable&lt;DateTimeOffset&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetExpirationDate_ClaimsPrincipal_System_Nullable_DateTimeOffset__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetExpirationDate(ClaimsPrincipal,System.Nullable{DateTimeOffset})">SetExpirationDate(ClaimsPrincipal, Nullable&lt;DateTimeOffset&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the expiration date in the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3674,7 +3674,7 @@ Note: this method automatically excludes duplicate audiences.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTimeOffset</span>&gt;</td>
         <td><span class="parametername">date</span></td>
         <td><p>The expiration date</p>
 </td>
@@ -3700,7 +3700,7 @@ Note: this method automatically excludes duplicate audiences.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetIdentityTokenLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetIdentityTokenLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetIdentityTokenLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetIdentityTokenLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetIdentityTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetIdentityTokenLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetIdentityTokenLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetIdentityTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the identity token lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3725,7 +3725,7 @@ Note: this method automatically excludes duplicate audiences.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The identity token lifetime to store.</p>
 </td>
@@ -3907,7 +3907,7 @@ Note: this method automatically excludes duplicate presenters.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetRefreshTokenLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetRefreshTokenLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetRefreshTokenLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetRefreshTokenLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetRefreshTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetRefreshTokenLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetRefreshTokenLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetRefreshTokenLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the refresh token lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3932,7 +3932,7 @@ Note: this method automatically excludes duplicate presenters.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The refresh token lifetime to store.</p>
 </td>
@@ -4372,7 +4372,7 @@ Note: this method automatically excludes duplicate scopes.</p>
   
   
   <a id="OpenIddict_Abstractions_OpenIddictExtensions_SetUserCodeLifetime_" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetUserCodeLifetime*"></a>
-  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetUserCodeLifetime_ClaimsPrincipal_System_Nullable_System_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetUserCodeLifetime(ClaimsPrincipal,System.Nullable{System.TimeSpan})">SetUserCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
+  <h4 id="OpenIddict_Abstractions_OpenIddictExtensions_SetUserCodeLifetime_ClaimsPrincipal_System_Nullable_TimeSpan__" data-uid="OpenIddict.Abstractions.OpenIddictExtensions.SetUserCodeLifetime(ClaimsPrincipal,System.Nullable{TimeSpan})">SetUserCodeLifetime(ClaimsPrincipal, Nullable&lt;TimeSpan&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the user code lifetime associated with the claims principal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -4397,7 +4397,7 @@ Note: this method automatically excludes duplicate scopes.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">TimeSpan</span>&gt;</td>
         <td><span class="parametername">lifetime</span></td>
         <td><p>The user code lifetime to store.</p>
 </td>

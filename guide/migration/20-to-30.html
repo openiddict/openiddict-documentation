@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Migrate to OpenIddict 3.0 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Migrate to OpenIddict 3.0 ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>    </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="migrate-to-openiddict-30">Migrate to OpenIddict 3.0</h1>
+
+<h2 id="whats-new">What&#39;s new?</h2>
+<p>The announcement listing the changes introduced in this milestone can be found <a href="https://kevinchalet.com/2020/12/23/openiddict-3-0-general-availability/">here</a>.</p>
+<div class="IMPORTANT"><h5>Important</h5><p><strong>Migrating to OpenIddict 3.0 requires making changes to your database</strong>: existing properties have been reworked and new ones have been added to support the new features.</p>
+</div>
+<h2 id="update-your-packages-references">Update your packages references</h2>
+<p>For that, update your <code>.csproj</code> file to reference the <code>OpenIddict.AspNetCore</code> 3.x metapackage:</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;3.0.3&quot; /&gt;
+  &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;3.0.3&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><h2 id="ensure-your-application-doesnt-reference-legacyunsupported-packages">Ensure your application doesn&#39;t reference legacy/unsupported packages</h2>
+<p>As part of the AspNet.Security.OpenIdConnect.Server/OpenIddict merge, the ASOS packages and 2 OpenIddict packages have been marked as legacy
+and are no longer supported. Make sure your application (or intermediate libraries) don&#39;t reference any of these packages:</p>
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AspNet.Security.OpenIdConnect.Extensions</td>
+</tr>
+<tr>
+<td>AspNet.Security.OpenIdConnect.Primitives</td>
+</tr>
+<tr>
+<td>AspNet.Security.OpenIdConnect.Server</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>Owin.Security.OpenIdConnect.Extensions</td>
+</tr>
+<tr>
+<td>Owin.Security.OpenIdConnect.Server</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>AspNet.Security.OAuth.Introspection</td>
+</tr>
+<tr>
+<td>AspNet.Security.OAuth.Validation</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>Owin.Security.OAuth.Introspection</td>
+</tr>
+<tr>
+<td>Owin.Security.OAuth.Validation</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>OpenIddict.Models</td>
+</tr>
+<tr>
+<td>OpenIddict.Mvc</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update-the-references-to-the-entity-framework-coreentity-framework-6mongodb-models">Update the references to the Entity Framework Core/Entity Framework 6/MongoDB models</h2>
+<p>If your application references the <code>OpenIddictApplication</code>, <code>OpenIddictAuthorization</code>, <code>OpenIddictScope</code> or <code>OpenIddictToken</code> models, update these reference to use
+their new names: <code>OpenIddict[provider name]Application</code>, <code>OpenIddict[provider name]Authorization</code>, <code>OpenIddict[provider name]Scope</code> and <code>OpenIddict[provider name]Token</code>
+(e.g when using MongoDB: <code>OpenIddictMongoDbApplication</code>, <code>OpenIddictMongoDbAuthorization</code>, <code>OpenIddictMongoDbScope</code> and <code>OpenIddictMongoDbToken</code>).</p>
+<h2 id="enable-aspnet-core-integration-in-the-server-and-validation-options">Enable ASP.NET Core integration in the server and validation options</h2>
+<p>With the base server and validation stacks being decoupled from ASP.NET Core, you now have to explicitly register the ASP.NET Core host in the server/validation options:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseAspNetCore();
+    })
+    .AddValidation(options =&gt;
+    {
+        options.UseAspNetCore();
+    });
+</code></pre><h2 id="enable-the-authorization-logout-and-token-endpoints-pass-through-mode">Enable the authorization, logout and token endpoints pass-through mode</h2>
+<p>Unless you&#39;re using OpenIddict&#39;s events model to handle authorization, logout and token requests, you&#39;ll need to enable
+the pass-through mode for these endpoints, so that requests can reach your authorization controller as in the previous versions:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseAspNetCore()
+              .EnableAuthorizationEndpointPassthrough()
+              .EnableLogoutEndpointPassthrough()
+              .EnableTokenEndpointPassthrough();
+    });
+</code></pre><h2 id="enable-aspnet-core-data-protection-support-to-ensure-existing-tokens-can-still-be-validated">Enable ASP.NET Core Data Protection support to ensure existing tokens can still be validated</h2>
+<p>For that, call <code>options.UseDataProtection()</code> in both the server and validation options:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseDataProtection();
+    })
+    .AddValidation(options =&gt;
+    {
+        options.UseDataProtection();
+    });
+</code></pre><h2 id="replace-jsonnet-by-systemtextjson">Replace JSON.NET by <code>System.Text.Json</code></h2>
+<p>If you use JSON.NET to serialize or deserialize <code>OpenIdConnectMessage</code>, <code>OpenIdConnectRequest</code> or <code>OpenIdConnectResponse</code> instances,
+consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for these types.</p>
+<p>In most cases, this should be as simple as replacing <code>JsonConvert.SerializeObject()</code>/<code>JsonConvert.DeserializeObject()</code>
+by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serialize()</code>/<code>JsonSerializer.Deserialize()</code>.</p>
+<h2 id="update-your-application-to-work-with-the-new-scope-format">Update your application to work with the new <code>scope</code> format</h2>
+<p>In OpenIddict 3.0, the format of the <code>scope</code> claim used in JWT tokens has changed from a JSON array to a single space-separated claim to match
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-access-token-jwt-12">the JWT access token specification</a>. To ensure your authorization policies
+still work after migrating, consider using the <code>principal.HasScope()</code> extension to determine whether a scope has been granted:</p>
+<pre><code class="lang-csharp">services.AddAuthorization(options =&gt;
+{
+    options.AddPolicy(&quot;MyPolicy&quot;, builder =&gt;
+    {
+        builder.RequireAuthenticatedUser();
+        builder.RequireAssertion(context =&gt; context.User.HasScope(&quot;api1&quot;));
+    });
+});
+</code></pre><p>Alternatively, you can use the check the presence of the private OpenIddict <code>oi_scp</code> claims that use the same format as in 2.x (i.e one claim per scope value):</p>
+<pre><code class="lang-csharp">services.AddAuthorization(options =&gt;
+{
+    options.AddPolicy(&quot;MyPolicy&quot;, builder =&gt;
+    {
+        builder.RequireAuthenticatedUser();
+        builder.RequireClaim(Claims.Private.Scope, &quot;api1&quot;);
+    });
+});
+</code></pre><h2 id="add-an-apply-migrations-if-necessary">Add an apply migrations, if necessary</h2>
+<p>If your application uses Entity Framework Core or Entity Framework 6, add a migration to react to the schema changes listed below and apply it.</p>
+<h3 id="updated-properties">Updated properties</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Column name</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictAuthorizations</td>
+<td>Subject</td>
+<td>The column is now nullable to support the device authorization flow.</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>CreationDate</td>
+<td>For broader database support, this column is a now a <code>DateTime</code> instance.</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>ExpirationDate</td>
+<td>For broader database support, this column is a now a <code>DateTime</code> instance.</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>Subject</td>
+<td>The column is now nullable to support the device authorization flow.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="added-properties">Added properties</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Column name</th>
+<th>Type</th>
+<th>Nullable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictAuthorizations</td>
+<td>CreationDate</td>
+<td>DateTime</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OpenIddictTokens</td>
+<td>RedemptionDate</td>
+<td>DateTime</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-necessary-enable-hybrid-flow-support-in-the-server-options">If necessary, enable hybrid flow support in the server options</h2>
+<p>In 2.0, the hybrid flow was automatically enabled if both the authorization code and implicit flows were enabled. In 3.0, this is no longer true
+and the hybrid flow MUST be explicitly opted in. If you use the hybrid flow, make sure your application calls the <code>options.AllowHybridFlow()</code> method:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.AllowHybridFlow();
+    });
+</code></pre><h2 id="update-your-applications-to-grant-them-the-appropriate-response-type-permissions">Update your applications to grant them the appropriate response type permissions</h2>
+<p>New response type permissions - enforced by default - <a href="/configuration/application-permissions.html#response-type-permissions">have been introduced in 3.0</a>.</p>
+<p>If you have many applications to migrate, you can use <a href="https://github.com/openiddict/openiddict-core/issues/1138#issuecomment-713681158">this script</a>
+to infer appropriate response type permissions using the already granted grant types.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/guide/migration/20-to-30.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
