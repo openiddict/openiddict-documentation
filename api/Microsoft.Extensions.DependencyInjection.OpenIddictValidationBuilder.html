@@ -83,13 +83,22 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
     </div>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
     </div>
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
@@ -129,34 +138,6 @@
         <td><span class="parametername">services</span></td>
         <td><p>The services collection.</p>
 </td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Services_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Services*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Services" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Services">Services</h4>
-  <div class="markdown level1 summary"><p>Gets the services collection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IServiceCollection Services { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IServiceCollection</span></td>
-        <td></td>
       </tr>
     </tbody>
   </table>
@@ -722,7 +703,7 @@ to store the private key of the certificate.</p>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_AddEventHandler_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.AddEventHandler*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_AddEventHandler__1_Action_OpenIddictValidationHandlerDescriptor_Builder___0___" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.AddEventHandler``1(Action{OpenIddictValidationHandlerDescriptor.Builder{``0}})">AddEventHandler&lt;TContext&gt;(Action&lt;OpenIddictValidationHandlerDescriptor.Builder&lt;TContext&gt;&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_AddEventHandler__1_System_Action_OpenIddictValidationHandlerDescriptor_Builder___0___" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.AddEventHandler``1(System.Action{OpenIddictValidationHandlerDescriptor.Builder{``0}})">AddEventHandler&lt;TContext&gt;(Action&lt;OpenIddictValidationHandlerDescriptor.Builder&lt;TContext&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers an event handler using the specified configuration delegate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -742,7 +723,7 @@ to store the private key of the certificate.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">OpenIddictValidationHandlerDescriptor.Builder</span>&lt;TContext&gt;&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">OpenIddictValidationHandlerDescriptor.Builder</span>&lt;TContext&gt;&gt;</td>
         <td><span class="parametername">configuration</span></td>
         <td><p>The configuration delegate.</p>
 </td>
@@ -784,7 +765,7 @@ to store the private key of the certificate.</p>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Configure_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Configure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Configure_Action_OpenIddictValidationOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Configure(Action{OpenIddictValidationOptions})">Configure(Action&lt;OpenIddictValidationOptions&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Configure_System_Action_OpenIddictValidationOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Configure(System.Action{OpenIddictValidationOptions})">Configure(Action&lt;OpenIddictValidationOptions&gt;)</h4>
   <div class="markdown level1 summary"><p>Amends the default OpenIddict validation configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -803,7 +784,7 @@ to store the private key of the certificate.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">OpenIddictValidationOptions</span>&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">OpenIddictValidationOptions</span>&gt;</td>
         <td><span class="parametername">configuration</span></td>
         <td><p>The delegate used to configure the OpenIddict options.</p>
 </td>
@@ -826,7 +807,7 @@ to store the private key of the certificate.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Configure_Action_OpenIddictValidationOptions___remarks">Remarks</h5>
+  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Configure_System_Action_OpenIddictValidationOptions___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This extension can be safely called multiple times.</p>
 </div>
   
@@ -889,77 +870,6 @@ when the OpenIddict server is configured to use reference tokens.</p>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Equals_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Equals*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_Equals_System_Object_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
-  
-  
-  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_GetHashCode_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.GetHashCode*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_GetHashCode" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Object.GetHashCode()</span></div>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_RemoveEventHandler_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.RemoveEventHandler*"></a>
@@ -1192,7 +1102,7 @@ OAuth 2.0/OpenID Connect configuration document when using provider discovery.</
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_SetIssuer_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.SetIssuer*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_SetIssuer_Uri_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.SetIssuer(Uri)">SetIssuer(Uri)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_SetIssuer_System_Uri_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.SetIssuer(System.Uri)">SetIssuer(Uri)</h4>
   <div class="markdown level1 summary"><p>Sets the issuer address, which is used to determine the actual location of the
 OAuth 2.0/OpenID Connect configuration document when using provider discovery.</p>
 </div>
@@ -1212,7 +1122,7 @@ OAuth 2.0/OpenID Connect configuration document when using provider discovery.</
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">address</span></td>
         <td><p>The issuer address.</p>
 </td>
@@ -1235,33 +1145,6 @@ OAuth 2.0/OpenID Connect configuration document when using provider discovery.</
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_ToString_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.ToString*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_ToString" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Object.ToString()</span></div>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictValidationBuilder_UseIntrospection_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictValidationBuilder.UseIntrospection*"></a>
