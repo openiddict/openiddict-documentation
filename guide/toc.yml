@@ -4,6 +4,9 @@
 - name: Getting started
   href: getting-started.md
 
+- name: Choosing the right flow
+  href: choosing-the-right-flow.md
+
 - name: Migration guides
   items:
     - name: Migration from 2.0 to 3.0

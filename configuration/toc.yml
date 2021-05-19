@@ -10,6 +10,9 @@
 - name: Claim destinations
   href: claim-destinations.md
 
+- name: Proof Key for Code Exchange
+  href: proof-key-for-code-exchange.md
+
 - name: Token formats
   href: token-formats.md
 
