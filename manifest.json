@@ -5644,12 +5644,24 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/proof-key-for-code-exchange.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/proof-key-for-code-exchange.html",
+          "hash": "ijKd83k3Oi01O5QoJk8jvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "configuration/toc.yml",
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "5NWet+DDp3x4XZo7rfZqjQ=="
+          "hash": "hEZG047NIeu+o0KUdkadEA=="
         }
       },
       "is_incremental": false,
@@ -7097,6 +7109,73 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guide/choosing-the-right-flow.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/choosing-the-right-flow.html",
+          "hash": "LQ9W5X4RNfnv0sqhspnTHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guide/choosing-the-right-flow/authorization-code-flow.png",
+      "output": {
+        "resource": {
+          "relative_path": "guide/choosing-the-right-flow/authorization-code-flow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guide/choosing-the-right-flow/client-credentials-flow.png",
+      "output": {
+        "resource": {
+          "relative_path": "guide/choosing-the-right-flow/client-credentials-flow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guide/choosing-the-right-flow/consent-form.png",
+      "output": {
+        "resource": {
+          "relative_path": "guide/choosing-the-right-flow/consent-form.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guide/choosing-the-right-flow/implicit-flow.png",
+      "output": {
+        "resource": {
+          "relative_path": "guide/choosing-the-right-flow/implicit-flow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guide/choosing-the-right-flow/resource-owner-password-flow.png",
+      "output": {
+        "resource": {
+          "relative_path": "guide/choosing-the-right-flow/resource-owner-password-flow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "guide/getting-started.md",
       "output": {
         ".html": {
@@ -7137,7 +7216,7 @@
       "output": {
         ".html": {
           "relative_path": "guide/toc.html",
-          "hash": "yVHEDlC+Qhoq+brhAwUcTA=="
+          "hash": "cXNBHHPLy0WGdOpsbRiH1w=="
         }
       },
       "is_incremental": false,
@@ -7886,7 +7965,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 128,
+          "total_file_count": 130,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
