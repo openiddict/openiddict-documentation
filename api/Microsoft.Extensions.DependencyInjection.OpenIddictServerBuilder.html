@@ -141,6 +141,34 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Services_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.Services*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Services" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.Services">Services</h4>
+  <div class="markdown level1 summary"><p>Gets the services collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IServiceCollection Services { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   
@@ -415,7 +443,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler_OpenIddictServerHandlerDescriptor_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler(OpenIddictServerHandlerDescriptor)">AddEventHandler(OpenIddictServerHandlerDescriptor)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler_OpenIddict_Server_OpenIddictServerHandlerDescriptor_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler(OpenIddict.Server.OpenIddictServerHandlerDescriptor)">AddEventHandler(OpenIddictServerHandlerDescriptor)</h4>
   <div class="markdown level1 summary"><p>Registers an event handler using the specified descriptor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -434,7 +462,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">OpenIddictServerHandlerDescriptor</span></td>
+        <td><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlerDescriptor.html">OpenIddictServerHandlerDescriptor</a></td>
         <td><span class="parametername">descriptor</span></td>
         <td><p>The handler descriptor.</p>
 </td>
@@ -460,7 +488,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler__1_System_Action_OpenIddictServerHandlerDescriptor_Builder___0___" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler``1(System.Action{OpenIddictServerHandlerDescriptor.Builder{``0}})">AddEventHandler&lt;TContext&gt;(Action&lt;OpenIddictServerHandlerDescriptor.Builder&lt;TContext&gt;&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_AddEventHandler__1_System_Action_OpenIddict_Server_OpenIddictServerHandlerDescriptor_Builder___0___" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.AddEventHandler``1(System.Action{OpenIddict.Server.OpenIddictServerHandlerDescriptor.Builder{``0}})">AddEventHandler&lt;TContext&gt;(Action&lt;OpenIddictServerHandlerDescriptor.Builder&lt;TContext&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers an event handler using the specified configuration delegate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -480,7 +508,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<span class="xref">OpenIddictServerHandlerDescriptor.Builder</span>&lt;TContext&gt;&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="OpenIddict.Server.OpenIddictServerHandlerDescriptor.Builder-1.html">OpenIddictServerHandlerDescriptor.Builder</a>&lt;TContext&gt;&gt;</td>
         <td><span class="parametername">configuration</span></td>
         <td><p>The configuration delegate.</p>
 </td>
@@ -522,7 +550,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Configure_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.Configure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Configure_System_Action_OpenIddictServerOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.Configure(System.Action{OpenIddictServerOptions})">Configure(Action&lt;OpenIddictServerOptions&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Configure_System_Action_OpenIddict_Server_OpenIddictServerOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.Configure(System.Action{OpenIddict.Server.OpenIddictServerOptions})">Configure(Action&lt;OpenIddictServerOptions&gt;)</h4>
   <div class="markdown level1 summary"><p>Amends the default OpenIddict server configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -541,7 +569,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<span class="xref">OpenIddictServerOptions</span>&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="OpenIddict.Server.OpenIddictServerOptions.html">OpenIddictServerOptions</a>&gt;</td>
         <td><span class="parametername">configuration</span></td>
         <td><p>The delegate used to configure the OpenIddict options.</p>
 </td>
@@ -564,13 +592,13 @@ On production, using a X.509 certificate stored in the machine store is recommen
       </tr>
     </tbody>
   </table>
-  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Configure_System_Action_OpenIddictServerOptions___remarks">Remarks</h5>
+  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_Configure_System_Action_OpenIddict_Server_OpenIddictServerOptions___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This extension can be safely called multiple times.</p>
 </div>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_RemoveEventHandler_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.RemoveEventHandler*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_RemoveEventHandler_OpenIddictServerHandlerDescriptor_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.RemoveEventHandler(OpenIddictServerHandlerDescriptor)">RemoveEventHandler(OpenIddictServerHandlerDescriptor)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictServerBuilder_RemoveEventHandler_OpenIddict_Server_OpenIddictServerHandlerDescriptor_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictServerBuilder.RemoveEventHandler(OpenIddict.Server.OpenIddictServerHandlerDescriptor)">RemoveEventHandler(OpenIddictServerHandlerDescriptor)</h4>
   <div class="markdown level1 summary"><p>Removes the event handler that matches the specified descriptor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -589,7 +617,7 @@ On production, using a X.509 certificate stored in the machine store is recommen
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">OpenIddictServerHandlerDescriptor</span></td>
+        <td><a class="xref" href="OpenIddict.Server.OpenIddictServerHandlerDescriptor.html">OpenIddictServerHandlerDescriptor</a></td>
         <td><span class="parametername">descriptor</span></td>
         <td><p>The descriptor corresponding to the handler to remove.</p>
 </td>

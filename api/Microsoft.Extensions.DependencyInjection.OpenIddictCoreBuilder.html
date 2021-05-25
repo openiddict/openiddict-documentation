@@ -83,22 +83,13 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
     </div>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
     </div>
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
@@ -138,6 +129,34 @@
         <td><span class="parametername">services</span></td>
         <td><p>The services collection.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Services_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Services*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Services" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Services">Services</h4>
+  <div class="markdown level1 summary"><p>Gets the services collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IServiceCollection Services { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -622,7 +641,7 @@ must be either a non-generic or closed generic service.</p>
   
   
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Configure_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Configure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Configure_System_Action_OpenIddict_Core_OpenIddictCoreOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Configure(System.Action{OpenIddict.Core.OpenIddictCoreOptions})">Configure(Action&lt;OpenIddictCoreOptions&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Configure_System_Action_OpenIddictCoreOptions__" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Configure(System.Action{OpenIddictCoreOptions})">Configure(Action&lt;OpenIddictCoreOptions&gt;)</h4>
   <div class="markdown level1 summary"><p>Amends the default OpenIddict core configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -641,7 +660,7 @@ must be either a non-generic or closed generic service.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="OpenIddict.Core.OpenIddictCoreOptions.html">OpenIddictCoreOptions</a>&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">OpenIddictCoreOptions</span>&gt;</td>
         <td><span class="parametername">configuration</span></td>
         <td><p>The delegate used to configure the OpenIddict options.</p>
 </td>
@@ -664,7 +683,7 @@ must be either a non-generic or closed generic service.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Configure_System_Action_OpenIddict_Core_OpenIddictCoreOptions___remarks">Remarks</h5>
+  <h5 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Configure_System_Action_OpenIddictCoreOptions___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This extension can be safely called multiple times.</p>
 </div>
   
@@ -729,10 +748,81 @@ of your application and result in multiple queries being sent by the stores.</p>
   </table>
   
   
+  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Equals_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Equals*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_Equals_System_Object_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
+  
+  
+  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_GetHashCode_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.GetHashCode*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_GetHashCode" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.GetHashCode()</span></div>
+  
+  
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceApplicationManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceApplicationManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceApplicationManager_System_Type_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceApplicationManager(System.Type)">ReplaceApplicationManager(Type)</h4>
   <div class="markdown level1 summary"><p>Replace the default application manager by a custom manager derived
-from <a class="xref" href="OpenIddict.Core.OpenIddictApplicationManager-1.html">OpenIddictApplicationManager&lt;TApplication&gt;</a>.
+from <see cref="!:OpenIddictApplicationManager&lt;TApplication>"></see>.
 Note: when using this overload, the application manager can be
 either a non-generic, a closed or an open generic service.</p>
 </div>
@@ -780,7 +870,7 @@ either a non-generic, a closed or an open generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceApplicationManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceApplicationManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceApplicationManager__1" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceApplicationManager``1">ReplaceApplicationManager&lt;TManager&gt;()</h4>
   <div class="markdown level1 summary"><p>Replace the default application manager by a custom manager derived
-from <a class="xref" href="OpenIddict.Core.OpenIddictApplicationManager-1.html">OpenIddictApplicationManager&lt;TApplication&gt;</a>.
+from <see cref="!:OpenIddictApplicationManager&lt;TApplication>"></see>.
 Note: when using this overload, the application manager
 must be either a non-generic or closed generic service.</p>
 </div>
@@ -940,7 +1030,7 @@ must be either a non-generic or closed generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceAuthorizationManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceAuthorizationManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceAuthorizationManager_System_Type_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceAuthorizationManager(System.Type)">ReplaceAuthorizationManager(Type)</h4>
   <div class="markdown level1 summary"><p>Replace the default authorization manager by a custom manager derived
-from <a class="xref" href="OpenIddict.Core.OpenIddictAuthorizationManager-1.html">OpenIddictAuthorizationManager&lt;TAuthorization&gt;</a>.
+from <see cref="!:OpenIddictAuthorizationManager&lt;TAuthorization>"></see>.
 Note: when using this overload, the authorization manager can be
 either a non-generic, a closed or an open generic service.</p>
 </div>
@@ -988,7 +1078,7 @@ either a non-generic, a closed or an open generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceAuthorizationManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceAuthorizationManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceAuthorizationManager__1" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceAuthorizationManager``1">ReplaceAuthorizationManager&lt;TManager&gt;()</h4>
   <div class="markdown level1 summary"><p>Replace the default authorization manager by a custom manager derived
-from <a class="xref" href="OpenIddict.Core.OpenIddictAuthorizationManager-1.html">OpenIddictAuthorizationManager&lt;TAuthorization&gt;</a>.
+from <see cref="!:OpenIddictAuthorizationManager&lt;TAuthorization>"></see>.
 Note: when using this overload, the authorization manager
 must be either a non-generic or closed generic service.</p>
 </div>
@@ -1148,7 +1238,7 @@ must be either a non-generic or closed generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceScopeManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceScopeManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceScopeManager_System_Type_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceScopeManager(System.Type)">ReplaceScopeManager(Type)</h4>
   <div class="markdown level1 summary"><p>Replace the default scope manager by a custom manager
-derived from <a class="xref" href="OpenIddict.Core.OpenIddictScopeManager-1.html">OpenIddictScopeManager&lt;TScope&gt;</a>.
+derived from <see cref="!:OpenIddictScopeManager&lt;TScope>"></see>.
 Note: when using this overload, the scope manager can be
 either a non-generic, a closed or an open generic service.</p>
 </div>
@@ -1196,7 +1286,7 @@ either a non-generic, a closed or an open generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceScopeManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceScopeManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceScopeManager__1" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceScopeManager``1">ReplaceScopeManager&lt;TManager&gt;()</h4>
   <div class="markdown level1 summary"><p>Replace the default scope manager by a custom manager
-derived from <a class="xref" href="OpenIddict.Core.OpenIddictScopeManager-1.html">OpenIddictScopeManager&lt;TScope&gt;</a>.
+derived from <see cref="!:OpenIddictScopeManager&lt;TScope>"></see>.
 Note: when using this overload, the scope manager
 must be either a non-generic or closed generic service.</p>
 </div>
@@ -1356,7 +1446,7 @@ must be either a non-generic or closed generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceTokenManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceTokenManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceTokenManager_System_Type_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceTokenManager(System.Type)">ReplaceTokenManager(Type)</h4>
   <div class="markdown level1 summary"><p>Replace the default token manager by a custom manager
-derived from <a class="xref" href="OpenIddict.Core.OpenIddictTokenManager-1.html">OpenIddictTokenManager&lt;TToken&gt;</a>.
+derived from <see cref="!:OpenIddictTokenManager&lt;TToken>"></see>.
 Note: when using this overload, the token manager can be
 either a non-generic, a closed or an open generic service.</p>
 </div>
@@ -1404,7 +1494,7 @@ either a non-generic, a closed or an open generic service.</p>
   <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceTokenManager_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceTokenManager*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ReplaceTokenManager__1" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ReplaceTokenManager``1">ReplaceTokenManager&lt;TManager&gt;()</h4>
   <div class="markdown level1 summary"><p>Replace the default token manager by a custom manager
-derived from <a class="xref" href="OpenIddict.Core.OpenIddictTokenManager-1.html">OpenIddictTokenManager&lt;TToken&gt;</a>.
+derived from <see cref="!:OpenIddictTokenManager&lt;TToken>"></see>.
 Note: when using this overload, the token manager
 must be either a non-generic or closed generic service.</p>
 </div>
@@ -1957,6 +2047,33 @@ after which the internal cache is automatically compacted.</p>
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ToString_" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ToString*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_OpenIddictCoreBuilder_ToString" data-uid="Microsoft.Extensions.DependencyInjection.OpenIddictCoreBuilder.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
 </article>
           </div>
           

@@ -111,6 +111,14 @@ This mechanism is fully supported by all versions of OpenIddict and can be enfor
         Requirements.Features.ProofKeyForCodeExchange
     }
 });
+</code></pre><h2 id="enabling-codechallengemethodplain-support">Enabling <code>code_challenge_method=plain</code> support</h2>
+<p>By default, OpenIddict only supports <code>code_challenge_method=S256</code>, which is the safest code challenge method and the only one required by the PKCE specification.
+While not recommended, support for the <code>code_challenge_method=plain</code> method can be manually enabled by adding it to <code>OpenIddictServerOptions.CodeChallengeMethods</code>:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.Configure(options =&gt; options.CodeChallengeMethods.Add(CodeChallengeMethods.Plain));
+    });
 </code></pre></article>
           </div>
           

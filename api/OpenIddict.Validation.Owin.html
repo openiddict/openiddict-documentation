@@ -100,6 +100,48 @@
       <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlerFilters.RequireOwinRequest.html">OpenIddictValidationOwinHandlerFilters.RequireOwinRequest</a></h4>
       <section><p>Represents a filter that excludes the associated handlers if no OWIN request can be found.</p>
 </section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.html">OpenIddictValidationOwinHandlers</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.AttachCacheControlHeader-1.html">OpenIddictValidationOwinHandlers.AttachCacheControlHeader&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of attaching the appropriate HTTP response cache headers.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.AttachHostChallengeError.html">OpenIddictValidationOwinHandlers.AttachHostChallengeError</a></h4>
+      <section><p>Contains the logic responsible of attaching the error details using the OWIN authentication properties.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.AttachHttpResponseCode-1.html">OpenIddictValidationOwinHandlers.AttachHttpResponseCode&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of attaching an appropriate HTTP status code.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.AttachWwwAuthenticateHeader-1.html">OpenIddictValidationOwinHandlers.AttachWwwAuthenticateHeader&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of attaching errors details to the WWW-Authenticate header.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.ExtractAccessTokenFromAuthorizationHeader.html">OpenIddictValidationOwinHandlers.ExtractAccessTokenFromAuthorizationHeader</a></h4>
+      <section><p>Contains the logic responsible of extracting the access token from the standard HTTP Authorization header.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.ExtractAccessTokenFromBodyForm.html">OpenIddictValidationOwinHandlers.ExtractAccessTokenFromBodyForm</a></h4>
+      <section><p>Contains the logic responsible of extracting the access token from the standard access_token form parameter.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.ExtractAccessTokenFromQueryString.html">OpenIddictValidationOwinHandlers.ExtractAccessTokenFromQueryString</a></h4>
+      <section><p>Contains the logic responsible of extracting the access token from the standard access_token query parameter.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.InferIssuerFromHost.html">OpenIddictValidationOwinHandlers.InferIssuerFromHost</a></h4>
+      <section><p>Contains the logic responsible of infering the default issuer from the HTTP request host and validating it.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.ProcessChallengeErrorResponse-1.html">OpenIddictValidationOwinHandlers.ProcessChallengeErrorResponse&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of processing challenge responses that contain a WWW-Authenticate header.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinHandlers.ProcessJsonResponse-1.html">OpenIddictValidationOwinHandlers.ProcessJsonResponse&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of processing OpenID Connect responses that must be returned as JSON.
+Note: this handler is not used when the OpenID Connect request is not initially handled by OWIN.</p>
+</section>
       <h4><a class="xref" href="OpenIddict.Validation.Owin.OpenIddictValidationOwinMiddleware.html">OpenIddictValidationOwinMiddleware</a></h4>
       <section><p>Provides the entry point necessary to register the OpenIddict validation handler in an OWIN pipeline.
 Note: this middleware is intented to be used with dependency injection containers
