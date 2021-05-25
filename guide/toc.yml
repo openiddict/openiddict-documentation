@@ -14,8 +14,6 @@
 
 - name: External resources
   items:
-    - name: OpenIddict changelog
-      href: https://github.com/openiddict/openiddict-core/releases
     - name: OAuth 2.0 specification
       href: https://tools.ietf.org/html/rfc6749
     - name: OpenID Connect specification
