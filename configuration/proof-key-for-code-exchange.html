@@ -117,7 +117,8 @@ While not recommended, support for the <code>code_challenge_method=plain</code> 
 <pre><code class="lang-csharp">services.AddOpenIddict()
     .AddServer(options =&gt;
     {
-        options.Configure(options =&gt; options.CodeChallengeMethods.Add(CodeChallengeMethods.Plain));
+        options.Configure(options =&gt; options.CodeChallengeMethods.Add(
+            CodeChallengeMethods.Plain));
     });
 </code></pre></article>
           </div>
