@@ -177,6 +177,33 @@ the pass-through mode for these endpoints, so that requests can reach your autho
 consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for these types.</p>
 <p>In most cases, this should be as simple as replacing <code>JsonConvert.SerializeObject()</code>/<code>JsonConvert.DeserializeObject()</code>
 by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serialize()</code>/<code>JsonSerializer.Deserialize()</code>.</p>
+<h2 id="replace-calls-to-the-authenticationticket-extensions-by-their-new-claimsprincipal-equivalent">Replace calls to the <code>AuthenticationTicket</code> extensions by their new <code>ClaimsPrincipal</code> equivalent:</h2>
+<p>OpenIddict 3.0 no longer uses the <code>AuthenticationTicket</code> type provided by ASP.NET Core. Instead, everything is now stored in the <code>ClaimsPrincipal</code> instance.
+If you have calls like <code>ticket.SetScopes()</code> or <code>ticket.SetResources()</code>, use their new equivalents (e.g <code>principal.SetScopes()</code> or <code>principal.SetResources()</code>).</p>
+<h2 id="use-the-new-authentication-schemes">Use the new authentication schemes</h2>
+<p>In 3.0, the constants used as the ASP.NET Core authentication schemes have changed:</p>
+<table>
+<thead>
+<tr>
+<th>Old constant name</th>
+<th>New constant name (ASP.NET Core host)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictServerDefaults.AuthenticationScheme</td>
+<td>OpenIddictServerAspNetCoreDefaults.AuthenticationScheme</td>
+</tr>
+<tr>
+<td>OpenIddictValidationDefaults.AuthenticationScheme</td>
+<td>OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme</td>
+</tr>
+<tr>
+<td>OAuthValidationDefaults.AuthenticationScheme</td>
+<td>OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme</td>
+</tr>
+</tbody>
+</table>
 <h2 id="update-your-application-to-work-with-the-new-scope-format">Update your application to work with the new <code>scope</code> format</h2>
 <p>In OpenIddict 3.0, the format of the <code>scope</code> claim used in JWT tokens has changed from a JSON array to a single space-separated claim to match
 <a href="https://tools.ietf.org/html/draft-ietf-oauth-access-token-jwt-12">the JWT access token specification</a>. To ensure your authorization policies
