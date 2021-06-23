@@ -135,6 +135,8 @@ and are no longer supported. Make sure your application (or intermediate librari
 </tr>
 </tbody>
 </table>
+<div class="IMPORTANT"><h5>Important</h5><p>If your application references the <code>OpenIdConnectConstants</code> class, update it to use <code>OpenIddictConstants</code> instead.</p>
+</div>
 <h2 id="update-the-references-to-the-entity-framework-coreentity-framework-6mongodb-models">Update the references to the Entity Framework Core/Entity Framework 6/MongoDB models</h2>
 <p>If your application references the <code>OpenIddictApplication</code>, <code>OpenIddictAuthorization</code>, <code>OpenIddictScope</code> or <code>OpenIddictToken</code> models, update these reference to use
 their new names: <code>OpenIddict[provider name]Application</code>, <code>OpenIddict[provider name]Authorization</code>, <code>OpenIddict[provider name]Scope</code> and <code>OpenIddict[provider name]Token</code>
