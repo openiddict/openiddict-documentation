@@ -5633,6 +5633,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "configuration/encryption-and-signing-credentials.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/encryption-and-signing-credentials.html",
+          "hash": "22Qc2JwWKL314U4Wddl0IQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "configuration/index.md",
       "output": {
         ".html": {
@@ -5661,7 +5673,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "hEZG047NIeu+o0KUdkadEA=="
+          "hash": "OsKSxgt/kroRjpQlAjf8PA=="
         }
       },
       "is_incremental": false,
@@ -7965,7 +7977,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 130,
+          "total_file_count": 131,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
