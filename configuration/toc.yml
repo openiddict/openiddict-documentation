@@ -10,6 +10,9 @@
 - name: Claim destinations
   href: claim-destinations.md
 
+- name: Encryption and signing credentials
+  href: encryption-and-signing-credentials.md
+
 - name: Proof Key for Code Exchange
   href: proof-key-for-code-exchange.md
 
