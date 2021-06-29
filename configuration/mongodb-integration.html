@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MongoDB integration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="MongoDB integration ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>    </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mongodb-integration">MongoDB integration</h1>
+
+<p>To configure OpenIddict to use MongoDB as the database for applications, authorizations, scopes and tokens, you&#39;ll need to:</p>
+<ul>
+<li><p><strong>Reference the <code>OpenIddict.MongoDb</code> package</strong>:</p>
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.MongoDb&quot; Version=&quot;3.0.5&quot; /&gt;
+</code></pre></li>
+<li><p><strong>Configure OpenIddict to use the MongoDB stores</strong>:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        // Note: to use a remote server, call the MongoClient constructor overload
+        // that accepts a connection string or an instance of MongoClientSettings.
+        options.UseMongoDb()
+               .UseDatabase(new MongoClient().GetDatabase(&quot;openiddict&quot;));
+    })
+</code></pre></li>
+<li><p><strong>Create indexes to improve performance</strong> (recommended): for that, you can use the following script to
+initialize the database and create the indexes used by the OpenIddict entities:</p>
+<pre><code class="lang-csharp">using System.Threading;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using OpenIddict.MongoDb;
+using OpenIddict.MongoDb.Models;
+
+var services = new ServiceCollection();
+services.AddOpenIddict()
+    .AddCore(options =&gt; options.UseMongoDb());
+
+services.AddSingleton(new MongoClient(&quot;mongodb://localhost:27017&quot;).GetDatabase(&quot;openiddict&quot;));
+
+var provider = services.BuildServiceProvider();
+var context = provider.GetRequiredService&lt;IOpenIddictMongoDbContext&gt;();
+var options = provider.GetRequiredService&lt;IOptionsMonitor&lt;OpenIddictMongoDbOptions&gt;&gt;().CurrentValue;
+var database = await context.GetDatabaseAsync(CancellationToken.None);
+
+var applications = database.GetCollection&lt;OpenIddictMongoDbApplication&gt;(
+    options.ApplicationsCollectionName);
+
+await applications.Indexes.CreateManyAsync(new[]
+{
+    new CreateIndexModel&lt;OpenIddictMongoDbApplication&gt;(
+        Builders&lt;OpenIddictMongoDbApplication&gt;.IndexKeys.Ascending(
+            application =&gt; application.ClientId),
+        new CreateIndexOptions
+        {
+            Unique = true
+        }),
+
+    new CreateIndexModel&lt;OpenIddictMongoDbApplication&gt;(
+        Builders&lt;OpenIddictMongoDbApplication&gt;.IndexKeys.Ascending(
+            application =&gt; application.PostLogoutRedirectUris),
+        new CreateIndexOptions
+        {
+            Background = true
+        }),
+
+    new CreateIndexModel&lt;OpenIddictMongoDbApplication&gt;(
+        Builders&lt;OpenIddictMongoDbApplication&gt;.IndexKeys.Ascending(
+            application =&gt; application.RedirectUris),
+        new CreateIndexOptions
+        {
+            Background = true
+        })
+});
+
+var authorizations = database.GetCollection&lt;OpenIddictMongoDbAuthorization&gt;(
+    options.AuthorizationsCollectionName);
+
+await authorizations.Indexes.CreateOneAsync(new CreateIndexModel&lt;OpenIddictMongoDbAuthorization&gt;(
+    Builders&lt;OpenIddictMongoDbAuthorization&gt;.IndexKeys
+        .Ascending(authorization =&gt; authorization.ApplicationId)
+        .Ascending(authorization =&gt; authorization.Scopes)
+        .Ascending(authorization =&gt; authorization.Status)
+        .Ascending(authorization =&gt; authorization.Subject)
+        .Ascending(authorization =&gt; authorization.Type),
+    new CreateIndexOptions
+    {
+        Background = true
+    }));
+
+var scopes = database.GetCollection&lt;OpenIddictMongoDbScope&gt;(
+    options.ScopesCollectionName);
+
+await scopes.Indexes.CreateOneAsync(new CreateIndexModel&lt;OpenIddictMongoDbScope&gt;(
+    Builders&lt;OpenIddictMongoDbScope&gt;.IndexKeys.Ascending(scope =&gt; scope.Name),
+    new CreateIndexOptions
+    {
+        Unique = true
+    }));
+
+var tokens = database.GetCollection&lt;OpenIddictMongoDbToken&gt;(
+    options.TokensCollectionName);
+
+await tokens.Indexes.CreateManyAsync(new[]
+{
+    new CreateIndexModel&lt;OpenIddictMongoDbToken&gt;(
+        Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys.Ascending(token =&gt; token.ReferenceId),
+        new CreateIndexOptions&lt;OpenIddictMongoDbToken&gt;
+        {
+            // Note: partial filter expressions are not supported on Azure Cosmos DB.
+            // As a workaround, the expression and the unique constraint can be removed.
+            PartialFilterExpression =
+                Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(token =&gt; token.ReferenceId),
+            Unique = true
+        }),
+
+    new CreateIndexModel&lt;OpenIddictMongoDbToken&gt;(
+        Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys
+            .Ascending(token =&gt; token.ApplicationId)
+            .Ascending(token =&gt; token.Status)
+            .Ascending(token =&gt; token.Subject)
+            .Ascending(token =&gt; token.Type),
+        new CreateIndexOptions
+        {
+            Background = true
+        })
+});
+</code></pre></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/openiddict/openiddict-documentation/blob/dev/configuration/mongodb-integration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

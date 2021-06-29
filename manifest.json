@@ -5637,7 +5637,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/encryption-and-signing-credentials.html",
-          "hash": "lvfp+KasSL8PFb2HTzMYhQ=="
+          "hash": "iFuVtyllFrW9BzppnmPRig=="
         }
       },
       "is_incremental": false,
@@ -5650,6 +5650,18 @@
         ".html": {
           "relative_path": "configuration/index.html",
           "hash": "EytW6UNQ9ehWWwK7B6lHrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "configuration/mongodb-integration.md",
+      "output": {
+        ".html": {
+          "relative_path": "configuration/mongodb-integration.html",
+          "hash": "OBbgaaZ+b0E3MY4vEl7/kw=="
         }
       },
       "is_incremental": false,
@@ -5673,7 +5685,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "OsKSxgt/kroRjpQlAjf8PA=="
+          "hash": "v0DMuwk5yrDID+1ORgzjDQ=="
         }
       },
       "is_incremental": false,
@@ -7977,7 +7989,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 131,
+          "total_file_count": 132,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
