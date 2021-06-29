@@ -96,11 +96,13 @@ var services = new ServiceCollection();
 services.AddOpenIddict()
     .AddCore(options =&gt; options.UseMongoDb());
 
-services.AddSingleton(new MongoClient(&quot;mongodb://localhost:27017&quot;).GetDatabase(&quot;openiddict&quot;));
+services.AddSingleton(new MongoClient(
+    &quot;mongodb://localhost:27017&quot;).GetDatabase(&quot;openiddict&quot;));
 
 var provider = services.BuildServiceProvider();
 var context = provider.GetRequiredService&lt;IOpenIddictMongoDbContext&gt;();
-var options = provider.GetRequiredService&lt;IOptionsMonitor&lt;OpenIddictMongoDbOptions&gt;&gt;().CurrentValue;
+var options = provider.GetRequiredService&lt;
+    IOptionsMonitor&lt;OpenIddictMongoDbOptions&gt;&gt;().CurrentValue;
 var database = await context.GetDatabaseAsync(CancellationToken.None);
 
 var applications = database.GetCollection&lt;OpenIddictMongoDbApplication&gt;(
@@ -136,17 +138,18 @@ await applications.Indexes.CreateManyAsync(new[]
 var authorizations = database.GetCollection&lt;OpenIddictMongoDbAuthorization&gt;(
     options.AuthorizationsCollectionName);
 
-await authorizations.Indexes.CreateOneAsync(new CreateIndexModel&lt;OpenIddictMongoDbAuthorization&gt;(
-    Builders&lt;OpenIddictMongoDbAuthorization&gt;.IndexKeys
-        .Ascending(authorization =&gt; authorization.ApplicationId)
-        .Ascending(authorization =&gt; authorization.Scopes)
-        .Ascending(authorization =&gt; authorization.Status)
-        .Ascending(authorization =&gt; authorization.Subject)
-        .Ascending(authorization =&gt; authorization.Type),
-    new CreateIndexOptions
-    {
-        Background = true
-    }));
+await authorizations.Indexes.CreateOneAsync(
+    new CreateIndexModel&lt;OpenIddictMongoDbAuthorization&gt;(
+        Builders&lt;OpenIddictMongoDbAuthorization&gt;.IndexKeys
+            .Ascending(authorization =&gt; authorization.ApplicationId)
+            .Ascending(authorization =&gt; authorization.Scopes)
+            .Ascending(authorization =&gt; authorization.Status)
+            .Ascending(authorization =&gt; authorization.Subject)
+            .Ascending(authorization =&gt; authorization.Type),
+        new CreateIndexOptions
+        {
+            Background = true
+        }));
 
 var scopes = database.GetCollection&lt;OpenIddictMongoDbScope&gt;(
     options.ScopesCollectionName);
@@ -164,13 +167,15 @@ var tokens = database.GetCollection&lt;OpenIddictMongoDbToken&gt;(
 await tokens.Indexes.CreateManyAsync(new[]
 {
     new CreateIndexModel&lt;OpenIddictMongoDbToken&gt;(
-        Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys.Ascending(token =&gt; token.ReferenceId),
+        Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys.Ascending(
+            token =&gt; token.ReferenceId),
         new CreateIndexOptions&lt;OpenIddictMongoDbToken&gt;
         {
             // Note: partial filter expressions are not supported on Azure Cosmos DB.
             // As a workaround, the expression and the unique constraint can be removed.
             PartialFilterExpression =
-                Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(token =&gt; token.ReferenceId),
+                Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(
+                    token =&gt; token.ReferenceId),
             Unique = true
         }),
 
