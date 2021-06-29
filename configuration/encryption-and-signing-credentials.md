@@ -8,7 +8,7 @@ To protect the tokens it issues, OpenIddict uses 2 types of credentials:
 > Tokens generated using the opt-in ASP.NET Core Data Protection integration rely on their own key ring, distinct from the credentials discussed in this documentation.
 > For more information about Data Protection, visit [ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction).
 
-## Registering credentials in the server options
+## Registering credentials in the authorization server options
 
 OpenIddict allows registering one or multiple keys (raw keys or embedded in X.509 certificates).
 
@@ -120,7 +120,7 @@ The best place to store your certificates will mostly depend on your host:
   - On Azure, certificates can be uploaded and exposed to Azure App Services applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code
 
-## Importing credentials in the validation options
+## Importing credentials in the API/resource validation options
 
 ### Using the `options.UseLocalServer()` integration
 
