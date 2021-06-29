@@ -229,3 +229,5 @@ If you don't want to start from one of the recommended samples, you'll need to:
     }
 
     ```
+
+  Before running the application, make sure the database is updated with OpenIddict tables by running `Add-Migration` and `Update-Database`.
