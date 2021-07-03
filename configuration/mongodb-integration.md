@@ -15,7 +15,21 @@ To configure OpenIddict to use MongoDB as the database for applications, authori
             // that accepts a connection string or an instance of MongoClientSettings.
             options.UseMongoDb()
                    .UseDatabase(new MongoClient().GetDatabase("openiddict"));
-        })
+        });
+    ```
+
+    Alternatively, you can register the `IMongoDatabase` instance as a service:
+
+    ```csharp
+    services.AddOpenIddict()
+        .AddCore(options =>
+        {
+            options.UseMongoDb();
+        });
+
+    // Note: to use a remote server, call the MongoClient constructor overload
+    // that accepts a connection string or an instance of MongoClientSettings.
+    services.AddSingleton(new MongoClient().GetDatabase("shared-database-instance"));
     ```
 
   - **Create indexes to improve performance** (recommended): for that, you can use the following script to
