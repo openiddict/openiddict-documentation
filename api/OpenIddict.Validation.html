@@ -99,6 +99,18 @@ to send the cryptography request to the remote authorization server.</p>
       <section><p>Represents an event called for each request to the introspection endpoint
 to send the introspection request to the remote authorization server.</p>
 </section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.BaseContext.html">OpenIddictValidationEvents.BaseContext</a></h4>
+      <section><p>Represents an abstract base class used for certain event contexts.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.BaseExternalContext.html">OpenIddictValidationEvents.BaseExternalContext</a></h4>
+      <section><p>Represents an abstract base class used for certain event contexts.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.BaseRequestContext.html">OpenIddictValidationEvents.BaseRequestContext</a></h4>
+      <section><p>Represents an abstract base class used for certain event contexts.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.BaseValidatingContext.html">OpenIddictValidationEvents.BaseValidatingContext</a></h4>
+      <section><p>Represents an abstract base class used for certain event contexts.</p>
+</section>
       <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationEvents.ExtractConfigurationResponseContext.html">OpenIddictValidationEvents.ExtractConfigurationResponseContext</a></h4>
       <section><p>Represents an event called for each configuration response
 to extract the response parameters from the server response.</p>
@@ -168,6 +180,94 @@ to give the user code a chance to add parameters to the introspection request.</
 </section>
       <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlerFilters.RequireTokenEntryValidationEnabled.html">OpenIddictValidationHandlerFilters.RequireTokenEntryValidationEnabled</a></h4>
       <section><p>Represents a filter that excludes the associated handlers if token validation was not enabled.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.html">OpenIddictValidationHandlers</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.AttachDefaultChallengeError.html">OpenIddictValidationHandlers.AttachDefaultChallengeError</a></h4>
+      <section><p>Contains the logic responsible of ensuring that the challenge response contains an appropriate error.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Discovery.html">OpenIddictValidationHandlers.Discovery</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Discovery.ExtractCryptographyEndpoint.html">OpenIddictValidationHandlers.Discovery.ExtractCryptographyEndpoint</a></h4>
+      <section><p>Contains the logic responsible of extracting the JWKS endpoint address from the discovery document.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Discovery.ExtractIntrospectionEndpoint.html">OpenIddictValidationHandlers.Discovery.ExtractIntrospectionEndpoint</a></h4>
+      <section><p>Contains the logic responsible of extracting the introspection endpoint address from the discovery document.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Discovery.ExtractSigningKeys.html">OpenIddictValidationHandlers.Discovery.ExtractSigningKeys</a></h4>
+      <section><p>Contains the logic responsible of extracting the signing keys from the JWKS document.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Discovery.ValidateIssuer.html">OpenIddictValidationHandlers.Discovery.ValidateIssuer</a></h4>
+      <section><p>Contains the logic responsible of extracting the issuer from the discovery document.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.HandleErrorResponse-1.html">OpenIddictValidationHandlers.HandleErrorResponse&lt;TContext&gt;</a></h4>
+      <section><p>Contains the logic responsible of extracting potential errors from the response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.html">OpenIddictValidationHandlers.Introspection</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.AttachCredentials.html">OpenIddictValidationHandlers.Introspection.AttachCredentials</a></h4>
+      <section><p>Contains the logic responsible of attaching the client credentials to the introspection request.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.AttachToken.html">OpenIddictValidationHandlers.Introspection.AttachToken</a></h4>
+      <section><p>Contains the logic responsible of attaching the token to the introspection request.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.HandleInactiveResponse.html">OpenIddictValidationHandlers.Introspection.HandleInactiveResponse</a></h4>
+      <section><p>Contains the logic responsible of extracting the active: false marker from the response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.PopulateClaims.html">OpenIddictValidationHandlers.Introspection.PopulateClaims</a></h4>
+      <section><p>Contains the logic responsible of extracting the claims from the introspection response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.ValidateIssuer.html">OpenIddictValidationHandlers.Introspection.ValidateIssuer</a></h4>
+      <section><p>Contains the logic responsible of extracting the issuer from the introspection response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.ValidateTokenType.html">OpenIddictValidationHandlers.Introspection.ValidateTokenType</a></h4>
+      <section><p>Contains the logic responsible of extracting and validating the token type from the introspection response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.Introspection.ValidateWellKnownClaims.html">OpenIddictValidationHandlers.Introspection.ValidateWellKnownClaims</a></h4>
+      <section><p>Contains the logic responsible of validating the well-known claims contained in the introspection response.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.IntrospectToken.html">OpenIddictValidationHandlers.IntrospectToken</a></h4>
+      <section><p>Contains the logic responsible of validating the tokens using OAuth 2.0 introspection.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.MapInternalClaims.html">OpenIddictValidationHandlers.MapInternalClaims</a></h4>
+      <section><p>Contains the logic responsible of mapping internal claims used by OpenIddict.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.NormalizeScopeClaims.html">OpenIddictValidationHandlers.NormalizeScopeClaims</a></h4>
+      <section><p>Contains the logic responsible of normalizing the scope claims stored in the tokens.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.RestoreReferenceTokenProperties.html">OpenIddictValidationHandlers.RestoreReferenceTokenProperties</a></h4>
+      <section><p>Contains the logic responsible of restoring the properties associated with a reference token entry.
+Note: this handler is not used when the degraded mode is enabled.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateAudience.html">OpenIddictValidationHandlers.ValidateAudience</a></h4>
+      <section><p>Contains the logic responsible of rejecting authentication demands containing
+access tokens that were issued to be used by another audience/resource server.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateAuthorizationEntry.html">OpenIddictValidationHandlers.ValidateAuthorizationEntry</a></h4>
+      <section><p>Contains the logic responsible of authentication demands a token whose
+associated authorization entry is no longer valid (e.g was revoked).
+Note: this handler is not used when the degraded mode is enabled.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateExpirationDate.html">OpenIddictValidationHandlers.ValidateExpirationDate</a></h4>
+      <section><p>Contains the logic responsible of rejecting authentication demands containing expired access tokens.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateIdentityModelToken.html">OpenIddictValidationHandlers.ValidateIdentityModelToken</a></h4>
+      <section><p>Contains the logic responsible of validating tokens generated using IdentityModel.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidatePrincipal.html">OpenIddictValidationHandlers.ValidatePrincipal</a></h4>
+      <section><p>Contains the logic responsible of rejecting authentication demands for which no valid principal was resolved.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateReferenceTokenIdentifier.html">OpenIddictValidationHandlers.ValidateReferenceTokenIdentifier</a></h4>
+      <section><p>Contains the logic responsible of validating reference token identifiers.
+Note: this handler is not used when the degraded mode is enabled.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateToken.html">OpenIddictValidationHandlers.ValidateToken</a></h4>
+      <section><p>Contains the logic responsible of ensuring a token was correctly resolved from the context.</p>
+</section>
+      <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHandlers.ValidateTokenEntry.html">OpenIddictValidationHandlers.ValidateTokenEntry</a></h4>
+      <section><p>Contains the logic responsible of authentication demands a token whose
+associated token entry is no longer valid (e.g was revoked).
+Note: this handler is not used when the degraded mode is enabled.</p>
 </section>
       <h4><a class="xref" href="OpenIddict.Validation.OpenIddictValidationHelpers.html">OpenIddictValidationHelpers</a></h4>
       <section><p>Exposes extensions simplifying the integration with the OpenIddict validation services.</p>

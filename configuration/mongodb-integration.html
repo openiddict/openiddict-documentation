@@ -81,7 +81,17 @@
         // that accepts a connection string or an instance of MongoClientSettings.
         options.UseMongoDb()
                .UseDatabase(new MongoClient().GetDatabase(&quot;openiddict&quot;));
-    })
+    });
+</code></pre><p>Alternatively, you can register the <code>IMongoDatabase</code> instance as a service:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        options.UseMongoDb();
+    });
+
+// Note: to use a remote server, call the MongoClient constructor overload
+// that accepts a connection string or an instance of MongoClientSettings.
+services.AddSingleton(new MongoClient().GetDatabase(&quot;shared-database-instance&quot;));
 </code></pre></li>
 <li><p><strong>Create indexes to improve performance</strong> (recommended): for that, you can use the following script to
 initialize the database and create the indexes used by the OpenIddict entities:</p>
