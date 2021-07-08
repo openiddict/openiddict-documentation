@@ -3,7 +3,7 @@
 To configure OpenIddict to use MongoDB as the database for applications, authorizations, scopes and tokens, you'll need to:
   - **Reference the `OpenIddict.MongoDb` package**:
     ```xml
-    <PackageReference Include="OpenIddict.MongoDb" Version="3.0.5" />
+    <PackageReference Include="OpenIddict.MongoDb" Version="3.1.0" />
     ```
 
   - **Configure OpenIddict to use the MongoDB stores**:
