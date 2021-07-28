@@ -174,6 +174,15 @@ the pass-through mode for these endpoints, so that requests can reach your autho
     {
         options.UseDataProtection();
     });
+</code></pre><h2 id="enable-request-caching">Enable request caching</h2>
+<p>If previously application was using request caching functionality, the new way to toggle request caching feature (previously <code>options.EnableRequestCaching()</code>) to use <code>OpenIddictServerAspNetCoreBuilder</code> class  methods (divided into explicit methods):</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddServer(options =&gt;
+    {
+        options.UseAspNetCore()
+            .EnableAuthorizationRequestCaching()
+            .EnableLogoutRequestCaching();
+    })
 </code></pre><h2 id="replace-jsonnet-by-systemtextjson">Replace JSON.NET by <code>System.Text.Json</code></h2>
 <p>If you use JSON.NET to serialize or deserialize <code>OpenIdConnectMessage</code>, <code>OpenIdConnectRequest</code> or <code>OpenIdConnectResponse</code> instances,
 consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for these types.</p>
