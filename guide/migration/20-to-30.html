@@ -174,15 +174,16 @@ the pass-through mode for these endpoints, so that requests can reach your autho
     {
         options.UseDataProtection();
     });
-</code></pre><h2 id="enable-request-caching">Enable request caching</h2>
-<p>If previously application was using request caching functionality, the new way to toggle request caching feature (previously <code>options.EnableRequestCaching()</code>) to use <code>OpenIddictServerAspNetCoreBuilder</code> class  methods (divided into explicit methods):</p>
+</code></pre><h2 id="use-the-new-request-caching-apis-if-applicable">Use the new request caching APIs, if applicable</h2>
+<p>In 3.0, the <code>OpenIddictServerBuilder.EnableRequestCaching()</code> API - that enabled request caching for both authorization and logout request -
+was replaced by 2 separate methods. If your application depends on request caching, don&#39;t forget to enable it when migrating to 3.0:</p>
 <pre><code class="lang-csharp">services.AddOpenIddict()
     .AddServer(options =&gt;
     {
         options.UseAspNetCore()
-            .EnableAuthorizationRequestCaching()
-            .EnableLogoutRequestCaching();
-    })
+              .EnableAuthorizationRequestCaching()
+              .EnableLogoutRequestCaching();
+    });
 </code></pre><h2 id="replace-jsonnet-by-systemtextjson">Replace JSON.NET by <code>System.Text.Json</code></h2>
 <p>If you use JSON.NET to serialize or deserialize <code>OpenIdConnectMessage</code>, <code>OpenIdConnectRequest</code> or <code>OpenIdConnectResponse</code> instances,
 consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for these types.</p>
@@ -215,6 +216,10 @@ If you have calls like <code>ticket.SetScopes()</code> or <code>ticket.SetResour
 </tr>
 </tbody>
 </table>
+<div class="NOTE"><h5>Note</h5><p>In 3.0, the OpenIddict server ASP.NET Core handler supports authenticating userinfo requests. As such, if you use the pass-through mode
+to handle userinfo requests in your own userinfo MVC action, consider using <code>OpenIddictServerAspNetCoreDefaults.AuthenticationScheme</code>
+instead of <code>OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme</code> for your userinfo endpoint to avoid duplicate access token validation.</p>
+</div>
 <h2 id="update-your-application-to-work-with-the-new-scope-format">Update your application to work with the new <code>scope</code> format</h2>
 <p>In OpenIddict 3.0, the format of the <code>scope</code> claim used in JWT tokens has changed from a JSON array to a single space-separated claim to match
 <a href="https://tools.ietf.org/html/draft-ietf-oauth-access-token-jwt-12">the JWT access token specification</a>. To ensure your authorization policies
