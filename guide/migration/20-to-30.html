@@ -186,7 +186,8 @@ was replaced by 2 separate methods. If your application depends on request cachi
     });
 </code></pre><h2 id="replace-jsonnet-by-systemtextjson">Replace JSON.NET by <code>System.Text.Json</code></h2>
 <p>If you use JSON.NET to serialize or deserialize <code>OpenIdConnectMessage</code>, <code>OpenIdConnectRequest</code> or <code>OpenIdConnectResponse</code> instances,
-consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for these types.</p>
+consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for their
+equivalent in 3.0: <code>OpenIddictMessage</code>, <code>OpenIddictRequest</code> or <code>OpenIddictResponse</code>.</p>
 <p>In most cases, this should be as simple as replacing <code>JsonConvert.SerializeObject()</code>/<code>JsonConvert.DeserializeObject()</code>
 by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serialize()</code>/<code>JsonSerializer.Deserialize()</code>.</p>
 <h2 id="replace-calls-to-the-authenticationticket-extensions-by-their-new-claimsprincipal-equivalent">Replace calls to the <code>AuthenticationTicket</code> extensions by their new <code>ClaimsPrincipal</code> equivalent:</h2>
