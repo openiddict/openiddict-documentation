@@ -12,6 +12,3 @@
 
 - name: Changelog
   href: https://github.com/openiddict/openiddict-core/releases
-
-- name: API documentation
-  href: api/
