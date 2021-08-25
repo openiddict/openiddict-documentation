@@ -241,7 +241,10 @@ still work after migrating, consider using the <code>principal.HasScope()</code>
         builder.RequireClaim(Claims.Private.Scope, &quot;api1&quot;);
     });
 });
-</code></pre><h2 id="add-and-apply-migrations-if-necessary">Add and apply migrations, if necessary</h2>
+</code></pre><div class="CAUTION"><h5>Caution</h5><p>These 2 options only work with the OpenIddict validation handler as the <code>oi_scp</code> claims are not populated by the JWT bearer handler developped by Microsoft.
+If you can&#39;t migrate to the OpenIddict validation handler, consider splitting the standard <code>scope</code> claim manually to determine whether it contains a specific value.</p>
+</div>
+<h2 id="add-and-apply-migrations-if-necessary">Add and apply migrations, if necessary</h2>
 <p>If your application uses Entity Framework Core or Entity Framework 6, add a migration to react to the schema changes listed below and apply it.</p>
 <h3 id="updated-properties">Updated properties</h3>
 <table>
