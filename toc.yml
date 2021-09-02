@@ -7,8 +7,5 @@
 - name: Samples
   href: https://github.com/openiddict/openiddict-samples
 
-- name: Conformance
-  href: https://github.com/openiddict/openiddict-conformance
-
 - name: Changelog
   href: https://github.com/openiddict/openiddict-core/releases
