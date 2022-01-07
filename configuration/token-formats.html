@@ -33,8 +33,8 @@
 
             
             <a class="brand" href="../index.html">
-              <img src="../images/logo.png" alt="" class="logomark">
-              <span class="brand-title"></span>
+              <img src="../images/logo.png" alt="OpenIddict" class="logomark">
+              <span class="brand-title">OpenIddict</span>
             </a>
         </div>
 
@@ -52,8 +52,8 @@
                     <div>
                       
                       <a class="brand" href="../index.html">
-                        <img src="../images/logo.png" alt="" class="logomark">
-                        <span class="brand-title"></span>
+                        <img src="../images/logo.png" alt="OpenIddict" class="logomark">
+                        <span class="brand-title">OpenIddict</span>
                       </a>
                       <div id="navbar">
                     
@@ -93,8 +93,8 @@
                     <article class="content wrap" id="_content" data-uid="">
 <h1 id="token-formats">Token formats</h1>
 
-<div class="NOTE"><h5>Note</h5><p>In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
-regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer</p>
+<div class="NOTE"><h5>Note</h5><p>In OpenIddict 3.0, the ability to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
+regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled in the server options.</p>
 <p>For more information about reference tokens, read <a href="token-storage.html">Token storage</a>.</p>
 </div>
 <h2 id="json-web-token">JSON Web Token</h2>
@@ -121,15 +121,15 @@ Access token encryption can also be disabled if the resource servers receiving t
 <p>OpenIddict 3.0 can also be configured to use <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction">ASP.NET Core Data Protection</a> to create
 Data Protection tokens instead of JWT tokens. ASP.NET Core Data Protection uses its own key ring to encrypt and protect tokens against tampering and is supported for all
 types of tokens, except identity tokens, that are always JWT tokens.</p>
-<p>Unlike JWT, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the ASP.NET team rather than on a standard like JWT.
+<p>Unlike JWTs, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the ASP.NET team rather than on a standard like JWT.
 While this prevents using such tokens in scenarios where interoperability is needed, opting for ASP.NET Core Data Protection rather than JWT has actually a few advantages:</p>
 <ul>
 <li>ASP.NET Core Data Protection tokens don&#39;t use a JSON representation and therefore are generally a bit shorter.</li>
 <li>ASP.NET Core Data Protection has been designed to achieve high throughput as it&#39;s natively used by ASP.NET Core for authentication cookies,
 antiforgery tokens and session cookies.</li>
 </ul>
-<div class="WARNING"><h5>Warning</h5><p>Despite its name, ASP.NET Core Data Protection is not tied to ASP.NET Core and can be used in any
-.NET Standard 2.0-compatible application, including legacy ASP.NET 4.x applications using <code>Microsoft.Owin</code>.</p>
+<div class="WARNING"><h5>Warning</h5><p>Despite its name, ASP.NET Core Data Protection is not tied to ASP.NET Core and can be used in any .NET Standard 2.0-compatible
+application, including legacy ASP.NET 4.6.1 (and higher) applications using <code>Microsoft.Owin</code>.</p>
 <p>To enable ASP.NET Core Data Protection support in the OpenIddict OWIN server and validation hosts, you need to
 manually reference the <code>OpenIddict.Server.DataProtection</code> and <code>OpenIddict.Validation.DataProtection</code> packages.</p>
 </div>
@@ -151,8 +151,8 @@ These packages are referenced by the <code>OpenIddict.AspNetCore</code> metapack
 existing tokens can still be used alongside newly issued ASP.NET Core Data Protection tokens until they expire. When sending a refresh token request containing
 a JWT refresh token, the application will receive an ASP.NET Core Data Protection refresh token and the previous one will be automatically marked as redeemed.</p>
 </div>
-<p>By default, enabling ASP.NET Core Data Protection support will automatically switch the token format from JWT to Data Protection for all tokens, except JWT tokens.
-The OpenIddict/Data Protection integration can be configured to prefer JWT when creating new tokens, <strong>which can be useful to use the ASP.NET Core Data Protection
+<p>By default, enabling ASP.NET Core Data Protection support will automatically switch the token format from JWT to Data Protection for all types of tokens, except JWT tokens.
+The OpenIddict/Data Protection integration can be configured to prefer JWT when creating new tokens, <strong>which can be useful when using the ASP.NET Core Data Protection
 format for specific token types only</strong> (e.g for authorization codes and refresh tokens, but not for access tokens).</p>
 <pre><code class="lang-csharp">services.AddOpenIddict()
     .AddServer(options =&gt;
@@ -165,7 +165,7 @@ format for specific token types only</strong> (e.g for authorization codes and r
                .PreferDefaultUserCodeFormat();
     });
 </code></pre><div class="WARNING"><h5>Warning</h5><p>When the authorization and API/resource servers are not part of the same application, ASP.NET Core Data Protection MUST be configured to use
-the same application name and share the same key ring to allow OpenIddict validation&#39;s handler to read ASP.NET Core Data Protection tokens
+the same application name and share the same key ring to allow the OpenIddict validation handler to read ASP.NET Core Data Protection tokens
 generated by an authorization server located in another project.</p>
 <p>For more information, read <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview">Configure ASP.NET Core Data Protection</a>.</p>
 </div>

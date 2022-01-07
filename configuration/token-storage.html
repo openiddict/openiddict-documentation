@@ -33,8 +33,8 @@
 
             
             <a class="brand" href="../index.html">
-              <img src="../images/logo.png" alt="" class="logomark">
-              <span class="brand-title"></span>
+              <img src="../images/logo.png" alt="OpenIddict" class="logomark">
+              <span class="brand-title">OpenIddict</span>
             </a>
         </div>
 
@@ -52,8 +52,8 @@
                     <div>
                       
                       <a class="brand" href="../index.html">
-                        <img src="../images/logo.png" alt="" class="logomark">
-                        <span class="brand-title"></span>
+                        <img src="../images/logo.png" alt="OpenIddict" class="logomark">
+                        <span class="brand-title">OpenIddict</span>
                       </a>
                       <div id="navbar">
                     
@@ -102,8 +102,8 @@ except for authorization codes (that are short-lived), device and user codes (ex
 <p>Such tokens – called reference tokens – are not returned as-is to the caller: instead, their payload is stored in the database entry and a crypto-secure random 256-bit identifier
 – called reference identifier – is returned as a base64url-encoded string and serves as the &quot;final&quot; token used by the client application when communicating with OpenIddict&#39;s endpoints
 or with resource servers (if reference access tokens are enabled in the server options).</p>
-<div class="NOTE"><h5>Note</h5><p>In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
-regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer.</p>
+<div class="NOTE"><h5>Note</h5><p>In OpenIddict 3.0, the ability to revoke a token is not tied to the token format and doesn&#39;t require enabling reference tokens:
+regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled in the server options.</p>
 </div>
 <h2 id="enabling-reference-access-andor-refresh-tokens">Enabling reference access and/or refresh tokens</h2>
 <p>Reference access and refresh tokens can be manually enabled in the server options for developers who prefer returning
