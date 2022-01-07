@@ -159,9 +159,9 @@ the pass-through mode for these endpoints, so that requests can reach your autho
     .AddServer(options =&gt;
     {
         options.UseAspNetCore()
-              .EnableAuthorizationEndpointPassthrough()
-              .EnableLogoutEndpointPassthrough()
-              .EnableTokenEndpointPassthrough();
+               .EnableAuthorizationEndpointPassthrough()
+               .EnableLogoutEndpointPassthrough()
+               .EnableTokenEndpointPassthrough();
     });
 </code></pre><h2 id="enable-aspnet-core-data-protection-support-to-ensure-existing-tokens-can-still-be-validated">Enable ASP.NET Core Data Protection support to ensure existing tokens can still be validated</h2>
 <p>For that, call <code>options.UseDataProtection()</code> in both the server and validation options:</p>
@@ -181,13 +181,13 @@ was replaced by 2 separate methods. If your application depends on request cachi
     .AddServer(options =&gt;
     {
         options.UseAspNetCore()
-              .EnableAuthorizationRequestCaching()
-              .EnableLogoutRequestCaching();
+               .EnableAuthorizationRequestCaching()
+               .EnableLogoutRequestCaching();
     });
 </code></pre><h2 id="replace-jsonnet-by-systemtextjson">Replace JSON.NET by <code>System.Text.Json</code></h2>
 <p>If you use JSON.NET to serialize or deserialize <code>OpenIdConnectMessage</code>, <code>OpenIdConnectRequest</code> or <code>OpenIdConnectResponse</code> instances,
 consider moving to <code>System.Text.Json</code> when migrating to OpenIddict 3.0, as 3.0 no longer includes a built-in JSON.NET <code>JsonConverter</code> for their
-equivalent in 3.0: <code>OpenIddictMessage</code>, <code>OpenIddictRequest</code> or <code>OpenIddictResponse</code>.</p>
+equivalent in 3.0 (i.e <code>OpenIddictMessage</code>, <code>OpenIddictRequest</code> and <code>OpenIddictResponse</code>).</p>
 <p>In most cases, this should be as simple as replacing <code>JsonConvert.SerializeObject()</code>/<code>JsonConvert.DeserializeObject()</code>
 by their <code>System.Text.Json</code> equivalent: <code>JsonSerializer.Serialize()</code>/<code>JsonSerializer.Deserialize()</code>.</p>
 <h2 id="replace-calls-to-the-authenticationticket-extensions-by-their-new-claimsprincipal-equivalent">Replace calls to the <code>AuthenticationTicket</code> extensions by their new <code>ClaimsPrincipal</code> equivalent:</h2>
@@ -219,11 +219,11 @@ If you have calls like <code>ticket.SetScopes()</code> or <code>ticket.SetResour
 </table>
 <div class="NOTE"><h5>Note</h5><p>In 3.0, the OpenIddict server ASP.NET Core handler supports authenticating userinfo requests. As such, if you use the pass-through mode
 to handle userinfo requests in your own userinfo MVC action, consider using <code>OpenIddictServerAspNetCoreDefaults.AuthenticationScheme</code>
-instead of <code>OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme</code> for your userinfo endpoint to avoid duplicate access token validation.</p>
+instead of <code>OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme</code> for your userinfo endpoint to avoid validating access tokens twice.</p>
 </div>
 <h2 id="update-your-application-to-work-with-the-new-scope-format">Update your application to work with the new <code>scope</code> format</h2>
-<p>In OpenIddict 3.0, the format of the <code>scope</code> claim used in JWT tokens has changed from a JSON array to a single space-separated claim to match
-<a href="https://tools.ietf.org/html/draft-ietf-oauth-access-token-jwt-12">the JWT access token specification</a>. To ensure your authorization policies
+<p>In OpenIddict 3.0, the format of the <code>scope</code> claim used in JWT tokens has changed from a JSON array to a single space-separated claim
+to match <a href="https://datatracker.ietf.org/doc/html/rfc9068">the JWT access token specification</a>. To ensure your authorization policies
 still work after migrating, consider using the <code>principal.HasScope()</code> extension to determine whether a scope has been granted:</p>
 <pre><code class="lang-csharp">services.AddAuthorization(options =&gt;
 {
