@@ -13,8 +13,8 @@ Such tokens – called reference tokens – are not returned as-is to the caller
 or with resource servers (if reference access tokens are enabled in the server options).
 
 > [!NOTE]
-> In OpenIddict 3.0, being able to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
-> regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled by the developer.
+> In OpenIddict 3.0, the ability to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
+> regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled in the server options.
 
 ## Enabling reference access and/or refresh tokens
 

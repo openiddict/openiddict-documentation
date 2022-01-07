@@ -38,7 +38,9 @@
     "globalMetadataFiles": [],
     "globalMetadata": {
       "_appFaviconPath": "images/favicon.ico",
-      "_appLogoPath": "images/logo.png"
+      "_appLogoPath": "images/logo.png",
+      "_appName": "OpenIddict",
+      "_disableSideFilter": true
     },
     "fileMetadataFiles": [],
     "template": [

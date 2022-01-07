@@ -3,8 +3,8 @@
 
 # OpenIddict: the OpenID Connect stack you'll be addicted to
 
-OpenIddict aims at providing a **versatile solution** to implement an **OpenID Connect server and token validation in any ASP.NET Core 2.1, 3.1 and 5.0 application**,
-and starting in OpenIddict 3.0, **any ASP.NET 4.x or OWIN application too**.
+OpenIddict aims at providing a **versatile solution** to implement an **OpenID Connect server and token validation in any ASP.NET Core 2.1 (and higher) application**.
+**ASP.NET 4.6.1 (and higher) applications are also fully supported thanks to a native Microsoft.Owin 4.2 integration**.
 
 OpenIddict fully supports the **[code/implicit/hybrid flows](https://openid.net/specs/openid-connect-core-1_0.html)**, the **[client credentials/resource owner password grants](https://tools.ietf.org/html/rfc6749)** and the [device authorization flow](https://tools.ietf.org/html/rfc8628). You can also create your own custom grant types.
 
