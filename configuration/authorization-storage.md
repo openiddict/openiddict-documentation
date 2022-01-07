@@ -37,8 +37,7 @@ switch (await _applicationManager.GetConsentTypeAsync(application))
             authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
             properties: new AuthenticationProperties(new Dictionary<string, string>
             {
-                [OpenIddictServerAspNetCoreConstants.Properties.Error] =
-                    Errors.ConsentRequired,
+                [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.ConsentRequired,
                 [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
                     "The logged in user is not allowed to access this client application."
             }));
@@ -47,16 +46,14 @@ switch (await _applicationManager.GetConsentTypeAsync(application))
     // return an authorization response without displaying the consent form.
     case ConsentTypes.Implicit:
     case ConsentTypes.External when authorizations.Any():
-    case ConsentTypes.Explicit when authorizations.Any() &&
-        !request.HasPrompt(Prompts.Consent):
+    case ConsentTypes.Explicit when authorizations.Any() && !request.HasPrompt(Prompts.Consent):
         var principal = await _signInManager.CreateUserPrincipalAsync(user);
 
         // Note: in this sample, the granted scopes match the requested scope
         // but you may want to allow the user to uncheck specific scopes.
         // For that, simply restrict the list of scopes before calling SetScopes.
         principal.SetScopes(request.GetScopes());
-        principal.SetResources(await _scopeManager.ListResourcesAsync(
-            principal.GetScopes()).ToListAsync());
+        principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
         // Automatically create a permanent authorization to avoid requiring explicit consent
         // for future authorization or token requests containing the same scopes.
@@ -88,8 +85,7 @@ switch (await _applicationManager.GetConsentTypeAsync(application))
             authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
             properties: new AuthenticationProperties(new Dictionary<string, string>
             {
-                [OpenIddictServerAspNetCoreConstants.Properties.Error] =
-                    Errors.ConsentRequired,
+                [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.ConsentRequired,
                 [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
                     "Interactive user consent is required."
             }));

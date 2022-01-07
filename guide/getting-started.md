@@ -4,7 +4,7 @@
 
 If you don't want to start from one of the recommended samples, you'll need to:
 
-  - **Install the [.NET Core 2.1.x, 3.1.x or .NET 5.0.x tooling](https://www.microsoft.com/net/download)**.
+  - **Install the [.NET Core 3.1 (or later) tooling](https://www.microsoft.com/net/download)**.
 
   - **Have an existing project or create a new one**: when creating a new project using Visual Studio's default ASP.NET Core template,
   using **individual user accounts authentication** is strongly recommended as it automatically includes the default ASP.NET Core Identity UI, based on Razor Pages.
@@ -57,11 +57,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
 
                 // Register the signing and encryption credentials.
                 options.AddDevelopmentEncryptionCertificate()
-                      .AddDevelopmentSigningCertificate();
+                       .AddDevelopmentSigningCertificate();
 
                 // Register the ASP.NET Core host and configure the ASP.NET Core options.
                 options.UseAspNetCore()
-                      .EnableTokenEndpointPassthrough();
+                       .EnableTokenEndpointPassthrough();
             })
 
             // Register the OpenIddict validation components.
@@ -97,8 +97,6 @@ If you don't want to start from one of the recommended samples, you'll need to:
             options.MapControllers();
             options.MapDefaultControllerRoute();
         });
-
-        app.UseWelcomePage();
     }
     ```
 
@@ -164,15 +162,12 @@ If you don't want to start from one of the recommended samples, you'll need to:
             // Note: the client credentials are automatically validated by OpenIddict:
             // if client_id or client_secret are invalid, this action won't be invoked.
 
-            var application =
-                await _applicationManager.FindByClientIdAsync(request.ClientId) ??
+            var application = await _applicationManager.FindByClientIdAsync(request.ClientId) ??
                 throw new InvalidOperationException("The application cannot be found.");
 
             // Create a new ClaimsIdentity containing the claims that
             // will be used to create an id_token, a token or a code.
-            var identity = new ClaimsIdentity(
-                TokenValidationParameters.DefaultAuthenticationType,
-                Claims.Name, Claims.Role);
+            var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType, Claims.Name, Claims.Role);
 
             // Use the client_id as the subject identifier.
             identity.AddClaim(Claims.Subject,

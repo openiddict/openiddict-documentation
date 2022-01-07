@@ -46,47 +46,40 @@ initialize the database and create the indexes used by the OpenIddict entities:
     services.AddOpenIddict()
         .AddCore(options => options.UseMongoDb());
 
-    services.AddSingleton(new MongoClient(
-        "mongodb://localhost:27017").GetDatabase("openiddict"));
+    services.AddSingleton(new MongoClient("mongodb://localhost:27017").GetDatabase("openiddict"));
 
     var provider = services.BuildServiceProvider();
     var context = provider.GetRequiredService<IOpenIddictMongoDbContext>();
-    var options = provider.GetRequiredService<
-        IOptionsMonitor<OpenIddictMongoDbOptions>>().CurrentValue;
+    var options = provider.GetRequiredService<IOptionsMonitor<OpenIddictMongoDbOptions>>().CurrentValue;
     var database = await context.GetDatabaseAsync(CancellationToken.None);
 
-    var applications = database.GetCollection<OpenIddictMongoDbApplication>(
-        options.ApplicationsCollectionName);
+    var applications = database.GetCollection<OpenIddictMongoDbApplication>(options.ApplicationsCollectionName);
 
     await applications.Indexes.CreateManyAsync(new[]
     {
         new CreateIndexModel<OpenIddictMongoDbApplication>(
-            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(
-                application => application.ClientId),
+            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(application => application.ClientId),
             new CreateIndexOptions
             {
                 Unique = true
             }),
 
         new CreateIndexModel<OpenIddictMongoDbApplication>(
-            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(
-                application => application.PostLogoutRedirectUris),
+            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(application => application.PostLogoutRedirectUris),
             new CreateIndexOptions
             {
                 Background = true
             }),
 
         new CreateIndexModel<OpenIddictMongoDbApplication>(
-            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(
-                application => application.RedirectUris),
+            Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(application => application.RedirectUris),
             new CreateIndexOptions
             {
                 Background = true
             })
     });
 
-    var authorizations = database.GetCollection<OpenIddictMongoDbAuthorization>(
-        options.AuthorizationsCollectionName);
+    var authorizations = database.GetCollection<OpenIddictMongoDbAuthorization>(options.AuthorizationsCollectionName);
 
     await authorizations.Indexes.CreateOneAsync(
         new CreateIndexModel<OpenIddictMongoDbAuthorization>(
@@ -101,8 +94,7 @@ initialize the database and create the indexes used by the OpenIddict entities:
                 Background = true
             }));
 
-    var scopes = database.GetCollection<OpenIddictMongoDbScope>(
-        options.ScopesCollectionName);
+    var scopes = database.GetCollection<OpenIddictMongoDbScope>(options.ScopesCollectionName);
 
     await scopes.Indexes.CreateOneAsync(new CreateIndexModel<OpenIddictMongoDbScope>(
         Builders<OpenIddictMongoDbScope>.IndexKeys.Ascending(scope => scope.Name),
@@ -111,21 +103,18 @@ initialize the database and create the indexes used by the OpenIddict entities:
             Unique = true
         }));
 
-    var tokens = database.GetCollection<OpenIddictMongoDbToken>(
-        options.TokensCollectionName);
+    var tokens = database.GetCollection<OpenIddictMongoDbToken>(options.TokensCollectionName);
 
     await tokens.Indexes.CreateManyAsync(new[]
     {
         new CreateIndexModel<OpenIddictMongoDbToken>(
-            Builders<OpenIddictMongoDbToken>.IndexKeys.Ascending(
-                token => token.ReferenceId),
+            Builders<OpenIddictMongoDbToken>.IndexKeys.Ascending(token => token.ReferenceId),
             new CreateIndexOptions<OpenIddictMongoDbToken>
             {
                 // Note: partial filter expressions are not supported on Azure Cosmos DB.
                 // As a workaround, the expression and the unique constraint can be removed.
                 PartialFilterExpression =
-                    Builders<OpenIddictMongoDbToken>.Filter.Exists(
-                        token => token.ReferenceId),
+                    Builders<OpenIddictMongoDbToken>.Filter.Exists(token => token.ReferenceId),
                 Unique = true
             }),
 

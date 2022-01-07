@@ -87,14 +87,10 @@ Certificates can be generated and self-signed locally using the .NET Core `Certi
 using var algorithm = RSA.Create(keySizeInBits: 2048);
 
 var subject = new X500DistinguishedName("CN=Fabrikam Encryption Certificate");
-var request = new CertificateRequest(subject, algorithm,
-    HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-request.CertificateExtensions.Add(new X509KeyUsageExtension(
-    X509KeyUsageFlags.KeyEncipherment, critical: true));
+var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.KeyEncipherment, critical: true));
 
-var certificate = request.CreateSelfSigned(
-    DateTimeOffset.UtcNow,
-    DateTimeOffset.UtcNow.AddYears(2));
+var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
 var data = certificate.Export(X509ContentType.Pfx, string.Empty);
 ```
@@ -103,19 +99,15 @@ var data = certificate.Export(X509ContentType.Pfx, string.Empty);
 using var algorithm = RSA.Create(keySizeInBits: 2048);
 
 var subject = new X500DistinguishedName("CN=Fabrikam Signing Certificate");
-var request = new CertificateRequest(subject, algorithm,
-    HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-request.CertificateExtensions.Add(new X509KeyUsageExtension(
-    X509KeyUsageFlags.DigitalSignature, critical: true));
+var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.DigitalSignature, critical: true));
 
-var certificate = request.CreateSelfSigned(
-    DateTimeOffset.UtcNow,
-    DateTimeOffset.UtcNow.AddYears(2));
+var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
 var data = certificate.Export(X509ContentType.Pfx, string.Empty);
 ```
 
-The best place to store your certificates will mostly depend on your host:
+The best place to store your certificates will depend on your host:
   - For IIS applications, storing the certificates in the machine store is the recommended option.
   - On Azure, certificates can be uploaded and exposed to Azure App Services applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code

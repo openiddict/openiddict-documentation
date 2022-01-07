@@ -1,4 +1,4 @@
-{{!Copyright (c) Oscar Vasquez. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
+{{!Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
 
 <head>
   <meta charset="utf-8">
@@ -9,10 +9,11 @@
   <meta name="generator" content="docfx {{_docfxVersion}}">
   {{#_description}}<meta name="description" content="{{_description}}">{{/_description}}
   <link rel="shortcut icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
-  <link rel="stylesheet" href="{{_rel}}styles/docfx.vendor.css">
-  <link rel="stylesheet" href="{{_rel}}styles/docfx.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/night-owl.min.css">
+  <link rel="stylesheet" href="{{_rel}}styles/colors.css">
+  <link rel="stylesheet" href="{{_rel}}styles/discord.css">
   <link rel="stylesheet" href="{{_rel}}styles/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
   <meta property="docfx:navrel" content="{{_navRel}}">
   <meta property="docfx:tocrel" content="{{_tocRel}}">
   {{#_noindex}}<meta name="searchOption" content="noindex">{{/_noindex}}

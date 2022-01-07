@@ -63,7 +63,6 @@ While not recommended, support for the `code_challenge_method=plain` method can 
 services.AddOpenIddict()
     .AddServer(options =>
     {
-        options.Configure(options => options.CodeChallengeMethods.Add(
-            CodeChallengeMethods.Plain));
+        options.Configure(options => options.CodeChallengeMethods.Add(CodeChallengeMethods.Plain));
     });
 ```

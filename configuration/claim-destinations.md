@@ -27,8 +27,7 @@ var principal = await _signInManager.CreateUserPrincipalAsync(user);
 // but you may want to allow the user to uncheck specific scopes.
 // For that, simply restrict the list of scopes before calling SetScopes().
 principal.SetScopes(request.GetScopes());
-principal.SetResources(
-  await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
+principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
 foreach (var claim in principal.Claims)
 {
