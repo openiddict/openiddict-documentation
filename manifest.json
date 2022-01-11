@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/encryption-and-signing-credentials.html",
-          "hash": "X9XDnZLKY/5K8DpDgTMVvg=="
+          "hash": "BNTD2XpB9JvFGvWlIh4bwg=="
         }
       },
       "is_incremental": false,
@@ -57,19 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/index.html",
-          "hash": "k22iYcCNt9Gl/NHlrXpepA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "configuration/mongodb-integration.md",
-      "output": {
-        ".html": {
-          "relative_path": "configuration/mongodb-integration.html",
-          "hash": "72Lugm/G2OOW9NWHWLB3aA=="
+          "hash": "AICKK9g02yD4LxurxlIMoA=="
         }
       },
       "is_incremental": false,
@@ -93,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "configuration/toc.html",
-          "hash": "MHZ474LlHgfAYPcHgjObAA=="
+          "hash": "GUTCYQ1PRD0hdbfXZoXI/w=="
         }
       },
       "is_incremental": false,
@@ -1541,11 +1529,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/choosing-the-right-flow.md",
+      "source_relative_path": "guides/choosing-the-right-flow.md",
       "output": {
         ".html": {
-          "relative_path": "guide/choosing-the-right-flow.html",
-          "hash": "gWAtbPR4n11oTgPNGVzu+g=="
+          "relative_path": "guides/choosing-the-right-flow.html",
+          "hash": "wcSamfwfNmeDNib8wiVnTQ=="
         }
       },
       "is_incremental": false,
@@ -1553,10 +1541,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "guide/choosing-the-right-flow/authorization-code-flow.png",
+      "source_relative_path": "guides/choosing-the-right-flow/authorization-code-flow.png",
       "output": {
         "resource": {
-          "relative_path": "guide/choosing-the-right-flow/authorization-code-flow.png"
+          "relative_path": "guides/choosing-the-right-flow/authorization-code-flow.png"
         }
       },
       "is_incremental": false,
@@ -1564,10 +1552,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "guide/choosing-the-right-flow/client-credentials-flow.png",
+      "source_relative_path": "guides/choosing-the-right-flow/client-credentials-flow.png",
       "output": {
         "resource": {
-          "relative_path": "guide/choosing-the-right-flow/client-credentials-flow.png"
+          "relative_path": "guides/choosing-the-right-flow/client-credentials-flow.png"
         }
       },
       "is_incremental": false,
@@ -1575,10 +1563,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "guide/choosing-the-right-flow/consent-form.png",
+      "source_relative_path": "guides/choosing-the-right-flow/consent-form.png",
       "output": {
         "resource": {
-          "relative_path": "guide/choosing-the-right-flow/consent-form.png"
+          "relative_path": "guides/choosing-the-right-flow/consent-form.png"
         }
       },
       "is_incremental": false,
@@ -1586,10 +1574,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "guide/choosing-the-right-flow/implicit-flow.png",
+      "source_relative_path": "guides/choosing-the-right-flow/implicit-flow.png",
       "output": {
         "resource": {
-          "relative_path": "guide/choosing-the-right-flow/implicit-flow.png"
+          "relative_path": "guides/choosing-the-right-flow/implicit-flow.png"
         }
       },
       "is_incremental": false,
@@ -1597,10 +1585,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "guide/choosing-the-right-flow/resource-owner-password-flow.png",
+      "source_relative_path": "guides/choosing-the-right-flow/resource-owner-password-flow.png",
       "output": {
         "resource": {
-          "relative_path": "guide/choosing-the-right-flow/resource-owner-password-flow.png"
+          "relative_path": "guides/choosing-the-right-flow/resource-owner-password-flow.png"
         }
       },
       "is_incremental": false,
@@ -1608,11 +1596,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/getting-started.md",
+      "source_relative_path": "guides/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "guide/getting-started.html",
-          "hash": "XR2F+SYNqKQbYnQTQ1lAVQ=="
+          "relative_path": "guides/getting-started.html",
+          "hash": "w4ot0irGPo6kPbJCtXT9sQ=="
         }
       },
       "is_incremental": false,
@@ -1620,11 +1608,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/index.md",
+      "source_relative_path": "guides/index.md",
       "output": {
         ".html": {
-          "relative_path": "guide/index.html",
-          "hash": "1WppPUd3tc49Q1IuN6MpfA=="
+          "relative_path": "guides/index.html",
+          "hash": "GYPiSn0I/fhjecInWBd+sA=="
         }
       },
       "is_incremental": false,
@@ -1632,11 +1620,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/migration/20-to-30.md",
+      "source_relative_path": "guides/migration/20-to-30.md",
       "output": {
         ".html": {
-          "relative_path": "guide/migration/20-to-30.html",
-          "hash": "gXjJnqMDORzKmvYY4OLRSA=="
+          "relative_path": "guides/migration/20-to-30.html",
+          "hash": "tvhWtNPbpiYeQ0xcP1I4oQ=="
         }
       },
       "is_incremental": false,
@@ -1644,10 +1632,10 @@
     },
     {
       "type": "Toc",
-      "source_relative_path": "guide/toc.yml",
+      "source_relative_path": "guides/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "guide/toc.html",
+          "relative_path": "guides/toc.html",
           "hash": "Q2Rq3xUOIstDdNnNV/CmBA=="
         }
       },
@@ -1682,7 +1670,55 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "3nPaLmwJHUE2QAgJqejTcw=="
+          "hash": "LDX2KG1mNaZgnySmcrJkYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "integrations/entity-framework-core.md",
+      "output": {
+        ".html": {
+          "relative_path": "integrations/entity-framework-core.html",
+          "hash": "/+6V48DwOyGcYnlBTNI0og=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "integrations/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "integrations/index.html",
+          "hash": "WDTvL+SrcS/LrtG9czbidA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "integrations/mongodb.md",
+      "output": {
+        ".html": {
+          "relative_path": "integrations/mongodb.html",
+          "hash": "4vhlfSOVT9PhnUD5B3NxfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "integrations/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "integrations/toc.html",
+          "hash": "914frhil++hv0x3ddB061A=="
         }
       },
       "is_incremental": false,
@@ -2376,7 +2412,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "6bYAB6WKrlIEFqIGMFlPbw=="
+          "hash": "pkjNX/g9gq1U7BbZjUNK4w=="
         }
       },
       "is_incremental": false,
@@ -2397,7 +2433,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 132,
+          "total_file_count": 134,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

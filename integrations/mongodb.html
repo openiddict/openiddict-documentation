@@ -93,6 +93,7 @@
                     <article class="content wrap" id="_content" data-uid="">
 <h1 id="mongodb-integration">MongoDB integration</h1>
 
+<h2 id="basic-configuration">Basic configuration</h2>
 <p>To configure OpenIddict to use MongoDB as the database for applications, authorizations, scopes and tokens, you&#39;ll need to:</p>
 <ul>
 <li><p><strong>Reference the <code>OpenIddict.MongoDb</code> package</strong>:</p>
@@ -198,8 +199,7 @@ await tokens.Indexes.CreateManyAsync(new[]
         {
             // Note: partial filter expressions are not supported on Azure Cosmos DB.
             // As a workaround, the expression and the unique constraint can be removed.
-            PartialFilterExpression =
-                Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(token =&gt; token.ReferenceId),
+            PartialFilterExpression = Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(token =&gt; token.ReferenceId),
             Unique = true
         }),
 
@@ -216,7 +216,56 @@ await tokens.Indexes.CreateManyAsync(new[]
 });
 </code></pre></li>
 </ul>
-</article>
+<h2 id="advanced-configuration">Advanced configuration</h2>
+<h3 id="use-custom-entities">Use custom entities</h3>
+<p>For applications that require storing additional data alongside the properties used by OpenIddict, custom entities can be used. For that, you need to:</p>
+<ul>
+<li><p><strong>Create custom entities</strong>:</p>
+<pre><code class="lang-csharp">public class CustomApplication : OpenIddictMongoDbApplication
+{
+    public string CustomProperty { get; set; }
+}
+
+public class CustomAuthorization : OpenIddictMongoDbAuthorization
+{
+    public string CustomProperty { get; set; }
+}
+
+public class CustomScope : OpenIddictMongoDbScope
+{
+    public string CustomProperty { get; set; }
+}
+
+public class CustomToken : OpenIddictMongoDbToken
+{
+    public string CustomProperty { get; set; }
+}
+</code></pre></li>
+<li><p><strong>Configure MongoDb to use the custom entities</strong>:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        options.UseMongoDb()
+               .ReplaceDefaultApplicationEntity&lt;CustomApplication&gt;()
+               .ReplaceDefaultAuthorizationEntity&lt;CustomAuthorization&gt;()
+               .ReplaceDefaultScopeEntity&lt;CustomScope&gt;()
+               .ReplaceDefaultTokenEntity&lt;CustomToken&gt;();
+    });
+</code></pre></li>
+</ul>
+<h3 id="use-custom-collection-names">Use custom collection names</h3>
+<p>By default, OpenIddict uses the <code>openiddict.[entity name]s</code> pattern to determine the default collection names.
+Applications that require using different collection names can use the <code>Set*CollectionName()</code> helpers:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
+    .AddCore(options =&gt;
+    {
+        options.UseMongoDb()
+               .SetApplicationsCollectionName(&quot;custom-applications-collection&quot;)
+               .SetAuthorizationsCollectionName(&quot;custom-authorizations-collection&quot;)
+               .SetScopesCollectionName(&quot;custom-scopes-collection&quot;)
+               .SetTokensCollectionName(&quot;custom-tokens-collection&quot;);
+    });
+</code></pre></article>
               
                 </div>
             </main>
