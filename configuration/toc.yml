@@ -13,9 +13,6 @@
 - name: Encryption and signing credentials
   href: encryption-and-signing-credentials.md
 
-- name: MongoDB integration
-  href: mongodb-integration.md
-
 - name: Proof Key for Code Exchange
   href: proof-key-for-code-exchange.md
 

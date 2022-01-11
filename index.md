@@ -14,7 +14,7 @@ OpenIddict natively supports **[Entity Framework Core](https://www.nuget.org/pac
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="guide/index.md">Introduction</a></strong></p>
+                <p><strong><a href="guides/index.md">Introduction</a></strong></p>
                 <p>Read an introduction on OpenIddict and the reason it was created.</p>
             </div>
         </div>
@@ -22,7 +22,7 @@ OpenIddict natively supports **[Entity Framework Core](https://www.nuget.org/pac
     <div class="col-md-4">
         <div class="panel panel-default" style="min-height: 120px;">
             <div class="panel-body">
-                <p><strong><a href="guide/getting-started.md">Getting started</a></strong></p>
+                <p><strong><a href="guides/getting-started.md">Getting started</a></strong></p>
                 <p>Get started quickly by working through this step-by-step guide.</p>
             </div>
         </div>

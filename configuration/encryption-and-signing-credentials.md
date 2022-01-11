@@ -6,6 +6,7 @@ To protect the tokens it issues, OpenIddict uses 2 types of credentials:
 
 > [!NOTE]
 > Tokens generated using the opt-in ASP.NET Core Data Protection integration rely on their own key ring, distinct from the credentials discussed in this documentation.
+>
 > For more information about Data Protection, visit [ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction).
 
 ## Registering credentials in the authorization server options
@@ -35,6 +36,7 @@ services.AddOpenIddict()
 > [!NOTE]
 > `options.AddEphemeralEncryptionKey()` generates an asymmetric RSA key which is not directly used as-is to encrypt the tokens but is used to encrypt an
 > intermediate *per-token* symmetric key with which the token content is first encrypted using [AES](https://datatracker.ietf.org/doc/html/rfc7518#section-5.2.6).
+>
 > For more information about this mechanism, read [Key Encryption with RSAES OAEP](https://datatracker.ietf.org/doc/html/rfc7518#section-4.3).
 
 ### Registering a development certificate
@@ -110,7 +112,7 @@ var data = certificate.Export(X509ContentType.Pfx, string.Empty);
 The best place to store your certificates will depend on your host:
   - For IIS applications, storing the certificates in the machine store is the recommended option.
   - On Azure, certificates can be uploaded and exposed to Azure App Services applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
-For more information, visit https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code
+For more information, visit [Use a TLS/SSL certificate in your code in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code).
 
 ## Importing credentials in the API/resource validation options
 

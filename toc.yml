@@ -1,11 +1,14 @@
 - name: User guides
-  href: guide/index.md
+  href: guides/
 
-- name: Configuration and settings
-  href: configuration/index.md
+- name: Configuration
+  href: configuration/
 
-- name: Samples
+- name: Integrations
+  href: integrations/
+
+- name: Samples (external)
   href: https://github.com/openiddict/openiddict-samples
 
-- name: Changelog
+- name: Changelog (external)
   href: https://github.com/openiddict/openiddict-core/releases
