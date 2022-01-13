@@ -6,9 +6,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>OpenIddict: the OpenID Connect stack you'll be addicted to </title>
+    <title>What's OpenIddict? </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="OpenIddict: the OpenID Connect stack you'll be addicted to ">
+    <meta name="title" content="What's OpenIddict? ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -90,37 +90,202 @@
 
 <div class="NOTE"><h5>Note</h5><p>This documentation is a work-in-progress. To contribute, please visit <a href="https://github.com/openiddict/openiddict-documentation">https://github.com/openiddict/openiddict-documentation</a>.</p>
 </div>
-<h1 id="openiddict-the-openid-connect-stack-youll-be-addicted-to">OpenIddict: the OpenID Connect stack you&#39;ll be addicted to</h1>
+<h1 id="whats-openiddict">What&#39;s OpenIddict?</h1>
 <p>OpenIddict aims at providing a <strong>versatile solution</strong> to implement an <strong>OpenID Connect server and token validation in any ASP.NET Core 2.1 (and higher) application</strong>.
 <strong>ASP.NET 4.6.1 (and higher) applications are also fully supported thanks to a native Microsoft.Owin 4.2 integration</strong>.</p>
-<p>OpenIddict fully supports the <strong><a href="https://openid.net/specs/openid-connect-core-1_0.html">code/implicit/hybrid flows</a></strong>, the <strong><a href="https://tools.ietf.org/html/rfc6749">client credentials/resource owner password grants</a></strong> and the <a href="https://tools.ietf.org/html/rfc8628">device authorization flow</a>. You can also create your own custom grant types.</p>
-<p>OpenIddict natively supports <strong><a href="https://www.nuget.org/packages/OpenIddict.EntityFrameworkCore">Entity Framework Core</a></strong>, <strong><a href="https://www.nuget.org/packages/OpenIddict.EntityFramework">Entity Framework 6</a></strong> and <strong><a href="https://www.nuget.org/packages/OpenIddict.MongoDb">MongoDB</a></strong> out-of-the-box, but you can also provide your own stores.</p>
-<div class="row">
-    <div class="col-md-4">
-        <div class="panel panel-default" style="min-height: 120px;">
-            <div class="panel-body">
-                <p><strong><a href="guides/index.html">Introduction</a></strong></p>
-                <p>Read an introduction on OpenIddict and the reason it was created.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default" style="min-height: 120px;">
-            <div class="panel-body">
-                <p><strong><a href="guides/getting-started.html">Getting started</a></strong></p>
-                <p>Get started quickly by working through this step-by-step guide.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default" style="min-height: 120px;">
-            <div class="panel-body">
-                <p><strong><a href="https://github.com/openiddict/openiddict-samples">Samples</a></strong></p>
-                <p>View samples implementing the various authorization flows.</p>
-            </div>
-        </div>
-    </div>
-</div>
+<p>OpenIddict fully supports the <strong><a href="http://openid.net/specs/openid-connect-core-1_0.html">code/implicit/hybrid flows</a></strong>,
+the <strong><a href="https://tools.ietf.org/html/rfc6749">client credentials/resource owner password grants</a></strong> and the <a href="https://tools.ietf.org/html/rfc8628">device authorization flow</a>.</p>
+<p>OpenIddict natively supports <strong><a href="https://www.nuget.org/packages/OpenIddict.EntityFrameworkCore">Entity Framework Core</a></strong>,
+<strong><a href="https://www.nuget.org/packages/OpenIddict.EntityFramework">Entity Framework 6</a></strong> and <strong><a href="https://www.nuget.org/packages/OpenIddict.MongoDb">MongoDB</a></strong>
+out-of-the-box and custom stores can be implemented to support other providers.</p>
+<h1 id="getting-started">Getting started</h1>
+<p><strong>Developers looking for a simple and turnkey solution are strongly encouraged to use <a href="https://docs.orchardcore.net/en/dev/docs/reference/modules/OpenId/">OrchardCore and its OpenID module</a></strong>,
+which is based on OpenIddict, comes with sensible defaults and offers a built-in management GUI to easily register OpenID client applications.</p>
+<p><strong>To implement a custom OpenID Connect server using OpenIddict, read <a href="guides/getting-started.html">Getting started</a></strong>.</p>
+<p><strong>Samples demonstrating how to use OpenIddict with the different OAuth 2.0/OpenID Connect flows</strong>
+can be found in the <a href="https://github.com/openiddict/openiddict-samples">dedicated repository</a>.</p>
+<h1 id="compatibility-matrix">Compatibility matrix</h1>
+<table>
+<thead>
+<tr>
+<th>Web framework version</th>
+<th>.NET runtime version</th>
+<th>OpenIddict 3.x</th>
+<th>OpenIddict 4.x (preview)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASP.NET Core 2.1</td>
+<td>.NET Framework 4.6.1</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
+</tr>
+<tr>
+<td>ASP.NET Core 2.1</td>
+<td>.NET Framework 4.7.2</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td>ASP.NET Core 2.1</td>
+<td>.NET Framework 4.8</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td>ASP.NET Core 2.1</td>
+<td>.NET Core 2.1</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="exclamation">❗</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ASP.NET Core 3.1</td>
+<td>.NET Core 3.1</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ASP.NET Core 5.0</td>
+<td>.NET 5.0</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td>ASP.NET Core 6.0</td>
+<td>.NET 6.0</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Microsoft.Owin 4.2</td>
+<td>.NET Framework 4.6.1</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
+</tr>
+<tr>
+<td>Microsoft.Owin 4.2</td>
+<td>.NET Framework 4.7.2</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+<tr>
+<td>Microsoft.Owin 4.2</td>
+<td>.NET Framework 4.8</td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="emoji" shortcode="exclamation">❗</span> <strong>Note: ASP.NET Core 2.1 on .NET Core 2.1 is no longer supported. While OpenIddict 4.x can still be used on .NET Core 2.1
+thanks to its .NET Standard 2.0 compatibility, users are strongly encouraged to migrate to ASP.NET Core/.NET 6.0</strong>.
+ASP.NET Core 2.1 on .NET Framework 4.6.1 (and higher) is still fully supported.</p>
+<p><span class="emoji" shortcode="information_source">ℹ️</span> <strong>Note: the following features are not available when targeting .NET Framework 4.6.1</strong>:</p>
+<ul>
+<li>X.509 development encryption/signing certificates: calling <code>AddDevelopmentEncryptionCertificate()</code> or <code>AddDevelopmentSigningCertificate()</code>
+will result in a <code>PlatformNotSupportedException</code> being thrown at runtime if no valid development certificate can be found and a new one must be generated.</li>
+<li>X.509 ECDSA signing certificates/keys: calling <code>AddSigningCertificate()</code> or <code>AddSigningKey()</code>
+with an ECDSA certificate/key will always result in a <code>PlatformNotSupportedException</code> being thrown at runtime.</li>
+</ul>
+<h1 id="certification">Certification</h1>
+<p>Unlike many other identity providers, <strong>OpenIddict is not a turnkey solution but a framework that requires writing custom code</strong>
+to be operational (typically, at least an authorization controller), making it a poor candidate for the certification program.</p>
+<p>While a reference implementation could be submitted as-is, <strong>this wouldn&#39;t guarantee that implementations deployed by OpenIddict users would be standard-compliant.</strong></p>
+<p>Instead, <strong>developers are encouraged to execute the conformance tests against their own deployment</strong> once they&#39;ve implemented their own logic.</p>
+<blockquote><p>The samples repository contains <a href="https://github.com/openiddict/openiddict-samples/tree/dev/samples/Contruum/Contruum.Server">a dedicated sample</a> specially designed to be used
+with the OpenID Connect Provider Certification tool and demonstrate that OpenIddict can be easily used in a certified implementation. To allow executing the certification tests
+as fast as possible, that sample doesn&#39;t include any membership or consent feature (two hardcoded identities are proposed for tests that require switching between identities).</p>
+</blockquote>
+<hr>
+<h1 id="resources">Resources</h1>
+<p><strong>Looking for additional resources to help you get started with OpenIddict?</strong> Don&#39;t miss these interesting blog posts:</p>
+<ul>
+<li><strong><a href="https://damienbod.com/2022/01/03/secure-a-blazor-wasm-asp-net-core-hosted-app-using-bff-and-openiddict/">Secure a Blazor WASM ASP.NET Core hosted APP using BFF and OpenIddict</a></strong> by <a href="https://github.com/damienbod">Damien Bowden</a></li>
+<li><strong><a href="https://virtocommerce.com/blog/how-to-secure-aspnet-core-applications-with-openiddict-using-virto-commerce-platform">How to Secure ASP.NET Core Applications with OpenIddict Using Virto Commerce B2B eCommerce: Tech Case Study</a></strong> by <a href="https://virtocommerce.com/">Virto Commerce</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/12/23/openiddict-3-0-general-availability/">OpenIddict 3.0 general availability</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://dev.to/robinvanderknaap/setting-up-an-authorization-server-with-openiddict-part-i-introduction-4jid">Setting up an Authorization Server with OpenIddict</a></strong> by <a href="https://dev.to/robinvanderknaap">Robin van der Knaap</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/11/17/introducing-openiddict-3-0-s-first-release-candidate-version/">Introducing OpenIddict 3.0&#39;s first release candidate version</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/10/27/openiddict-3-0-beta6-is-out/">OpenIddict 3.0 beta6 is out</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/10/02/introducing-quartz-net-support-and-new-languages-in-openiddict-3-0-beta4/">Introducing Quartz.NET support and new languages in OpenIddict 3.0 beta4</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/08/03/introducing-localization-support-in-openiddict-3-0-beta3/">Introducing localization support in OpenIddict 3.0 beta3</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/07/08/openiddict-3-0-beta2-is-out/">OpenIddict 3.0 beta2 is out</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/06/11/introducing-openiddict-3-0-beta1/">Introducing OpenIddict 3.0 beta1</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/03/03/adding-openiddict-3-0-to-an-owin-application/">Adding OpenIddict 3.0 to an OWIN application</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+<li><strong><a href="https://kevinchalet.com/2020/02/18/creating-an-openid-connect-server-proxy-with-openiddict-3-0-s-degraded-mode/">Creating an OpenID Connect server proxy with OpenIddict 3.0&#39;s degraded mode</a></strong> by <a href="https://github.com/kevinchalet">Kévin Chalet</a></li>
+</ul>
+<p><strong>OpenIddict-based projects maintained by third parties</strong>:</p>
+<ul>
+<li><strong><a href="https://github.com/OrchardCMS/OrchardCore">OrchardCore OpenID module</a></strong>: turnkey OpenID Connect server and token validation solution, built with multitenancy in mind</li>
+<li><strong><a href="https://github.com/thomasduft/openiddict-ui">OpenIddict UI</a></strong> by <a href="https://github.com/thomasduft">Thomas Duft</a>: headless UI for managing client applications and scopes</li>
+<li><strong><a href="https://github.com/panoukos41/couchdb-openiddict">P41.OpenIddict.CouchDB</a></strong> by <a href="https://github.com/panoukos41">Panos Athanasiou</a>: CouchDB stores for OpenIddict</li>
+</ul>
+<h1 id="security-policy">Security policy</h1>
+<p>Security issues and bugs should be reported privately by emailing security@openiddict.com.
+You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message.</p>
+<h1 id="support">Support</h1>
+<p>If you need support, please make sure you <a href="https://github.com/sponsors/kevinchalet">sponsor the project</a> before creating a GitHub ticket.
+If you&#39;re not a sponsor, you can post your questions on Gitter or StackOverflow:</p>
+<ul>
+<li><strong>Gitter: <a href="https://gitter.im/openiddict/openiddict-core">https://gitter.im/openiddict/openiddict-core</a></strong></li>
+<li><strong>StackOverflow: <a href="https://stackoverflow.com/questions/tagged/openiddict">https://stackoverflow.com/questions/tagged/openiddict</a></strong></li>
+</ul>
+<h1 id="nightly-builds">Nightly builds</h1>
+<p>If you want to try out the latest features and bug fixes, there is a MyGet feed with nightly builds of OpenIddict.
+To reference the OpenIddict MyGet feed, <strong>create a <code>NuGet.config</code> file</strong> (at the root of your solution):</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+  &lt;packageSources&gt;
+    &lt;add key=&quot;nuget&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
+    &lt;add key=&quot;openiddict&quot; value=&quot;https://www.myget.org/F/openiddict/api/v3/index.json&quot; /&gt;
+  &lt;/packageSources&gt;
+&lt;/configuration&gt;
+</code></pre><h1 id="contributors">Contributors</h1>
+<p><strong>OpenIddict</strong> is actively maintained by <strong><a href="https://github.com/kevinchalet">Kévin Chalet</a></strong>. Contributions are welcome and can be submitted using pull requests.</p>
+<p><strong>Special thanks to our sponsors for their incredible support</strong>:</p>
+<ul>
+<li><a href="https://github.com/sebastienros">Sébastien Ros</a></li>
+<li><a href="https://github.com/mridentity">mridentity</a></li>
+<li><a href="https://github.com/GDreyV">Andrew</a></li>
+<li><a href="https://github.com/gustavdw">gustavdw</a></li>
+<li><a href="https://github.com/Gillardo">Gillardo</a></li>
+<li><a href="https://github.com/DovydasNavickas">Dovydas Navickas</a></li>
+<li><a href="https://github.com/schmitch">Christian Schmitt</a></li>
+<li><a href="https://github.com/ThreeScreenStudios">Thomas W</a></li>
+<li><a href="https://github.com/torfikarl">torfikarl</a></li>
+<li><a href="https://github.com/lewcianci">Lewis Cianci</a></li>
+<li><a href="https://github.com/florianwachs">Florian Wachs</a></li>
+<li><a href="https://github.com/vaspop">Vasko Poposki</a></li>
+<li><a href="https://github.com/SebastianStehle">Sebastian Stehle</a></li>
+<li><a href="https://github.com/MichaelHochriegl">Michael Hochriegl</a></li>
+<li><a href="https://github.com/sunielreddy">sunielreddy</a></li>
+<li><a href="https://github.com/communicatie-cockpit">Communicatie Cockpit</a></li>
+<li><a href="https://github.com/KeithT">Keith Turner</a></li>
+<li><a href="https://github.com/WGMurray">WGMurray</a></li>
+<li><a href="https://github.com/ThomasBjallas">Thomas Bjallas</a></li>
+<li><a href="https://github.com/pablopioli">Pablo Pioli</a></li>
+<li><a href="https://github.com/mcalasa">Michael Calasanz</a></li>
+</ul>
+<h1 id="license">License</h1>
+<p>This project is licensed under the <strong>Apache License</strong>. This means that you can use, modify and distribute it freely.
+See <a href="http://www.apache.org/licenses/LICENSE-2.0.html">http://www.apache.org/licenses/LICENSE-2.0.html</a> for more details.</p>
 </article>
               
                 </div>

@@ -163,9 +163,44 @@ and are no longer supported. Make sure your application (or intermediate librari
 <div class="IMPORTANT"><h5>Important</h5><p>If your application references the <code>OpenIdConnectConstants</code> class, update it to use <code>OpenIddictConstants</code> instead.</p>
 </div>
 <h2 id="update-the-references-to-the-entity-framework-coreentity-framework-6mongodb-models">Update the references to the Entity Framework Core/Entity Framework 6/MongoDB models</h2>
-<p>If your application references the <code>OpenIddictApplication</code>, <code>OpenIddictAuthorization</code>, <code>OpenIddictScope</code> or <code>OpenIddictToken</code> models, update these reference to use
-their new names: <code>OpenIddict[provider name]Application</code>, <code>OpenIddict[provider name]Authorization</code>, <code>OpenIddict[provider name]Scope</code> and <code>OpenIddict[provider name]Token</code>
-(e.g when using MongoDB: <code>OpenIddictMongoDbApplication</code>, <code>OpenIddictMongoDbAuthorization</code>, <code>OpenIddictMongoDbScope</code> and <code>OpenIddictMongoDbToken</code>).</p>
+<p>If your application references the <code>OpenIddictApplication</code>, <code>OpenIddictAuthorization</code>, <code>OpenIddictScope</code> or <code>OpenIddictToken</code> models,
+update these reference to use their new names:</p>
+<table>
+<thead>
+<tr>
+<th>Old name</th>
+<th>New name (Entity Framework Core)</th>
+<th>New name (Entity Framework 6)</th>
+<th>New name (MongoDB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenIddictApplication</td>
+<td>OpenIddictEntityFrameworkCoreApplication</td>
+<td>OpenIddictEntityFrameworkApplication</td>
+<td>OpenIddictMongoDbApplication</td>
+</tr>
+<tr>
+<td>OpenIddictAuthorization</td>
+<td>OpenIddictEntityFrameworkCoreAuthorization</td>
+<td>OpenIddictEntityFrameworkAuthorization</td>
+<td>OpenIddictMongoDbAuthorization</td>
+</tr>
+<tr>
+<td>OpenIddictScope</td>
+<td>OpenIddictEntityFrameworkCoreScope</td>
+<td>OpenIddictEntityFrameworkScope</td>
+<td>OpenIddictMongoDbScope</td>
+</tr>
+<tr>
+<td>OpenIddictToken</td>
+<td>OpenIddictEntityFrameworkCoreToken</td>
+<td>OpenIddictEntityFrameworkToken</td>
+<td>OpenIddictMongoDbToken</td>
+</tr>
+</tbody>
+</table>
 <h2 id="enable-aspnet-core-integration-in-the-server-and-validation-options">Enable ASP.NET Core integration in the server and validation options</h2>
 <p>With the base server and validation stacks being decoupled from ASP.NET Core, you now have to explicitly register the ASP.NET Core host in the server/validation options:</p>
 <pre><code class="lang-csharp">services.AddOpenIddict()
@@ -339,8 +374,9 @@ and the hybrid flow MUST be explicitly opted in. If you use the hybrid flow, mak
     });
 </code></pre><h2 id="update-your-applications-to-grant-them-the-appropriate-response-type-permissions">Update your applications to grant them the appropriate response type permissions</h2>
 <p>New response type permissions - enforced by default - <a href="/configuration/application-permissions.html#response-type-permissions">have been introduced in 3.0</a>.</p>
-<p>If you have many applications to migrate, you can use <a href="https://github.com/openiddict/openiddict-core/issues/1138#issuecomment-713681158">this script</a>
+<div class="NOTE"><h5>Note</h5><p>If you have many applications to migrate, you can use <a href="https://github.com/openiddict/openiddict-core/issues/1138#issuecomment-713681158">this script</a>
 to infer appropriate response type permissions using the already granted grant types.</p>
+</div>
 </article>
               
                 </div>

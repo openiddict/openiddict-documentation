@@ -234,8 +234,7 @@ Here&#39;s an example for the client credentials grant:</p>
             await _applicationManager.GetDisplayNameAsync(application),
             Destinations.AccessToken, Destinations.IdentityToken);
 
-        return SignIn(new ClaimsPrincipal(identity),
-            OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 }
 </code></pre></li>
@@ -254,8 +253,7 @@ Here&#39;s an example for the client credentials grant:</p>
         var context = scope.ServiceProvider.GetRequiredService&lt;ApplicationDbContext&gt;();
         await context.Database.EnsureCreatedAsync();
 
-        var manager =
-            scope.ServiceProvider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
+        var manager = scope.ServiceProvider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
 
         if (await manager.FindByClientIdAsync(&quot;console&quot;) is null)
         {
