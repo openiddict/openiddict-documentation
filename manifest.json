@@ -1690,6 +1690,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "integrations/entity-framework.md",
+      "output": {
+        ".html": {
+          "relative_path": "integrations/entity-framework.html",
+          "hash": "3Lp7rwhlg8lOZwXEHiRplA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "integrations/index.md",
       "output": {
         ".html": {
@@ -1718,7 +1730,7 @@
       "output": {
         ".html": {
           "relative_path": "integrations/toc.html",
-          "hash": "914frhil++hv0x3ddB061A=="
+          "hash": "D9pwWOpK/ZMU1O/IKUo29Q=="
         }
       },
       "is_incremental": false,
@@ -2433,7 +2445,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 134,
+          "total_file_count": 135,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
