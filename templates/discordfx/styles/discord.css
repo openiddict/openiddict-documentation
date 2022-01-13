@@ -156,6 +156,11 @@ a.active, a:active
     overflow-y: hidden;
 }
 
+.content
+{
+    text-align: justify;
+}
+
 .page-title
 {
     margin-block-start: 0;

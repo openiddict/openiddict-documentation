@@ -157,8 +157,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
                 await _applicationManager.GetDisplayNameAsync(application),
                 Destinations.AccessToken, Destinations.IdentityToken);
 
-            return SignIn(new ClaimsPrincipal(identity),
-                OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
     }
     ```
@@ -180,8 +179,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
             var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             await context.Database.EnsureCreatedAsync();
 
-            var manager =
-                scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
+            var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
 
             if (await manager.FindByClientIdAsync("console") is null)
             {
