@@ -94,7 +94,7 @@ request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.Ke
 
 var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
-var data = certificate.Export(X509ContentType.Pfx, string.Empty);
+File.WriteAllBytes("encryption-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
 ```
 
 ```csharp
@@ -106,11 +106,11 @@ request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.Di
 
 var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
-var data = certificate.Export(X509ContentType.Pfx, string.Empty);
+File.WriteAllBytes("signing-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
 ```
 
 The best place to store your certificates will depend on your host:
-  - For IIS applications, storing the certificates in the machine store is the recommended option.
+  - For IIS applications, [storing the certificates in the machine store](https://www.sonicwall.com/support/knowledge-base/how-can-i-import-certificates-into-the-ms-windows-local-machine-certificate-store/170504615105398/) is the recommended option.
   - On Azure, certificates can be uploaded and exposed to Azure App Services applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit [Use a TLS/SSL certificate in your code in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code).
 
