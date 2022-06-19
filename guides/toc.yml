@@ -1,6 +1,9 @@
 - name: Introduction
   href: index.md
 
+- name: Contributing a new Web provider
+  href: contributing-a-new-web-provider.md
+
 - name: Getting started
   href: getting-started.md
 
