@@ -1596,6 +1596,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guides/contributing-a-new-web-provider.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/contributing-a-new-web-provider.html",
+          "hash": "dssOySLr9rHvHRUmI0sn8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "guides/getting-started.md",
       "output": {
         ".html": {
@@ -1636,7 +1648,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/toc.html",
-          "hash": "Q2Rq3xUOIstDdNnNV/CmBA=="
+          "hash": "graDxHuH3xaTHg5/QHY/zQ=="
         }
       },
       "is_incremental": false,
@@ -2445,7 +2457,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 135,
+          "total_file_count": 136,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
