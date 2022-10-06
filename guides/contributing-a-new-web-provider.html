@@ -196,8 +196,8 @@ store the tenant name. Once added, the URLs can include a placeholder of the sam
                    UserinfoEndpoint=&quot;https://{tenant}.zendesk.com/api/v2/users/me&quot; /&gt;
   &lt;/Environment&gt;
 
-  &lt;Setting Name=&quot;Tenant&quot; Type=&quot;String&quot; Required=&quot;true&quot;
-           Description=&quot;Gets or sets the tenant used to identify the Zendesk instance.&quot; /&gt;
+  &lt;Setting PropertyName=&quot;Tenant&quot; ParameterName=&quot;tenant&quot; Type=&quot;String&quot; Required=&quot;true&quot;
+           Description=&quot;The tenant used to identify the Zendesk instance&quot; /&gt;
 &lt;/Provider&gt;
 </code></pre></div>
 <h2 id="test-the-generated-provider">Test the generated provider</h2>
@@ -212,11 +212,11 @@ To confirm it, build the solution and add the new provider to the <code>OpenIddi
 </code></pre><pre><code class="lang-csharp">// Register the Web providers integrations.
 options.UseWebProviders()
        // ... other providers...
-       .Add[provider name](new()
+       .Use[provider name](options =&gt;
        {
-           ClientId = &quot;bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ&quot;,
-           ClientSecret = &quot;VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS&quot;,
-           RedirectUri = new Uri(&quot;https://localhost:44381/signin-[provider name]&quot;, UriKind.Absolute)
+           options.SetClientId(&quot;bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ&quot;);
+           options.SetClientSecret(&quot;VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS&quot;);
+           options.SetRedirectUri(&quot;https://localhost:44381/signin-[provider name]&quot;);
        });
 </code></pre><ul>
 <li>Update <code>AuthenticationController.cs</code> to allow triggering challenges pointing to the new provider:</li>
