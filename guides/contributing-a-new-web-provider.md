@@ -129,8 +129,8 @@ the OpenIddict client to communicate with the remote authorization server. For i
 >                    UserinfoEndpoint="https://{tenant}.zendesk.com/api/v2/users/me" />
 >   </Environment>
 > 
->   <Setting Name="Tenant" Type="String" Required="true"
->            Description="Gets or sets the tenant used to identify the Zendesk instance." />
+>   <Setting PropertyName="Tenant" ParameterName="tenant" Type="String" Required="true"
+>            Description="The tenant used to identify the Zendesk instance" />
 > </Provider>
 > ```
 
@@ -150,11 +150,11 @@ options.SetRedirectionEndpointUris(
 // Register the Web providers integrations.
 options.UseWebProviders()
        // ... other providers...
-       .Add[provider name](new()
+       .Use[provider name](options =>
        {
-           ClientId = "bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ",
-           ClientSecret = "VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS",
-           RedirectUri = new Uri("https://localhost:44381/signin-[provider name]", UriKind.Absolute)
+           options.SetClientId("bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ");
+           options.SetClientSecret("VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS");
+           options.SetRedirectUri("https://localhost:44381/signin-[provider name]");
        });
 ```
 
