@@ -161,20 +161,22 @@ options.UseWebProviders()
   - Update `AuthenticationController.cs` to allow triggering challenges pointing to the new provider:
 
 ```csharp
-var issuer = provider switch
-{
+// Note: OpenIddict always validates the specified provider name when handling the challenge operation,
+// but the provider can also be validated earlier to return an error page or a special HTTP error code.
+if (!string.Equals(provider, "Local", StringComparison.Ordinal) &&
     // ... other providers...
-    "[provider name]" => "https://[provider issuer]/",
-
-    _ => null
-};
+    !string.Equals(provider, [provider name], StringComparison.Ordinal))
+{
+    return BadRequest();
+}
 ```
 
   - Update `Index.cshtml` under `Views\Home` to include a login button for the new provider:
 
 ```html
-<a class="btn btn-lg btn-success" asp-controller="Authentication"
-   asp-action="Login" asp-route-provider="[provider name]">Sign in using [provider name]</a>
+<button class="btn btn-lg btn-success" type="submit" name="provider" value="[provider name]">
+    Sign in using [provider name]
+</button>
 ```
 
 > [!NOTE]
