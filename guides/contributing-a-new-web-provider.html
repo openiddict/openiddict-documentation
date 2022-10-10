@@ -221,18 +221,20 @@ options.UseWebProviders()
 </code></pre><ul>
 <li>Update <code>AuthenticationController.cs</code> to allow triggering challenges pointing to the new provider:</li>
 </ul>
-<pre><code class="lang-csharp">var issuer = provider switch
-{
+<pre><code class="lang-csharp">// Note: OpenIddict always validates the specified provider name when handling the challenge operation,
+// but the provider can also be validated earlier to return an error page or a special HTTP error code.
+if (!string.Equals(provider, &quot;Local&quot;, StringComparison.Ordinal) &amp;&amp;
     // ... other providers...
-    &quot;[provider name]&quot; =&gt; &quot;https://[provider issuer]/&quot;,
-
-    _ =&gt; null
-};
+    !string.Equals(provider, [provider name], StringComparison.Ordinal))
+{
+    return BadRequest();
+}
 </code></pre><ul>
 <li>Update <code>Index.cshtml</code> under <code>Views\Home</code> to include a login button for the new provider:</li>
 </ul>
-<pre><code class="lang-html">&lt;a class=&quot;btn btn-lg btn-success&quot; asp-controller=&quot;Authentication&quot;
-   asp-action=&quot;Login&quot; asp-route-provider=&quot;[provider name]&quot;&gt;Sign in using [provider name]&lt;/a&gt;
+<pre><code class="lang-html">&lt;button class=&quot;btn btn-lg btn-success&quot; type=&quot;submit&quot; name=&quot;provider&quot; value=&quot;[provider name]&quot;&gt;
+    Sign in using [provider name]
+&lt;/button&gt;
 </code></pre><div class="NOTE"><h5>Note</h5><p>Unless you agree to share your sandbox credentials with the OpenIddict developers, the changes
 made to the sandbox project don&#39;t need to be committed and included in your pull request.</p>
 </div>
