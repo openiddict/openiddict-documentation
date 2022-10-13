@@ -57,6 +57,11 @@ services.AddOpenIddict()
 > This feature is not available on .NET Framework 4.6.1: calling `options.AddDevelopmentEncryptionCertificate()` or `options.AddDevelopmentSigningCertificate()`
 > will result in a `PlatformNotSupportedException` being thrown at runtime if no valid development certificate can be found and a new one must be generated.
 
+> [!CAUTION]
+> `options.AddDevelopmentEncryptionCertificate()` or `options.AddDevelopmentSigningCertificate()` cannot be used in applications deployed on IIS or Azure App Service:
+> trying to use them on IIS or Azure App Service will result in an exception being thrown at runtime (unless the application pool is configured to load a user profile).
+> To avoid that, consider creating self-signed certificates and storing them in the X.509 certificates store of the host machine(s).
+
 ### Registering a key
 
 To register a signing or encryption key, an instance of a `SecurityKey` - typically a `SymmetricSecurityKey` or a `RsaSecurityKey` -
@@ -111,7 +116,7 @@ File.WriteAllBytes("signing-certificate.pfx", certificate.Export(X509ContentType
 
 The best place to store your certificates will depend on your host:
   - For IIS applications, [storing the certificates in the machine store](https://www.sonicwall.com/support/knowledge-base/how-can-i-import-certificates-into-the-ms-windows-local-machine-certificate-store/170504615105398/) is the recommended option.
-  - On Azure, certificates can be uploaded and exposed to Azure App Services applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
+  - On Azure, certificates can be uploaded and exposed to Azure App Service applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit [Use a TLS/SSL certificate in your code in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code).
 
 ## Importing credentials in the API/resource validation options
