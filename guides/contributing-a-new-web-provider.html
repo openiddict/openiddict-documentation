@@ -310,7 +310,7 @@ public class FormatNonStandardScopeParameter : IOpenIddictClientHandler&lt;Proce
             throw new ArgumentNullException(nameof(context));
         }
 
-        context.Request.Scope = context.Registration.GetProviderName() switch
+        context.Request.Scope = context.Registration.ProviderName switch
         {
             // The following providers are known to use comma-separated scopes instead of
             // the standard format (that requires using a space as the scope separator):
