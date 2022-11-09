@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Checkout submodule
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: openiddict/openiddict-core
         path: submodules/openiddict-core
