@@ -89,10 +89,28 @@ the OpenIddict client to communicate with the remote authorization server. For i
   <Environment Issuer="https://www.reddit.com/">
     <Configuration AuthorizationEndpoint="https://www.reddit.com/api/v1/authorize"
                    TokenEndpoint="https://www.reddit.com/api/v1/access_token"
-                   UserinfoEndpoint="https://oauth.reddit.com/api/v1/me" />
+                   UserinfoEndpoint="https://oauth.reddit.com/api/v1/me">
+        <GrantType Value="authorization_code" />
+        <GrantType Value="refresh_token" />
+    </Configuration>
   </Environment>
 </Provider>
 ```
+
+> [!NOTE]
+> If the provider doesn't support `grant_type=refresh_token` and only supports the authorization code flow
+> (typically with non-expiring access tokens), the `<GrantType>` nodes MUST be removed for clarity,
+> as the authorization code flow is always considered supported by default if no `<GrantType>` is present:
+>
+> ```xml
+> <Provider Name="Reddit">
+>   <Environment Issuer="https://www.reddit.com/">
+>     <Configuration AuthorizationEndpoint="https://www.reddit.com/api/v1/authorize"
+>                    TokenEndpoint="https://www.reddit.com/api/v1/access_token"
+>                    UserinfoEndpoint="https://oauth.reddit.com/api/v1/me" />
+>   </Environment>
+> </Provider>
+> ```
 
 > [!CAUTION]
 > If the provider doesn't support server metadata but is known to support Proof Key for Code Exchange (PKCE), a `<CodeChallengeMethod>` node MUST
