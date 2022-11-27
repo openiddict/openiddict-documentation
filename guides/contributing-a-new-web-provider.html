@@ -165,10 +165,24 @@ the OpenIddict client to communicate with the remote authorization server. For i
   &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
                    TokenEndpoint=&quot;https://www.reddit.com/api/v1/access_token&quot;
+                   UserinfoEndpoint=&quot;https://oauth.reddit.com/api/v1/me&quot;&gt;
+        &lt;GrantType Value=&quot;authorization_code&quot; /&gt;
+        &lt;GrantType Value=&quot;refresh_token&quot; /&gt;
+    &lt;/Configuration&gt;
+  &lt;/Environment&gt;
+&lt;/Provider&gt;
+</code></pre><div class="NOTE"><h5>Note</h5><p>If the provider doesn&#39;t support <code>grant_type=refresh_token</code> and only supports the authorization code flow
+(typically with non-expiring access tokens), the <code>&lt;GrantType&gt;</code> nodes MUST be removed for clarity,
+as the authorization code flow is always considered supported by default if no <code>&lt;GrantType&gt;</code> is present:</p>
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot;&gt;
+  &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
+    &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
+                   TokenEndpoint=&quot;https://www.reddit.com/api/v1/access_token&quot;
                    UserinfoEndpoint=&quot;https://oauth.reddit.com/api/v1/me&quot; /&gt;
   &lt;/Environment&gt;
 &lt;/Provider&gt;
-</code></pre><div class="CAUTION"><h5>Caution</h5><p>If the provider doesn&#39;t support server metadata but is known to support Proof Key for Code Exchange (PKCE), a <code>&lt;CodeChallengeMethod&gt;</code> node MUST
+</code></pre></div>
+<div class="CAUTION"><h5>Caution</h5><p>If the provider doesn&#39;t support server metadata but is known to support Proof Key for Code Exchange (PKCE), a <code>&lt;CodeChallengeMethod&gt;</code> node MUST
 be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict client will send appropriate <code>code_challenge</code>/<code>code_challenge_method</code> parameters:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Fitbit&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.fitbit.com/&quot;&gt;
