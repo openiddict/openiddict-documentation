@@ -130,14 +130,14 @@ the OpenIddict client to communicate with the remote authorization server. For i
 
 > [!NOTE]
 > Some providers use a multitenant configuration that relies on a subdomain, a custom domain or a virtual path to discriminate tenant instances.
-> If the provider you want to support requires adding a dynamic part in one of its URLs, a `<Setting>` node MUST be added under `<Provider>` to
-> store the tenant name. Once added, the URLs can include a placeholder of the same name:
+> If the provider you want to support requires adding a dynamic part in one of its URIs, a `<Setting>` node MUST be added under `<Provider>` to
+> store the tenant name. Once added, the URIs can include a placeholder of the same name:
 >
 > ```xml
 > <Provider Name="Zendesk">
 >   <!--
 >     Note: Zendesk is a multitenant provider that relies on subdomains to identify instances.
->     As such, the following URLs all include a {tenant} placeholder that will be dynamically
+>     As such, the following URIs all include a {tenant} placeholder that will be dynamically
 >     replaced by OpenIddict at runtime by the tenant configured in the Zendesk settings.
 >   -->
 > 
@@ -161,7 +161,7 @@ To confirm it, build the solution and add the new provider to the `OpenIddict.Sa
 ```csharp
 options.SetRedirectionEndpointUris(
     // ... other providers...
-    "/signin-[provider name]");
+    "callback/login/[provider name]");
 ```
 
 ```csharp
@@ -172,7 +172,7 @@ options.UseWebProviders()
        {
            options.SetClientId("bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ");
            options.SetClientSecret("VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS");
-           options.SetRedirectUri("https://localhost:44381/signin-[provider name]");
+           options.SetRedirectUri("callback/login/[provider name]");
        });
 ```
 
