@@ -195,12 +195,12 @@ be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict clien
 &lt;/Provider&gt;
 </code></pre></div>
 <div class="NOTE"><h5>Note</h5><p>Some providers use a multitenant configuration that relies on a subdomain, a custom domain or a virtual path to discriminate tenant instances.
-If the provider you want to support requires adding a dynamic part in one of its URLs, a <code>&lt;Setting&gt;</code> node MUST be added under <code>&lt;Provider&gt;</code> to
-store the tenant name. Once added, the URLs can include a placeholder of the same name:</p>
+If the provider you want to support requires adding a dynamic part in one of its URIs, a <code>&lt;Setting&gt;</code> node MUST be added under <code>&lt;Provider&gt;</code> to
+store the tenant name. Once added, the URIs can include a placeholder of the same name:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot;&gt;
   &lt;!--
     Note: Zendesk is a multitenant provider that relies on subdomains to identify instances.
-    As such, the following URLs all include a {tenant} placeholder that will be dynamically
+    As such, the following URIs all include a {tenant} placeholder that will be dynamically
     replaced by OpenIddict at runtime by the tenant configured in the Zendesk settings.
   --&gt;
 
@@ -222,7 +222,7 @@ To confirm it, build the solution and add the new provider to the <code>OpenIddi
 </ul>
 <pre><code class="lang-csharp">options.SetRedirectionEndpointUris(
     // ... other providers...
-    &quot;/signin-[provider name]&quot;);
+    &quot;callback/login/[provider name]&quot;);
 </code></pre><pre><code class="lang-csharp">// Register the Web providers integrations.
 options.UseWebProviders()
        // ... other providers...
@@ -230,7 +230,7 @@ options.UseWebProviders()
        {
            options.SetClientId(&quot;bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ&quot;);
            options.SetClientSecret(&quot;VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS&quot;);
-           options.SetRedirectUri(&quot;https://localhost:44381/signin-[provider name]&quot;);
+           options.SetRedirectUri(&quot;callback/login/[provider name]&quot;);
        });
 </code></pre><ul>
 <li>Update <code>AuthenticationController.cs</code> to allow triggering challenges pointing to the new provider:</li>
