@@ -1612,7 +1612,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/getting-started.html",
-          "hash": "t2kZFpCKtBBKduSO+k6qBw=="
+          "hash": "mT272boRGfEMUWq6J++rhg=="
         }
       },
       "is_incremental": false,
@@ -1643,12 +1643,24 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "guides/migration/30-to-40.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/migration/30-to-40.html",
+          "hash": "yHjan/ctqCgTK5bqnJAXPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "guides/toc.yml",
       "output": {
         ".html": {
           "relative_path": "guides/toc.html",
-          "hash": "graDxHuH3xaTHg5/QHY/zQ=="
+          "hash": "mWIgBoQ7WtqhBRvZ4V5UUw=="
         }
       },
       "is_incremental": false,
@@ -1682,7 +1694,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "+YLdHipQxOfXLHhFGm6MLQ=="
+          "hash": "USlP84pdqX1EoEvUfycT4A=="
         }
       },
       "is_incremental": false,
@@ -2457,7 +2469,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 136,
+          "total_file_count": 137,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
