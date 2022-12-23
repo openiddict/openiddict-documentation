@@ -14,6 +14,8 @@
   items:
     - name: Migration from 2.0 to 3.0
       href: migration/20-to-30.md
+    - name: Migration from 3.0 to 4.0
+      href: migration/30-to-40.md
 
 - name: External resources
   items:
