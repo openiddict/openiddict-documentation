@@ -90,8 +90,8 @@ the OpenIddict client to communicate with the remote authorization server. For i
     <Configuration AuthorizationEndpoint="https://www.reddit.com/api/v1/authorize"
                    TokenEndpoint="https://www.reddit.com/api/v1/access_token"
                    UserinfoEndpoint="https://oauth.reddit.com/api/v1/me">
-        <GrantType Value="authorization_code" />
-        <GrantType Value="refresh_token" />
+      <GrantType Value="authorization_code" />
+      <GrantType Value="refresh_token" />
     </Configuration>
   </Environment>
 </Provider>
@@ -156,13 +156,7 @@ the OpenIddict client to communicate with the remote authorization server. For i
 
 If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
 To confirm it, build the solution and add the new provider to the `OpenIddict.Sandbox.AspNetCore.Client` sandbox:
-  - Update `Startup.cs` to use your new provider:
-
-```csharp
-options.SetRedirectionEndpointUris(
-    // ... other providers...
-    "callback/login/[provider name]");
-```
+  - Update `Startup.cs` to register your new provider:
 
 ```csharp
 // Register the Web providers integrations.
