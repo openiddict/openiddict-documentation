@@ -166,8 +166,8 @@ the OpenIddict client to communicate with the remote authorization server. For i
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
                    TokenEndpoint=&quot;https://www.reddit.com/api/v1/access_token&quot;
                    UserinfoEndpoint=&quot;https://oauth.reddit.com/api/v1/me&quot;&gt;
-        &lt;GrantType Value=&quot;authorization_code&quot; /&gt;
-        &lt;GrantType Value=&quot;refresh_token&quot; /&gt;
+      &lt;GrantType Value=&quot;authorization_code&quot; /&gt;
+      &lt;GrantType Value=&quot;refresh_token&quot; /&gt;
     &lt;/Configuration&gt;
   &lt;/Environment&gt;
 &lt;/Provider&gt;
@@ -218,12 +218,9 @@ store the tenant name. Once added, the URIs can include a placeholder of the sam
 <p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
 To confirm it, build the solution and add the new provider to the <code>OpenIddict.Sandbox.AspNetCore.Client</code> sandbox:</p>
 <ul>
-<li>Update <code>Startup.cs</code> to use your new provider:</li>
+<li>Update <code>Startup.cs</code> to register your new provider:</li>
 </ul>
-<pre><code class="lang-csharp">options.SetRedirectionEndpointUris(
-    // ... other providers...
-    &quot;callback/login/[provider name]&quot;);
-</code></pre><pre><code class="lang-csharp">// Register the Web providers integrations.
+<pre><code class="lang-csharp">// Register the Web providers integrations.
 options.UseWebProviders()
        // ... other providers...
        .Use[provider name](options =&gt;
