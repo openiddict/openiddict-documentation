@@ -113,7 +113,6 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <tr>
 <th>Web framework version</th>
 <th>.NET runtime version</th>
-<th>OpenIddict 3.x</th>
 <th>OpenIddict 4.x</th>
 </tr>
 </thead>
@@ -122,28 +121,23 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <td>ASP.NET Core 2.1</td>
 <td>.NET Framework 4.6.1</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
 </tr>
 <tr>
 <td>ASP.NET Core 2.1</td>
 <td>.NET Framework 4.7.2</td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
 <td>ASP.NET Core 2.1</td>
 <td>.NET Framework 4.8</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
 <td>ASP.NET Core 2.1</td>
 <td>.NET Core 2.1</td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 <td><span class="emoji" shortcode="exclamation">❗</span></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -152,10 +146,8 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <td>ASP.NET Core 3.1</td>
 <td>.NET Core 3.1</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -163,23 +155,19 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <tr>
 <td>ASP.NET Core 5.0</td>
 <td>.NET 5.0</td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 <td><span class="emoji" shortcode="exclamation">❗</span></td>
 </tr>
 <tr>
 <td>ASP.NET Core 6.0</td>
 <td>.NET 6.0</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
 <td>ASP.NET Core 7.0</td>
 <td>.NET 7.0</td>
-<td><span class="emoji" shortcode="warning">⚠️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -188,18 +176,15 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <td>Microsoft.Owin 4.2</td>
 <td>.NET Framework 4.6.1</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span> <span class="emoji" shortcode="information_source">ℹ️</span></td>
 </tr>
 <tr>
 <td>Microsoft.Owin 4.2</td>
 <td>.NET Framework 4.7.2</td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 <tr>
 <td>Microsoft.Owin 4.2</td>
 <td>.NET Framework 4.8</td>
-<td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 <td><span class="emoji" shortcode="heavy_check_mark">✔️</span></td>
 </tr>
 </tbody>
@@ -207,9 +192,6 @@ can be found in the <a href="https://github.com/openiddict/openiddict-samples">d
 <p><span class="emoji" shortcode="exclamation">❗</span> <strong>Note: ASP.NET Core 2.1 on .NET Core 2.1 and ASP.NET Core 5.0 on .NET 5.0 are no longer supported by Microsoft. While OpenIddict 4.x can still be
 used on .NET Core 2.1 thanks to its .NET Standard 2.0 compatibility, users are strongly encouraged to migrate to ASP.NET Core/.NET 6.0</strong>.
 ASP.NET Core 2.1 on .NET Framework 4.6.1 (and higher) is still fully supported.</p>
-<p><span class="emoji" shortcode="exclamation">❗</span> Note: OpenIddict is impacted by a breaking change introduced in ASP.NET Core 7.0 and may require using an <code>AppContext</code> compatibility
-switch if the application only uses the OpenIddict server feature alone without any other authentication handler registered.
-For more information, read <a href="https://github.com/dotnet/aspnetcore/issues/44661">ASP.NET Core 7.0&#39;s default authentication handler fallback breaks OpenIddict</a>.</p>
 <p><span class="emoji" shortcode="information_source">ℹ️</span> <strong>Note: the following features are not available when targeting .NET Framework 4.6.1</strong>:</p>
 <ul>
 <li>X.509 development encryption/signing certificates: calling <code>AddDevelopmentEncryptionCertificate()</code> or <code>AddDevelopmentSigningCertificate()</code>
