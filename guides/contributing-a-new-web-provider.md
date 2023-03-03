@@ -8,6 +8,9 @@ To simplify integrating with social and enterprise providers that offer OAuth 2.
   - Unlike the ASP.NET Core OAuth 2.0 base handler by the aspnet-contrib providers, **the OpenIddict client is a dual-protocol OAuth 2.0 + OpenID Connect stack**,
 which means it can support both protocols *while* enforcing all the security checks required by these protocols.
 
+  - While the aspnet-contrib providers only work on ASP.NET Core, **the OpenIddict providers can not only be used in ASP.NET Core
+and OWIN/ASP.NET 4.x applications, but also in Windows and Linux desktop applications** without requiring any platform-specific code.
+
   - Unlike the aspnet-contrib providers, **the source code needed to materialize the OpenIddict web providers is created dynamically** using
 [Roslyn Source Generators](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview) and
 [a XML file that includes all the supported providers](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml)
