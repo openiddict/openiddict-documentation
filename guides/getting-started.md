@@ -12,8 +12,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict` packages:
 
     ```xml
-    <PackageReference Include="OpenIddict.AspNetCore" Version="4.0.0" />
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.0.0" />
+    <PackageReference Include="OpenIddict.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.1.0" />
     ```
 
   - **Configure the OpenIddict core, server and validation services** in `Startup.ConfigureServices`.
@@ -149,13 +149,13 @@ If you don't want to start from one of the recommended samples, you'll need to:
             var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType, Claims.Name, Claims.Role);
 
             // Use the client_id as the subject identifier.
-            identity.AddClaim(Claims.Subject,
+            identity.AddClaim(new Claim(Claims.Subject,
                 await _applicationManager.GetClientIdAsync(application),
-                Destinations.AccessToken, Destinations.IdentityToken);
+                Destinations.AccessToken, Destinations.IdentityToken));
 
-            identity.AddClaim(Claims.Name,
+            identity.AddClaim(new Claim(Claims.Name,
                 await _applicationManager.GetDisplayNameAsync(application),
-                Destinations.AccessToken, Destinations.IdentityToken);
+                Destinations.AccessToken, Destinations.IdentityToken));
 
             return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
