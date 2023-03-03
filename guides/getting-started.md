@@ -149,13 +149,19 @@ If you don't want to start from one of the recommended samples, you'll need to:
             var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType, Claims.Name, Claims.Role);
 
             // Use the client_id as the subject identifier.
-            identity.AddClaim(new Claim(Claims.Subject,
-                await _applicationManager.GetClientIdAsync(application),
-                Destinations.AccessToken, Destinations.IdentityToken));
+            identity.SetClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application));
+            identity.SetClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application));
 
-            identity.AddClaim(new Claim(Claims.Name,
-                await _applicationManager.GetDisplayNameAsync(application),
-                Destinations.AccessToken, Destinations.IdentityToken));
+            identity.SetDestinations(static claim => claim.Type switch
+            {
+                // Allow the "name" claim to be stored in both the access and identity tokens
+                // when the "profile" scope was granted (by calling principal.SetScopes(...)).
+                Claims.Name when claim.Subject.HasScope(Scopes.Profile)
+                    => new[] { Destinations.AccessToken, Destinations.IdentityToken },
+
+                // Otherwise, only store the claim in the access tokens.
+                _ => new[] { Destinations.AccessToken }
+            });
 
             return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
