@@ -102,8 +102,8 @@
 using <strong>individual user accounts authentication</strong> is strongly recommended as it automatically includes the default ASP.NET Core Identity UI, based on Razor Pages.</p>
 </li>
 <li><p><strong>Update your <code>.csproj</code> file</strong> to reference the latest <code>OpenIddict</code> packages:</p>
-<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;4.0.0&quot; /&gt;
-&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;4.0.0&quot; /&gt;
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;4.1.0&quot; /&gt;
+&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;4.1.0&quot; /&gt;
 </code></pre></li>
 <li><p><strong>Configure the OpenIddict core, server and validation services</strong> in <code>Startup.ConfigureServices</code>.
 Here&#39;s an example for the client credentials grant, used in machine-to-machine scenarios:</p>
@@ -226,13 +226,19 @@ Here&#39;s an example for the client credentials grant:</p>
         var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType, Claims.Name, Claims.Role);
 
         // Use the client_id as the subject identifier.
-        identity.AddClaim(Claims.Subject,
-            await _applicationManager.GetClientIdAsync(application),
-            Destinations.AccessToken, Destinations.IdentityToken);
+        identity.SetClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application));
+        identity.SetClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application));
 
-        identity.AddClaim(Claims.Name,
-            await _applicationManager.GetDisplayNameAsync(application),
-            Destinations.AccessToken, Destinations.IdentityToken);
+        identity.SetDestinations(static claim =&gt; claim.Type switch
+        {
+            // Allow the &quot;name&quot; claim to be stored in both the access and identity tokens
+            // when the &quot;profile&quot; scope was granted (by calling principal.SetScopes(...)).
+            Claims.Name when claim.Subject.HasScope(Scopes.Profile)
+                =&gt; new[] { Destinations.AccessToken, Destinations.IdentityToken },
+
+            // Otherwise, only store the claim in the access tokens.
+            _ =&gt; new[] { Destinations.AccessToken }
+        });
 
         return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
