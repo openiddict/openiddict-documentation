@@ -17,7 +17,7 @@ For these reasons, **OpenIddict doesn't automatically copy the claims attached t
 to an access or identity token, a flag known as "claim destination" must be added to each `Claim` instance you want to expose.
 
 > [!NOTE]
-> To attach one or multiple destinations to a claim, use the `claim.SetDestinations()` extension defined in `OpenIddict.Abstractions`.
+> To attach one or multiple destinations to a claim, use the `principal.SetDestinations()` extension defined in `OpenIddict.Abstractions`.
 > In the typical case, granted scopes can be used to determine what claims are allowed to be copied to access and identity tokens, as in this example:
 
 ```csharp
@@ -28,31 +28,27 @@ var principal = await _signInManager.CreateUserPrincipalAsync(user);
 // For that, simply restrict the list of scopes before calling SetScopes().
 principal.SetScopes(request.GetScopes());
 principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
-
-foreach (var claim in principal.Claims)
+principal.SetDestinations(static claim => claim.Type switch
 {
-    claim.SetDestinations(claim.Type switch
+    // If the "profile" scope was granted, allow the "name" claim to be
+    // added to the access and identity tokens derived from the principal.
+    Claims.Name when claim.Subject.HasScope(Scopes.Profile) => new[]
     {
-        // If the "profile" scope was granted, allow the "name" claim to be
-        // added to the access and identity tokens derived from the principal.
-        Claims.Name when principal.HasScope(Scopes.Profile) => new[]
-        {
-            OpenIddictConstants.Destinations.AccessToken,
-            OpenIddictConstants.Destinations.IdentityToken
-        },
+        OpenIddictConstants.Destinations.AccessToken,
+        OpenIddictConstants.Destinations.IdentityToken
+    },
 
-        // Never add the "secret_value" claim to access or identity tokens.
-        // In this case, it will only be added to authorization codes,
-        // refresh tokens and user/device codes, that are always encrypted.
-        "secret_value" => Array.Empty<string>(),
+    // Never add the "secret_value" claim to access or identity tokens.
+    // In this case, it will only be added to authorization codes,
+    // refresh tokens and user/device codes, that are always encrypted.
+    "secret_value" => Array.Empty<string>(),
 
-        // Otherwise, add the claim to the access tokens only.
-        _ => new[]
-        {
-            OpenIddictConstants.Destinations.AccessToken
-        }
-    });
-}
+    // Otherwise, add the claim to the access tokens only.
+    _ => new[]
+    {
+        OpenIddictConstants.Destinations.AccessToken
+    }
+});
 
 return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 ```
