@@ -47,35 +47,58 @@ switch (await _applicationManager.GetConsentTypeAsync(application))
     case ConsentTypes.Implicit:
     case ConsentTypes.External when authorizations.Any():
     case ConsentTypes.Explicit when authorizations.Any() && !request.HasPrompt(Prompts.Consent):
-        var principal = await _signInManager.CreateUserPrincipalAsync(user);
+        // Create the claims-based identity that will be used by OpenIddict to generate tokens.
+        var identity = new ClaimsIdentity(
+            authenticationType: TokenValidationParameters.DefaultAuthenticationType,
+            nameType: Claims.Name,
+            roleType: Claims.Role);
+
+        // Add the claims that will be persisted in the tokens.
+        identity.SetClaim(Claims.Subject, await _userManager.GetUserIdAsync(user))
+                .SetClaim(Claims.Email, await _userManager.GetEmailAsync(user))
+                .SetClaim(Claims.Name, await _userManager.GetUserNameAsync(user))
+                .SetClaims(Claims.Role, (await _userManager.GetRolesAsync(user)).ToImmutableArray());
 
         // Note: in this sample, the granted scopes match the requested scope
         // but you may want to allow the user to uncheck specific scopes.
         // For that, simply restrict the list of scopes before calling SetScopes.
-        principal.SetScopes(request.GetScopes());
-        principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
+        identity.SetScopes(request.GetScopes());
+        identity.SetResources(await _scopeManager.ListResourcesAsync(identity.GetScopes()).ToListAsync());
 
         // Automatically create a permanent authorization to avoid requiring explicit consent
         // for future authorization or token requests containing the same scopes.
         var authorization = authorizations.LastOrDefault();
-        if (authorization is null)
+        authorization ??= await _authorizationManager.CreateAsync(
+            identity: identity,
+            subject : await _userManager.GetUserIdAsync(user),
+            client  : await _applicationManager.GetIdAsync(application),
+            type    : AuthorizationTypes.Permanent,
+            scopes  : identity.GetScopes());
+
+        identity.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
+        identity.SetDestinations(static claim => claim.Type switch
         {
-            authorization = await _authorizationManager.CreateAsync(
-                principal: principal,
-                subject  : await _userManager.GetUserIdAsync(user),
-                client   : await _applicationManager.GetIdAsync(application),
-                type     : AuthorizationTypes.Permanent,
-                scopes   : principal.GetScopes());
-        }
+            // If the "profile" scope was granted, allow the "name" claim to be
+            // added to the access and identity tokens derived from the principal.
+            Claims.Name when claim.Subject.HasScope(Scopes.Profile) => new[]
+            {
+                OpenIddictConstants.Destinations.AccessToken,
+                OpenIddictConstants.Destinations.IdentityToken
+            },
 
-        principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
+            // Never add the "secret_value" claim to access or identity tokens.
+            // In this case, it will only be added to authorization codes,
+            // refresh tokens and user/device codes, that are always encrypted.
+            "secret_value" => Array.Empty<string>(),
 
-        foreach (var claim in principal.Claims)
-        {
-            claim.SetDestinations(GetDestinations(claim, principal));
-        }
+            // Otherwise, add the claim to the access tokens only.
+            _ => new[]
+            {
+                OpenIddictConstants.Destinations.AccessToken
+            }
+        });
 
-        return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 
     // At this point, no authorization was found in the database and an error must be returned
     // if the client application specified prompt=none in the authorization request.
