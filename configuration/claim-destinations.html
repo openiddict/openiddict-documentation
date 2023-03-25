@@ -108,7 +108,7 @@ to access the content of access tokens (e.g by copying the token payload and usi
 <p>For these reasons, <strong>OpenIddict doesn&#39;t automatically copy the claims attached to a <code>ClaimsPrincipal</code> to access or identity tokens</strong>
 (except the <code>sub</code> claim, which is the only mandatory claim in OpenIddict). To allow OpenIddict to persist specific claims
 to an access or identity token, a flag known as &quot;claim destination&quot; must be added to each <code>Claim</code> instance you want to expose.</p>
-<div class="NOTE"><h5>Note</h5><p>To attach one or multiple destinations to a claim, use the <code>claim.SetDestinations()</code> extension defined in <code>OpenIddict.Abstractions</code>.
+<div class="NOTE"><h5>Note</h5><p>To attach one or multiple destinations to a claim, use the <code>principal.SetDestinations()</code> extension defined in <code>OpenIddict.Abstractions</code>.
 In the typical case, granted scopes can be used to determine what claims are allowed to be copied to access and identity tokens, as in this example:</p>
 </div>
 <pre><code class="lang-csharp">var principal = await _signInManager.CreateUserPrincipalAsync(user);
@@ -118,31 +118,27 @@ In the typical case, granted scopes can be used to determine what claims are all
 // For that, simply restrict the list of scopes before calling SetScopes().
 principal.SetScopes(request.GetScopes());
 principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
-
-foreach (var claim in principal.Claims)
+principal.SetDestinations(static claim =&gt; claim.Type switch
 {
-    claim.SetDestinations(claim.Type switch
+    // If the &quot;profile&quot; scope was granted, allow the &quot;name&quot; claim to be
+    // added to the access and identity tokens derived from the principal.
+    Claims.Name when claim.Subject.HasScope(Scopes.Profile) =&gt; new[]
     {
-        // If the &quot;profile&quot; scope was granted, allow the &quot;name&quot; claim to be
-        // added to the access and identity tokens derived from the principal.
-        Claims.Name when principal.HasScope(Scopes.Profile) =&gt; new[]
-        {
-            OpenIddictConstants.Destinations.AccessToken,
-            OpenIddictConstants.Destinations.IdentityToken
-        },
+        OpenIddictConstants.Destinations.AccessToken,
+        OpenIddictConstants.Destinations.IdentityToken
+    },
 
-        // Never add the &quot;secret_value&quot; claim to access or identity tokens.
-        // In this case, it will only be added to authorization codes,
-        // refresh tokens and user/device codes, that are always encrypted.
-        &quot;secret_value&quot; =&gt; Array.Empty&lt;string&gt;(),
+    // Never add the &quot;secret_value&quot; claim to access or identity tokens.
+    // In this case, it will only be added to authorization codes,
+    // refresh tokens and user/device codes, that are always encrypted.
+    &quot;secret_value&quot; =&gt; Array.Empty&lt;string&gt;(),
 
-        // Otherwise, add the claim to the access tokens only.
-        _ =&gt; new[]
-        {
-            OpenIddictConstants.Destinations.AccessToken
-        }
-    });
-}
+    // Otherwise, add the claim to the access tokens only.
+    _ =&gt; new[]
+    {
+        OpenIddictConstants.Destinations.AccessToken
+    }
+});
 
 return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 </code></pre></article>
