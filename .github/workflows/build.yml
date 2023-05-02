@@ -23,7 +23,7 @@ jobs:
         path: submodules/openiddict-core
 
     - name: Build documentation
-      uses: nikeee/docfx-action@master
+      uses: nikeee/docfx-action@v1.0.0
       with:
         args: docfx.json
 
