@@ -499,10 +499,6 @@ body .toc{
 .expand-stub {
   position: absolute;
   left: -10px;
-  font-weight: bold;
-}
-.expand-stub + a {
-  font-weight: bold;
 }
 .toc .nav > li > a.sidetoc-expand {
   position: absolute;
@@ -1025,7 +1021,7 @@ div.embeddedvideo iframe {
 /* Color theme */
 
 /* These are not important, tune down **/
-.declaration, .fieldValue, .parameters, .returns {
+.decalaration, .fieldValue, .parameters, .returns {
   color: #a2a2a2;
 }
 
