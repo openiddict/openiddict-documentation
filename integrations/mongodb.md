@@ -123,6 +123,14 @@ initialize the database and create the indexes used by the OpenIddict entities:
             }),
 
         new CreateIndexModel<OpenIddictMongoDbToken>(
+            Builders<OpenIddictMongoDbToken>.IndexKeys.Ascending(token => token.AuthorizationId),
+            new CreateIndexOptions<OpenIddictMongoDbToken>()
+            {
+                PartialFilterExpression =
+                    Builders<OpenIddictMongoDbToken>.Filter.Exists(token => token.AuthorizationId),
+            }),
+
+        new CreateIndexModel<OpenIddictMongoDbToken>(
             Builders<OpenIddictMongoDbToken>.IndexKeys
                 .Ascending(token => token.ApplicationId)
                 .Ascending(token => token.Status)
