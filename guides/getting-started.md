@@ -12,8 +12,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict` packages:
 
     ```xml
-    <PackageReference Include="OpenIddict.AspNetCore" Version="4.3.0" />
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.3.0" />
+    <PackageReference Include="OpenIddict.AspNetCore" Version="4.4.0" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.4.0" />
     ```
 
   - **Configure the OpenIddict core, server and validation services** in `Startup.ConfigureServices`.
