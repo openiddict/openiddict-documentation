@@ -6,10 +6,14 @@ on:
     tags: [ '*' ]
   pull_request:
     branches: [ dev, rel/* ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
-    name: ubuntu-latest
+    name: build-ubuntu-latest
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +31,28 @@ jobs:
       with:
         args: docfx.json
 
+    - name: Publish website artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: website
+        path: ./_site
+
+  deploy-github-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event.repository.fork == false && github.ref == 'refs/heads/dev'
+    steps:
+    - name: Download website
+      uses: actions/download-artifact@v3
+      with:
+        name: website
+
     - name: Deploy to GitHub Pages
-      if: ${{ github.repository_owner == 'openiddict' && (github.ref == 'refs/heads/dev' || startsWith(github.ref, 'refs/heads/rel/') || startsWith(github.ref, 'refs/tags/')) }}
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: _site
+        FOLDER: .
         GIT_CONFIG_NAME: OpenIddict Bot
         GIT_CONFIG_EMAIL: 32257313+openiddict-bot@users.noreply.github.com
         COMMIT_MESSAGE: Update the documentation pages
