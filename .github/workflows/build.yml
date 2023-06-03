@@ -46,13 +46,14 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: website
+        path: ./_site
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: .
+        FOLDER: _site
         GIT_CONFIG_NAME: OpenIddict Bot
         GIT_CONFIG_EMAIL: 32257313+openiddict-bot@users.noreply.github.com
         COMMIT_MESSAGE: Update the documentation pages
