@@ -116,7 +116,8 @@ the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn&#39;t s
 <p>Due to these differences, <strong>contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider</strong>:</p>
 <h2 id="add-a-new-provider-node-for-the-new-provider">Add a new <code>&lt;Provider&gt;</code> node for the new provider</h2>
 <p>To add a new OpenIddict web provider, <strong>the first step is to add a new <code>&lt;Provider&gt;</code> node</strong> to the <a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml">OpenIddictClientWebIntegrationProviders.xml</a> file. For instance:</p>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot; Documentation=&quot;https://developer.zendesk.com/documentation/live-chat/getting-started/auth/&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot; Id=&quot;89fdfe22-c796-4227-a44a-d9cd3c467bbb&quot;
+          Documentation=&quot;https://developer.zendesk.com/documentation/live-chat/getting-started/auth/&quot;&gt;
 &lt;/Provider&gt;
 </code></pre><p>If available, a link to the official documentation MUST be added. If multiple languages are available, the following order SHOULD be used:</p>
 <ul>
@@ -132,7 +133,7 @@ the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn&#39;t s
 <ul>
 <li>If the provider supports multiple environments, multiple <code>&lt;Environment&gt;</code> nodes - one per environment - MUST be added under <code>&lt;Provider&gt;</code>:</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Salesforce&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Salesforce&quot; Id=&quot;ce5bc4bc-6133-4e87-85ad-626b3c0a4427&quot;&gt;
   &lt;Environment Name=&quot;Production&quot; /&gt;
 
   &lt;Environment Name=&quot;Development&quot; /&gt;
@@ -142,7 +143,7 @@ the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn&#39;t s
 <ul>
 <li>If the provider doesn&#39;t support multiple environment, a single <code>&lt;Environment&gt;</code> MUST be added (the <code>Name</code> attribute SHOULD be omitted):</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Google&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Google&quot; Id=&quot;e0e90ce7-adb5-4b05-9f54-594941e5d960&quot;&gt;
   &lt;Environment /&gt;
 &lt;/Provider&gt;
 </code></pre><h2 id="add-the-appropriate-configuration-for-each-environment">Add the appropriate configuration for each environment</h2>
@@ -156,7 +157,7 @@ supports OpenID Connect/OAuth 2.0 server metadata.</p>
 without the <code>/.well-known/openid-configuration</code> part. For instance, Google exposes its discovery document at <code>https://accounts.google.com/.well-known/openid-configuration</code>
 so the correct issuer to use is <code>https://accounts.google.com/</code>:</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Google&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Google&quot; Id=&quot;e0e90ce7-adb5-4b05-9f54-594941e5d960&quot;&gt;
   &lt;Environment Issuer=&quot;https://accounts.google.com/&quot; /&gt;
 &lt;/Provider&gt;
 </code></pre><ul>
@@ -164,7 +165,7 @@ so the correct issuer to use is <code>https://accounts.google.com/</code>:</li>
 the value given in the documentation or the base address of the server) <strong>and</strong> a <code>&lt;Configuration&gt;</code> node with the static configuration needed by
 the OpenIddict client to communicate with the remote authorization server. For instance:</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot; Id=&quot;01ae8033-935c-43b9-8568-eaf4d08c0613&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
                    TokenEndpoint=&quot;https://www.reddit.com/api/v1/access_token&quot;
@@ -177,7 +178,7 @@ the OpenIddict client to communicate with the remote authorization server. For i
 </code></pre><div class="NOTE"><h5>Note</h5><p>If the provider doesn&#39;t support <code>grant_type=refresh_token</code> and only supports the authorization code flow
 (typically with non-expiring access tokens), the <code>&lt;GrantType&gt;</code> nodes MUST be removed for clarity,
 as the authorization code flow is always considered supported by default if no <code>&lt;GrantType&gt;</code> is present:</p>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot; Id=&quot;01ae8033-935c-43b9-8568-eaf4d08c0613&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
                    TokenEndpoint=&quot;https://www.reddit.com/api/v1/access_token&quot;
@@ -187,7 +188,7 @@ as the authorization code flow is always considered supported by default if no <
 </code></pre></div>
 <div class="CAUTION"><h5>Caution</h5><p>If the provider doesn&#39;t support server metadata but is known to support Proof Key for Code Exchange (PKCE), a <code>&lt;CodeChallengeMethod&gt;</code> node MUST
 be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict client will send appropriate <code>code_challenge</code>/<code>code_challenge_method</code> parameters:</p>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Fitbit&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Fitbit&quot; Id=&quot;10a558b9-8c81-47cc-8941-e54d0432fd51&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.fitbit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.fitbit.com/oauth2/authorize&quot;
                    TokenEndpoint=&quot;https://api.fitbit.com/oauth2/token&quot;
@@ -200,7 +201,7 @@ be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict clien
 <div class="NOTE"><h5>Note</h5><p>Some providers use a multitenant configuration that relies on a subdomain, a custom domain or a virtual path to discriminate tenant instances.
 If the provider you want to support requires adding a dynamic part in one of its URIs, a <code>&lt;Setting&gt;</code> node MUST be added under <code>&lt;Provider&gt;</code> to
 store the tenant name. Once added, the URIs can include a placeholder of the same name:</p>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot; Id=&quot;89fdfe22-c796-4227-a44a-d9cd3c467bbb&quot;&gt;
   &lt;!--
     Note: Zendesk is a multitenant provider that relies on subdomains to identify instances.
     As such, the following URIs all include a {tenant} placeholder that will be dynamically
@@ -219,14 +220,14 @@ store the tenant name. Once added, the URIs can include a placeholder of the sam
 </code></pre></div>
 <h2 id="test-the-generated-provider">Test the generated provider</h2>
 <p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
-To confirm it, build the solution and add the new provider to the <code>OpenIddict.Sandbox.AspNetCore.Client</code> sandbox:</p>
+To confirm it, build the solution and add an instance of the new provider to the <code>OpenIddict.Sandbox.AspNetCore.Client</code> sandbox:</p>
 <ul>
 <li>Update <code>Startup.cs</code> to register your new provider:</li>
 </ul>
 <pre><code class="lang-csharp">// Register the Web providers integrations.
 options.UseWebProviders()
        // ... other providers...
-       .Use[provider name](options =&gt;
+       .Add[provider name](options =&gt;
        {
            options.SetClientId(&quot;bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ&quot;);
            options.SetClientSecret(&quot;VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS&quot;);
@@ -259,7 +260,7 @@ made to the sandbox project don&#39;t need to be committed and included in your 
 Providers that implement OpenID Connect discovery or OAuth 2.0 authorization server metadata will typically return the client authentication methods they support.
 If the provider doesn&#39;t expose its metadata, the supported methods MUST be added manually to the static configuration using one or multiple <code>&lt;TokenEndpointAuthMethod&gt;</code>:</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Twitter&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Twitter&quot; Id=&quot;1fd20ab5-d3f2-40aa-8c91-094f71652c65&quot;&gt;
   &lt;Environment Issuer=&quot;https://twitter.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://twitter.com/i/oauth2/authorize&quot;
                    TokenEndpoint=&quot;https://api.twitter.com/2/oauth2/token&quot;
@@ -273,7 +274,7 @@ If the provider doesn&#39;t expose its metadata, the supported methods MUST be a
 </code></pre><ul>
 <li>The provider MAY require sending one or multiple default or required scopes. If so, the default/required scopes MUST be added to the <code>&lt;Environment&gt;</code> node:</li>
 </ul>
-<pre><code class="lang-xml">&lt;Provider Name=&quot;Twitter&quot; Documentation=&quot;https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code&quot;&gt;
+<pre><code class="lang-xml">&lt;Provider Name=&quot;Twitter&quot; Id=&quot;1fd20ab5-d3f2-40aa-8c91-094f71652c65&quot;&gt;
   &lt;Environment Issuer=&quot;https://twitter.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://twitter.com/i/oauth2/authorize&quot;
                    TokenEndpoint=&quot;https://api.twitter.com/2/oauth2/token&quot;
@@ -324,11 +325,11 @@ public class FormatNonStandardScopeParameter : IOpenIddictClientHandler&lt;Proce
             throw new ArgumentNullException(nameof(context));
         }
 
-        context.Request.Scope = context.Registration.ProviderName switch
+        context.Request.Scope = context.Registration.ProviderType switch
         {
             // The following providers are known to use comma-separated scopes instead of
             // the standard format (that requires using a space as the scope separator):
-            Providers.Reddit =&gt; string.Join(&quot;,&quot;, context.Scopes),
+            ProviderTypes.Reddit =&gt; string.Join(&quot;,&quot;, context.Scopes),
 
             _ =&gt; context.Request.Scope
         };
