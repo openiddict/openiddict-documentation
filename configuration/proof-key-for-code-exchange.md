@@ -53,16 +53,3 @@ await manager.CreateAsync(new OpenIddictApplicationDescriptor
     }
 });
 ```
-
-## Enabling `code_challenge_method=plain` support
-
-By default, OpenIddict only supports `code_challenge_method=S256`, which is the safest code challenge method and the only one required by the PKCE specification.
-While not recommended, support for the `code_challenge_method=plain` method can be manually enabled by adding it to `OpenIddictServerOptions.CodeChallengeMethods`:
-
-```csharp
-services.AddOpenIddict()
-    .AddServer(options =>
-    {
-        options.Configure(options => options.CodeChallengeMethods.Add(CodeChallengeMethods.Plain));
-    });
-```
