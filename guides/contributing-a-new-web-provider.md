@@ -156,6 +156,68 @@ the OpenIddict client to communicate with the remote authorization server. For i
 > </Provider>
 > ```
 
+## If the provider doesn't support standard OpenID Connect userinfo, map the provider-specific claims to their `ClaimTypes` equivalent
+
+If the provider doesn't return an `id_token` and doesn't offer a standard userinfo endpoint, it is likely it uses custom parameters
+to represent things like the user identifier. If so, update the `MapCustomWebServicesFederationClaims` event handler to map these
+parameters to the usual WS-Federation claims exposed by the .NET BCL `ClaimTypes` class, which simplifies integration with libraries
+like ASP.NET Core Identity:
+
+```csharp
+/// <summary>
+/// Contains the logic responsible for mapping select custom claims to
+/// their WS-Federation equivalent for the providers that require it.
+/// </summary>
+public sealed class MapCustomWebServicesFederationClaims : IOpenIddictClientHandler<ProcessAuthenticationContext>
+{
+    /// <summary>
+    /// Gets the default descriptor definition assigned to this handler.
+    /// </summary>
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder<ProcessAuthenticationContext>()
+            .AddFilter<RequireWebServicesFederationClaimMappingEnabled>()
+            .UseSingletonHandler<MapCustomWebServicesFederationClaims>()
+            .SetOrder(MapStandardWebServicesFederationClaims.Descriptor.Order + 1_000)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// <inheritdoc/>
+    public ValueTask HandleAsync(ProcessAuthenticationContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.Email, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom "Email" node:
+            ProviderTypes.ServiceChannel => (string?) context.UserinfoResponse?["Email"],
+
+            _ => context.MergedPrincipal.GetClaim(ClaimTypes.Email)
+        });
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.Name, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom "UserName" node:
+            ProviderTypes.ServiceChannel => (string?) context.UserinfoResponse?["UserName"],
+
+            _ => context.MergedPrincipal.GetClaim(ClaimTypes.Name)
+        });
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.NameIdentifier, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom "UserId" node:
+            ProviderTypes.ServiceChannel => (string?) context.UserinfoResponse?["UserId"],
+
+            _ => context.MergedPrincipal.GetClaim(ClaimTypes.NameIdentifier)
+        });
+
+        return default;
+    }
+}
+```
+
 ## Test the generated provider
 
 If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
