@@ -218,7 +218,64 @@ store the tenant name. Once added, the URIs can include a placeholder of the sam
            Description=&quot;The tenant used to identify the Zendesk instance&quot; /&gt;
 &lt;/Provider&gt;
 </code></pre></div>
-<h2 id="test-the-generated-provider">Test the generated provider</h2>
+<h2 id="if-the-provider-doesnt-support-standard-openid-connect-userinfo-map-the-provider-specific-claims-to-their-claimtypes-equivalent">If the provider doesn&#39;t support standard OpenID Connect userinfo, map the provider-specific claims to their <code>ClaimTypes</code> equivalent</h2>
+<p>If the provider doesn&#39;t return an <code>id_token</code> and doesn&#39;t offer a standard userinfo endpoint, it is likely it uses custom parameters
+to represent things like the user identifier. If so, update the <code>MapCustomWebServicesFederationClaims</code> event handler to map these
+parameters to the usual WS-Federation claims exposed by the .NET BCL <code>ClaimTypes</code> class, which simplifies integration with libraries
+like ASP.NET Core Identity:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Contains the logic responsible for mapping select custom claims to
+/// their WS-Federation equivalent for the providers that require it.
+/// &lt;/summary&gt;
+public sealed class MapCustomWebServicesFederationClaims : IOpenIddictClientHandler&lt;ProcessAuthenticationContext&gt;
+{
+    /// &lt;summary&gt;
+    /// Gets the default descriptor definition assigned to this handler.
+    /// &lt;/summary&gt;
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder&lt;ProcessAuthenticationContext&gt;()
+            .AddFilter&lt;RequireWebServicesFederationClaimMappingEnabled&gt;()
+            .UseSingletonHandler&lt;MapCustomWebServicesFederationClaims&gt;()
+            .SetOrder(MapStandardWebServicesFederationClaims.Descriptor.Order + 1_000)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// &lt;inheritdoc/&gt;
+    public ValueTask HandleAsync(ProcessAuthenticationContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.Email, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom &quot;Email&quot; node:
+            ProviderTypes.ServiceChannel =&gt; (string?) context.UserinfoResponse?[&quot;Email&quot;],
+
+            _ =&gt; context.MergedPrincipal.GetClaim(ClaimTypes.Email)
+        });
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.Name, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom &quot;UserName&quot; node:
+            ProviderTypes.ServiceChannel =&gt; (string?) context.UserinfoResponse?[&quot;UserName&quot;],
+
+            _ =&gt; context.MergedPrincipal.GetClaim(ClaimTypes.Name)
+        });
+
+        context.MergedPrincipal.SetClaim(ClaimTypes.NameIdentifier, context.Registration.ProviderType switch
+        {
+            // ServiceChannel returns the user identifier as a custom &quot;UserId&quot; node:
+            ProviderTypes.ServiceChannel =&gt; (string?) context.UserinfoResponse?[&quot;UserId&quot;],
+
+            _ =&gt; context.MergedPrincipal.GetClaim(ClaimTypes.NameIdentifier)
+        });
+
+        return default;
+    }
+}
+</code></pre><h2 id="test-the-generated-provider">Test the generated provider</h2>
 <p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
 To confirm it, build the solution and add an instance of the new provider to the <code>OpenIddict.Sandbox.AspNetCore.Client</code> sandbox:</p>
 <ul>
