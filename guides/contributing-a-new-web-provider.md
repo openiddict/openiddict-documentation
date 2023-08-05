@@ -156,12 +156,80 @@ the OpenIddict client to communicate with the remote authorization server. For i
 > </Provider>
 > ```
 
+## Unwrap userinfo responses if necessary
+
+If the provider returns wrapped or nested userinfo responses (e.g under a `response` or `data` node), the `UnwrapUserinfoResponse` handler in
+[OpenIddictClientWebIntegrationHandlers.Userinfo.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Userinfo.cs)
+must be updated to unwrap the userinfo payload and allow OpenIddict to map them to flat CLR `Claim` instances:
+
+```csharp
+/// <summary>
+/// Contains the logic responsible for extracting the userinfo response
+/// from nested JSON nodes (e.g "data") for the providers that require it.
+/// </summary>
+public sealed class UnwrapUserinfoResponse : IOpenIddictClientHandler<ExtractUserinfoResponseContext>
+{
+    /// <summary>
+    /// Gets the default descriptor definition assigned to this handler.
+    /// </summary>
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder<ExtractUserinfoResponseContext>()
+            .UseSingletonHandler<UnwrapUserinfoResponse>()
+            .SetOrder(int.MaxValue - 50_000)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// <inheritdoc/>
+    public ValueTask HandleAsync(ExtractUserinfoResponseContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        context.Response = context.Registration.ProviderType switch
+        {
+            // Fitbit returns a nested "user" object.
+            ProviderTypes.Fitbit => new(context.Response["user"]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334("user"))),
+
+            // StackExchange returns an "items" array containing a single element.
+            ProviderTypes.StackExchange => new(context.Response["items"]?[0]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334("items/0"))),
+
+            // SubscribeStar returns a nested "user" object that is itself nested in a GraphQL "data" node.
+            ProviderTypes.SubscribeStar => new(context.Response["data"]?["user"]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334("data/user"))),
+
+            _ => context.Response
+        };
+
+        return default;
+    }
+}
+```
+
+> [!NOTE]
+> If you're unsure whether the provider returns wrapped responses or not, the
+> received payload can be found in the logs after a successful authorization flow:
+>
+> ```
+> OpenIddict.Client.OpenIddictClientDispatcher: Information: The userinfo response returned by https://contoso.com/users/me was successfully extracted: {
+>   "data": {
+>     "username": "odile.donat",
+>     "name": "Odile Donat",
+>     "email": "odile.donat@fabrikam.com"
+>   }
+> }.
+> ```
+
 ## If the provider doesn't support standard OpenID Connect userinfo, map the provider-specific claims to their `ClaimTypes` equivalent
 
 If the provider doesn't return an `id_token` and doesn't offer a standard userinfo endpoint, it is likely it uses custom parameters
-to represent things like the user identifier. If so, update the `MapCustomWebServicesFederationClaims` event handler to map these
-parameters to the usual WS-Federation claims exposed by the .NET BCL `ClaimTypes` class, which simplifies integration with libraries
-like ASP.NET Core Identity:
+to represent things like the user identifier. If so, update the `MapCustomWebServicesFederationClaims` event handler in
+[OpenIddictClientWebIntegrationHandlers.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.cs)
+to map these parameters to the usual WS-Federation claims exposed by the .NET BCL `ClaimTypes` class, which simplifies integration
+with libraries like ASP.NET Core Identity:
 
 ```csharp
 /// <summary>
