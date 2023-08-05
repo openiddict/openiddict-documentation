@@ -218,11 +218,70 @@ store the tenant name. Once added, the URIs can include a placeholder of the sam
            Description=&quot;The tenant used to identify the Zendesk instance&quot; /&gt;
 &lt;/Provider&gt;
 </code></pre></div>
+<h2 id="unwrap-userinfo-responses-if-necessary">Unwrap userinfo responses if necessary</h2>
+<p>If the provider returns wrapped or nested userinfo responses (e.g under a <code>response</code> or <code>data</code> node), the <code>UnwrapUserinfoResponse</code> handler in
+<a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Userinfo.cs">OpenIddictClientWebIntegrationHandlers.Userinfo.cs</a>
+must be updated to unwrap the userinfo payload and allow OpenIddict to map them to flat CLR <code>Claim</code> instances:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Contains the logic responsible for extracting the userinfo response
+/// from nested JSON nodes (e.g &quot;data&quot;) for the providers that require it.
+/// &lt;/summary&gt;
+public sealed class UnwrapUserinfoResponse : IOpenIddictClientHandler&lt;ExtractUserinfoResponseContext&gt;
+{
+    /// &lt;summary&gt;
+    /// Gets the default descriptor definition assigned to this handler.
+    /// &lt;/summary&gt;
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder&lt;ExtractUserinfoResponseContext&gt;()
+            .UseSingletonHandler&lt;UnwrapUserinfoResponse&gt;()
+            .SetOrder(int.MaxValue - 50_000)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// &lt;inheritdoc/&gt;
+    public ValueTask HandleAsync(ExtractUserinfoResponseContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        context.Response = context.Registration.ProviderType switch
+        {
+            // Fitbit returns a nested &quot;user&quot; object.
+            ProviderTypes.Fitbit =&gt; new(context.Response[&quot;user&quot;]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334(&quot;user&quot;))),
+
+            // StackExchange returns an &quot;items&quot; array containing a single element.
+            ProviderTypes.StackExchange =&gt; new(context.Response[&quot;items&quot;]?[0]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334(&quot;items/0&quot;))),
+
+            // SubscribeStar returns a nested &quot;user&quot; object that is itself nested in a GraphQL &quot;data&quot; node.
+            ProviderTypes.SubscribeStar =&gt; new(context.Response[&quot;data&quot;]?[&quot;user&quot;]?.GetNamedParameters() ??
+                throw new InvalidOperationException(SR.FormatID0334(&quot;data/user&quot;))),
+
+            _ =&gt; context.Response
+        };
+
+        return default;
+    }
+}
+</code></pre><div class="NOTE"><h5>Note</h5><p>If you&#39;re unsure whether the provider returns wrapped responses or not, the
+received payload can be found in the logs after a successful authorization flow:</p>
+<pre><code>OpenIddict.Client.OpenIddictClientDispatcher: Information: The userinfo response returned by https://contoso.com/users/me was successfully extracted: {
+  &quot;data&quot;: {
+    &quot;username&quot;: &quot;odile.donat&quot;,
+    &quot;name&quot;: &quot;Odile Donat&quot;,
+    &quot;email&quot;: &quot;odile.donat@fabrikam.com&quot;
+  }
+}.
+</code></pre></div>
 <h2 id="if-the-provider-doesnt-support-standard-openid-connect-userinfo-map-the-provider-specific-claims-to-their-claimtypes-equivalent">If the provider doesn&#39;t support standard OpenID Connect userinfo, map the provider-specific claims to their <code>ClaimTypes</code> equivalent</h2>
 <p>If the provider doesn&#39;t return an <code>id_token</code> and doesn&#39;t offer a standard userinfo endpoint, it is likely it uses custom parameters
-to represent things like the user identifier. If so, update the <code>MapCustomWebServicesFederationClaims</code> event handler to map these
-parameters to the usual WS-Federation claims exposed by the .NET BCL <code>ClaimTypes</code> class, which simplifies integration with libraries
-like ASP.NET Core Identity:</p>
+to represent things like the user identifier. If so, update the <code>MapCustomWebServicesFederationClaims</code> event handler in
+<a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.cs">OpenIddictClientWebIntegrationHandlers.cs</a>
+to map these parameters to the usual WS-Federation claims exposed by the .NET BCL <code>ClaimTypes</code> class, which simplifies integration
+with libraries like ASP.NET Core Identity:</p>
 <pre><code class="lang-csharp">/// &lt;summary&gt;
 /// Contains the logic responsible for mapping select custom claims to
 /// their WS-Federation equivalent for the providers that require it.
