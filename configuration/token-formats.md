@@ -81,7 +81,8 @@ services.AddOpenIddict()
 > existing tokens can still be used alongside newly issued ASP.NET Core Data Protection tokens until they expire. When sending a refresh token request containing
 > a JWT refresh token, the application will receive an ASP.NET Core Data Protection refresh token and the previous one will be automatically marked as redeemed.
 
-By default, enabling ASP.NET Core Data Protection support will automatically switch the token format from JWT to Data Protection for all types of tokens, except JWT tokens.
+By default, enabling ASP.NET Core Data Protection support will automatically switch the token format from JWT to Data Protection for all types of tokens
+(except identity tokens, that are always JWT tokens by definition).
 The OpenIddict/Data Protection integration can be configured to prefer JWT when creating new tokens, **which can be useful when using the ASP.NET Core Data Protection
 format for specific token types only** (e.g for authorization codes and refresh tokens, but not for access tokens).
 
