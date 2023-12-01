@@ -204,6 +204,14 @@ await tokens.Indexes.CreateManyAsync(new[]
         }),
 
     new CreateIndexModel&lt;OpenIddictMongoDbToken&gt;(
+        Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys.Ascending(token =&gt; token.AuthorizationId),
+        new CreateIndexOptions&lt;OpenIddictMongoDbToken&gt;()
+        {
+            PartialFilterExpression =
+                Builders&lt;OpenIddictMongoDbToken&gt;.Filter.Exists(token =&gt; token.AuthorizationId),
+        }),
+
+    new CreateIndexModel&lt;OpenIddictMongoDbToken&gt;(
         Builders&lt;OpenIddictMongoDbToken&gt;.IndexKeys
             .Ascending(token =&gt; token.ApplicationId)
             .Ascending(token =&gt; token.Status)
