@@ -39,3 +39,52 @@ To configure OpenIddict to use Quartz.NET to perform automated cleanup tasks, yo
             options.UseQuartz();
         });
     ```
+
+## Advanced configuration
+
+### Disable pruning
+
+The default cleanup task of the Quartz.NET integration automatically removes orphaned tokens and authorizations.
+This behavior can be customized by disabling any (or both) pruning jobs:
+
+```csharp
+services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        options.UseQuartz()
+            .DisableAuthorizationPruning()
+            .DisableTokenPruning();
+    });
+```
+
+### Pruning lifetime
+
+All tokens/authorizations will be removed during the pruning job if they are older than 14 days.
+This lifespan can be changed for tokens and authorizations independently:
+
+```csharp
+services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        options.UseQuartz()
+            .SetMinimumAuthorizationLifespan(TimeSpan.FromDays(7))
+            .SetMinimumTokenLifespan(TimeSpan.FromHours(12));
+    });
+```
+
+> [!WARNING]
+> The mimum lifespan for pruning is **10 minutes**.
+
+### Retry failed jobs
+
+Any failed Quartz.NET job will be retried twice by default.
+This retry count can be configured with this setting:
+
+```csharp
+services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        options.UseQuartz()
+            .SetMaximumRefireCount(3);
+    });
+```
