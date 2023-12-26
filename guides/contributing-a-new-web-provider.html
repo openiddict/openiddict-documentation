@@ -335,38 +335,30 @@ public sealed class MapCustomWebServicesFederationClaims : IOpenIddictClientHand
     }
 }
 </code></pre><h2 id="test-the-generated-provider">Test the generated provider</h2>
-<p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.
-To confirm it, build the solution and add an instance of the new provider to the <code>OpenIddict.Sandbox.AspNetCore.Client</code> sandbox:</p>
+<p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.</p>
+<p>To confirm it, build the solution and add a client registration of the new provider to one of the sandbox projects:</p>
 <ul>
-<li>Update <code>Startup.cs</code> to register your new provider:</li>
+<li>For <code>OpenIddict.Sandbox.AspNet.Client</code> (ASP.NET 4.8) or <code>OpenIddict.Sandbox.AspNetCore.Client</code> (ASP.NET Core), in <code>Startup.cs</code>.</li>
+<li>For <code>OpenIddict.Sandbox.Console.Client</code>, in <code>Program.cs</code>.</li>
 </ul>
 <pre><code class="lang-csharp">// Register the Web providers integrations.
+//
+// Note: to mitigate mix-up attacks, it&#39;s recommended to use a unique redirection endpoint
+// URI per provider, unless all the registered providers support returning a special &quot;iss&quot;
+// parameter containing their URL as part of authorization responses. For more information,
+// see https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#section-4.4.
 options.UseWebProviders()
        // ... other providers...
        .Add[provider name](options =&gt;
        {
-           options.SetClientId(&quot;bXgwc0U3N3A3YWNuaWVsdlRmRWE6MTpjaQ&quot;);
-           options.SetClientSecret(&quot;VcohOgBp-6yQCurngo4GAyKeZh0D6SUCCSjJgEo1uRzJarjIUS&quot;);
+           options.SetClientId(&quot;[client identifier]&quot;);
+           options.SetClientSecret(&quot;[client secret]&quot;);
            options.SetRedirectUri(&quot;callback/login/[provider name]&quot;);
+
+           // Note: depending on the provider, configuring other options MAY be required.
        });
-</code></pre><ul>
-<li>Update <code>AuthenticationController.cs</code> to allow triggering challenges pointing to the new provider:</li>
-</ul>
-<pre><code class="lang-csharp">// Note: OpenIddict always validates the specified provider name when handling the challenge operation,
-// but the provider can also be validated earlier to return an error page or a special HTTP error code.
-if (!string.Equals(provider, &quot;Local&quot;, StringComparison.Ordinal) &amp;&amp;
-    // ... other providers...
-    !string.Equals(provider, [provider name], StringComparison.Ordinal))
-{
-    return BadRequest();
-}
-</code></pre><ul>
-<li>Update <code>Index.cshtml</code> under <code>Views\Home</code> to include a login button for the new provider:</li>
-</ul>
-<pre><code class="lang-html">&lt;button class=&quot;btn btn-lg btn-success&quot; type=&quot;submit&quot; name=&quot;provider&quot; value=&quot;[provider name]&quot;&gt;
-    Sign in using [provider name]
-&lt;/button&gt;
-</code></pre><div class="NOTE"><h5>Note</h5><p>Unless you agree to share your sandbox credentials with the OpenIddict developers, the changes
+</code></pre><p>Once configured, start an authentication dance to test if the provider integration works as-is.</p>
+<div class="NOTE"><h5>Note</h5><p>Unless you agree to share your sandbox credentials with the OpenIddict developers, the changes
 made to the sandbox project don&#39;t need to be committed and included in your pull request.</p>
 </div>
 <h2 id="if-necessary-add-the-necessary-workarounds-for-the-provider-to-work-correctly">If necessary, add the necessary workarounds for the provider to work correctly</h2>
