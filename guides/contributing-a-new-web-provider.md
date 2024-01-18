@@ -5,7 +5,7 @@ To simplify integrating with social and enterprise providers that offer OAuth 2.
 (named `OpenIddict.Client.WebIntegration`) has been added to the client stack. While it shares some similarities with the
 [existing aspnet-contrib OAuth 2.0 providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/issues), **there are actually important technical differences**:
 
-  - Unlike the ASP.NET Core OAuth 2.0 base handler by the aspnet-contrib providers, **the OpenIddict client is a dual-protocol OAuth 2.0 + OpenID Connect stack**,
+  - Unlike the ASP.NET Core OAuth 2.0 base handler used by the aspnet-contrib providers, **the OpenIddict client is a dual-protocol OAuth 2.0 + OpenID Connect stack**,
 which means it can support both protocols *while* enforcing all the security checks required by these protocols.
 
   - While the aspnet-contrib providers only work on ASP.NET Core, **the OpenIddict providers can not only be used in ASP.NET Core
@@ -19,7 +19,7 @@ with the configuration needed to properly generate them. By eliminating all the 
   - To guarantee interoperability and make the best security choices, **the OpenIddict client heavily relies on server configuration metadata**, which differs from
 the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn't support the OpenID Connect discovery and OAuth 2.0 authorization server metadata specifications.
 
-Due to these differences, **contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider**:
+Due to these differences, **contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider**.
 
 ## Add a new `<Provider>` node for the new provider
 
@@ -366,8 +366,8 @@ If the provider doesn't expose its metadata, the supported methods MUST be added
 </Provider>
 ```
 
-  - The provider MAY require sending the scopes using a different separator than the standard one. While the OAuth 2.0 specification requires using a space
-to separate multiple scopes, some providers require using a different separator (typically, a comma). If the provider you're adding requires such a hack,
+  - The provider MAY require sending the scopes using a different separator than the standard one. While the OAuth 2.0 specification requires using
+a space to separate multiple scopes, some providers require using a different separator (typically, a comma). If the provider you're adding requires it,
 update the `FormatNonStandardScopeParameter` event handler present in
 [OpenIddictClientWebIntegrationHandlers.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.cs) to use the correct separator required by the provider.
 
@@ -401,7 +401,12 @@ public class FormatNonStandardScopeParameter : IOpenIddictClientHandler<ProcessC
         {
             // The following providers are known to use comma-separated scopes instead of
             // the standard format (that requires using a space as the scope separator):
-            ProviderTypes.Reddit => string.Join(",", context.Scopes),
+            ProviderTypes.Deezer or ProviderTypes.Shopify or ProviderTypes.Strava
+                => string.Join(",", context.Scopes),
+
+            // The following providers are known to use plus-separated scopes instead of
+            // the standard format (that requires using a space as the scope separator):
+            ProviderTypes.Trovo => string.Join("+", context.Scopes),
 
             _ => context.Request.Scope
         };
@@ -418,5 +423,6 @@ public class FormatNonStandardScopeParameter : IOpenIddictClientHandler<ProcessC
 
 ## Send a pull request against the `openiddict-core` repository
 
-Once you've been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to the
-[`openiddict-repo`](https://github.com/openiddict/openiddict-core/issues) and ship with the already supported providers as part of the next update.
+Once you've been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to
+[`the openiddict-core repository`](https://github.com/openiddict/openiddict-core/issues)
+and ship with the already supported providers as part of the next update.
