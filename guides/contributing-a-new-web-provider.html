@@ -98,7 +98,7 @@ To simplify integrating with social and enterprise providers that offer OAuth 2.
 (named <code>OpenIddict.Client.WebIntegration</code>) has been added to the client stack. While it shares some similarities with the
 <a href="https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/issues">existing aspnet-contrib OAuth 2.0 providers</a>, <strong>there are actually important technical differences</strong>:</p>
 <ul>
-<li><p>Unlike the ASP.NET Core OAuth 2.0 base handler by the aspnet-contrib providers, <strong>the OpenIddict client is a dual-protocol OAuth 2.0 + OpenID Connect stack</strong>,
+<li><p>Unlike the ASP.NET Core OAuth 2.0 base handler used by the aspnet-contrib providers, <strong>the OpenIddict client is a dual-protocol OAuth 2.0 + OpenID Connect stack</strong>,
 which means it can support both protocols <em>while</em> enforcing all the security checks required by these protocols.</p>
 </li>
 <li><p>While the aspnet-contrib providers only work on ASP.NET Core, <strong>the OpenIddict providers can not only be used in ASP.NET Core
@@ -113,7 +113,7 @@ with the configuration needed to properly generate them. By eliminating all the 
 the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn&#39;t support the OpenID Connect discovery and OAuth 2.0 authorization server metadata specifications.</p>
 </li>
 </ul>
-<p>Due to these differences, <strong>contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider</strong>:</p>
+<p>Due to these differences, <strong>contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider</strong>.</p>
 <h2 id="add-a-new-provider-node-for-the-new-provider">Add a new <code>&lt;Provider&gt;</code> node for the new provider</h2>
 <p>To add a new OpenIddict web provider, <strong>the first step is to add a new <code>&lt;Provider&gt;</code> node</strong> to the <a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml">OpenIddictClientWebIntegrationProviders.xml</a> file. For instance:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot; Id=&quot;89fdfe22-c796-4227-a44a-d9cd3c467bbb&quot;
@@ -403,8 +403,8 @@ If the provider doesn&#39;t expose its metadata, the supported methods MUST be a
   &lt;/Environment&gt;
 &lt;/Provider&gt;
 </code></pre><ul>
-<li>The provider MAY require sending the scopes using a different separator than the standard one. While the OAuth 2.0 specification requires using a space
-to separate multiple scopes, some providers require using a different separator (typically, a comma). If the provider you&#39;re adding requires such a hack,
+<li>The provider MAY require sending the scopes using a different separator than the standard one. While the OAuth 2.0 specification requires using
+a space to separate multiple scopes, some providers require using a different separator (typically, a comma). If the provider you&#39;re adding requires it,
 update the <code>FormatNonStandardScopeParameter</code> event handler present in
 <a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.cs">OpenIddictClientWebIntegrationHandlers.cs</a> to use the correct separator required by the provider.</li>
 </ul>
@@ -437,7 +437,12 @@ public class FormatNonStandardScopeParameter : IOpenIddictClientHandler&lt;Proce
         {
             // The following providers are known to use comma-separated scopes instead of
             // the standard format (that requires using a space as the scope separator):
-            ProviderTypes.Reddit =&gt; string.Join(&quot;,&quot;, context.Scopes),
+            ProviderTypes.Deezer or ProviderTypes.Shopify or ProviderTypes.Strava
+                =&gt; string.Join(&quot;,&quot;, context.Scopes),
+
+            // The following providers are known to use plus-separated scopes instead of
+            // the standard format (that requires using a space as the scope separator):
+            ProviderTypes.Trovo =&gt; string.Join(&quot;+&quot;, context.Scopes),
 
             _ =&gt; context.Request.Scope
         };
@@ -450,8 +455,9 @@ If you&#39;re not familiar with the OpenIddict events model, open a ticket in th
 <a href="https://github.com/openiddict/openiddict-core/issues"><code>openiddict-core</code></a> repository to get help.</p>
 </div>
 <h2 id="send-a-pull-request-against-the-openiddict-core-repository">Send a pull request against the <code>openiddict-core</code> repository</h2>
-<p>Once you&#39;ve been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to the
-<a href="https://github.com/openiddict/openiddict-core/issues"><code>openiddict-repo</code></a> and ship with the already supported providers as part of the next update.</p>
+<p>Once you&#39;ve been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to
+<a href="https://github.com/openiddict/openiddict-core/issues"><code>the openiddict-core repository</code></a>
+and ship with the already supported providers as part of the next update.</p>
 </article>
               
                 </div>
