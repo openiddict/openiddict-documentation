@@ -1624,7 +1624,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/getting-started/creating-your-own-server-instance.html",
-          "hash": "wp9rzC2bFWu0ny0vUkbhSw=="
+          "hash": "P0szulkZBzU/w9CW6BK6Qw=="
         }
       },
       "is_incremental": false,
@@ -1647,7 +1647,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/getting-started/implementing-token-validation-in-your-apis.html",
-          "hash": "ExZcLN8ZNw6ro9oD8GI2uA=="
+          "hash": "R/3rM8JWKP3m1tMJ7par9A=="
         }
       },
       "is_incremental": false,
@@ -1659,7 +1659,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/getting-started/integrating-with-a-remote-server-instance.html",
-          "hash": "oO8MvbpJWnSl6wxn5bl+3g=="
+          "hash": "j/HnfHO7s5gNa+QK3QHN/Q=="
         }
       },
       "is_incremental": false,
@@ -1671,18 +1671,6 @@
       "output": {
         "resource": {
           "relative_path": "guides/getting-started/integrating-with-a-remote-server-instance/identity-ui.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "guides/getting-started/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "guides/getting-started/toc.html",
-          "hash": "FbbLa03wA5/BzU++5FlKLw=="
         }
       },
       "is_incremental": false,
@@ -1737,12 +1725,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Toc",
       "source_relative_path": "guides/toc.yml",
       "output": {
         ".html": {
           "relative_path": "guides/toc.html",
-          "hash": "oESuxDXe43Ve656vkqdLWA=="
+          "hash": "Ya8+3785Emn9N66slLoqUQ=="
         }
       },
       "is_incremental": false,
