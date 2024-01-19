@@ -5,7 +5,15 @@
   href: contributing-a-new-web-provider.md
 
 - name: Getting started
-  href: getting-started.md
+  items:
+    - name: Introduction
+      href: getting-started.md
+    - name: Creating your own server instance
+      href: getting-started/creating-your-own-server-instance.md
+    - name: Implementing token validation in your APIs
+      href: getting-started/implementing-token-validation-in-your-apis.md
+    - name: Integrating with a remote server instance
+      href: getting-started/integrating-with-a-remote-server-instance.md
 
 - name: Choosing the right flow
   href: choosing-the-right-flow.md
