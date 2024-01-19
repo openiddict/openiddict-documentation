@@ -1,0 +1,8 @@
+- name: Creating your own server instance
+  href: creating-your-own-server-instance.md
+
+- name: Implementing token validation in your APIs
+  href: implementing-token-validation-in-your-apis.md
+
+- name: Integrating with a remote server instance
+  href: integrating-with-a-remote-server-instance.md
