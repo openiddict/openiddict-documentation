@@ -93,195 +93,23 @@
                     <article class="content wrap" id="_content" data-uid="">
 <h1 id="getting-started">Getting started</h1>
 
-<p><strong>To implement a custom OpenID Connect server using OpenIddict, the simplest option is to clone one of the official samples</strong> from the <a href="https://github.com/openiddict/openiddict-samples">openiddict-samples repository</a>.</p>
-<p>If you don&#39;t want to start from one of the recommended samples, you&#39;ll need to:</p>
+<p>OpenIddict features three independent stacks:</p>
 <ul>
-<li><p><strong>Install the <a href="https://www.microsoft.com/net/download">.NET Core 3.1 (or later) tooling</a></strong>.</p>
+<li><p>A <strong>server stack</strong>, that allows creating an OAuth 2.0/OpenID Connect server instance that can be used with internal or external clients.
+The server stack can be used in both ASP.NET 4.6.1+ and ASP.NET Core 2.1+ applications. To get started, read
+<a href="getting-started/creating-your-own-server-instance.html">Creating your own server instance</a>.</p>
 </li>
-<li><p><strong>Have an existing project or create a new one</strong>: when creating a new project using Visual Studio&#39;s default ASP.NET Core template,
-using <strong>individual user accounts authentication</strong> is strongly recommended as it automatically includes the default ASP.NET Core Identity UI, based on Razor Pages.</p>
+<li><p>A <strong>validation stack</strong>, that allows implementing token authentication support for your ASP.NET 4.6.1+ and ASP.NET Core 2.1+ APIs.
+To get started, read <a href="getting-started/implementing-token-validation-in-your-apis.html">Implementing token validation in your APIs</a>.</p>
 </li>
-<li><p><strong>Update your <code>.csproj</code> file</strong> to reference the latest <code>OpenIddict</code> packages:</p>
-<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.1.0&quot; /&gt;
-&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.1.0&quot; /&gt;
-</code></pre></li>
-<li><p><strong>Configure the OpenIddict core, server and validation services</strong> in <code>Startup.ConfigureServices</code>.
-Here&#39;s an example for the client credentials grant, used in machine-to-machine scenarios:</p>
-<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
-{
-    services.AddControllersWithViews();
-
-    services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
-    {
-        // Configure Entity Framework Core to use Microsoft SQL Server.
-        options.UseSqlServer(Configuration.GetConnectionString(&quot;DefaultConnection&quot;));
-
-        // Register the entity sets needed by OpenIddict.
-        // Note: use the generic overload if you need to replace the default OpenIddict entities.
-        options.UseOpenIddict();
-    });
-
-    services.AddOpenIddict()
-
-        // Register the OpenIddict core components.
-        .AddCore(options =&gt;
-        {
-            // Configure OpenIddict to use the Entity Framework Core stores and models.
-            // Note: call ReplaceDefaultEntities() to replace the default entities.
-            options.UseEntityFrameworkCore()
-                   .UseDbContext&lt;ApplicationDbContext&gt;();
-        })
-
-        // Register the OpenIddict server components.
-        .AddServer(options =&gt;
-        {
-            // Enable the token endpoint.
-            options.SetTokenEndpointUris(&quot;connect/token&quot;);
-
-            // Enable the client credentials flow.
-            options.AllowClientCredentialsFlow();
-
-            // Register the signing and encryption credentials.
-            options.AddDevelopmentEncryptionCertificate()
-                   .AddDevelopmentSigningCertificate();
-
-            // Register the ASP.NET Core host and configure the ASP.NET Core options.
-            options.UseAspNetCore()
-                   .EnableTokenEndpointPassthrough();
-        })
-
-        // Register the OpenIddict validation components.
-        .AddValidation(options =&gt;
-        {
-            // Import the configuration from the local OpenIddict server instance.
-            options.UseLocalServer();
-
-            // Register the ASP.NET Core host.
-            options.UseAspNetCore();
-        });
-
-    // Register the worker responsible of seeding the database with the sample clients.
-    // Note: in a real world application, this step should be part of a setup script.
-    services.AddHostedService&lt;Worker&gt;();
-}
-</code></pre></li>
-<li><p><strong>Make sure the ASP.NET Core authentication middleware is correctly registered at the right place</strong>:</p>
-<pre><code class="lang-csharp">public void Configure(IApplicationBuilder app)
-{
-    app.UseDeveloperExceptionPage();
-
-    app.UseRouting();
-
-    app.UseAuthentication();
-    app.UseAuthorization();
-
-    app.UseEndpoints(options =&gt;
-    {
-        options.MapControllers();
-        options.MapDefaultControllerRoute();
-    });
-}
-</code></pre></li>
-<li><p><strong>Update your Entity Framework Core context registration to register the OpenIddict entities</strong>:</p>
-<pre><code class="lang-csharp">services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
-{
-    // Configure Entity Framework Core to use Microsoft SQL Server.
-    options.UseSqlServer(Configuration.GetConnectionString(&quot;DefaultConnection&quot;));
-
-    // Register the entity sets needed by OpenIddict.
-    // Note: use the generic overload if you need to replace the default OpenIddict entities.
-    options.UseOpenIddict();
-});
-</code></pre><div class="NOTE"><h5>Note</h5><p>By default, the OpenIddict Entity Framework Core integration uses <code>string</code> as the default type for primary keys.
-To use a different type, read <a href="../integrations/entity-framework-core.html#use-a-custom-primary-key-type">Entity Framework Core integration : Use a custom primary key type</a>.</p>
-</div>
-</li>
-<li><p><strong>Create your own authorization controller:</strong>
-Implementing a custom authorization controller is required to allow OpenIddict to create tokens based on the identities and claims you provide.
-Here&#39;s an example for the client credentials grant:</p>
-<pre><code class="lang-csharp">public class AuthorizationController : Controller
-{
-    private readonly IOpenIddictApplicationManager _applicationManager;
-
-    public AuthorizationController(IOpenIddictApplicationManager applicationManager)
-        =&gt; _applicationManager = applicationManager;
-
-    [HttpPost(&quot;~/connect/token&quot;), Produces(&quot;application/json&quot;)]
-    public async Task&lt;IActionResult&gt; Exchange()
-    {
-        var request = HttpContext.GetOpenIddictServerRequest();
-        if (!request.IsClientCredentialsGrantType())
-        {
-            throw new NotImplementedException(&quot;The specified grant is not implemented.&quot;);
-        }
-
-        // Note: the client credentials are automatically validated by OpenIddict:
-        // if client_id or client_secret are invalid, this action won&#39;t be invoked.
-
-        var application = await _applicationManager.FindByClientIdAsync(request.ClientId) ??
-            throw new InvalidOperationException(&quot;The application cannot be found.&quot;);
-
-        // Create a new ClaimsIdentity containing the claims that
-        // will be used to create an id_token, a token or a code.
-        var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType, Claims.Name, Claims.Role);
-
-        // Use the client_id as the subject identifier.
-        identity.SetClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application));
-        identity.SetClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application));
-
-        identity.SetDestinations(static claim =&gt; claim.Type switch
-        {
-            // Allow the &quot;name&quot; claim to be stored in both the access and identity tokens
-            // when the &quot;profile&quot; scope was granted (by calling principal.SetScopes(...)).
-            Claims.Name when claim.Subject.HasScope(Scopes.Profile)
-                =&gt; new[] { Destinations.AccessToken, Destinations.IdentityToken },
-
-            // Otherwise, only store the claim in the access tokens.
-            _ =&gt; new[] { Destinations.AccessToken }
-        });
-
-        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-    }
-}
-</code></pre></li>
-<li><p><strong>Register your client application</strong> (e.g from an <code>IHostedService</code> implementation):</p>
-<pre><code class="lang-csharp">public class Worker : IHostedService
-{
-    private readonly IServiceProvider _serviceProvider;
-
-    public Worker(IServiceProvider serviceProvider)
-        =&gt; _serviceProvider = serviceProvider;
-
-    public async Task StartAsync(CancellationToken cancellationToken)
-    {
-        using var scope = _serviceProvider.CreateScope();
-
-        var context = scope.ServiceProvider.GetRequiredService&lt;ApplicationDbContext&gt;();
-        await context.Database.EnsureCreatedAsync();
-
-        var manager = scope.ServiceProvider.GetRequiredService&lt;IOpenIddictApplicationManager&gt;();
-
-        if (await manager.FindByClientIdAsync(&quot;console&quot;) is null)
-        {
-            await manager.CreateAsync(new OpenIddictApplicationDescriptor
-            {
-                ClientId = &quot;console&quot;,
-                ClientSecret = &quot;388D45FA-B36B-4988-BA59-B187D329C207&quot;,
-                DisplayName = &quot;My client application&quot;,
-                Permissions =
-                {
-                    Permissions.Endpoints.Token,
-                    Permissions.GrantTypes.ClientCredentials
-                }
-            });
-        }
-    }
-
-    public Task StopAsync(CancellationToken cancellationToken) =&gt; Task.CompletedTask;
-}
-</code></pre><p>Before running the application, make sure the database is updated with OpenIddict tables by running <code>Add-Migration</code> and <code>Update-Database</code>.</p>
+<li><p>A <strong>client stack</strong>, that allows integrating with internal or external OAuth 2.0/OpenID Connect servers. The client stack can be used in
+ASP.NET 4.6.1+ or ASP.NET Core 2.1+ applications and can also be used in non-web applications (e.g Windows/Linux console applications
+or Windows desktop applications).  To get started, read
+<a href="getting-started/integrating-with-a-remote-server-instance.html">Integrating with a remote server instance</a>.</p>
 </li>
 </ul>
+<div class="NOTE"><h5>Note</h5><p>The three stacks can be used together or independently, depending on your specific scenario.</p>
+</div>
 </article>
               
                 </div>

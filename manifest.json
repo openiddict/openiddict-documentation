@@ -1612,7 +1612,77 @@
       "output": {
         ".html": {
           "relative_path": "guides/getting-started.html",
-          "hash": "vHfAc2u16OptfKqhbFlKnw=="
+          "hash": "aEgW9gvT/Gk7yxHouXFN+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/getting-started/creating-your-own-server-instance.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/getting-started/creating-your-own-server-instance.html",
+          "hash": "wp9rzC2bFWu0ny0vUkbhSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guides/getting-started/creating-your-own-server-instance/postman.png",
+      "output": {
+        "resource": {
+          "relative_path": "guides/getting-started/creating-your-own-server-instance/postman.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/getting-started/implementing-token-validation-in-your-apis.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/getting-started/implementing-token-validation-in-your-apis.html",
+          "hash": "ExZcLN8ZNw6ro9oD8GI2uA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/getting-started/integrating-with-a-remote-server-instance.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/getting-started/integrating-with-a-remote-server-instance.html",
+          "hash": "oO8MvbpJWnSl6wxn5bl+3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "guides/getting-started/integrating-with-a-remote-server-instance/identity-ui.png",
+      "output": {
+        "resource": {
+          "relative_path": "guides/getting-started/integrating-with-a-remote-server-instance/identity-ui.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "guides/getting-started/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "guides/getting-started/toc.html",
+          "hash": "FbbLa03wA5/BzU++5FlKLw=="
         }
       },
       "is_incremental": false,
@@ -1706,7 +1776,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Q9O1S+BpmxKT4B9NgWEdhA=="
+          "hash": "OYqmmKUfUceLDCEYwMdybA=="
         }
       },
       "is_incremental": false,
@@ -2493,7 +2563,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 139,
+          "total_file_count": 142,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
