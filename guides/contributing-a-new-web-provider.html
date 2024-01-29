@@ -173,7 +173,8 @@ returned <code>issuer</code> as the <code>Issuer</code> attribute and specify a 
 &lt;/Provider&gt;
 </code></pre><ul>
 <li>The returned <code>grant_types_supported</code> node contains all the grant types officially supported by the authorization server.
-If it doesn&#39;t, the dynamic configuration will need to be amended at runtime. For that, update the <code>AmendGrantTypes</code> event handler present in
+If it doesn&#39;t <strong>and the server supports the authorization code flow and at least another grant (e.g <code>refresh_token</code>)</strong>,
+the dynamic configuration will need to be amended at runtime. For that, update the <code>AmendGrantTypes</code> event handler present in
 <a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs">OpenIddictClientWebIntegrationHandlers.Discovery.cs</a>:</li>
 </ul>
 <pre><code class="lang-csharp">/// &lt;summary&gt;
