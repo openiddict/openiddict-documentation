@@ -102,7 +102,8 @@ the following points MUST be checked:
 ```
 
   - The returned `grant_types_supported` node contains all the grant types officially supported by the authorization server.
-  If it doesn't, the dynamic configuration will need to be amended at runtime. For that, update the `AmendGrantTypes` event handler present in
+  If it doesn't **and the server supports the authorization code flow and at least another grant (e.g `refresh_token`)**,
+  the dynamic configuration will need to be amended at runtime. For that, update the `AmendGrantTypes` event handler present in
 [OpenIddictClientWebIntegrationHandlers.Discovery.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs):
 
 ```csharp
