@@ -150,21 +150,113 @@ the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn&#39;t s
 <p><strong>The third step is the most complicated one: adding the appropriate configuration for each of the added environments</strong>.</p>
 <p>For that, you MUST first determine whether the environment supports OpenID Connect discovery or OAuth 2.0 authorization server metadata.
 In some cases, this information will be mentioned in the official documentation, but it&#39;s not always true. By convention, the server metadata
-is typically served from <code>https://provider/.well-known/openid-configuration</code>: if you get a valid JSON document from this endpoint, the server
+is typically served from <code>https://base address/.well-known/openid-configuration</code>: if you get a valid JSON document from this endpoint, the server
 supports OpenID Connect/OAuth 2.0 server metadata.</p>
-<ul>
-<li>If the server supports OpenID Connect/OAuth 2.0 server metadata, add an <code>Issuer</code> attribute to <code>&lt;Environment&gt;</code> corresponding to the provider address
-without the <code>/.well-known/openid-configuration</code> part. For instance, Google exposes its discovery document at <code>https://accounts.google.com/.well-known/openid-configuration</code>
-so the correct issuer to use is <code>https://accounts.google.com/</code>:</li>
-</ul>
+<h3 id="the-server-provides-a-configuration-endpoint">The server provides a configuration endpoint</h3>
+<p>When the server supports supports the OpenID Connect/OAuth 2.0 server metadata specification(s), add an <code>Issuer</code> attribute to <code>&lt;Environment&gt;</code>
+corresponding to the provider address without the <code>/.well-known/openid-configuration</code> part. For instance, Google exposes its discovery document
+at <code>https://accounts.google.com/.well-known/openid-configuration</code> so the correct issuer to use is <code>https://accounts.google.com/</code>:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Google&quot; Id=&quot;e0e90ce7-adb5-4b05-9f54-594941e5d960&quot;&gt;
   &lt;Environment Issuer=&quot;https://accounts.google.com/&quot; /&gt;
 &lt;/Provider&gt;
-</code></pre><ul>
-<li>If the server doesn&#39;t support OpenID Connect/OAuth 2.0 server metadata, you MUST add an <code>Issuer</code> attribute (corresponding to either
-the value given in the documentation or the base address of the server) <strong>and</strong> a <code>&lt;Configuration&gt;</code> node with the static configuration needed by
-the OpenIddict client to communicate with the remote authorization server. For instance:</li>
+</code></pre><p>Unfortunately, the simple fact a provider exposes its server metadata doesn&#39;t guarantee that the returned information is complete or valid.
+As such, the server metadata MUST be carefully reviewed to ensure the configuration can be used as-is by OpenIddict. In particular,
+the following points MUST be checked:</p>
+<ul>
+<li>The returned <code>issuer</code> node matches the base address used to access the <code>/.well-known/openid-configuration</code> document. If it doesn&#39;t, use the
+returned <code>issuer</code> as the <code>Issuer</code> attribute and specify a <code>ConfigurationEndpoint</code> attribute containing the location of the server metadata:</li>
 </ul>
+<pre><code class="lang-xml">&lt;Provider Name=&quot;OrangeFrance&quot; DisplayName=&quot;Orange France&quot; Id=&quot;848d89f4-70e2-4a43-a6e1-d15a0fbedfff&quot;
+          Documentation=&quot;https://developer.orange.com/apis/authentication-fr/getting-started&quot;&gt;
+  &lt;Environment Issuer=&quot;https://openid.orange.fr/&quot;
+               ConfigurationEndpoint=&quot;https://api.orange.com/openidconnect/fr/v1/.well-known/openid-configuration&quot; /&gt;
+&lt;/Provider&gt;
+</code></pre><ul>
+<li>The returned <code>grant_types_supported</code> node contains all the grant types officially supported by the authorization server.
+If it doesn&#39;t, the dynamic configuration will need to be amended at runtime. For that, update the <code>AmendGrantTypes</code> event handler present in
+<a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs">OpenIddictClientWebIntegrationHandlers.Discovery.cs</a>:</li>
+</ul>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Contains the logic responsible for amending the supported grant types for the providers that require it.
+/// &lt;/summary&gt;
+public sealed class AmendGrantTypes : IOpenIddictClientHandler&lt;HandleConfigurationResponseContext&gt;
+{
+    /// &lt;summary&gt;
+    /// Gets the default descriptor definition assigned to this handler.
+    /// &lt;/summary&gt;
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder&lt;HandleConfigurationResponseContext&gt;()
+            .UseSingletonHandler&lt;AmendGrantTypes&gt;()
+            .SetOrder(ExtractGrantTypes.Descriptor.Order + 500)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// &lt;inheritdoc/&gt;
+    public ValueTask HandleAsync(HandleConfigurationResponseContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        // Note: some providers don&#39;t list the grant types they support, which prevents the OpenIddict
+        // client from using them (unless they are assumed to be enabled by default, like the
+        // authorization code or implicit flows). To work around that, the list of supported grant
+        // types is amended to include the known supported types for the providers that require it.
+
+        if (context.Registration.ProviderType is
+            ProviderTypes.Apple or ProviderTypes.LinkedIn or ProviderTypes.QuickBooksOnline)
+        {
+            context.Configuration.GrantTypesSupported.Add(GrantTypes.AuthorizationCode);
+            context.Configuration.GrantTypesSupported.Add(GrantTypes.RefreshToken);
+        }
+
+        return default;
+    }
+}
+</code></pre><ul>
+<li>If the provider is known to support OpenID Connect, the returned <code>scopes_supported</code> contains the <code>openid</code> value. If it doesn&#39;t contain this
+special scope, the dynamic configuration will need to be amended at runtime. For that, update the <code>AmendScopes</code> event handler present in
+<a href="https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs">OpenIddictClientWebIntegrationHandlers.Discovery.cs</a>:</li>
+</ul>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Contains the logic responsible for amending the supported scopes for the providers that require it.
+/// &lt;/summary&gt;
+public sealed class AmendScopes : IOpenIddictClientHandler&lt;HandleConfigurationResponseContext&gt;
+{
+    /// &lt;summary&gt;
+    /// Gets the default descriptor definition assigned to this handler.
+    /// &lt;/summary&gt;
+    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+        = OpenIddictClientHandlerDescriptor.CreateBuilder&lt;HandleConfigurationResponseContext&gt;()
+            .UseSingletonHandler&lt;AmendScopes&gt;()
+            .SetOrder(ExtractScopes.Descriptor.Order + 500)
+            .SetType(OpenIddictClientHandlerType.BuiltIn)
+            .Build();
+
+    /// &lt;inheritdoc/&gt;
+    public ValueTask HandleAsync(HandleConfigurationResponseContext context)
+    {
+        if (context is null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+
+        // While it is a recommended node, some providers don&#39;t include &quot;scopes_supported&quot; in their
+        // configuration and thus are treated as OAuth 2.0-only providers by the OpenIddict client.
+        // To avoid that, the &quot;openid&quot; scope is manually added to indicate OpenID Connect is supported.
+        if (context.Registration.ProviderType is ProviderTypes.EpicGames or ProviderTypes.Xero)
+        {
+            context.Configuration.ScopesSupported.Add(Scopes.OpenId);
+        }
+
+        return default;
+    }
+}
+</code></pre><h3 id="the-server-doesnt-provide-a-configuration-endpoint">The server doesn&#39;t provide a configuration endpoint</h3>
+<p>When the server doesn&#39;t support the OpenID Connect/OAuth 2.0 server metadata specification(s), add an <code>Issuer</code> attribute (corresponding to either
+the value given in the documentation or the base address of the server) <strong>and</strong> a <code>&lt;Configuration&gt;</code> node with the static configuration needed by
+the OpenIddict client to communicate with the remote authorization server. For instance:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot; Id=&quot;01ae8033-935c-43b9-8568-eaf4d08c0613&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
@@ -175,9 +267,8 @@ the OpenIddict client to communicate with the remote authorization server. For i
     &lt;/Configuration&gt;
   &lt;/Environment&gt;
 &lt;/Provider&gt;
-</code></pre><div class="NOTE"><h5>Note</h5><p>If the provider doesn&#39;t support <code>grant_type=refresh_token</code> and only supports the authorization code flow
-(typically with non-expiring access tokens), the <code>&lt;GrantType&gt;</code> nodes MUST be removed for clarity,
-as the authorization code flow is always considered supported by default if no <code>&lt;GrantType&gt;</code> is present:</p>
+</code></pre><p>When the provider only supports the authorization code flow (typically with non-expiring access tokens), the <code>&lt;GrantType&gt;</code> nodes
+SHOULD be removed for clarity, as the authorization code flow is always considered supported by default if no <code>&lt;GrantType&gt;</code> is present:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Reddit&quot; Id=&quot;01ae8033-935c-43b9-8568-eaf4d08c0613&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.reddit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.reddit.com/api/v1/authorize&quot;
@@ -185,9 +276,8 @@ as the authorization code flow is always considered supported by default if no <
                    UserinfoEndpoint=&quot;https://oauth.reddit.com/api/v1/me&quot; /&gt;
   &lt;/Environment&gt;
 &lt;/Provider&gt;
-</code></pre></div>
-<div class="CAUTION"><h5>Caution</h5><p>If the provider doesn&#39;t support server metadata but is known to support Proof Key for Code Exchange (PKCE), a <code>&lt;CodeChallengeMethod&gt;</code> node MUST
-be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict client will send appropriate <code>code_challenge</code>/<code>code_challenge_method</code> parameters:</p>
+</code></pre><p>When the provider is known to support Proof Key for Code Exchange (PKCE), a <code>&lt;CodeChallengeMethod&gt;</code> node MUST be added under
+<code>&lt;Configuration&gt;</code> to ensure the OpenIddict client will send appropriate <code>code_challenge</code>/<code>code_challenge_method</code> parameters:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Fitbit&quot; Id=&quot;10a558b9-8c81-47cc-8941-e54d0432fd51&quot;&gt;
   &lt;Environment Issuer=&quot;https://www.fitbit.com/&quot;&gt;
     &lt;Configuration AuthorizationEndpoint=&quot;https://www.fitbit.com/oauth2/authorize&quot;
@@ -197,21 +287,20 @@ be added under <code>&lt;Configuration&gt;</code> to ensure the OpenIddict clien
     &lt;/Configuration&gt;
   &lt;/Environment&gt;
 &lt;/Provider&gt;
-</code></pre></div>
-<div class="NOTE"><h5>Note</h5><p>Some providers use a multitenant configuration that relies on a subdomain, a custom domain or a virtual path to discriminate tenant instances.
+</code></pre><div class="NOTE"><h5>Note</h5><p>Some providers use a multitenant configuration that relies on a subdomain, a custom domain or a virtual path to discriminate tenant instances.
 If the provider you want to support requires adding a dynamic part in one of its URIs, a <code>&lt;Setting&gt;</code> node MUST be added under <code>&lt;Provider&gt;</code> to
-store the tenant name. Once added, the URIs can include a placeholder of the same name:</p>
+store the tenant name. Once added, the URIs can include a placeholder pointing to the desired setting property:</p>
 <pre><code class="lang-xml">&lt;Provider Name=&quot;Zendesk&quot; Id=&quot;89fdfe22-c796-4227-a44a-d9cd3c467bbb&quot;&gt;
   &lt;!--
     Note: Zendesk is a multitenant provider that relies on subdomains to identify instances.
-    As such, the following URIs all include a {tenant} placeholder that will be dynamically
+    As such, the following URIs all include a {settings.Tenant} placeholder that will be
     replaced by OpenIddict at runtime by the tenant configured in the Zendesk settings.
   --&gt;
 
-  &lt;Environment Issuer=&quot;https://{tenant}.zendesk.com/&quot;&gt;
-    &lt;Configuration AuthorizationEndpoint=&quot;https://{tenant}.zendesk.com/oauth/authorizations/new&quot;
-                   TokenEndpoint=&quot;https://{tenant}.zendesk.com/oauth/tokens&quot;
-                   UserinfoEndpoint=&quot;https://{tenant}.zendesk.com/api/v2/users/me&quot; /&gt;
+  &lt;Environment Issuer=&quot;https://{settings.Tenant}.zendesk.com/&quot;&gt;
+    &lt;Configuration AuthorizationEndpoint=&quot;https://{settings.Tenant}.zendesk.com/oauth/authorizations/new&quot;
+                   TokenEndpoint=&quot;https://{settings.Tenant}.zendesk.com/oauth/tokens&quot;
+                   UserinfoEndpoint=&quot;https://{settings.Tenant}.zendesk.com/api/v2/users/me&quot; /&gt;
   &lt;/Environment&gt;
 
   &lt;Setting PropertyName=&quot;Tenant&quot; ParameterName=&quot;tenant&quot; Type=&quot;String&quot; Required=&quot;true&quot;
