@@ -102,8 +102,8 @@ using <strong>individual user accounts authentication</strong> is strongly recom
 based on Razor Pages, should you later need to implement a user authentication flow like the authorization code flow.</p>
 </li>
 <li><p><strong>Update your <code>.csproj</code> file</strong> to reference the latest <code>OpenIddict.AspNetCore</code> and <code>OpenIddict.EntityFrameworkCore</code> packages:</p>
-<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.1.0&quot; /&gt;
-&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.1.0&quot; /&gt;
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.2.0&quot; /&gt;
+&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.2.0&quot; /&gt;
 </code></pre></li>
 <li><p><strong>Configure the OpenIddict core and server services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code>, depending on whether you&#39;re using the
 minimal host or the regular host). Here&#39;s an example for the client credentials grant, used in machine-to-machine scenarios:</p>
