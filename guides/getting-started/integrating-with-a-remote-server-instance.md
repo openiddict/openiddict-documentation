@@ -167,7 +167,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
         var result = await HttpContext.AuthenticateAsync(OpenIddictClientAspNetCoreDefaults.AuthenticationScheme);
     
         // Important: if the remote server doesn't support OpenID Connect and doesn't expose a userinfo endpoint,
-        // result.Principal.Identity will represent an unauthenticated identity and won't contain any claim.
+        // result.Principal.Identity will represent an unauthenticated identity and won't contain any user claim.
         //
         // Such identities cannot be used as-is to build an authentication cookie in ASP.NET Core (as the
         // antiforgery stack requires at least a name claim to bind CSRF cookies to the user's identity) but
@@ -199,18 +199,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
         // If needed, the tokens returned by the authorization server can be stored in the authentication cookie.
         //
         // To make cookies less heavy, tokens that are not used are filtered out before creating the cookie.
-        properties.StoreTokens(result.Properties.GetTokens().Where(token => token switch
-        {
+        properties.StoreTokens(result.Properties.GetTokens().Where(token => token.Name is
             // Preserve the access, identity and refresh tokens returned in the token response, if available.
-            {
-                Name: OpenIddictClientAspNetCoreConstants.Tokens.BackchannelAccessToken   or
-                      OpenIddictClientAspNetCoreConstants.Tokens.BackchannelIdentityToken or
-                      OpenIddictClientAspNetCoreConstants.Tokens.RefreshToken
-            } => true,
-    
-            // Ignore the other tokens.
-            _ => false
-        }));
+            OpenIddictClientAspNetCoreConstants.Tokens.BackchannelAccessToken   or
+            OpenIddictClientAspNetCoreConstants.Tokens.BackchannelIdentityToken or
+            OpenIddictClientAspNetCoreConstants.Tokens.RefreshToken));
     
         // Ask the default sign-in handler to return a new cookie and redirect the
         // user agent to the return URL stored in the authentication properties.
