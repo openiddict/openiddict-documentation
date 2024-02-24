@@ -428,8 +428,8 @@ public sealed class MapCustomWebServicesFederationClaims : IOpenIddictClientHand
 <p>If the targeted service is fully standard-compliant, no additional configuration should be required at this point.</p>
 <p>To confirm it, build the solution and add a client registration of the new provider to one of the sandbox projects:</p>
 <ul>
+<li>For <code>OpenIddict.Sandbox.Console.Client</code> (the recommended option), in <code>Program.cs</code>.</li>
 <li>For <code>OpenIddict.Sandbox.AspNet.Client</code> (ASP.NET 4.8) or <code>OpenIddict.Sandbox.AspNetCore.Client</code> (ASP.NET Core), in <code>Startup.cs</code>.</li>
-<li>For <code>OpenIddict.Sandbox.Console.Client</code>, in <code>Program.cs</code>.</li>
 </ul>
 <pre><code class="lang-csharp">// Register the Web providers integrations.
 //
@@ -546,7 +546,7 @@ If you&#39;re not familiar with the OpenIddict events model, open a ticket in th
 </div>
 <h2 id="send-a-pull-request-against-the-openiddict-core-repository">Send a pull request against the <code>openiddict-core</code> repository</h2>
 <p>Once you&#39;ve been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to
-<a href="https://github.com/openiddict/openiddict-core/issues"><code>the openiddict-core repository</code></a>
+the <a href="https://github.com/openiddict/openiddict-core/issues"><code>openiddict-core</code></a> repository
 and ship with the already supported providers as part of the next update.</p>
 </article>
               
