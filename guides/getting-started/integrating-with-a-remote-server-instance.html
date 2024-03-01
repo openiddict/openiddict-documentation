@@ -168,9 +168,7 @@ prevents state tokens from being used multiple times to mitigate authorization r
     // Note: use the generic overload if you need to replace the default OpenIddict entities.
     options.UseOpenIddict();
 });
-</code></pre></li>
-<li><p><strong>Configure the OpenIddict client services</strong>. Here&#39;s an example enabling code flow support and adding the GitHub integration:</p>
-<pre><code class="lang-csharp">services.AddOpenIddict()
+</code></pre><pre><code class="lang-csharp">services.AddOpenIddict()
 
     // Register the OpenIddict core components.
     .AddCore(options =&gt;
@@ -179,7 +177,10 @@ prevents state tokens from being used multiple times to mitigate authorization r
         // Note: call ReplaceDefaultEntities() to replace the default entities.
         options.UseEntityFrameworkCore()
                .UseDbContext&lt;ApplicationDbContext&gt;();
-    })
+    });
+</code></pre></li>
+<li><p><strong>Configure the OpenIddict client services</strong>. Here&#39;s an example enabling code flow support and adding the GitHub integration:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
 
     // Register the OpenIddict client components.
     .AddClient(options =&gt;

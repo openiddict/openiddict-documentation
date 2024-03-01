@@ -105,8 +105,8 @@ based on Razor Pages, should you later need to implement a user authentication f
 <pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.2.0&quot; /&gt;
 &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.2.0&quot; /&gt;
 </code></pre></li>
-<li><p><strong>Configure the OpenIddict core and server services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code>, depending on whether you&#39;re using the
-minimal host or the regular host). Here&#39;s an example for the client credentials grant, used in machine-to-machine scenarios:</p>
+<li><p><strong>Register your Entity Framework Core database context and configure the OpenIddict core services</strong> in <code>Program.cs</code>
+(or <code>Startup.cs</code>, depending on whether you&#39;re using the minimal host or the regular host):</p>
 <pre><code class="lang-csharp">services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
 {
     // Configure Entity Framework Core to use Microsoft SQL Server.
@@ -126,7 +126,10 @@ services.AddOpenIddict()
         // Note: call ReplaceDefaultEntities() to replace the default entities.
         options.UseEntityFrameworkCore()
                .UseDbContext&lt;ApplicationDbContext&gt;();
-    })
+    });
+</code></pre></li>
+<li><p><strong>Configure the OpenIddict server services</strong>:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
 
     // Register the OpenIddict server components.
     .AddServer(options =&gt;
@@ -145,10 +148,6 @@ services.AddOpenIddict()
         options.UseAspNetCore()
                .EnableTokenEndpointPassthrough();
     });
-
-// Register the worker responsible of creating the EntityFramework Core database.
-// Note: in a real world application, this step should be part of a setup script.
-services.AddHostedService&lt;Worker&gt;();
 </code></pre></li>
 <li><p><strong>Make sure the ASP.NET Core authentication middleware is correctly registered at the right place</strong>:</p>
 <pre><code class="lang-csharp">app.UseDeveloperExceptionPage();
