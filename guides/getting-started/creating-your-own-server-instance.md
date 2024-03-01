@@ -16,8 +16,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
     <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.2.0" />
     ```
 
-  - **Configure the OpenIddict core and server services** in `Program.cs` (or `Startup.cs`, depending on whether you're using the
-  minimal host or the regular host). Here's an example for the client credentials grant, used in machine-to-machine scenarios:
+  - **Register your Entity Framework Core database context and configure the OpenIddict core services** in `Program.cs`
+  (or `Startup.cs`, depending on whether you're using the minimal host or the regular host):
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -39,7 +39,13 @@ If you don't want to start from one of the recommended samples, you'll need to:
             // Note: call ReplaceDefaultEntities() to replace the default entities.
             options.UseEntityFrameworkCore()
                    .UseDbContext<ApplicationDbContext>();
-        })
+        });
+    ```
+
+  - **Configure the OpenIddict server services**:
+
+    ```csharp
+    services.AddOpenIddict()
 
         // Register the OpenIddict server components.
         .AddServer(options =>
@@ -58,10 +64,6 @@ If you don't want to start from one of the recommended samples, you'll need to:
             options.UseAspNetCore()
                    .EnableTokenEndpointPassthrough();
         });
-
-    // Register the worker responsible of creating the EntityFramework Core database.
-    // Note: in a real world application, this step should be part of a setup script.
-    services.AddHostedService<Worker>();
     ```
 
   - **Make sure the ASP.NET Core authentication middleware is correctly registered at the right place**:

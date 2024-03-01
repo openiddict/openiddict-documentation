@@ -95,8 +95,6 @@ If you don't want to start from one of the recommended samples, you'll need to:
     });
     ```
 
-  - **Configure the OpenIddict client services**. Here's an example enabling code flow support and adding the GitHub integration:
-
     ```csharp
     services.AddOpenIddict()
 
@@ -107,7 +105,13 @@ If you don't want to start from one of the recommended samples, you'll need to:
             // Note: call ReplaceDefaultEntities() to replace the default entities.
             options.UseEntityFrameworkCore()
                    .UseDbContext<ApplicationDbContext>();
-        })
+        });
+    ```
+
+  - **Configure the OpenIddict client services**. Here's an example enabling code flow support and adding the GitHub integration:
+
+    ```csharp
+    services.AddOpenIddict()
 
         // Register the OpenIddict client components.
         .AddClient(options =>
