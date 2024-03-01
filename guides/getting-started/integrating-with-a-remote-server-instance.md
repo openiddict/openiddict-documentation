@@ -75,8 +75,13 @@ If you don't want to start from one of the recommended samples, you'll need to:
     <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.2.0" />
     ```
 
-  - **Configure the OpenIddict core and client services** in `Program.cs` (or `Startup.cs`, depending on whether you're using the
-  minimal host or the regular host). Here's an example enabling code flow support and using the GitHub client integration:
+  - **Configure the OpenIddict core services** in `Program.cs` (or `Startup.cs`, depending on whether you're using the minimal host or the regular host):
+
+  > [!IMPORTANT]
+  > Configuring a database is required because the OpenIddict client is stateful by default: it uses the `IOpenIddictTokenStore<T>`
+  > service to store the payload of the state tokens it creates – to protect the callback stage from CSRF/session fixation attacks –
+  > and enable automatic state token redeeming (unlike the ASP.NET Core OAuth 2.0 or OpenID Connect handlers, the OpenIddict client
+  > prevents state tokens from being used multiple times to mitigate authorization response/state token replay attacks).
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -88,7 +93,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
         // Note: use the generic overload if you need to replace the default OpenIddict entities.
         options.UseOpenIddict();
     });
+    ```
 
+  - **Configure the OpenIddict client services**. Here's an example enabling code flow support and adding the GitHub integration:
+
+    ```csharp
     services.AddOpenIddict()
 
         // Register the OpenIddict core components.
@@ -133,10 +142,6 @@ If you don't want to start from one of the recommended samples, you'll need to:
                               .SetRedirectUri("callback/login/github");
                    });
         });
-
-    // Register the worker responsible of creating the EntityFramework Core database.
-    // Note: in a real world application, this step should be part of a setup script.
-    services.AddHostedService<Worker>();
     ```
 
   - **Make sure the ASP.NET Core authentication middleware is correctly registered at the right place**:
