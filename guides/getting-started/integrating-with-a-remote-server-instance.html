@@ -153,8 +153,12 @@ based on Razor Pages, that automatically handles the user creation process or ex
 <pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.2.0&quot; /&gt;
 &lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.2.0&quot; /&gt;
 </code></pre></li>
-<li><p><strong>Configure the OpenIddict core and client services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code>, depending on whether you&#39;re using the
-minimal host or the regular host). Here&#39;s an example enabling code flow support and using the GitHub client integration:</p>
+<li><p><strong>Configure the OpenIddict core services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code>, depending on whether you&#39;re using the minimal host or the regular host):</p>
+<div class="IMPORTANT"><h5>Important</h5><p>Configuring a database is required because the OpenIddict client is stateful by default: it uses the <code>IOpenIddictTokenStore&lt;T&gt;</code>
+service to store the payload of the state tokens it creates – to protect the callback stage from CSRF/session fixation attacks –
+and enable automatic state token redeeming (unlike the ASP.NET Core OAuth 2.0 or OpenID Connect handlers, the OpenIddict client
+prevents state tokens from being used multiple times to mitigate authorization response/state token replay attacks).</p>
+</div>
 <pre><code class="lang-csharp">services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
 {
     // Configure Entity Framework Core to use Microsoft SQL Server.
@@ -164,8 +168,9 @@ minimal host or the regular host). Here&#39;s an example enabling code flow supp
     // Note: use the generic overload if you need to replace the default OpenIddict entities.
     options.UseOpenIddict();
 });
-
-services.AddOpenIddict()
+</code></pre></li>
+<li><p><strong>Configure the OpenIddict client services</strong>. Here&#39;s an example enabling code flow support and adding the GitHub integration:</p>
+<pre><code class="lang-csharp">services.AddOpenIddict()
 
     // Register the OpenIddict core components.
     .AddCore(options =&gt;
@@ -209,10 +214,6 @@ services.AddOpenIddict()
                           .SetRedirectUri(&quot;callback/login/github&quot;);
                });
     });
-
-// Register the worker responsible of creating the EntityFramework Core database.
-// Note: in a real world application, this step should be part of a setup script.
-services.AddHostedService&lt;Worker&gt;();
 </code></pre></li>
 <li><p><strong>Make sure the ASP.NET Core authentication middleware is correctly registered at the right place</strong>:</p>
 <pre><code class="lang-csharp">app.UseDeveloperExceptionPage();
