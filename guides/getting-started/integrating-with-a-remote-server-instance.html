@@ -105,7 +105,7 @@ in web and desktop applications. If you want to use a non-interactive flow like 
 flows. In any case, you&#39;ll need to use dependency injection (<code>Microsoft.Extensions.DependencyInjection</code> or another DI container).</p>
 </li>
 <li><p><strong>Update your <code>.csproj</code> file</strong> to reference the latest <code>OpenIddict</code> package:</p>
-<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;5.3.0&quot; /&gt;
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict&quot; Version=&quot;5.4.0&quot; /&gt;
 </code></pre></li>
 <li><p><strong>Configure the OpenIddict client services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code> if you use the regular ASP.NET Core web host):</p>
 <pre><code class="lang-csharp">services.AddOpenIddict()
@@ -150,8 +150,8 @@ using <strong>individual user accounts authentication</strong> is strongly recom
 based on Razor Pages, that automatically handles the user creation process or external login integration in a transparent way.</p>
 </li>
 <li><p><strong>Update your <code>.csproj</code> file</strong> to reference the latest <code>OpenIddict.AspNetCore</code> and <code>OpenIddict.EntityFrameworkCore</code> packages:</p>
-<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.3.0&quot; /&gt;
-&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.3.0&quot; /&gt;
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;OpenIddict.AspNetCore&quot; Version=&quot;5.4.0&quot; /&gt;
+&lt;PackageReference Include=&quot;OpenIddict.EntityFrameworkCore&quot; Version=&quot;5.4.0&quot; /&gt;
 </code></pre></li>
 <li><p><strong>Configure the OpenIddict core services</strong> in <code>Program.cs</code> (or <code>Startup.cs</code>, depending on whether you&#39;re using the minimal host or the regular host):</p>
 <div class="IMPORTANT"><h5>Important</h5><p>Configuring a database is required because the OpenIddict client is stateful by default: it uses the <code>IOpenIddictTokenStore&lt;T&gt;</code>
