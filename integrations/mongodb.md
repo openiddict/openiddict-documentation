@@ -60,8 +60,8 @@ initialize the database and create the indexes used by the OpenIddict entities:
 
     var applications = database.GetCollection<OpenIddictMongoDbApplication>(options.ApplicationsCollectionName);
 
-    await applications.Indexes.CreateManyAsync(new[]
-    {
+    await applications.Indexes.CreateManyAsync(
+    [
         new CreateIndexModel<OpenIddictMongoDbApplication>(
             Builders<OpenIddictMongoDbApplication>.IndexKeys.Ascending(application => application.ClientId),
             new CreateIndexOptions
@@ -82,7 +82,7 @@ initialize the database and create the indexes used by the OpenIddict entities:
             {
                 Background = true
             })
-    });
+    ]);
 
     var authorizations = database.GetCollection<OpenIddictMongoDbAuthorization>(options.AuthorizationsCollectionName);
 
@@ -110,8 +110,8 @@ initialize the database and create the indexes used by the OpenIddict entities:
 
     var tokens = database.GetCollection<OpenIddictMongoDbToken>(options.TokensCollectionName);
 
-    await tokens.Indexes.CreateManyAsync(new[]
-    {
+    await tokens.Indexes.CreateManyAsync(
+    [
         new CreateIndexModel<OpenIddictMongoDbToken>(
             Builders<OpenIddictMongoDbToken>.IndexKeys.Ascending(token => token.ReferenceId),
             new CreateIndexOptions<OpenIddictMongoDbToken>
@@ -140,7 +140,7 @@ initialize the database and create the indexes used by the OpenIddict entities:
             {
                 Background = true
             })
-    });
+    ]);
     ```
 
 ## Advanced configuration

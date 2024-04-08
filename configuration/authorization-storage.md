@@ -80,22 +80,19 @@ switch (await _applicationManager.GetConsentTypeAsync(application))
         {
             // If the "profile" scope was granted, allow the "name" claim to be
             // added to the access and identity tokens derived from the principal.
-            Claims.Name when claim.Subject.HasScope(Scopes.Profile) => new[]
-            {
+            Claims.Name when claim.Subject.HasScope(Scopes.Profile) =>
+            [
                 OpenIddictConstants.Destinations.AccessToken,
                 OpenIddictConstants.Destinations.IdentityToken
-            },
+            ],
 
             // Never add the "secret_value" claim to access or identity tokens.
             // In this case, it will only be added to authorization codes,
             // refresh tokens and user/device codes, that are always encrypted.
-            "secret_value" => Array.Empty<string>(),
+            "secret_value" => [],
 
             // Otherwise, add the claim to the access tokens only.
-            _ => new[]
-            {
-                OpenIddictConstants.Destinations.AccessToken
-            }
+            _ => [OpenIddictConstants.Destinations.AccessToken]
         });
 
         return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);

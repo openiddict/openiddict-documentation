@@ -65,7 +65,7 @@ app.MapGet("/authorize", async (HttpContext context) =>
     var principal = (await context.AuthenticateAsync(SteamAuthenticationDefaults.AuthenticationScheme))?.Principal;
     if (principal is null)
     {
-        return Results.Challenge(properties: null, new[] { SteamAuthenticationDefaults.AuthenticationScheme });
+        return Results.Challenge(properties: null, [SteamAuthenticationDefaults.AuthenticationScheme]);
     }
 
     var identifier = principal.FindFirst(ClaimTypes.NameIdentifier)!.Value;
