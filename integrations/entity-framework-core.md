@@ -6,7 +6,7 @@ To configure OpenIddict to use Entity Framework Core as the database for applica
   - **Reference the `OpenIddict.EntityFrameworkCore` package**:
 
     ```xml
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.4.0" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.5.0" />
     ```
 
   - **Create a database context deriving from `DbContext` (or `IdentityDbContext` when using ASP.NET Core Identity)**:
