@@ -51,9 +51,9 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: _site
-        GIT_CONFIG_NAME: OpenIddict Bot
-        GIT_CONFIG_EMAIL: 32257313+openiddict-bot@users.noreply.github.com
-        COMMIT_MESSAGE: Update the documentation pages
+        branch: gh-pages
+        folder: _site
+        token: ${{ secrets.GITHUB_TOKEN }}
+        git-config-name: OpenIddict Bot
+        git-config-email: 32257313+openiddict-bot@users.noreply.github.com
+        commit-message: Update the documentation pages
