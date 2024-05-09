@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Checkout submodule
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: openiddict/openiddict-core
         path: submodules/openiddict-core
@@ -32,7 +32,7 @@ jobs:
         args: docfx.json
 
     - name: Publish website artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: website
         path: ./_site
@@ -43,13 +43,13 @@ jobs:
     if: github.event.repository.fork == false && github.ref == 'refs/heads/dev'
     steps:
     - name: Download website
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: website
         path: ./_site
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
