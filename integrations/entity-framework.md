@@ -6,7 +6,7 @@ To configure OpenIddict to use Entity Framework 6.x as the database for applicat
   - **Reference the `OpenIddict.EntityFramework` package**:
 
     ```xml
-    <PackageReference Include="OpenIddict.EntityFramework" Version="5.5.0" />
+    <PackageReference Include="OpenIddict.EntityFramework" Version="5.6.0" />
     ```
 
   - **Create a database context deriving from `DbContext` and register the OpenIddict entities in the model**:

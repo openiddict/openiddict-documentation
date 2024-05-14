@@ -6,7 +6,7 @@ To configure OpenIddict to use MongoDB as the database for applications, authori
   - **Reference the `OpenIddict.MongoDb` package**:
 
     ```xml
-    <PackageReference Include="OpenIddict.MongoDb" Version="5.5.0" />
+    <PackageReference Include="OpenIddict.MongoDb" Version="5.6.0" />
     ```
 
   - **Configure OpenIddict to use the MongoDB stores**:
