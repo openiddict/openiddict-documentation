@@ -18,21 +18,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Checkout submodule
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       with:
         repository: openiddict/openiddict-core
         path: submodules/openiddict-core
 
     - name: Build documentation
-      uses: nikeee/docfx-action@v1.0.0
+      uses: nikeee/docfx-action@b9c2cf92e3b4aa06878a1410833a8828b4bdcd26 # v1.0.0
       with:
         args: docfx.json
 
     - name: Publish website artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
         name: website
         path: ./_site
@@ -43,16 +43,16 @@ jobs:
     if: github.event.repository.fork == false && github.ref == 'refs/heads/dev'
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Download website
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
       with:
         name: website
         path: ./_site
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@5c6e9e9f3672ce8fd37b9856193d2a537941e66c # v4.6.0
       with:
         branch: gh-pages
         folder: _site
