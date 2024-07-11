@@ -128,6 +128,10 @@ export default defineConfig({
       text: 'Edit this page on GitHub'
     },
 
+    search: {
+      provider: 'local'
+    },
+
     footer: {
       message: 'Proudly powered by VitePress.'
     }
