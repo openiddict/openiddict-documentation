@@ -49,7 +49,7 @@ export default defineConfig({
         items: [
           {
             text: 'Getting started',
-            link: 'index.md',
+            link: 'guides/getting-started/index.md',
             items: [
               { text: 'Creating your own server instance', link: 'guides/getting-started/creating-your-own-server-instance.md' },
               { text: 'Implementing token validation in your APIs', link: 'guides/getting-started/implementing-token-validation-in-your-apis.md' },
