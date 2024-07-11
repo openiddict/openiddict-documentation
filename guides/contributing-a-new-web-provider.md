@@ -46,24 +46,24 @@ If available, a link to the official documentation MUST be added. If multiple la
 
   - If the provider supports multiple environments, multiple `<Environment>` nodes - one per environment - MUST be added under `<Provider>`:
 
-```xml
-<Provider Name="Salesforce" Id="ce5bc4bc-6133-4e87-85ad-626b3c0a4427">
-  <Environment Name="Production" />
+  ```xml
+  <Provider Name="Salesforce" Id="ce5bc4bc-6133-4e87-85ad-626b3c0a4427">
+    <Environment Name="Production" />
 
-  <Environment Name="Development" />
-</Provider>
-```
+    <Environment Name="Development" />
+  </Provider>
+  ```
 
 > [!WARNING]
 > When specifying multiple environments, the production environment MUST always appear first.
 
   - If the provider doesn't support multiple environment, a single `<Environment>` MUST be added (the `Name` attribute SHOULD be omitted):
 
-```xml
-<Provider Name="Google" Id="e0e90ce7-adb5-4b05-9f54-594941e5d960">
-  <Environment />
-</Provider>
-```
+  ```xml
+  <Provider Name="Google" Id="e0e90ce7-adb5-4b05-9f54-594941e5d960">
+    <Environment />
+  </Provider>
+  ```
 
 ## Add the appropriate configuration for each environment
 
@@ -93,100 +93,100 @@ the following points MUST be checked:
  - The returned `issuer` node matches the base address used to access the `/.well-known/openid-configuration` document. If it doesn't, use the
  returned `issuer` as the `Issuer` attribute and specify a `ConfigurationEndpoint` attribute containing the location of the server metadata:
 
-```xml
-<Provider Name="OrangeFrance" DisplayName="Orange France" Id="848d89f4-70e2-4a43-a6e1-d15a0fbedfff"
-          Documentation="https://developer.orange.com/apis/authentication-fr/getting-started">
-  <Environment Issuer="https://openid.orange.fr/"
-               ConfigurationEndpoint="https://api.orange.com/openidconnect/fr/v1/.well-known/openid-configuration" />
-</Provider>
-```
+  ```xml
+  <Provider Name="OrangeFrance" DisplayName="Orange France" Id="848d89f4-70e2-4a43-a6e1-d15a0fbedfff"
+            Documentation="https://developer.orange.com/apis/authentication-fr/getting-started">
+    <Environment Issuer="https://openid.orange.fr/"
+                 ConfigurationEndpoint="https://api.orange.com/openidconnect/fr/v1/.well-known/openid-configuration" />
+  </Provider>
+  ```
 
   - The returned `grant_types_supported` node contains all the grant types officially supported by the authorization server.
   If it doesn't **and the server supports the authorization code flow and at least another grant (e.g `refresh_token`)**,
   the dynamic configuration will need to be amended at runtime. For that, update the `AmendGrantTypes` event handler present in
 [OpenIddictClientWebIntegrationHandlers.Discovery.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs):
 
-```csharp
-/// <summary>
-/// Contains the logic responsible for amending the supported grant types for the providers that require it.
-/// </summary>
-public sealed class AmendGrantTypes : IOpenIddictClientHandler<HandleConfigurationResponseContext>
-{
-    /// <summary>
-    /// Gets the default descriptor definition assigned to this handler.
-    /// </summary>
-    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
-        = OpenIddictClientHandlerDescriptor.CreateBuilder<HandleConfigurationResponseContext>()
-            .UseSingletonHandler<AmendGrantTypes>()
-            .SetOrder(ExtractGrantTypes.Descriptor.Order + 500)
-            .SetType(OpenIddictClientHandlerType.BuiltIn)
-            .Build();
+  ```csharp
+  /// <summary>
+  /// Contains the logic responsible for amending the supported grant types for the providers that require it.
+  /// </summary>
+  public sealed class AmendGrantTypes : IOpenIddictClientHandler<HandleConfigurationResponseContext>
+  {
+      /// <summary>
+      /// Gets the default descriptor definition assigned to this handler.
+      /// </summary>
+      public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+          = OpenIddictClientHandlerDescriptor.CreateBuilder<HandleConfigurationResponseContext>()
+              .UseSingletonHandler<AmendGrantTypes>()
+              .SetOrder(ExtractGrantTypes.Descriptor.Order + 500)
+              .SetType(OpenIddictClientHandlerType.BuiltIn)
+              .Build();
 
-    /// <inheritdoc/>
-    public ValueTask HandleAsync(HandleConfigurationResponseContext context)
-    {
-        if (context is null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
+      /// <inheritdoc/>
+      public ValueTask HandleAsync(HandleConfigurationResponseContext context)
+      {
+          if (context is null)
+          {
+              throw new ArgumentNullException(nameof(context));
+          }
 
-        // Note: some providers don't list the grant types they support, which prevents the OpenIddict
-        // client from using them (unless they are assumed to be enabled by default, like the
-        // authorization code or implicit flows). To work around that, the list of supported grant
-        // types is amended to include the known supported types for the providers that require it.
+          // Note: some providers don't list the grant types they support, which prevents the OpenIddict
+          // client from using them (unless they are assumed to be enabled by default, like the
+          // authorization code or implicit flows). To work around that, the list of supported grant
+          // types is amended to include the known supported types for the providers that require it.
 
-        if (context.Registration.ProviderType is
-            ProviderTypes.Apple or ProviderTypes.LinkedIn or ProviderTypes.QuickBooksOnline)
-        {
-            context.Configuration.GrantTypesSupported.Add(GrantTypes.AuthorizationCode);
-            context.Configuration.GrantTypesSupported.Add(GrantTypes.RefreshToken);
-        }
+          if (context.Registration.ProviderType is
+              ProviderTypes.Apple or ProviderTypes.LinkedIn or ProviderTypes.QuickBooksOnline)
+          {
+              context.Configuration.GrantTypesSupported.Add(GrantTypes.AuthorizationCode);
+              context.Configuration.GrantTypesSupported.Add(GrantTypes.RefreshToken);
+          }
 
-        return default;
-    }
-}
-```
+          return default;
+      }
+  }
+  ```
 
   - If the provider is known to support OpenID Connect, the returned `scopes_supported` contains the `openid` value. If it doesn't contain this
   special scope, the dynamic configuration will need to be amended at runtime. For that, update the `AmendScopes` event handler present in
 [OpenIddictClientWebIntegrationHandlers.Discovery.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.Discovery.cs):
 
-```csharp
-/// <summary>
-/// Contains the logic responsible for amending the supported scopes for the providers that require it.
-/// </summary>
-public sealed class AmendScopes : IOpenIddictClientHandler<HandleConfigurationResponseContext>
-{
-    /// <summary>
-    /// Gets the default descriptor definition assigned to this handler.
-    /// </summary>
-    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
-        = OpenIddictClientHandlerDescriptor.CreateBuilder<HandleConfigurationResponseContext>()
-            .UseSingletonHandler<AmendScopes>()
-            .SetOrder(ExtractScopes.Descriptor.Order + 500)
-            .SetType(OpenIddictClientHandlerType.BuiltIn)
-            .Build();
+  ```csharp
+  /// <summary>
+  /// Contains the logic responsible for amending the supported scopes for the providers that require it.
+  /// </summary>
+  public sealed class AmendScopes : IOpenIddictClientHandler<HandleConfigurationResponseContext>
+  {
+      /// <summary>
+      /// Gets the default descriptor definition assigned to this handler.
+      /// </summary>
+      public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+          = OpenIddictClientHandlerDescriptor.CreateBuilder<HandleConfigurationResponseContext>()
+              .UseSingletonHandler<AmendScopes>()
+              .SetOrder(ExtractScopes.Descriptor.Order + 500)
+              .SetType(OpenIddictClientHandlerType.BuiltIn)
+              .Build();
 
-    /// <inheritdoc/>
-    public ValueTask HandleAsync(HandleConfigurationResponseContext context)
-    {
-        if (context is null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
+      /// <inheritdoc/>
+      public ValueTask HandleAsync(HandleConfigurationResponseContext context)
+      {
+          if (context is null)
+          {
+              throw new ArgumentNullException(nameof(context));
+          }
 
-        // While it is a recommended node, some providers don't include "scopes_supported" in their
-        // configuration and thus are treated as OAuth 2.0-only providers by the OpenIddict client.
-        // To avoid that, the "openid" scope is manually added to indicate OpenID Connect is supported.
-        if (context.Registration.ProviderType is ProviderTypes.EpicGames or ProviderTypes.Xero)
-        {
-            context.Configuration.ScopesSupported.Add(Scopes.OpenId);
-        }
+          // While it is a recommended node, some providers don't include "scopes_supported" in their
+          // configuration and thus are treated as OAuth 2.0-only providers by the OpenIddict client.
+          // To avoid that, the "openid" scope is manually added to indicate OpenID Connect is supported.
+          if (context.Registration.ProviderType is ProviderTypes.EpicGames or ProviderTypes.Xero)
+          {
+              context.Configuration.ScopesSupported.Add(Scopes.OpenId);
+          }
 
-        return default;
-    }
-}
-```
+          return default;
+      }
+  }
+  ```
 
 ### The server doesn't provide a configuration endpoint
 
@@ -430,94 +430,94 @@ If an error occurs during the authentication process, the provider MAY require o
 Providers that implement OpenID Connect discovery or OAuth 2.0 authorization server metadata will typically return the client authentication methods they support.
 If the provider doesn't expose its metadata, the supported methods MUST be added manually to the static configuration using one or multiple `<TokenEndpointAuthMethod>`:
 
-```xml
-<Provider Name="Twitter" Id="1fd20ab5-d3f2-40aa-8c91-094f71652c65">
-  <Environment Issuer="https://twitter.com/">
-    <Configuration AuthorizationEndpoint="https://twitter.com/i/oauth2/authorize"
-                   TokenEndpoint="https://api.twitter.com/2/oauth2/token"
-                   UserinfoEndpoint="https://api.twitter.com/2/users/me">
-      <CodeChallengeMethod Value="S256" />
+  ```xml
+  <Provider Name="Twitter" Id="1fd20ab5-d3f2-40aa-8c91-094f71652c65">
+    <Environment Issuer="https://twitter.com/">
+      <Configuration AuthorizationEndpoint="https://twitter.com/i/oauth2/authorize"
+                     TokenEndpoint="https://api.twitter.com/2/oauth2/token"
+                     UserinfoEndpoint="https://api.twitter.com/2/users/me">
+        <CodeChallengeMethod Value="S256" />
 
-      <TokenEndpointAuthMethod Value="client_secret_basic" />
-    </Configuration>
-  </Environment>
-</Provider>
-```
+        <TokenEndpointAuthMethod Value="client_secret_basic" />
+      </Configuration>
+    </Environment>
+  </Provider>
+  ```
 
   - The provider MAY require sending one or multiple default or required scopes. If so, the default/required scopes MUST be added to the `<Environment>` node:
 
-```xml
-<Provider Name="Twitter" Id="1fd20ab5-d3f2-40aa-8c91-094f71652c65">
-  <Environment Issuer="https://twitter.com/">
-    <Configuration AuthorizationEndpoint="https://twitter.com/i/oauth2/authorize"
-                   TokenEndpoint="https://api.twitter.com/2/oauth2/token"
-                   UserinfoEndpoint="https://api.twitter.com/2/users/me">
-      <CodeChallengeMethod Value="S256" />
+  ```xml
+  <Provider Name="Twitter" Id="1fd20ab5-d3f2-40aa-8c91-094f71652c65">
+    <Environment Issuer="https://twitter.com/">
+      <Configuration AuthorizationEndpoint="https://twitter.com/i/oauth2/authorize"
+                     TokenEndpoint="https://api.twitter.com/2/oauth2/token"
+                     UserinfoEndpoint="https://api.twitter.com/2/users/me">
+        <CodeChallengeMethod Value="S256" />
 
-      <TokenEndpointAuthMethod Value="client_secret_basic" />
-    </Configuration>
+        <TokenEndpointAuthMethod Value="client_secret_basic" />
+      </Configuration>
 
-    <!--
-      Note: Twitter requires requesting the "tweet.read" and "users.read" scopes for the
-      userinfo endpoint to work correctly. As such, these 2 scopes are marked as required
-      so they are always sent even if they were not explicitly added by the user.
-    -->
+      <!--
+        Note: Twitter requires requesting the "tweet.read" and "users.read" scopes for the
+        userinfo endpoint to work correctly. As such, these 2 scopes are marked as required
+        so they are always sent even if they were not explicitly added by the user.
+      -->
 
-    <Scope Name="tweet.read" Default="true" Required="true" />
-    <Scope Name="users.read" Default="true" Required="true" />
-  </Environment>
-</Provider>
-```
+      <Scope Name="tweet.read" Default="true" Required="true" />
+      <Scope Name="users.read" Default="true" Required="true" />
+    </Environment>
+  </Provider>
+  ```
 
   - The provider MAY require sending the scopes using a different separator than the standard one. While the OAuth 2.0 specification requires using
 a space to separate multiple scopes, some providers require using a different separator (typically, a comma). If the provider you're adding requires it,
 update the `FormatNonStandardScopeParameter` event handler present in
 [OpenIddictClientWebIntegrationHandlers.cs](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationHandlers.cs) to use the correct separator required by the provider.
 
-```csharp
-/// <summary>
-/// Contains the logic responsible for overriding the standard "scope"
-/// parameter for providers that are known to use a non-standard format.
-/// </summary>
-public class FormatNonStandardScopeParameter : IOpenIddictClientHandler<ProcessChallengeContext>
-{
-    /// <summary>
-    /// Gets the default descriptor definition assigned to this handler.
-    /// </summary>
-    public static OpenIddictClientHandlerDescriptor Descriptor { get; }
-        = OpenIddictClientHandlerDescriptor.CreateBuilder<ProcessChallengeContext>()
-            .AddFilter<RequireInteractiveGrantType>()
-            .UseSingletonHandler<FormatNonStandardScopeParameter>()
-            .SetOrder(AttachChallengeParameters.Descriptor.Order + 500)
-            .SetType(OpenIddictClientHandlerType.BuiltIn)
-            .Build();
+  ```csharp
+  /// <summary>
+  /// Contains the logic responsible for overriding the standard "scope"
+  /// parameter for providers that are known to use a non-standard format.
+  /// </summary>
+  public class FormatNonStandardScopeParameter : IOpenIddictClientHandler<ProcessChallengeContext>
+  {
+      /// <summary>
+      /// Gets the default descriptor definition assigned to this handler.
+      /// </summary>
+      public static OpenIddictClientHandlerDescriptor Descriptor { get; }
+          = OpenIddictClientHandlerDescriptor.CreateBuilder<ProcessChallengeContext>()
+              .AddFilter<RequireInteractiveGrantType>()
+              .UseSingletonHandler<FormatNonStandardScopeParameter>()
+              .SetOrder(AttachChallengeParameters.Descriptor.Order + 500)
+              .SetType(OpenIddictClientHandlerType.BuiltIn)
+              .Build();
 
-    /// <inheritdoc/>
-    public ValueTask HandleAsync(ProcessChallengeContext context)
-    {
-        if (context is null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
+      /// <inheritdoc/>
+      public ValueTask HandleAsync(ProcessChallengeContext context)
+      {
+          if (context is null)
+          {
+              throw new ArgumentNullException(nameof(context));
+          }
 
-        context.Request.Scope = context.Registration.ProviderType switch
-        {
-            // The following providers are known to use comma-separated scopes instead of
-            // the standard format (that requires using a space as the scope separator):
-            ProviderTypes.Deezer or ProviderTypes.Shopify or ProviderTypes.Strava
-                => string.Join(",", context.Scopes),
+          context.Request.Scope = context.Registration.ProviderType switch
+          {
+              // The following providers are known to use comma-separated scopes instead of
+              // the standard format (that requires using a space as the scope separator):
+              ProviderTypes.Deezer or ProviderTypes.Shopify or ProviderTypes.Strava
+                  => string.Join(",", context.Scopes),
 
-            // The following providers are known to use plus-separated scopes instead of
-            // the standard format (that requires using a space as the scope separator):
-            ProviderTypes.Trovo => string.Join("+", context.Scopes),
+              // The following providers are known to use plus-separated scopes instead of
+              // the standard format (that requires using a space as the scope separator):
+              ProviderTypes.Trovo => string.Join("+", context.Scopes),
 
-            _ => context.Request.Scope
-        };
+              _ => context.Request.Scope
+          };
 
-        return default;
-    }
-}
-```
+          return default;
+      }
+  }
+  ```
 
 > [!NOTE]
 > If the provider still doesn't work, it's unfortunately very likely more complex workarounds will be required.

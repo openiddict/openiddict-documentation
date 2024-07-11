@@ -7,9 +7,9 @@ If you don't want to start from one of the recommended samples, you'll need to:
 
   - **Reference the `OpenIddict.AspNetCore` package**:
 
-    ```xml
-    <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.0" />
-    ```
+  ```xml
+  <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.0" />
+  ```
 
   - **Configure the OpenIddict validation services** in `Startup.ConfigureServices`:
     - If the APIs are located in the same project as the OpenIddict server, you can use the `options.UseLocalServer()`

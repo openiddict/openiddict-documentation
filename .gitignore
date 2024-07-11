@@ -1,8 +1,7 @@
-## Ignore docfx artifacts
-
 /**/DROP/
 /**/TEMP/
 /**/packages/
 /**/bin/
 /**/obj/
-_site
+node_modules
+.vitepress/cache

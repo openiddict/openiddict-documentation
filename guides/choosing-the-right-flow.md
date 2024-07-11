@@ -11,7 +11,6 @@ OpenIddict offers built-in support for all the standard flows defined by the
 While not specific to OpenIddict, choosing the best flow(s) for your application is an **important prerequisite**
 when implementing your own authorization server ; so here's a quick overview of the different OAuth 2.0/OpenID Connect flows:
 
-------------------------
 ## Non-interactive flows
 
 ### Resource owner password credentials flow (not recommended for new applications)
@@ -47,14 +46,13 @@ Pragma: no-cache
 > [!CAUTION]
 > This flow is **not recommended by the OAuth 2.0 specification** as it's the only grant type where **the user password is directly exposed to the client application**,
 > which breaks the principle of least privilege and **makes it unsuitable for third-party client applications that can't be fully trusted by the authorization server**.
-
+>
 > While popular and trivial to implement (as it doesn't involve any redirection or consent form and unlike interactive flows, doesn't require implementing
 > cross-site request forgery (XSRF) countermeasures to prevent session fixation attacks), **its use in new applications is not recommended**. Instead,
 > users are encouraged to use the authorization code flow, that doesn't expose passwords to client applications and is not limited to password authentication.
 
 <!-- more -->
 
--------------------------------------------------------------------------------
 ### Client credentials grant (recommended for machine-to-machine communication)
 
 The client credentials grant is almost identical to the resource owner password credentials grant, except it's been specifically designed for **client-to-server scenarios**
@@ -90,7 +88,6 @@ Pragma: no-cache
 > This means that **you CAN'T use the client credentials grant with public applications** like browser, 
 > mobile or desktop applications, as they are not able to keep their credentials secret.
 
---------------------
 ## Interactive flows
 
 ### Authorization code flow (recommended for new applications)
@@ -177,7 +174,6 @@ Pragma: no-cache
 > that will be returned by the authorization endpoint to the original authorization request. This mechanism is known as
 > [Proof Key for Code Exchange](../configuration/proof-key-for-code-exchange.md) and is fully supported by OpenIddict. 
 
---------------------------------------------------------
 ### Implicit flow (not recommended for new applications)
 
 The implicit flow is similar to the authorization code flow, **except there's no token request/response step**: the access token is directly returned

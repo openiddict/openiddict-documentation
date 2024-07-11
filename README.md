@@ -9,27 +9,7 @@ You should receive a response within 24 hours. If for some reason you do not, pl
 
 ## Development
 
-In order to build and run the documentation locally, follow these steps:
-
-1. Clone the Git repository including submodules:
-
-   ```bash
-   git clone --recurse-submodules https://github.com/openiddict/openiddict-documentation.git
-   ```
-
-2. Install [docfx](https://dotnet.github.io/docfx/) as a global tool:
-
-   ```bash
-   dotnet tool update -g docfx
-   ```
-
-3. Build the documentation and serve it locally:
-
-   ```bash
-   docfx docfx.json --serve
-   ```
-
-   The documentation will be available on http://localhost:8080.
+This repository uses [VitePress](https://vitepress.dev/). For more information, read [Getting started](https://vitepress.dev/guide/getting-started).
 
 ## Support
 
@@ -39,7 +19,7 @@ Depending on the tier you selected, you can open a GitHub ticket or send an emai
 Alternatively, you can also post your question on [Gitter](https://app.gitter.im/#/room/#openiddict_openiddict-core:gitter.im).
 
 > [!IMPORTANT]
-> With OpenIddict 5.x being now generally available, the previous version, OpenIddict 4.x, stops being supported and won't receive bug
+> With OpenIddict 5.x now being generally available, the previous version, OpenIddict 4.x, stops being supported and won't receive bug
 > fixes or security updates. As such, it is recommended to migrate to OpenIddict 5.x to continue receiving bug and security fixes.
 > 
 > **There are, however, two exceptions to this policy**:
