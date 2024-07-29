@@ -104,7 +104,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
           // Configure OpenIddict to use the Entity Framework Core stores and models.
           // Note: call ReplaceDefaultEntities() to replace the default entities.
           options.UseEntityFrameworkCore()
-                  .UseDbContext<ApplicationDbContext>();
+                 .UseDbContext<ApplicationDbContext>();
       });
   ```
 
@@ -123,11 +123,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
           // Register the signing and encryption credentials used to protect
           // sensitive data like the state tokens produced by OpenIddict.
           options.AddDevelopmentEncryptionCertificate()
-                  .AddDevelopmentSigningCertificate();
+                 .AddDevelopmentSigningCertificate();
 
           // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
           options.UseAspNetCore()
-                  .EnableRedirectionEndpointPassthrough();
+                 .EnableRedirectionEndpointPassthrough();
 
           // Register the System.Net.Http integration.
           options.UseSystemNetHttp();
@@ -139,12 +139,12 @@ If you don't want to start from one of the recommended samples, you'll need to:
           // parameter containing their URL as part of authorization responses. For more information,
           // see https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#section-4.4.
           options.UseWebProviders()
-                  .AddGitHub(options =>
-                  {
-                      options.SetClientId("c4ade52327b01ddacff3")
+                 .AddGitHub(options =>
+                 {
+                     options.SetClientId("c4ade52327b01ddacff3")
                             .SetClientSecret("da6bed851b75e317bf6b2cb67013679d9467c122")
                             .SetRedirectUri("callback/login/github");
-                  });
+                 });
       });
   ```
 

@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "OpenIddict documentation",
+  title: "OpenIddict",
   description: "Documentation for the OpenIddict project",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -105,6 +105,7 @@ export default defineConfig({
           { text: "Entity Framework Core", link: "integrations/entity-framework-core.md" },
           { text: "MongoDB", link: "integrations/mongodb.md" },
           { text: "Quartz.NET", link: "integrations/quartz.md" },
+          { text: "Web providers", link: "integrations/web-providers.md" },
           {
             text: "External resources",
             items: [

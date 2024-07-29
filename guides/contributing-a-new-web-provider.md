@@ -11,19 +11,23 @@ which means it can support both protocols *while* enforcing all the security che
   - While the aspnet-contrib providers only work on ASP.NET Core, **the OpenIddict providers can not only be used in ASP.NET Core
 and OWIN/ASP.NET 4.x applications, but also in Windows and Linux desktop applications** without requiring any platform-specific code.
 
-  - Unlike the aspnet-contrib providers, **the source code needed to materialize the OpenIddict web providers is created dynamically** using
+  - Unlike the aspnet-contrib providers, **the source code needed to materialize the OpenIddict Web providers is created dynamically** using
 [Roslyn Source Generators](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview) and
 [a XML file that includes all the supported providers](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml)
-with the configuration needed to properly generate them. By eliminating all the plumbing code, the OpenIddict web providers are much easier to maintain and update.
+with the configuration needed to properly generate them. By eliminating all the plumbing code, the OpenIddict Web providers are much easier to maintain and update.
 
   - To guarantee interoperability and make the best security choices, **the OpenIddict client heavily relies on server configuration metadata**, which differs from
 the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn't support the OpenID Connect discovery and OAuth 2.0 authorization server metadata specifications.
 
 Due to these differences, **contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider**.
 
+> [!NOTE]
+> This page focuses on implementing a new Web provider that is not yet supported by OpenIddict. For more
+> information on how to consume an existing provider, read [Web providers](/integrations/web-providers.md).
+
 ## Add a new `<Provider>` node for the new provider
 
-To add a new OpenIddict web provider, **the first step is to add a new `<Provider>` node** to the [OpenIddictClientWebIntegrationProviders.xml](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml) file. For instance:
+To add a new OpenIddict Web provider, **the first step is to add a new `<Provider>` node** to the [OpenIddictClientWebIntegrationProviders.xml](https://github.com/openiddict/openiddict-core/blob/dev/src/OpenIddict.Client.WebIntegration/OpenIddictClientWebIntegrationProviders.xml) file. For instance:
 
 ```xml
 <Provider Name="Zendesk" Id="89fdfe22-c796-4227-a44a-d9cd3c467bbb"
