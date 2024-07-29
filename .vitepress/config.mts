@@ -130,6 +130,11 @@ export default defineConfig({
       text: "Edit this page on GitHub"
     },
 
+    docFooter: {
+      prev: false,
+      next: false,
+    },
+
     search: {
       provider: "local"
     },

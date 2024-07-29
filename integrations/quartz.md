@@ -20,7 +20,8 @@ To configure OpenIddict to use Quartz.NET to perform automated cleanup tasks, yo
   })
   ```
 
-    For more information, read [Microsoft DI Integration](https://www.quartz-scheduler.net/documentation/quartz-3.x/packages/microsoft-di-integration.html).
+  > [!TIP]
+  > For more information, read [Microsoft DI Integration](https://www.quartz-scheduler.net/documentation/quartz-3.x/packages/microsoft-di-integration.html).
 
   - **Register the Quartz.NET hosted service and configure it to block shutdown until all jobs are complete**:
 
@@ -28,7 +29,8 @@ To configure OpenIddict to use Quartz.NET to perform automated cleanup tasks, yo
   services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
   ```
 
-    For more information, read [Hosted Services Integration](https://www.quartz-scheduler.net/documentation/quartz-3.x/packages/hosted-services-integration.html).
+  > [!TIP]
+  > For more information, read [Hosted Services Integration](https://www.quartz-scheduler.net/documentation/quartz-3.x/packages/hosted-services-integration.html).
 
   - **Configure OpenIddict to use the Quartz.NET integration**:
 
