@@ -1,15 +1,15 @@
 # Web providers
 
+> [!IMPORTANT]
+> This page focuses on configuring the OpenIddict client to use an existing provider. For more information on how to contribute a new
+> provider that is not yet supported by OpenIddict, read [Contributing a new Web provider](/guides/contributing-a-new-web-provider.md).
+
 To simplify integrating with well-known OAuth 2.0 or OpenID Connect providers, the OpenIddict client ships with a companion
 package named [`OpenIddict.Client.WebIntegration`](https://www.nuget.org/packages/OpenIddict.Client.WebIntegration)
 that supports 90+ popular services like Amazon, Discord, GitHub, Microsoft or Sign in with Apple.
 
 > [!TIP]
 > The OpenIddict client and its web providers can be used independently of the OpenIddict server feature.
-
-> [!NOTE]
-> This page focuses on configuring the OpenIddict client to use an existing provider. For more information on how to contribute a new
-> provider that is not yet supported by OpenIddict, read [Contributing a new Web provider](/guides/contributing-a-new-web-provider.md).
 
 ## Supported platforms
 

@@ -227,6 +227,9 @@ If you don't want to start from one of the recommended samples, you'll need to:
 
 ![Identity UI showing GitHub as a supported external provider](integrating-with-a-remote-server-instance/identity-ui.png)
 
+> [!TIP]
+> For more information on the well-known services supported out-of-the-box by the OpenIddict client, read [Web providers](/integrations/web-providers.md).
+
 ## Implement an interactive OAuth 2.0/OpenID Connect client in a desktop application:
 
 **To implement an interactive OAuth 2.0/OpenID Connect client in a desktop application, the simplest option is to clone

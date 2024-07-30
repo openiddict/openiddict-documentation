@@ -1,5 +1,9 @@
 # Contributing a new Web provider
 
+> [!IMPORTANT]
+> This page focuses on implementing a new Web provider that is not yet supported by OpenIddict. For more
+> information on how to consume an existing provider, read [Web providers](/integrations/web-providers.md).
+
 As part of the OpenIddict 4.0 effort, [a new client stack has been added to OpenIddict](https://kevinchalet.com/2022/02/25/introducing-the-openiddict-client/).
 To simplify integrating with social and enterprise providers that offer OAuth 2.0 and OpenID Connect services, a companion package
 (named `OpenIddict.Client.WebIntegration`) has been added to the client stack. While it shares some similarities with the
@@ -20,10 +24,6 @@ with the configuration needed to properly generate them. By eliminating all the 
 the approach used by the ASP.NET Core OAuth 2.0 base handler, that doesn't support the OpenID Connect discovery and OAuth 2.0 authorization server metadata specifications.
 
 Due to these differences, **contributing a new provider to the OpenIddict stack is quite different from adding an aspnet-contrib provider**.
-
-> [!NOTE]
-> This page focuses on implementing a new Web provider that is not yet supported by OpenIddict. For more
-> information on how to consume an existing provider, read [Web providers](/integrations/web-providers.md).
 
 ## Add a new `<Provider>` node for the new provider
 
