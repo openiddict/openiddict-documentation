@@ -101,6 +101,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Trakt                                | https://trakt.docs.apiary.io/#reference/authentication-oauth                                                        |
 | Trovo                                | https://developer.trovo.live/docs/APIs.html#_3-authentication                                                       |
 | Tumblr                               | https://www.tumblr.com/docs/en/api/v2#oauth2-authorization                                                          |
+| Twitch                               | https://dev.twitch.tv/docs/authentication                                                                           |
 | Twitter                              | https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code                                   |
 | Typeform                             | https://www.typeform.com/developers/get-started/applications/                                                       |
 | Verimi                               | https://docs.verimi.de/#/oidc/oidc_overview                                                                         |
