@@ -36,37 +36,6 @@ which is based on OpenIddict, comes with sensible defaults and offers a built-in
 **Looking to integrate with a SAML2P Identity Provider (IDP) or Service Provider (SP)?** Rock Solid Knowledge, a sponsor of OpenIddict, is developing a range of identity components to enhance your OpenIddict solution.
 The first of these is their popular [SAML2P component](https://www.openiddictcomponents.com/?utm_source=openiddictgithubmain&utm_campaign=openiddict).
 
-# Compatibility matrix
-
-| Web framework version | .NET runtime version | OpenIddict 4.x                          | OpenIddict 5.x                          |
-|-----------------------|----------------------|-----------------------------------------|-----------------------------------------|
-| ASP.NET Core 2.1      | .NET Framework 4.6.1 | :heavy_check_mark: :information_source: | :heavy_check_mark: :information_source: |
-| ASP.NET Core 2.1      | .NET Framework 4.7.2 | :heavy_check_mark:                      | :heavy_check_mark:                      |
-| ASP.NET Core 2.1      | .NET Framework 4.8   | :heavy_check_mark:                      | :heavy_check_mark:                      |
-| ASP.NET Core 2.1      | .NET Core 2.1        | :exclamation:                           | :exclamation:                           |
-|                       |                      |                                         |                                         |
-| ASP.NET Core 3.1      | .NET Core 3.1        | :heavy_check_mark:                      | :exclamation:                           |
-|                       |                      |                                         |                                         |
-| ASP.NET Core 5.0      | .NET 5.0             | :exclamation:                           | :exclamation:                           |
-| ASP.NET Core 6.0      | .NET 6.0             | :heavy_check_mark:                      | :heavy_check_mark:                      |
-| ASP.NET Core 7.0      | .NET 7.0             | :heavy_check_mark:                      | :heavy_check_mark:                      |
-| ASP.NET Core 8.0      | .NET 8.0             | :heavy_check_mark:                      | :heavy_check_mark:                      |
-|                       |                      |                                         |                                         |
-| Microsoft.Owin 4.2    | .NET Framework 4.6.1 | :heavy_check_mark: :information_source: | :heavy_check_mark: :information_source: |
-| Microsoft.Owin 4.2    | .NET Framework 4.7.2 | :heavy_check_mark:                      | :heavy_check_mark:                      |
-| Microsoft.Owin 4.2    | .NET Framework 4.8   | :heavy_check_mark:                      | :heavy_check_mark:                      |
-
-> [!WARNING]
-> **ASP.NET Core 2.1 on .NET Core 2.1, ASP.NET Core 3.1 and 5.0 are no longer supported by Microsoft. While OpenIddict can still be used
-> on these platforms thanks to its .NET Standard 2.0 compatibility, users are strongly encouraged to migrate to ASP.NET Core/.NET 6.0**.
-
-> [!NOTE]
-> **The following features are not available when targeting .NET Framework 4.6.1**:
->  - X.509 development encryption/signing certificates: calling `AddDevelopmentEncryptionCertificate()` or `AddDevelopmentSigningCertificate()`
-> will result in a `PlatformNotSupportedException` being thrown at runtime if no valid development certificate can be found and a new one must be generated.
->  - X.509 ECDSA signing certificates/keys: calling `AddSigningCertificate()` or `AddSigningKey()`
-> with an ECDSA certificate/key will always result in a `PlatformNotSupportedException` being thrown at runtime.
-
 # Certification
 
 Unlike many other identity providers, **OpenIddict is not a turnkey solution but a framework that requires writing custom code**

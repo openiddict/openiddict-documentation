@@ -1,5 +1,9 @@
 # Creating your own server instance
 
+> [!NOTE]
+> This guide assumes you're using ASP.NET Core to host your authorization server. For samples showing how to use the OpenIddict server feature in
+> ASP.NET 4.6.1+ applications, see [OWIN/ASP.NET 4.8 samples](https://github.com/openiddict/openiddict-samples?tab=readme-ov-file#owinaspnet-48-samples).
+
 **To implement a custom OpenID Connect server using OpenIddict, the simplest option is to clone one of the official samples**
 from the [openiddict-samples repository](https://github.com/openiddict/openiddict-samples).
 

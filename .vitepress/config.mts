@@ -101,6 +101,7 @@ export default defineConfig({
       },
       "/integrations/": {
         items: [
+          { text: "ASP.NET Core", link: "integrations/aspnet-core.md" },
           { text: "Entity Framework", link: "integrations/entity-framework.md" },
           { text: "Entity Framework Core", link: "integrations/entity-framework-core.md" },
           { text: "MongoDB", link: "integrations/mongodb.md" },

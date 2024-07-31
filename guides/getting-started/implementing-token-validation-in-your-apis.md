@@ -1,5 +1,9 @@
 # Implementing token validation in your APIs
 
+> [!NOTE]
+> This guide assumes you're using ASP.NET Core to host your APIs. For samples showing how to use the OpenIddict validation feature in
+> ASP.NET 4.6.1+ applications, see [OWIN/ASP.NET 4.8 samples](https://github.com/openiddict/openiddict-samples?tab=readme-ov-file#owinaspnet-48-samples).
+
 **To implement token validation support for your APIs, the simplest option is to clone one of the official samples**
 from the [openiddict-samples repository](https://github.com/openiddict/openiddict-samples).
 

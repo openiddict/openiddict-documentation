@@ -30,7 +30,7 @@ To configure OpenIddict to use Entity Framework 6.x as the database for applicat
       .AddCore(options =>
       {
           options.UseEntityFramework()
-                  .UseDbContext<ApplicationDbContext>();
+                 .UseDbContext<ApplicationDbContext>();
       });
   ```
 
