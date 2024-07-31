@@ -69,7 +69,7 @@ are supported out-of-the-box, custom stores can also be implemented to support a
 
 Unlike other solutions, **OpenIddict exclusively focuses on the OAuth 2.0/OpenID Connect protocol aspects of the authorization process**
 and leaves user authentication up to the implementer: OpenIddict can be natively used with any form of user authentication like password, token,
-federated or Integration Windows Authentication. While convenient, using a membership stack like ASP.NET Core Identity is not required.
+federated or Integrated Windows Authentication (NTLM/Kerberos). While convenient, using a membership stack like ASP.NET Core Identity is not required.
 
 > [!TIP]
 > In ASP.NET and ASP.NET Core, integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a controller action,

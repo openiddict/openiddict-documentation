@@ -96,7 +96,7 @@ services.AddOpenIddict()
 
 ## Advanced configuration
 
-### Transport security requirement
+### Transport security requirement (client and server)
 
 By default, the OpenIddict server ASP.NET Core integration will refuse to serve non-HTTPS
 requests for security reasons and will return an error page to the caller.
@@ -128,7 +128,7 @@ services.AddOpenIddict()
 > For more information,
 > read [Configure ASP.NET Core to work with proxy servers and load balancers](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer).
 
-### Pass-through mode
+### Pass-through mode (client and server)
 
 The OpenIddict client and server stacks offer built-in pass-through support for some of
 their endpoints (typically, endpoints for which users will want to provide custom logic).
@@ -188,7 +188,7 @@ app.MapMethods("authorize", [HttpMethods.Get, HttpMethods.Post], async (HttpCont
 });
 ```
 
-### Status code pages middleware integration
+### Status code pages middleware integration (client and server)
 
 Both the OpenIddict client and server ASP.NET Core hosts offer an option to render error pages using
 [ASP.NET Core's status code pages middleware](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling#usestatuscodepages).
@@ -226,7 +226,7 @@ services.AddOpenIddict()
 >  ```
 
 
-### Authorization and logout request caching
+### Authorization and logout request caching (server-only)
 
 To simplify flowing large authorization or logout requests, the OpenIddict server ASP.NET Core integration includes a built-in feature
 that allows generating a unique `request_id` and caching the received requests in an `IDistributedCache`: when this feature is enabled,
@@ -251,7 +251,56 @@ services.AddOpenIddict()
 >
 > For more information, read [Distributed caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed).
 
-### JSON responses indentation
+### Authentication scheme forwarding (client-only)
+
+To simplify triggering authentication operations for a specific client registration, the OpenIddict client offers a built-in authentication scheme
+forwarding feature that allows using the provider name assigned to a client registration as an authentication scheme in ASP.NET Core:
+
+```csharp
+app.MapGet("challenge", () => Results.Challenge(properties: null, authenticationSchemes: [Providers.GitHub]));
+```
+
+This feature is enabled by default but can be disabled if necessary using `DisableAutomaticAuthenticationSchemeForwarding()`:
+
+```csharp
+services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.UseAspNetCore()
+               .DisableAutomaticAuthenticationSchemeForwarding();
+    });
+```
+
+If you need to enable forwarding for specific registrations only, you can use the advanced
+`AddForwardedAuthenticationScheme()` API to selectively add the schemes you want:
+
+```csharp
+services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.UseAspNetCore()
+               .DisableAutomaticAuthenticationSchemeForwarding()
+               .AddForwardedAuthenticationScheme(provider: "Contoso", caption: "Contoso Intranet login");
+    });
+```
+
+When automatic forwarding is disabled, authentication operations cannot directly use the provider name as an authentication scheme
+if no explicit forwarding was configured and must instead use `OpenIddictClientAspNetCoreDefaults.AuthenticationScheme` with an
+`AuthenticationProperties` instance containing the provider name, the issuer URI or the registration identifier:
+
+```csharp
+app.MapGet("challenge", () =>
+{
+    var properties = new AuthenticationProperties(new Dictionary<string, string?>
+    {
+        [OpenIddictClientAspNetCoreConstants.Properties.ProviderName] = Providers.GitHub
+    });
+
+    return Results.Challenge(properties, authenticationSchemes: [OpenIddictClientAspNetCoreDefaults.AuthenticationScheme]);
+});
+```
+
+### JSON responses indentation (server-only)
 
 By default, the OpenIddict server ASP.NET Core host will return indented JSON responses to make them easier to read.
 
