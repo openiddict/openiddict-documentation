@@ -1,7 +1,8 @@
 # Introduction
 
-OpenIddict is **an open source and versatile framework for building standard-compliant OAuth 2.0/OpenID Connect servers**
-in any ASP.NET Core 2.1 (and higher) and legacy ASP.NET 4.6.1 (and higher) applications.
+OpenIddict is **a free and open source framework for building flexible and standard-compliant OAuth 2.0/OpenID Connect clients and servers in .NET**.
+
+## History
 
 OpenIddict was born in late 2015 and was initially based on [AspNet.Security.OpenIdConnect.Server](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server)
 (codenamed ASOS), a low-level OpenID Connect server middleware inspired by the OAuth 2.0 authorization server middleware developed by Microsoft for the OWIN project
@@ -13,7 +14,56 @@ and a low-level experience for advanced users thanks to a "degraded mode" that a
 As part of this process, native support for `Microsoft.Owin` was added to OpenIddict 3.0 to allow using it in legacy ASP.NET 4.6.1 (and higher) applications,
 making it an excellent candidate for replacing `OAuthAuthorizationServerMiddleware` and `OAuthBearerAuthenticationMiddleware` without having to migrate to ASP.NET Core.
 
+In 2022, a whole new OAuth 2.0 + OpenID Connect client stack was added to OpenIddict and shipped with an `OpenIddict.Client.WebIntegration` companion
+package aiming at replacing the existing [aspnet-contrib social providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers)
+(the aspnet-contrib providers are still supported, but the OpenIddict Web providers are now strongly recommended for new applications).
+
+To make the OpenIddict client usable in more scenarios, complete support for desktop applications
+was added in OpenIddict 4.1 and mobile platforms are supported since OpenIddict 5.8.
+
 ## Core concepts
+
+### Modular design
+
+OpenIddict adopts a fully modular design and offers 3 powerful stacks that can be used together or independently:
+
+  - A client stack, that can be used to integrate with remote OAuth 2.0/OpenID Connect servers.
+  - A server stack, that can be used to create your own OAuth 2.0/OpenID Connect server.
+  - A validation stack, that can be used to implement token authentication in your APIs.
+
+The 3 stacks are configured separately and can use the `OpenIddict.Core` package that provides the persistence logic:
+
+```csharp
+services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        // ...
+    })
+    .AddClient(options =>
+    {
+        // ...
+    })
+    .AddServer(options =>
+    {
+        // ...
+    })
+    .AddValidation(options =>
+    {
+        // ...
+    });
+```
+
+### Coupling
+
+To offer a unified experience across all the platforms it supports, the OpenIddict client, server and validation stacks were designed to
+avoid a tight coupling with a specific host or platform. As such, the `OpenIddict.Client`, `OpenIddict.Server` and `OpenIddict.Validation` packages
+deliberately don't depend on ASP.NET Core and only contain generic logic that can be used in any implementation (including non-official hosts):
+companion packages like `OpenIddict.Client.AspNetCore` or `OpenIddict.Client.Owin` are provided to support integrating with a specific host.
+
+For the same reason, the persistence logic is not tied to a specific ORM or database: while
+**[Entity Framework Core](https://www.nuget.org/packages/OpenIddict.EntityFrameworkCore)**,
+**[Entity Framework 6.x](https://www.nuget.org/packages/OpenIddict.EntityFramework)** and **[MongoDB](https://www.nuget.org/packages/OpenIddict.MongoDb)**
+are supported out-of-the-box, custom stores can also be implemented to support any other provider.
 
 ### User authentication
 
@@ -21,15 +71,19 @@ Unlike other solutions, **OpenIddict exclusively focuses on the OAuth 2.0/OpenID
 and leaves user authentication up to the implementer: OpenIddict can be natively used with any form of user authentication like password, token,
 federated or Integration Windows Authentication. While convenient, using a membership stack like ASP.NET Core Identity is not required.
 
-Integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a controller action
-or in a minimal API handler or, for more complex scenarios, by directly using its advanced events model.
+> [!TIP]
+> In ASP.NET and ASP.NET Core, integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a controller action,
+> in a Razor Page, in a Web Form or in a minimal API handler or, for more complex scenarios, by directly using its advanced events model.
 
-### Pass-through mode
+### Pass-through support
 
-As with `OAuthAuthorizationServerMiddleware`, OpenIddict allows handling authorization, logout and token requests in custom controller actions or any other
-middleware able to hook into the ASP.NET Core or OWIN request processing pipeline. In this case, OpenIddict will always validate incoming requests first
-(e.g by ensuring the mandatory parameters are present and valid) before allowing the rest of the pipeline to be invoked: should any validation error occur,
+As with `OAuthAuthorizationServerMiddleware`, the OpenIddict server allows handling authorization, logout and token requests in custom controller actions or
+any other middleware able to hook into the ASP.NET Core or OWIN request processing pipeline. In this case, OpenIddict will always validate incoming requests
+first (e.g by ensuring the mandatory parameters are present and valid) before allowing the rest of the pipeline to be invoked: should any validation error occur,
 OpenIddict will automatically reject the request before it reaches user-defined controller actions or custom middleware.
+
+The same exact concept also exists in the OpenIddict client stack, where the pass-through mode can be used to handle callbacks/redirection requests in
+custom code and apply any logic needed by the application (e.g filtering claims, storing the identity in an authentication cookie, etc.). 
 
 ```csharp
 builder.Services.AddOpenIddict()
@@ -81,8 +135,9 @@ app.MapGet("/authorize", async (HttpContext context) =>
 
 ### Events model
 
-OpenIddict implements a powerful event-based model for its server and validation stacks: each part of the request processing logic is implemented as an event handler
-that can be removed, moved to a different position in the pipeline or replaced by a custom handler to override the default logic used by OpenIddict:
+OpenIddict implements a powerful event-based model for its client, server and validation stacks: each part of the request processing logic
+is implemented as an event handler that can be removed, moved to a different position in the pipeline or replaced by a custom handler to
+override the default logic used by OpenIddict:
 
 ```csharp
 /// <summary>
@@ -144,3 +199,13 @@ services.AddOpenIddict()
             }));
     });
 ```
+
+### Degraded mode
+
+Designed to offer a low-level experience to advanced users, the degraded mode allows using OpenIddict in a stateless way by disabling all the features
+that normally depend on the `OpenIddict.Core` package, which includes things like `client_id`/`client_secret` or `redirect_uri` validation,
+reference tokens and token revocation support. Since these critical parts are not handled by OpenIddict when enabling the degraded mode,
+you're expected to register custom event handlers that will implement the necessary features using your own logic (and your own database!).
+
+For more information on the degraded mode, read
+[Creating an OpenID Connect server proxy with OpenIddict 3.0's degraded mode](https://kevinchalet.com/2020/02/18/creating-an-openid-connect-server-proxy-with-openiddict-3-0-s-degraded-mode/).
