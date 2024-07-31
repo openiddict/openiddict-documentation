@@ -1,7 +1,8 @@
 # Authorization storage
 
-To keep track of logical chains of tokens and user consents, OpenIddict supports storing authorizations
-(also known as "grants" in some OpenID Connect implementations) in the database.
+To keep track of logical chains of tokens and user consents, the OpenIddict server supports storing authorizations
+(also known as "grants" in some OpenID Connect implementations) in the database and using them in your code to determine
+whether a consent view should be returned or not, depending on your own logic.
 
 ## Types of authorizations
 
@@ -133,15 +134,16 @@ In the same vein, ad-hoc authorizations are also created when a refresh token is
 > removed from the database after a short period of time (14 days by default). Unlike ad-hoc authorizations, permanent authorizations
 > are never removed from the database.
 
-## Enabling authorization entry validation at the API level
+## Enabling authorization entry validation at the API level (validation-only)
 
 **For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of an authorization entry when receiving an API request**: access tokens are considered
 valid even if the attached authorization was revoked. For scenarios that require immediate authorization revocation, the OpenIddict validation handler can be configured
 to enforce authorization entry validation for each API request:
 
 > [!NOTE]
-> Enabling authorization entry validation requires that the OpenIddict validation handler have a direct access to the server database where authorizations are stored, which makes it
-> better suited for APIs located in the same application as the authorization server. For external applications, consider using introspection instead of local validation.
+> Enabling authorization entry validation requires that the OpenIddict validation handler have a direct access to the server database where
+> authorizations are stored, which makes it better suited for APIs located in the same application as the authorization server.
+> For external applications, consider using introspection instead of local validation.
 >
 > In both cases, additional latency – caused by the additional DB request and the HTTP call for introspection – is expected.
 
@@ -153,7 +155,7 @@ services.AddOpenIddict()
     });
 ```
 
-## Disabling authorization storage
+## Disabling authorization storage (server-only)
 
 While STRONGLY discouraged, authorization storage can be disabled in the server options:
 

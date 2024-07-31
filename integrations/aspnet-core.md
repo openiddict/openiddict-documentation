@@ -120,7 +120,7 @@ services.AddOpenIddict()
     });
 ```
 
-> [!DANGER]
+> [!CAUTION]
 > **The transport security requirement SHOULD NEVER be disabled in production**, even when using a reverse proxy doing TLS termination: if requests
 > are rejected by OpenIddict when doing TLS termination, this very likely means that the ASP.NET Core application was not properly configured to
 > extract and restore the original request details (and more specifically, `HttpRequest.Scheme`).

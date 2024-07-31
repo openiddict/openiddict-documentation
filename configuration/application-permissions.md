@@ -1,9 +1,11 @@
 # Application permissions
 
-OpenIddict includes a built-in feature codenamed "application permissions" that
-**allows controlling and limiting the OAuth 2.0/OpenID Connect features each registered client application is able to use**.
+To control and limit the OAuth 2.0/OpenID Connect features client applications are able to use, the OpenIddict server
+stack allows assigning them a list of application permissions: if the permission corresponding to a specific feature
+has not been granted, the OpenIddict server automatically rejects the request with an error message indicating
+the client application is not allowed to perform the requested action.
 
-4 categories of permissions are currently supported:
+4 categories of permissions are currently supported by the server stack:
   - Endpoint permissions.
   - Grant type permissions.
   - Scope permissions.

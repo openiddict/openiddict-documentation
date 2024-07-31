@@ -1,7 +1,7 @@
 # Token formats
 
-> [!NOTE]
-> In OpenIddict 3.0, the ability to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
+> [!TIP]
+> In OpenIddict 3.0+, the ability to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
 > regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled in the server options.
 >
 >
@@ -9,14 +9,14 @@
 
 ## JSON Web Token
 
-OpenIddict 3.0 implements the [JSON Web Token](https://tools.ietf.org/html/rfc7519), [JSON Web Signature](https://tools.ietf.org/html/rfc7515)
+OpenIddict implements the [JSON Web Token](https://tools.ietf.org/html/rfc7519), [JSON Web Signature](https://tools.ietf.org/html/rfc7515)
 and [JSON Web Encryption](https://tools.ietf.org/html/rfc7516) standards and relies on the
 [Azure Active Directory IdentityModel Extensions for .NET library](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/)
 developed and maintained by Microsoft to generate signed and encrypted tokens using the credentials registered in the server options.
 
 ### JWT token types
 
-To protect against token substitution and confused deputy attacks, **OpenIddict 3.0 uses the standard `typ` JWT header to convey the actual token type**.
+To protect against token substitution and confused deputy attacks, **OpenIddict 3.0+ uses the standard `typ` JWT header to convey the actual token type**.
 This mechanism replaces the private `token_usage` claim used for the same purpose in previous versions of OpenIddict.
 
 As required by the [JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens specification](https://datatracker.ietf.org/doc/html/rfc9068),
@@ -25,7 +25,7 @@ Other types of tokens – only accepted by OpenIddict's own endpoints – use pr
 
 ### Disabling JWT access token encryption
 
-By default, **OpenIddict enforces encryption for all the token types it supports**. While this enforcement cannot be disabled for authorization codes,
+By default, **the OpenIddict server enforces encryption for all the token types it supports**. While this enforcement cannot be disabled for authorization codes,
 refresh tokens and device codes for security reasons, it can be relaxed for access tokens when integration with third-party APIs/resource servers is desired.
 Access token encryption can also be disabled if the resource servers receiving the access tokens don't fully support JSON Web Encryption.
 
@@ -39,29 +39,34 @@ services.AddOpenIddict()
 
 ## ASP.NET Core Data Protection
 
-OpenIddict 3.0 can also be configured to use [ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction) to create
-Data Protection tokens instead of JWT tokens. ASP.NET Core Data Protection uses its own key ring to encrypt and protect tokens against tampering and is supported for all
-types of tokens, except identity tokens, that are always JWT tokens.
+Both the OpenIddict client and server features can be configured to use
+[ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction) to create opaque binary
+tokens instead of JWT tokens. ASP.NET Core Data Protection uses its own key ring to encrypt and protect tokens against tampering and is
+supported for all types of tokens, except identity tokens, that are always JWT tokens.
 
-Unlike JWTs, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the ASP.NET team rather than on a standard like JWT.
-While this prevents using such tokens in scenarios where interoperability is needed, opting for ASP.NET Core Data Protection rather than JWT has actually a few advantages:
+Unlike JWTs, ASP.NET Core Data Protection tokens only support symmetric encryption and rely on a binary format developed by the
+ASP.NET team rather than on a standard like JWT. While this prevents using such tokens in scenarios where interoperability is needed,
+opting for ASP.NET Core Data Protection rather than JWT has actually a few advantages:
+
   - ASP.NET Core Data Protection tokens don't use a JSON representation and therefore are generally a bit shorter.
-  - ASP.NET Core Data Protection has been designed to achieve high throughput as it's natively used by ASP.NET Core for authentication cookies,
-  antiforgery tokens and session cookies.
+  - ASP.NET Core Data Protection has been designed to achieve high throughput as it's natively used
+  by ASP.NET Core for authentication cookies, antiforgery tokens and session cookies.
 
 > [!WARNING]
 > Despite its name, ASP.NET Core Data Protection is not tied to ASP.NET Core and can be used in any .NET Standard 2.0-compatible
 > application, including legacy ASP.NET 4.6.1 (and higher) applications using `Microsoft.Owin`.
 >
-> To enable ASP.NET Core Data Protection support in the OpenIddict OWIN server and validation hosts, you need to
-> manually reference the `OpenIddict.Server.DataProtection` and `OpenIddict.Validation.DataProtection` packages.
+> To enable ASP.NET Core Data Protection support in the OpenIddict OWIN hosts, you need to manually reference the
+> `OpenIddict.Client.DataProtection`, `OpenIddict.Server.DataProtection` and `OpenIddict.Validation.DataProtection` packages.
 
 ### Switching to Data Protection tokens
 
-ASP.NET Core Data Protection support is provided by the `OpenIddict.Server.DataProtection` and `OpenIddict.Validation.DataProtection` packages.
-These packages are referenced by the `OpenIddict.AspNetCore` metapackage and therefore don't have to be referenced explicitly.
+ASP.NET Core Data Protection support is provided by the `OpenIddict.Client.DataProtection`, `OpenIddict.Server.DataProtection`
+and `OpenIddict.Validation.DataProtection` packages. These packages are referenced by the `OpenIddict.AspNetCore` metapackage
+and therefore don't have to be referenced explicitly.
 
-To enable ASP.NET Core Data Protection support, call `options.UseDataProtection()` in **both the server and validation options**:
+To force the OpenIddict server to use ASP.NET Core Data Protection support, call `options.UseDataProtection()` in **both the server and validation options**
+(as APIs will use the same token format to be able to properly extract access tokens):
 
 ```csharp
 services.AddOpenIddict()
@@ -71,6 +76,17 @@ services.AddOpenIddict()
     })
 
     .AddValidation(options =>
+    {
+        options.UseDataProtection();
+    });
+```
+
+You can also configure the OpenIddict client to use ASP.NET Core Data Protection to generate
+state tokens, independently of the token format used for the server or validation features:
+
+```csharp
+services.AddOpenIddict()
+    .AddClient(options =>
     {
         options.UseDataProtection();
     });
@@ -88,6 +104,11 @@ format for specific token types only** (e.g for authorization codes and refresh 
 
 ```csharp
 services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.UseDataProtection()
+               .PreferDefaultStateTokenFormat();
+    })
     .AddServer(options =>
     {
         options.UseDataProtection()

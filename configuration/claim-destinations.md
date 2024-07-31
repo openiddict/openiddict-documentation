@@ -1,8 +1,8 @@
 # Claim destinations
 
 **When generating authorization codes, refresh tokens and device/user codes** from the `ClaimsPrincipal` specified during a sign-in operation,
-**OpenIddict automatically copies all the claims to the resulting codes/tokens**. This is a safe operation because these tokens are always encrypted
-and can't be read by anyone but OpenIddict itself (the user or the client application that requested them cannot read their content).
+**the OpenIddict server stack automatically copies all the claims to the resulting codes/tokens**. This is a safe operation because these tokens
+are always encrypted and can't be read by anyone but OpenIddict itself (the user or the client application that requested them cannot read their content).
 
 **For access and identity tokens, things work differently**, as these tokens are meant to be read by different parties:
   - Client applications have a total access to the claims contained in the identity tokens they receive.
@@ -12,7 +12,7 @@ and can't be read by anyone but OpenIddict itself (the user or the client applic
   - If access token encryption was explicitly disabled, it's possible for the client applications or the users themselves
 to access the content of access tokens (e.g by copying the token payload and using a tool like https://jwt.io/).
 
-For these reasons, **OpenIddict doesn't automatically copy the claims attached to a `ClaimsPrincipal` to access or identity tokens**
+For these reasons, **the OpenIddict server doesn't automatically copy the claims attached to a `ClaimsPrincipal` to access or identity tokens**
 (except the `sub` claim, which is the only mandatory claim in OpenIddict). To allow OpenIddict to persist specific claims
 to an access or identity token, a flag known as "claim destination" must be added to each `Claim` instance you want to expose.
 

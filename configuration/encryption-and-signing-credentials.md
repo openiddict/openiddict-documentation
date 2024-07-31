@@ -1,15 +1,18 @@
 # Encryption and signing credentials
 
-To protect the tokens it issues, OpenIddict uses 2 types of credentials:
+To protect the tokens they generate, the OpenIddict client and server stacks use 2 types of credentials:
   - **Signing credentials are used to protect against tampering**. They can be either asymmetric (e.g a RSA or ECDSA key) or symmetric.
   - **Encryption credentials are used to ensure the content of tokens cannot be read by malicious parties**. They can be either asymmetric (e.g a RSA key) or symmetric.
 
-> [!NOTE]
+> [!TIP]
 > Tokens generated using the opt-in ASP.NET Core Data Protection integration rely on their own key ring, distinct from the credentials discussed in this documentation.
 >
 > For more information about Data Protection, visit [ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction).
 
-## Registering credentials in the authorization server options
+> [!IMPORTANT]
+> While you can technically reuse the same set of credentials for both the OpenIddict client and the OpenIddict server, it is recommended to use separate keys/certificates.
+
+## Registering credentials in the client or server options
 
 OpenIddict allows registering one or multiple keys (raw keys or embedded in X.509 certificates).
 
@@ -22,10 +25,15 @@ OpenIddict allows registering one or multiple keys (raw keys or embedded in X.50
 
 ### Registering an ephemeral key
 
-For development purposes, an ephemeral key - that is not persisted or shared across instances - can be used to sign or encrypt tokens:
+For development purposes, an ephemeral key – that is not persisted or shared across instances – can be used to sign or encrypt tokens:
 
 ```csharp
 services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.AddEphemeralEncryptionKey()
+               .AddEphemeralSigningKey();
+    })
     .AddServer(options =>
     {
         options.AddEphemeralEncryptionKey()
@@ -41,11 +49,16 @@ services.AddOpenIddict()
 
 ### Registering a development certificate
 
-For development purposes, a certificate can be generated and stored by OpenIddict in the certificates store of the user account running the OpenIddict server feature.
+For development purposes, a certificate can be generated and stored by OpenIddict in the certificates store of the user account running the application host.
 Unlike ephemeral keys, development certificates are persisted - but not shared across instances - and will be reused when the application host is restarted.
 
 ```csharp
 services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.AddDevelopmentEncryptionCertificate()
+               .AddDevelopmentSigningCertificate();
+    })
     .AddServer(options =>
     {
         options.AddDevelopmentEncryptionCertificate()
@@ -69,6 +82,11 @@ can be provided to the `options.AddSigningKey()`/`options.AddEncryptionKey()` me
 
 ```csharp
 services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.AddEncryptionKey(new SymmetricSecurityKey(
+            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+    })
     .AddServer(options =>
     {
         options.AddEncryptionKey(new SymmetricSecurityKey(
@@ -77,7 +95,7 @@ services.AddOpenIddict()
 ```
 
 > [!NOTE]
-> While signing keys can be either symmetric or asymmetric, OpenIddict requires registering at least one asymmetric key to sign identity tokens.
+> While signing keys can be either symmetric or asymmetric, the OpenIddict server requires registering at least one asymmetric key to sign identity tokens.
 > If both an asymmetric and a symmetric signing key are registered, the symmetric key will always be preferred when protecting access tokens,
 > authorization codes or refresh tokens, while the asymmetric key will be used to sign identity tokens, that are meant to be publicly validated.
 
@@ -93,25 +111,25 @@ Certificates can be generated and self-signed locally using the .NET Core `Certi
 ```csharp
 using var algorithm = RSA.Create(keySizeInBits: 2048);
 
-var subject = new X500DistinguishedName("CN=Fabrikam Encryption Certificate");
+var subject = new X500DistinguishedName("CN=Fabrikam Server Encryption Certificate");
 var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.KeyEncipherment, critical: true));
 
 var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
-File.WriteAllBytes("encryption-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
+File.WriteAllBytes("server-encryption-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
 ```
 
 ```csharp
 using var algorithm = RSA.Create(keySizeInBits: 2048);
 
-var subject = new X500DistinguishedName("CN=Fabrikam Signing Certificate");
+var subject = new X500DistinguishedName("CN=Fabrikam Server Signing Certificate");
 var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.DigitalSignature, critical: true));
 
 var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddYears(2));
 
-File.WriteAllBytes("signing-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
+File.WriteAllBytes("server-signing-certificate.pfx", certificate.Export(X509ContentType.Pfx, string.Empty));
 ```
 
 The best place to store your certificates will depend on your host:
