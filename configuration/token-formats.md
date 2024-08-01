@@ -59,7 +59,7 @@ opting for ASP.NET Core Data Protection rather than JWT has actually a few advan
 > To enable ASP.NET Core Data Protection support in the OpenIddict OWIN hosts, you need to manually reference the
 > `OpenIddict.Client.DataProtection`, `OpenIddict.Server.DataProtection` and `OpenIddict.Validation.DataProtection` packages.
 
-### Switching to Data Protection tokens
+### Switching to Data Protection tokens <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 ASP.NET Core Data Protection support is provided by the `OpenIddict.Client.DataProtection`, `OpenIddict.Server.DataProtection`
 and `OpenIddict.Validation.DataProtection` packages. These packages are referenced by the `OpenIddict.AspNetCore` metapackage
@@ -74,7 +74,6 @@ services.AddOpenIddict()
     {
         options.UseDataProtection();
     })
-
     .AddValidation(options =>
     {
         options.UseDataProtection();

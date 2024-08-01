@@ -107,6 +107,7 @@ export default defineConfig({
           { text: "Entity Framework Core", link: "/integrations/entity-framework-core" },
           { text: "MongoDB", link: "/integrations/mongodb" },
           { text: "Quartz.NET", link: "/integrations/quartz" },
+          { text: "System.Net.Http", link: "/integrations/system-net-http" },
           { text: "Web providers", link: "/integrations/web-providers" },
           {
             text: "External resources",

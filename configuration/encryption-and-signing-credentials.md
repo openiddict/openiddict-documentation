@@ -12,7 +12,7 @@ To protect the tokens they generate, the OpenIddict client and server stacks use
 > [!IMPORTANT]
 > While you can technically reuse the same set of credentials for both the OpenIddict client and the OpenIddict server, it is recommended to use separate keys/certificates.
 
-## Registering credentials in the client or server options
+## Registering credentials in the client or server options <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 OpenIddict allows registering one or multiple keys (raw keys or embedded in X.509 certificates).
 
@@ -137,7 +137,7 @@ The best place to store your certificates will depend on your host:
   - On Azure, certificates can be uploaded and exposed to Azure App Service applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit [Use a TLS/SSL certificate in your code in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code).
 
-## Importing credentials in the API/resource validation options
+## Importing credentials in the validation options of the API projects <Badge type="tip" text="validation" />
 
 ### Using the `options.UseLocalServer()` integration
 
@@ -165,6 +165,12 @@ services.AddOpenIddict()
         options.UseSystemNetHttp();
     });
 ```
+
+> [!WARNING]
+> Using OpenID Connect discovery requires enabling the `System.Net.Http` integration: make sure the
+> `OpenIddict.Validation.SystemNetHttp` package is referenced and call `UseSystemNetHttp()` to enable it.
+>
+> For more information, read [`System.Net.Http` integration](/integrations/system-net-http.md).
 
 ### Registering a symmetric signing key in the token validation parameters
 

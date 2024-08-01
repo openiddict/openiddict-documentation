@@ -32,44 +32,46 @@ ASP.NET Core 2.1+ application, independently of whether they are using MVC contr
 >  - X.509 ECDSA signing certificates/keys: calling `AddSigningCertificate()` or `AddSigningKey()`
 > with an ECDSA certificate/key will always result in a `PlatformNotSupportedException` being thrown at runtime.
 
-## Basic configuration
+## Basic configuration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
-Native ASP.NET Core integration is provided by 3 dedicated packages that can be used together or
-independently (depending on whether you need the client, server and validation features in your project):
+To configure the ASP.NET Core integration, you'll need to:
+  - **Reference the `OpenIddict.Client.UseSystemNetHttp` and/or `OpenIddict.Server.UseSystemNetHttp` and/or
+  `OpenIddict.Validation.UseSystemNetHttp` packages**
+  (depending on whether you need the client and/or server and/or validation features in your project):
 
-```xml
-<PackageReference Include="OpenIddict.Client.AspNetCore" Version="5.7.0" />
-<PackageReference Include="OpenIddict.Server.AspNetCore" Version="5.7.0" />
-<PackageReference Include="OpenIddict.Validation.AspNetCore" Version="5.7.0" />
-```
+  ```xml
+  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="5.7.0" />
+  ```
 
-To enable the ASP.NET Core integration, simply call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add:
+  - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:
 
-```csharp
-services.AddOpenIddict()
-    .AddCore(options =>
-    {
-        // ...
-    })
-    .AddClient(options =>
-    {
-        // ...
-
-        options.UseAspNetCore();
-    })
-    .AddServer(options =>
-    {
-        // ...
-
-        options.UseAspNetCore();
-    })
-    .AddValidation(options =>
-    {
-        // ...
-
-        options.UseAspNetCore();
-    });
-```
+  ```csharp
+  services.AddOpenIddict()
+      .AddCore(options =>
+      {
+          // ...
+      })
+      .AddClient(options =>
+      {
+          // ...
+  
+          options.UseAspNetCore();
+      })
+      .AddServer(options =>
+      {
+          // ...
+  
+          options.UseAspNetCore();
+      })
+      .AddValidation(options =>
+      {
+          // ...
+  
+          options.UseAspNetCore();
+      });
+  ```
 
 > [!WARNING]
 > OpenIddict integrates with ASP.NET Core using an `IAuthenticationRequestHandler` service.
@@ -251,7 +253,7 @@ services.AddOpenIddict()
 >
 > For more information, read [Distributed caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed).
 
-### Authentication scheme forwarding (client-only)
+### Authentication scheme forwarding <Badge type="warning" text="client" />
 
 To simplify triggering authentication operations for a specific client registration, the OpenIddict client offers a built-in authentication scheme
 forwarding feature that allows using the provider name assigned to a client registration as an authentication scheme in ASP.NET Core:

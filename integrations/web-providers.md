@@ -149,129 +149,139 @@ As such, while the aspnet-contrib providers are still fully supported, **develop
 > For more information on how to get started with the OpenIddict client,
 > read [Integrating with a remote server instance](/guides/getting-started/integrating-with-a-remote-server-instance.md).
 
-```csharp
-services.AddOpenIddict()
-    .AddClient(options =>
-    {
-        // ...
+To configure the `System.Net.Http` integration, you'll need to:
+  - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
-        // Register the Web providers integrations.
-        options.UseWebProviders();
-    });
-```
-
-To add a provider instance, you simply need to call the corresponding `Add[Provider name]()` method and configure the required settings:
-
-```csharp
-services.AddOpenIddict()
-    .AddClient(options =>
-    {
-        // Note: to mitigate mix-up attacks, it's recommended to use a unique redirection endpoint
-        // URI per provider, unless all the registered providers support returning a special "iss"
-        // parameter containing their URL as part of authorization responses. For more information,
-        // see https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#section-4.4.
-        options.UseWebProviders()
-               .AddGitHub(options =>
-               {
-                   options.SetClientId("[client identifier]")
-                          .SetClientSecret("[client secret]")
-                          .SetRedirectUri("callback/login/github");
-               })
-               .AddTwitter(options =>
-               {
-                   options.SetClientId("[client identifier]")
-                          .SetClientSecret("[client secret]")
-                          .SetRedirectUri("callback/login/twitter");
-               });
-    });
-```
-
-Once enabled, authentication operations (e.g challenges) can be triggered using the default provider name assigned by OpenIddict:
-  - In an ASP.NET Core application, using the authentication APIs provided by ASP.NET Core:
-  ```csharp
-  [HttpPost("~/login"), ValidateAntiForgeryToken]
-  public async Task<ActionResult> LogInWithGitHub(string returnUrl)
-  {
-      var properties = new AuthenticationProperties
-      {
-          // Only allow local return URLs to prevent open redirect attacks.
-          RedirectUri = Url.IsLocalUrl(returnUrl) ? returnUrl : "/"
-      };
-  
-      // Ask the OpenIddict client middleware to redirect the user agent to GitHub.
-      return Challenge(properties, OpenIddictClientWebIntegrationConstants.Providers.GitHub);
-  }
+  ```xml
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="5.7.0" />
   ```
 
-  - In a desktop or mobile application (e.g WPF), using the APIs exposed by `OpenIddictClientService`:
+  - **Call `UseWebProviders()` in the client options**:
+
   ```csharp
-  public partial class MainWindow : Window, IWpfShell
-  {
-      private readonly OpenIddictClientService _service;
-  
-      public MainWindow(OpenIddictClientService service)
+  services.AddOpenIddict()
+      .AddClient(options =>
       {
-          _service = service ?? throw new ArgumentNullException(nameof(service));
+          // ...
   
-          InitializeComponent();
-      }
-  
-      private async void LoginButton_Click(object sender, RoutedEventArgs e)
-      {
-          // Disable the login button to prevent concurrent authentication operations.
-          LoginButton.IsEnabled = false;
-  
-          try
-          {
-              using var source = new CancellationTokenSource(delay: TimeSpan.FromSeconds(90));
-  
-              try
-              {
-                  // Ask OpenIddict to initiate the authentication flow (typically, by starting the system browser).
-                  var result = await _service.ChallengeInteractivelyAsync(new()
-                  {
-                      CancellationToken = source.Token,
-                      ProviderName = OpenIddictClientWebIntegrationConstants.Providers.GitHub
-                  });
-  
-                  // Wait for the user to complete the authorization process.
-                  var principal = (await _service.AuthenticateInteractivelyAsync(new()
-                  {
-                      CancellationToken = source.Token,
-                      Nonce = result.Nonce
-                  })).Principal;
-  
-                  MessageBox.Show($"Welcome, {principal.FindFirst(ClaimTypes.Name)!.Value}.",
-                      "Authentication successful", MessageBoxButton.OK, MessageBoxImage.Information);
-              }
-  
-              catch (OperationCanceledException)
-              {
-                  MessageBox.Show("The authentication process was aborted.",
-                      "Authentication timed out", MessageBoxButton.OK, MessageBoxImage.Warning);
-              }
-  
-              catch (ProtocolException exception) when (exception.Error is Errors.AccessDenied)
-              {
-                  MessageBox.Show("The authorization was denied by the end user.",
-                      "Authorization denied", MessageBoxButton.OK, MessageBoxImage.Warning);
-              }
-  
-              catch
-              {
-                  MessageBox.Show("An error occurred while trying to authenticate the user.",
-                      "Authentication failed", MessageBoxButton.OK, MessageBoxImage.Error);
-              }
-          }
-  
-          finally
-          {
-              // Re-enable the login button to allow starting a new authentication operation.
-              LoginButton.IsEnabled = true;
-          }
-      }
-  }
+          // Register the Web providers integrations.
+          options.UseWebProviders();
+      });
   ```
+
+  - To add a provider instance, call the corresponding `Add[Provider name]()` method and configure the required settings:
+
+  ```csharp
+  services.AddOpenIddict()
+      .AddClient(options =>
+      {
+          // Note: to mitigate mix-up attacks, it's recommended to use a unique redirection endpoint
+          // URI per provider, unless all the registered providers support returning a special "iss"
+          // parameter containing their URL as part of authorization responses. For more information,
+          // see https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#section-4.4.
+          options.UseWebProviders()
+                 .AddGitHub(options =>
+                 {
+                     options.SetClientId("[client identifier]")
+                            .SetClientSecret("[client secret]")
+                            .SetRedirectUri("callback/login/github");
+                 })
+                 .AddTwitter(options =>
+                 {
+                     options.SetClientId("[client identifier]")
+                            .SetClientSecret("[client secret]")
+                            .SetRedirectUri("callback/login/twitter");
+                 });
+      });
+  ```
+
+> [!TIP]
+> Once enabled, authentication operations (e.g challenges) can be triggered using the default provider name assigned by OpenIddict:
+>   - In an ASP.NET Core application, using the authentication APIs provided by ASP.NET Core:
+>   ```csharp
+>   [HttpPost("~/login"), ValidateAntiForgeryToken]
+>   public async Task<ActionResult> LogInWithGitHub(string returnUrl)
+>   {
+>       var properties = new AuthenticationProperties
+>       {
+>           // Only allow local return URLs to prevent open redirect attacks.
+>           RedirectUri = Url.IsLocalUrl(returnUrl) ? returnUrl : "/"
+>       };
+>   
+>       // Ask the OpenIddict client middleware to redirect the user agent to GitHub.
+>       return Challenge(properties, OpenIddictClientWebIntegrationConstants.Providers.GitHub);
+>   }
+>   ```
+> 
+>   - In a desktop or mobile application (e.g WPF), using the APIs exposed by `OpenIddictClientService`:
+>   ```csharp
+>   public partial class MainWindow : Window, IWpfShell
+>   {
+>       private readonly OpenIddictClientService _service;
+>   
+>       public MainWindow(OpenIddictClientService service)
+>       {
+>           _service = service ?? throw new ArgumentNullException(nameof(service));
+>   
+>           InitializeComponent();
+>       }
+>   
+>       private async void LoginButton_Click(object sender, RoutedEventArgs e)
+>       {
+>           // Disable the login button to prevent concurrent authentication operations.
+>           LoginButton.IsEnabled = false;
+>   
+>           try
+>           {
+>               using var source = new CancellationTokenSource(delay: TimeSpan.FromSeconds(90));
+>   
+>               try
+>               {
+>                   // Ask OpenIddict to initiate the authentication flow (typically, by starting the system browser).
+>                   var result = await _service.ChallengeInteractivelyAsync(new()
+>                   {
+>                       CancellationToken = source.Token,
+>                       ProviderName = OpenIddictClientWebIntegrationConstants.Providers.GitHub
+>                   });
+>   
+>                   // Wait for the user to complete the authorization process.
+>                   var principal = (await _service.AuthenticateInteractivelyAsync(new()
+>                   {
+>                       CancellationToken = source.Token,
+>                       Nonce = result.Nonce
+>                   })).Principal;
+>   
+>                   MessageBox.Show($"Welcome, {principal.FindFirst(ClaimTypes.Name)!.Value}.",
+>                       "Authentication successful", MessageBoxButton.OK, MessageBoxImage.Information);
+>               }
+>   
+>               catch (OperationCanceledException)
+>               {
+>                   MessageBox.Show("The authentication process was aborted.",
+>                       "Authentication timed out", MessageBoxButton.OK, MessageBoxImage.Warning);
+>               }
+>   
+>               catch (ProtocolException exception) when (exception.Error is Errors.AccessDenied)
+>               {
+>                   MessageBox.Show("The authorization was denied by the end user.",
+>                       "Authorization denied", MessageBoxButton.OK, MessageBoxImage.Warning);
+>               }
+>   
+>               catch
+>               {
+>                   MessageBox.Show("An error occurred while trying to authenticate the user.",
+>                       "Authentication failed", MessageBoxButton.OK, MessageBoxImage.Error);
+>               }
+>           }
+>   
+>           finally
+>           {
+>               // Re-enable the login button to allow starting a new authentication operation.
+>               LoginButton.IsEnabled = true;
+>           }
+>       }
+>   }
+>   ```
 
 ## Advanced configuration
 
@@ -337,7 +347,7 @@ services.AddOpenIddict()
                {
                    options.SetClientId("[client identifier]")
                           .SetClientSecret("[client secret]")
-                          .SetRedirectUri("callback/login/github/a")
+                          .SetRedirectUri("callback/login/github")
                           .SetProviderDisplayName("Log in with GitHub™️");
                });
     });
