@@ -4,29 +4,30 @@ import { defineConfig } from "vitepress"
 export default defineConfig({
   title: "OpenIddict",
   description: "Documentation for the OpenIddict project",
+  cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
       {
         text: "Introduction",
-        link: "introduction/index.md",
-        activeMatch: "introduction/"
+        link: "/introduction/",
+        activeMatch: "/introduction/"
       },
       {
         text: "Guides",
-        link: "guides/index.md",
-        activeMatch: "guides/"
+        link: "/guides/",
+        activeMatch: "/guides/"
       },
       {
         text: "Configuration",
-        link: "configuration/index.md",
-        activeMatch: "configuration/"
+        link: "/configuration/",
+        activeMatch: "/configuration/"
       },
       {
         text: "Integrations",
-        link: "integrations/index.md",
-        activeMatch: "integrations/"
+        link: "/integrations/",
+        activeMatch: "/integrations/"
       },
       { text: "Website", link: "https://openiddict.com/" },
       { text: "Samples", link: "https://github.com/openiddict/openiddict-samples" },
@@ -49,28 +50,28 @@ export default defineConfig({
         items: [
           {
             text: "Getting started",
-            link: "guides/getting-started/index.md",
+            link: "/guides/getting-started/",
             items: [
-              { text: "Creating your own server instance", link: "guides/getting-started/creating-your-own-server-instance.md" },
-              { text: "Implementing token validation in your APIs", link: "guides/getting-started/implementing-token-validation-in-your-apis.md" },
-              { text: "Integrating with a remote server instance", link: "guides/getting-started/integrating-with-a-remote-server-instance.md" }
+              { text: "Creating your own server instance", link: "/guides/getting-started/creating-your-own-server-instance" },
+              { text: "Implementing token validation in your APIs", link: "/guides/getting-started/implementing-token-validation-in-your-apis" },
+              { text: "Integrating with a remote server instance", link: "/guides/getting-started/integrating-with-a-remote-server-instance" }
             ]
           },
           {
             text: "Choosing the right flow",
-            link: "guides/choosing-the-right-flow.md"
+            link: "/guides/choosing-the-right-flow"
           },
           {
             text: "Migration guides",
             items: [
-              { text: "Migration from 2.0 to 3.0", link: "guides/migration/20-to-30.md" },
-              { text: "Migration from 3.0 to 4.0", link: "guides/migration/30-to-40.md" },
-              { text: "Migration from 4.0 to 5.0", link: "guides/migration/40-to-50.md" }
+              { text: "Migration from 2.0 to 3.0", link: "/guides/migration/20-to-30" },
+              { text: "Migration from 3.0 to 4.0", link: "/guides/migration/30-to-40" },
+              { text: "Migration from 4.0 to 5.0", link: "/guides/migration/40-to-50" }
             ]
           },
           {
             text: "Contributing a new Web provider",
-            link: "guides/contributing-a-new-web-provider.md"
+            link: "/guides/contributing-a-new-web-provider"
           },
           {
             text: "External resources",
@@ -83,13 +84,13 @@ export default defineConfig({
       },
       "/configuration/": {
         items: [
-          { text: "Application permissions", link: "configuration/application-permissions.md" },
-          { text: "Authorization storage", link: "configuration/authorization-storage.md" },
-          { text: "Claim destinations", link: "configuration/claim-destinations.md" },
-          { text: "Encryption and signing credentials", link: "configuration/encryption-and-signing-credentials.md" },
-          { text: "Proof Key for Code Exchange", link: "configuration/proof-key-for-code-exchange.md" },
-          { text: "Token formats", link: "configuration/token-formats.md" },
-          { text: "Token storage", link: "configuration/token-storage.md" },
+          { text: "Application permissions", link: "/configuration/application-permissions" },
+          { text: "Authorization storage", link: "/configuration/authorization-storage" },
+          { text: "Claim destinations", link: "/configuration/claim-destinations" },
+          { text: "Encryption and signing credentials", link: "/configuration/encryption-and-signing-credentials" },
+          { text: "Proof Key for Code Exchange", link: "/configuration/proof-key-for-code-exchange" },
+          { text: "Token formats", link: "/configuration/token-formats" },
+          { text: "Token storage", link: "/configuration/token-storage" },
           {
             text: "External resources",
             items: [
@@ -101,12 +102,12 @@ export default defineConfig({
       },
       "/integrations/": {
         items: [
-          { text: "ASP.NET Core", link: "integrations/aspnet-core.md" },
-          { text: "Entity Framework", link: "integrations/entity-framework.md" },
-          { text: "Entity Framework Core", link: "integrations/entity-framework-core.md" },
-          { text: "MongoDB", link: "integrations/mongodb.md" },
-          { text: "Quartz.NET", link: "integrations/quartz.md" },
-          { text: "Web providers", link: "integrations/web-providers.md" },
+          { text: "ASP.NET Core", link: "/integrations/aspnet-core" },
+          { text: "Entity Framework", link: "/integrations/entity-framework" },
+          { text: "Entity Framework Core", link: "/integrations/entity-framework-core" },
+          { text: "MongoDB", link: "/integrations/mongodb" },
+          { text: "Quartz.NET", link: "/integrations/quartz" },
+          { text: "Web providers", link: "/integrations/web-providers" },
           {
             text: "External resources",
             items: [
