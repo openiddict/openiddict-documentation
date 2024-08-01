@@ -134,7 +134,7 @@ In the same vein, ad-hoc authorizations are also created when a refresh token is
 > removed from the database after a short period of time (14 days by default). Unlike ad-hoc authorizations, permanent authorizations
 > are never removed from the database.
 
-## Enabling authorization entry validation at the API level (validation-only)
+## Enabling authorization entry validation at the API level <Badge type="tip" text="validation" />
 
 **For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of an authorization entry when receiving an API request**: access tokens are considered
 valid even if the attached authorization was revoked. For scenarios that require immediate authorization revocation, the OpenIddict validation handler can be configured
@@ -155,7 +155,7 @@ services.AddOpenIddict()
     });
 ```
 
-## Disabling authorization storage (server-only)
+## Disabling authorization storage <Badge type="danger" text="server" />
 
 While STRONGLY discouraged, authorization storage can be disabled in the server options:
 

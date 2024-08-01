@@ -7,7 +7,7 @@ confidential clients to help mitigate authorization code leakages.
 This mechanism is fully supported by all versions of the OpenIddict server stack and can be
 enforced globally or per-client to block authorization requests that don't send PKCE parameters.
 
-## Enabling PKCE enforcement at the global level (server-only)
+## Enabling PKCE enforcement at the global level <Badge type="danger" text="server" />
 
 Proof Key for Code Exchange can be enforced globally by calling `options.RequireProofKeyForCodeExchange()` in the server options:
 
@@ -19,7 +19,7 @@ services.AddOpenIddict()
     });
 ```
 
-## Enabling PKCE enforcement per client (server-only)
+## Enabling PKCE enforcement per client <Badge type="danger" text="server" />
 
 Proof Key for Code Exchange can also be enforced per-client by adding it to the list of requirements attached to a client:
 

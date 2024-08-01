@@ -18,7 +18,7 @@ when communicating with OpenIddict's endpoints or with resource servers (if refe
 > In OpenIddict 3.0+, the ability to revoke a token is not tied to the token format and doesn't require enabling reference tokens:
 > regular JWT or ASP.NET Core Data Protection tokens can be revoked as long as token storage is not explicitly disabled in the server options.
 
-## Enabling reference access and/or refresh tokens (server-only)
+## Enabling reference access and/or refresh tokens <Badge type="danger" text="server" />
 
 Reference access and refresh tokens can be manually enabled in the server options for developers who prefer returning
 shorter access and/or refresh tokens or need to deal with limits that would prevent sending large tokens over the wire.
@@ -38,7 +38,7 @@ services.AddOpenIddict()
     });
 ```
 
-## Enabling token entry validation at the API level (validation-only)
+## Enabling token entry validation at the API level <Badge type="tip" text="validation" />
 
 **For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of a token entry when receiving an API request**: access tokens are considered valid until they expire.
 For scenarios that require immediate access token revocation, the OpenIddict validation handler can be configured to enforce token entry validation for each API request:
@@ -57,7 +57,7 @@ services.AddOpenIddict()
     });
 ```
 
-## Disabling token storage (server-only)
+## Disabling token storage <Badge type="danger" text="server" />
 
 While STRONGLY discouraged, token storage can be disabled in the server options:
 

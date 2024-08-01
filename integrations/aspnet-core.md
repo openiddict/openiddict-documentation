@@ -96,7 +96,7 @@ services.AddOpenIddict()
 
 ## Advanced configuration
 
-### Transport security requirement (client and server)
+### Transport security requirement <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 By default, the OpenIddict server ASP.NET Core integration will refuse to serve non-HTTPS
 requests for security reasons and will return an error page to the caller.
@@ -128,7 +128,7 @@ services.AddOpenIddict()
 > For more information,
 > read [Configure ASP.NET Core to work with proxy servers and load balancers](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer).
 
-### Pass-through mode (client and server)
+### Pass-through mode <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 The OpenIddict client and server stacks offer built-in pass-through support for some of
 their endpoints (typically, endpoints for which users will want to provide custom logic).
@@ -188,7 +188,7 @@ app.MapMethods("authorize", [HttpMethods.Get, HttpMethods.Post], async (HttpCont
 });
 ```
 
-### Status code pages middleware integration (client and server)
+### Status code pages middleware integration <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 Both the OpenIddict client and server ASP.NET Core hosts offer an option to render error pages using
 [ASP.NET Core's status code pages middleware](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling#usestatuscodepages).
@@ -226,7 +226,7 @@ services.AddOpenIddict()
 >  ```
 
 
-### Authorization and logout request caching (server-only)
+### Authorization and logout request caching <Badge type="danger" text="server" />
 
 To simplify flowing large authorization or logout requests, the OpenIddict server ASP.NET Core integration includes a built-in feature
 that allows generating a unique `request_id` and caching the received requests in an `IDistributedCache`: when this feature is enabled,
@@ -300,7 +300,7 @@ app.MapGet("challenge", () =>
 });
 ```
 
-### JSON responses indentation (server-only)
+### JSON responses indentation <Badge type="danger" text="server" />
 
 By default, the OpenIddict server ASP.NET Core host will return indented JSON responses to make them easier to read.
 
