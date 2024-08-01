@@ -11,8 +11,8 @@ export default defineConfig({
       { text: "Home", link: "/" },
       {
         text: "Introduction",
-        link: "/introduction/",
-        activeMatch: "/introduction/"
+        link: "/introduction",
+        activeMatch: "/introduction"
       },
       {
         text: "Guides",

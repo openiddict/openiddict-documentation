@@ -134,7 +134,7 @@ The OpenIddict client and server stacks offer built-in pass-through support for 
 their endpoints (typically, endpoints for which users will want to provide custom logic).
 
 > [!NOTE]
-> For more information on the pass-through mode, read [Pass-through mode](/introduction/index.md#pass-through-mode).
+> For more information on the pass-through mode, read [Pass-through mode](/introduction.md#pass-through-mode).
 
 Pass-through mode for a specific endpoint can be enabled using the APIs exposed by `OpenIddictClientAspNetCoreBuilder`
 or `OpenIddictServerAspNetCoreBuilder`. E.g for the authorization endpoint:
