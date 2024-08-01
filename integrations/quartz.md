@@ -54,8 +54,8 @@ services.AddOpenIddict()
     .AddCore(options =>
     {
         options.UseQuartz()
-            .DisableAuthorizationPruning()
-            .DisableTokenPruning();
+               .DisableAuthorizationPruning()
+               .DisableTokenPruning();
     });
 ```
 
@@ -69,8 +69,8 @@ services.AddOpenIddict()
     .AddCore(options =>
     {
         options.UseQuartz()
-            .SetMinimumAuthorizationLifespan(TimeSpan.FromDays(7))
-            .SetMinimumTokenLifespan(TimeSpan.FromHours(12));
+               .SetMinimumAuthorizationLifespan(TimeSpan.FromDays(7))
+               .SetMinimumTokenLifespan(TimeSpan.FromHours(12));
     });
 ```
 
@@ -87,6 +87,6 @@ services.AddOpenIddict()
     .AddCore(options =>
     {
         options.UseQuartz()
-            .SetMaximumRefireCount(3);
+               .SetMaximumRefireCount(3);
     });
 ```
