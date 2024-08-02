@@ -40,7 +40,7 @@ services.AddOpenIddict()
 
 ## Enabling token entry validation at the API level <Badge type="tip" text="validation" />
 
-**For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of a token entry when receiving an API request**: access tokens are considered valid until they expire.
+**For performance reasons, OpenIddict doesn't check, by default, the status of a token entry when receiving an API request**: access tokens are considered valid until they expire.
 For scenarios that require immediate access token revocation, the OpenIddict validation handler can be configured to enforce token entry validation for each API request:
 
 > [!NOTE]

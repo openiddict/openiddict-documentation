@@ -1,7 +1,7 @@
 # Proof Key for Code Exchange <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 Initially designed as a way to protect mobile applications from seeing their callback URIs hijacked by a malicious application installed
-on the same device, the [Proof Key for Code Exchange (PKCE)](https://tools.ietf.org/html/rfc7636) mechanism has been extended to
+on the same device, the [Proof Key for Code Exchange (PKCE)](https://datatracker.ietf.org/doc/html/rfc7636) mechanism has been extended to
 confidential clients to help mitigate authorization code leakages.
 
 Proof Key for Code Exchange is fully supported by all versions of the OpenIddict client and server stacks

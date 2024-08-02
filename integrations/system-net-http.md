@@ -213,14 +213,12 @@ services.AddOpenIddict()
     .AddClient(options =>
     {
         options.UseSystemNetHttp()
-               .ConfigureHttpClientHandler(handler => handler.ServerCertificateCustomValidationCallback =
-                   HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
+               .ConfigureHttpClientHandler(handler => handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
     })
     .AddValidation(options =>
     {
         options.UseSystemNetHttp()
-               .ConfigureHttpClientHandler(handler => handler.ServerCertificateCustomValidationCallback =
-                   HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
+               .ConfigureHttpClientHandler(handler => handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
     });
 ```
 
@@ -231,8 +229,7 @@ services.AddOpenIddict()
     .AddClient(options =>
     {
         options.UseSystemNetHttp()
-               .ConfigureHttpClientHandler(Providers.GitHub, handler => handler.ServerCertificateCustomValidationCallback =
-                   HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
+               .ConfigureHttpClientHandler(Providers.GitHub, handler => handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator);
     });
 ```
 
@@ -247,8 +244,7 @@ services.AddOpenIddict()
                {
                    if (registration.RegistrationId is "447fbedf-dcec-47b0-9355-6e199e8f2576")
                    {
-                       handler.ServerCertificateCustomValidationCallback =
-                           HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+                       handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
                    }
                });
     });

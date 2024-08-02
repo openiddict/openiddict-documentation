@@ -12,22 +12,22 @@ export default defineConfig({
       {
         text: "Introduction",
         link: "/introduction",
-        activeMatch: "/introduction"
+        activeMatch: "^/introduction"
       },
       {
         text: "Guides",
         link: "/guides/",
-        activeMatch: "/guides/"
+        activeMatch: "^/guides/"
       },
       {
         text: "Configuration",
         link: "/configuration/",
-        activeMatch: "/configuration/"
+        activeMatch: "^/configuration/"
       },
       {
         text: "Integrations",
         link: "/integrations/",
-        activeMatch: "/integrations/"
+        activeMatch: "^/integrations/"
       },
       { text: "Website", link: "https://openiddict.com/" },
       { text: "Samples", link: "https://github.com/openiddict/openiddict-samples" },
@@ -40,7 +40,7 @@ export default defineConfig({
           {
             text: "External resources",
             items: [
-              { text: "OAuth 2.0 specification", link: "https://tools.ietf.org/html/rfc6749" },
+              { text: "OAuth 2.0 specification", link: "https://datatracker.ietf.org/doc/html/rfc6749" },
               { text: "OpenID Connect specification", link: "https://openid.net/specs/openid-connect-core-1_0.html" }
             ]
           }
@@ -76,7 +76,7 @@ export default defineConfig({
           {
             text: "External resources",
             items: [
-              { text: "OAuth 2.0 specification", link: "https://tools.ietf.org/html/rfc6749" },
+              { text: "OAuth 2.0 specification", link: "https://datatracker.ietf.org/doc/html/rfc6749" },
               { text: "OpenID Connect specification", link: "https://openid.net/specs/openid-connect-core-1_0.html" }
             ]
           }
@@ -94,7 +94,7 @@ export default defineConfig({
           {
             text: "External resources",
             items: [
-              { text: "OAuth 2.0 specification", link: "https://tools.ietf.org/html/rfc6749" },
+              { text: "OAuth 2.0 specification", link: "https://datatracker.ietf.org/doc/html/rfc6749" },
               { text: "OpenID Connect specification", link: "https://openid.net/specs/openid-connect-core-1_0.html" }
             ]
           }
@@ -103,6 +103,7 @@ export default defineConfig({
       "/integrations/": {
         items: [
           { text: "ASP.NET Core", link: "/integrations/aspnet-core" },
+          { text: "ASP.NET Core Data Protection", link: "/integrations/aspnet-core-data-protection" },
           { text: "Entity Framework", link: "/integrations/entity-framework" },
           { text: "Entity Framework Core", link: "/integrations/entity-framework-core" },
           { text: "MongoDB", link: "/integrations/mongodb" },
@@ -112,7 +113,7 @@ export default defineConfig({
           {
             text: "External resources",
             items: [
-              { text: "OAuth 2.0 specification", link: "https://tools.ietf.org/html/rfc6749" },
+              { text: "OAuth 2.0 specification", link: "https://datatracker.ietf.org/doc/html/rfc6749" },
               { text: "OpenID Connect specification", link: "https://openid.net/specs/openid-connect-core-1_0.html" }
             ]
           }
@@ -125,6 +126,7 @@ export default defineConfig({
       { icon: "twitter", link: "https://x.com/openiddict" }
     ],
 
+    outline: [2, 4],
     externalLinkIcon: true,
     logo: "/logo.png",
 

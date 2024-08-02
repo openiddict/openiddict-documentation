@@ -1,12 +1,12 @@
 # Choosing the right flow <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 OpenIddict offers built-in support for all the standard flows defined by the
-[OAuth 2.0](https://tools.ietf.org/html/rfc6749) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) core specifications:
+[OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) core specifications:
 [the authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth),
 [the implicit flow](https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth),
 [the hybrid flow](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (generally treated as a mix between the first two flows),
-[the resource owner password credentials grant](https://tools.ietf.org/html/rfc6749#section-4.3) and
-[the client credentials grant](https://tools.ietf.org/html/rfc6749#section-4.4).
+[the resource owner password credentials grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3) and
+[the client credentials grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
 
 > [!IMPORTANT]
 > All these flows are supported by both the server and the client stacks, except the legacy OAuth 2.0 implicit flow (i.e `response_type=token`),
@@ -88,7 +88,7 @@ Pragma: no-cache
 > [!NOTE]
 > Unlike the resource owner password credentials grant, **client authentication is not optional** when using the client credentials grant and
 > **the OpenIddict sserver will always reject unauthenticated token requests**,
-> [as required by the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-4.4.2).
+> [as required by the OAuth 2.0 specification](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4.2).
 >
 > This means that **you CAN'T use the client credentials grant with public applications** like browser, 
 > mobile or desktop applications, as they are not able to keep their credentials secret.
@@ -142,7 +142,7 @@ Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifj
 > [!WARNING]
 > To prevent XSRF/session fixation attacks, **the client application MUST ensure that the `state` parameter returned by the identity provider
 > corresponds to the original `state`** and stop processing the authorization response if the two values don't match.
-> [This is usually done by generating a non-guessable string and a corresponding correlation cookie](https://tools.ietf.org/html/rfc6749#section-10.12).
+> [This is usually done by generating a non-guessable string and a corresponding correlation cookie](https://datatracker.ietf.org/doc/html/rfc6749#section-10.12).
 >
 > This mechanism is fully supported by the OpenIddict client (and cannot be disabled) but may not be supported by third-party clients.
 
@@ -151,7 +151,7 @@ Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifj
 When the client application gets back an authorization code, it must immediately reedem it for an access token by sending a `grant_type=authorization_code` token request.
 
 > [!NOTE]
-> To help the identity provider [mitigate counterfeit clients attacks](https://tools.ietf.org/html/rfc6819#section-4.4.1.7), the original `redirect_uri` must also be sent.
+> To help the identity provider [mitigate counterfeit clients attacks](https://datatracker.ietf.org/doc/html/rfc6819#section-4.4.1.7), the original `redirect_uri` must also be sent.
 >
 > If the client application is a confidential application (i.e an application that has been assigned client credentials), authentication is required.
 
@@ -204,7 +204,7 @@ Location: https://client.example.org/cb#access_token=SlAV32hkKG&token_type=beare
 
 > [!CAUTION]
 > Initially designed for browser applications, this flow is inherently less secure than the authorization code flow and doesn't support
-> [Proof Key for Code Exchange](https://tools.ietf.org/html/rfc7636). As such, using it in new applications is not recommended.
+> [Proof Key for Code Exchange](https://datatracker.ietf.org/doc/html/rfc7636). As such, using it in new applications is not recommended.
 
 > [!WARNING]
 > As for the authorization code flow, **the client application MUST ensure that the `state` parameter returned by the

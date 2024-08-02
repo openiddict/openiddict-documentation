@@ -207,5 +207,6 @@ that normally depend on the `OpenIddict.Core` package, which includes things lik
 reference tokens and token revocation support. Since these critical parts are not handled by OpenIddict when enabling the degraded mode,
 you're expected to register custom event handlers that will implement the necessary features using your own logic (and your own database!).
 
-For more information on the degraded mode, read
-[Creating an OpenID Connect server proxy with OpenIddict 3.0's degraded mode](https://kevinchalet.com/2020/02/18/creating-an-openid-connect-server-proxy-with-openiddict-3-0-s-degraded-mode/).
+> [!TIP]
+> For more information on the degraded mode, read
+> [Creating an OpenID Connect server proxy with OpenIddict 3.0's degraded mode](https://kevinchalet.com/2020/02/18/creating-an-openid-connect-server-proxy-with-openiddict-3-0-s-degraded-mode/).
