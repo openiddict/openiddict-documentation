@@ -1,4 +1,4 @@
-# Entity Framework 6.x integration
+# Entity Framework 6.x integration <Badge type="info" text="core" />
 
 ## Basic configuration
 

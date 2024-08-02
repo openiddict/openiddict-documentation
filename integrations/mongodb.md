@@ -1,4 +1,4 @@
-# MongoDB integration
+# MongoDB integration <Badge type="info" text="core" />
 
 ## Basic configuration
 

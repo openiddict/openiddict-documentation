@@ -1,4 +1,4 @@
-# Encryption and signing credentials
+# Encryption and signing credentials <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 To protect the tokens they generate, the OpenIddict client and server stacks use 2 types of credentials:
   - **Signing credentials are used to protect against tampering**. They can be either asymmetric (e.g a RSA or ECDSA key) or symmetric.

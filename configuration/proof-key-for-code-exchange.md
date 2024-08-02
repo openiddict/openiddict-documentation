@@ -1,11 +1,15 @@
-# Proof Key for Code Exchange
+# Proof Key for Code Exchange <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 Initially designed as a way to protect mobile applications from seeing their callback URIs hijacked by a malicious application installed
 on the same device, the [Proof Key for Code Exchange (PKCE)](https://tools.ietf.org/html/rfc7636) mechanism has been extended to
 confidential clients to help mitigate authorization code leakages.
 
-This mechanism is fully supported by all versions of the OpenIddict server stack and can be
-enforced globally or per-client to block authorization requests that don't send PKCE parameters.
+Proof Key for Code Exchange is fully supported by all versions of the OpenIddict client and server stacks
+and the OpenIddict server can be configured to enforce this security feature globally or per-client.
+
+> [!TIP]
+> The OpenIddict client always uses Proof Key for Code Exchange when the configuration metadata indicates this feature
+> is supported by the authorization server: you don't have to configure anything to enable it at the client level.
 
 ## Enabling PKCE enforcement at the global level <Badge type="danger" text="server" />
 

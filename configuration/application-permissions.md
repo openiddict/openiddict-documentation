@@ -1,4 +1,4 @@
-# Application permissions
+# Application permissions <Badge type="info" text="core" /><Badge type="danger" text="server" />
 
 To control and limit the OAuth 2.0/OpenID Connect features client applications are able to use, the OpenIddict server
 stack allows assigning them a list of application permissions: if the permission corresponding to a specific feature

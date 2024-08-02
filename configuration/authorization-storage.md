@@ -1,4 +1,4 @@
-# Authorization storage
+# Authorization storage <Badge type="info" text="core" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 To keep track of logical chains of tokens and user consents, the OpenIddict server supports storing authorizations
 (also known as "grants" in some OpenID Connect implementations) in the database and using them in your code to determine

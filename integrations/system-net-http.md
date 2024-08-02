@@ -1,4 +1,4 @@
-# `System.Net.Http` integration
+# `System.Net.Http` integration <Badge type="warning" text="client" /><Badge type="tip" text="validation" />
 
 To be able to communicate with HTTP servers, the OpenIddict client and validation stacks rely on companion packages
 named `OpenIddict.Client.SystemNetHttp` and `OpenIddict.Validation.SystemNetHttp`.

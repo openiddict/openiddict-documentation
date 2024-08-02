@@ -1,4 +1,4 @@
-# Quartz.NET integration
+# Quartz.NET integration <Badge type="info" text="core" />
 
 ## Basic configuration
 

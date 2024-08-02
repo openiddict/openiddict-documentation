@@ -1,4 +1,4 @@
-# Entity Framework Core integration
+# Entity Framework Core integration <Badge type="info" text="core" />
 
 ## Basic configuration
 

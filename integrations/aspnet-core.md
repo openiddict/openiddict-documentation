@@ -1,4 +1,4 @@
-# ASP.NET Core integration
+# ASP.NET Core integration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 Thanks to their native ASP.NET Core integrations, the client, server and validation features offered by OpenIddict can be used in any
 ASP.NET Core 2.1+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.

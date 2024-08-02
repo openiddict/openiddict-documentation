@@ -1,4 +1,4 @@
-# Claim destinations
+# Claim destinations <Badge type="danger" text="server" />
 
 **When generating authorization codes, refresh tokens and device/user codes** from the `ClaimsPrincipal` specified during a sign-in operation,
 **the OpenIddict server stack automatically copies all the claims to the resulting codes/tokens**. This is a safe operation because these tokens

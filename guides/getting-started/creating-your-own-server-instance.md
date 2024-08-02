@@ -1,4 +1,4 @@
-# Creating your own server instance
+# Creating your own server instance <Badge type="danger" text="server" />
 
 > [!NOTE]
 > This guide assumes you're using ASP.NET Core to host your authorization server. For samples showing how to use the OpenIddict server feature in
@@ -89,8 +89,10 @@ If you don't want to start from one of the recommended samples, you'll need to:
   ```
 
   - **Create your own authorization controller:**
-    Implementing a custom authorization controller is required to allow OpenIddict to create tokens based on the identities and claims you provide.
-    Here's an example for the client credentials grant:
+  > [!NOTE]
+  > Implementing a custom authorization controller is required to allow OpenIddict to create tokens based on the identities and claims you provide.
+
+  Here's an example for the client credentials grant:
 
   ```csharp
   public class AuthorizationController : Controller
@@ -184,4 +186,5 @@ If you don't want to start from one of the recommended samples, you'll need to:
 
 ![OAuth 2.0 client credentials grant with Postman](creating-your-own-server-instance/postman.png)
 
-Recommended read: [Implementing token validation in your APIs](implementing-token-validation-in-your-apis.md).
+> [!TIP]
+> Recommended read: [Implementing token validation in your APIs](implementing-token-validation-in-your-apis.md).

@@ -1,12 +1,16 @@
-# Choosing the right flow
+# Choosing the right flow <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
 OpenIddict offers built-in support for all the standard flows defined by the
 [OAuth 2.0](https://tools.ietf.org/html/rfc6749) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) core specifications:
 [the authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth),
 [the implicit flow](https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth),
-[the hybrid flow](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (which is basically a mix between the first two flows),
+[the hybrid flow](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (generally treated as a mix between the first two flows),
 [the resource owner password credentials grant](https://tools.ietf.org/html/rfc6749#section-4.3) and
 [the client credentials grant](https://tools.ietf.org/html/rfc6749#section-4.4).
+
+> [!IMPORTANT]
+> All these flows are supported by both the server and the client stacks, except the legacy OAuth 2.0 implicit flow (i.e `response_type=token`),
+> which is supported by the OpenIddict server for compatibility reasons but is not allowed to be negotiated by the OpenIddict client for security reasons.
 
 While not specific to OpenIddict, choosing the best flow(s) for your application is an **important prerequisite**
 when implementing your own authorization server ; so here's a quick overview of the different OAuth 2.0/OpenID Connect flows:
@@ -83,7 +87,8 @@ Pragma: no-cache
 
 > [!NOTE]
 > Unlike the resource owner password credentials grant, **client authentication is not optional** when using the client credentials grant and
-> **OpenIddict will always reject unauthenticated token requests**, [as required by the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-4.4.2).
+> **the OpenIddict sserver will always reject unauthenticated token requests**,
+> [as required by the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-4.4.2).
 >
 > This means that **you CAN'T use the client credentials grant with public applications** like browser, 
 > mobile or desktop applications, as they are not able to keep their credentials secret.
@@ -138,6 +143,8 @@ Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifj
 > To prevent XSRF/session fixation attacks, **the client application MUST ensure that the `state` parameter returned by the identity provider
 > corresponds to the original `state`** and stop processing the authorization response if the two values don't match.
 > [This is usually done by generating a non-guessable string and a corresponding correlation cookie](https://tools.ietf.org/html/rfc6749#section-10.12).
+>
+> This mechanism is fully supported by the OpenIddict client (and cannot be disabled) but may not be supported by third-party clients.
 
 - **Step 2: the token request**
 
@@ -179,6 +186,10 @@ Pragma: no-cache
 The implicit flow is similar to the authorization code flow, **except there's no token request/response step**: the access token is directly returned
 to the client application as part of the authorization response in the URI fragment (or in the request form when using `response_mode=form_post`).
 
+> [!TIP]
+> When using the OpenID Connect version of the implicit flow, an additional token called *identity token*
+> is returned and can be used by client applications to retrieved standardized information about the user.
+
 ![Implicit flow](choosing-the-right-flow/implicit-flow.png)
 
 ```http
@@ -196,11 +207,13 @@ Location: https://client.example.org/cb#access_token=SlAV32hkKG&token_type=beare
 > [Proof Key for Code Exchange](https://tools.ietf.org/html/rfc7636). As such, using it in new applications is not recommended.
 
 > [!WARNING]
-> To prevent XSRF/session fixation attacks, **the client application MUST ensure that the `state` parameter returned by the identity provider
-> corresponds to the original `state`** and stop processing the authorization response if the two values don't match.
-> [This is usually done by generating a non-guessable string and a corresponding value stored in the local storage](https://tools.ietf.org/html/rfc6749#section-10.12).
+> As for the authorization code flow, **the client application MUST ensure that the `state` parameter returned by the
+> identity provider corresponds to the original `state`** to mitigate XSRF/session fixation attacks.
+
+> [!CAUTION]
+> When using the legacy OAuth 2.0 implicit flow (i.e `response_type=token`), **the client application MUST also ensure that the access token
+> was not issued to another application to prevent [confused deputy attacks](https://stackoverflow.com/a/17439317/542757).**
+> Unfortunately, no standard mechanism is provided in the OAuth 2.0 base specification to implement this security check.
 >
-> When using the implicit flow, **the client application MUST also ensure that the access token was not issued
-> to another application to prevent [confused deputy attacks](https://stackoverflow.com/a/17439317/542757).**
-> With OpenID Connect, this can be done by using `response_type=id_token token` and checking the `aud` claim
-> of the JWT identity token, that must correspond or contain the `client_id` of the client application.
+> This is not a problem in the OpenID Connect version of the implicit flow as the `aud` claim returned in the cryptographically-signed
+> JWT identity token can be used to check whether it corresponds to the `client_id` of the client application and detect such attacks.

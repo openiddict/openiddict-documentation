@@ -1,4 +1,4 @@
-# Web providers
+# Web providers <Badge type="warning" text="client" />
 
 > [!IMPORTANT]
 > This page focuses on configuring the OpenIddict client to use an existing provider. For more information on how to contribute a new

@@ -1,4 +1,4 @@
-# Implementing token validation in your APIs
+# Implementing token validation in your APIs <Badge type="tip" text="validation" />
 
 > [!NOTE]
 > This guide assumes you're using ASP.NET Core to host your APIs. For samples showing how to use the OpenIddict validation feature in
@@ -142,4 +142,5 @@ If you don't want to start from one of the recommended samples, you'll need to:
     >
     > Note: this approach is not recommended in applications configured to support both cookie and token authentication.
 
-Recommended read: [Creating your own server instance](creating-your-own-server-instance.md).
+> [!TIP]
+> Recommended read: [Creating your own server instance](creating-your-own-server-instance.md).

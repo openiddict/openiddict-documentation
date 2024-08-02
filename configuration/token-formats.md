@@ -1,4 +1,4 @@
-# Token formats
+# Token formats <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 > [!TIP]
 > In OpenIddict 3.0+, the ability to revoke a token is not tied to the token format and doesn't require enabling reference tokens:

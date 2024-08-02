@@ -1,4 +1,4 @@
-# Contributing a new Web provider
+# Contributing a new Web provider <Badge type="warning" text="client" />
 
 > [!IMPORTANT]
 > This page focuses on implementing a new Web provider that is not yet supported by OpenIddict. For more

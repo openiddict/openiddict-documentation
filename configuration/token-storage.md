@@ -1,4 +1,4 @@
-# Token storage
+# Token storage <Badge type="info" text="core" /><Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 To keep track of all the tokens produced by its client and server features, OpenIddict creates a token entry in the database for each generated token.
 A token entry contains metadata like the subject of the token, the client identifier of the application it was issued to or its creation and expiration dates.
