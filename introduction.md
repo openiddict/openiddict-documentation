@@ -61,9 +61,8 @@ deliberately don't depend on ASP.NET Core and only contain generic logic that ca
 companion packages like `OpenIddict.Client.AspNetCore` or `OpenIddict.Client.Owin` are provided to support integrating with a specific host.
 
 For the same reason, the persistence logic is not tied to a specific ORM or database: while
-**[Entity Framework Core](https://www.nuget.org/packages/OpenIddict.EntityFrameworkCore)**,
-**[Entity Framework 6.x](https://www.nuget.org/packages/OpenIddict.EntityFramework)** and **[MongoDB](https://www.nuget.org/packages/OpenIddict.MongoDb)**
-are supported out-of-the-box, custom stores can also be implemented to support any other provider.
+**[Entity Framework Core](/integrations/entity-framework-core.md)**, **[Entity Framework 6.x](/integrations/entity-framework.md)** and
+**[MongoDB](/integrations/mongodb.md)** are supported out-of-the-box, custom stores can also be implemented to support any other provider.
 
 ### User authentication
 
@@ -72,8 +71,8 @@ and leaves user authentication up to the implementer: OpenIddict can be natively
 federated or Integrated Windows Authentication (NTLM/Kerberos). While convenient, using a membership stack like ASP.NET Core Identity is not required.
 
 > [!TIP]
-> In ASP.NET and ASP.NET Core, integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a controller action,
-> in a Razor Page, in a Web Form or in a minimal API handler or, for more complex scenarios, by directly using its advanced events model.
+> When used with ASP.NET or ASP.NET Core, integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a
+> controller action, in a Razor Page, in a Web Form or in a minimal API handler or, for more complex scenarios, by directly using its advanced events model.
 
 ### Pass-through support
 
