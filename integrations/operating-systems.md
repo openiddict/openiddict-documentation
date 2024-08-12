@@ -26,13 +26,15 @@ care of starting the authorization/logout process and handling the callbacks pos
 
 ## Supported platforms
 
-OpenIddict 5.8 supports the following operating systems:
-  - Android 5.0+ (Android API 21+)
-  - iOS 12.0+
+OpenIddict 5.7 supports the following operating systems:
   - Linux
-  - macOS 10.15+
-  - Mac Catalyst 13.1+
   - Windows 7 SP1
+
+Support for mobile platforms will be introduced in OpenIddict 5.8:
+ - Android 5.0+ (Android API 21+)
+ - iOS 12.0+
+ - macOS 10.15+
+ - Mac Catalyst 13.1+
 
 > [!IMPORTANT]
 > The `OpenIddict.Client.SystemIntegration` package doesn't depend on a specific application model and has been designed to be usable in most types of applications.
