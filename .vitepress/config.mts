@@ -102,12 +102,22 @@ export default defineConfig({
       },
       "/integrations/": {
         items: [
-          { text: "ASP.NET Core", link: "/integrations/aspnet-core" },
-          { text: "ASP.NET Core Data Protection", link: "/integrations/aspnet-core-data-protection" },
-          { text: "Entity Framework", link: "/integrations/entity-framework" },
-          { text: "Entity Framework Core", link: "/integrations/entity-framework-core" },
-          { text: "MongoDB", link: "/integrations/mongodb" },
+          {
+            text: "Web hosts",
+            items: [
+              { text: "ASP.NET Core", link: "/integrations/aspnet-core" }
+            ]
+          },
+          {
+            text: "Object-relational mappers and databases",
+            items: [
+              { text: "Entity Framework", link: "/integrations/entity-framework" },
+              { text: "Entity Framework Core", link: "/integrations/entity-framework-core" },
+              { text: "MongoDB", link: "/integrations/mongodb" }
+            ]
+          },
           { text: "Quartz.NET", link: "/integrations/quartz" },
+          { text: "Operating systems", link: "/integrations/operating-systems" },
           { text: "System.Net.Http", link: "/integrations/system-net-http" },
           { text: "Web providers", link: "/integrations/web-providers" },
           {

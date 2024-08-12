@@ -11,12 +11,12 @@ named `OpenIddict.Client.SystemNetHttp` and `OpenIddict.Validation.SystemNetHttp
 ## Basic configuration <Badge type="warning" text="client" /><Badge type="tip" text="validation" />
 
 To configure the `System.Net.Http` integration, you'll need to:
-  - **Reference the `OpenIddict.Client.UseSystemNetHttp` and/or `OpenIddict.Validation.UseSystemNetHttp` packages**
+  - **Reference the `OpenIddict.Client.SystemNetHttp` and/or `OpenIddict.Validation.SystemNetHttp` packages**
   (depending on whether you need the client and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.UseSystemNetHttp" Version="5.7.0" />
-  <PackageReference Include="OpenIddict.Validation.UseSystemNetHttp" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Client.SystemNetHttp" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="5.7.0" />
   ```
 
   - **Call `UseSystemNetHttp()` for each OpenIddict feature (client and validation) you want to add**:

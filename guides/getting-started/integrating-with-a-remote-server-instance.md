@@ -231,10 +231,11 @@ If you don't want to start from one of the recommended samples, you'll need to:
 > [!TIP]
 > For more information on the well-known services supported out-of-the-box by the OpenIddict client, read [Web providers](/integrations/web-providers.md).
 
-## Implement an interactive OAuth 2.0/OpenID Connect client in a desktop application:
+## Implement an interactive OAuth 2.0/OpenID Connect client in a mobile or desktop application:
 
-**To implement an interactive OAuth 2.0/OpenID Connect client in a desktop application, the simplest option is to clone
+**To implement an interactive OAuth 2.0/OpenID Connect client in a mobile or desktop application, the simplest option is to clone
 one of the official samples** from the [openiddict-samples repository](https://github.com/openiddict/openiddict-samples).
 
-For more information on how to use the `OpenIddict.Client.SystemIntegration` package on Linux and Windows, read
-[Introducing system integration support for the OpenIddict client](https://kevinchalet.com/2023/02/27/introducing-system-integration-support-for-the-openiddict-client/).
+> [!TIP]
+> For more information on how to use the OpenIddict client on Android, iOS, Linux, macOS, Mac Catalyst
+> and Windows, read [Operating systems integration](/integrations/operating-systems.md).
