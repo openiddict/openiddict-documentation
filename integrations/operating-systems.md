@@ -293,7 +293,7 @@ To configure the operating system integration, you'll need to:
   - **Reference the `OpenIddict.Client.SystemIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.SystemIntegration" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Client.SystemIntegration" Version="5.7.1" />
   ```
 
   - **Call `UseSystemIntegration()` in the client options**:

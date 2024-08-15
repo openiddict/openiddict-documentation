@@ -18,7 +18,7 @@ in web and desktop applications. If you want to use a non-interactive flow like 
   - **Update your `.csproj` file** to reference the latest `OpenIddict` package:
 
     ```xml
-    <PackageReference Include="OpenIddict" Version="5.7.0" />
+    <PackageReference Include="OpenIddict" Version="5.7.1" />
     ```
 
   - **Configure the OpenIddict client services** in `Program.cs` (or `Startup.cs` if you use the regular ASP.NET Core web host):
@@ -72,8 +72,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict.AspNetCore` and `OpenIddict.EntityFrameworkCore` packages:
 
   ```xml
-  <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.0" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.1" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.7.1" />
   ```
 
   - **Configure the OpenIddict core services** in `Program.cs` (or `Startup.cs`, depending on whether you're using the minimal host or the regular host):

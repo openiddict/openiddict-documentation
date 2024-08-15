@@ -153,7 +153,7 @@ To configure the `System.Net.Http` integration, you'll need to:
   - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="5.7.0" />
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="5.7.1" />
   ```
 
   - **Call `UseWebProviders()` in the client options**:
