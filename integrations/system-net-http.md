@@ -123,7 +123,7 @@ services.AddOpenIddict()
 
 On .NET 8.0 and higher, OpenIddict uses a `ResiliencePipeline<HttpResponseMessage>` instead of an `IAsyncPolicy<HttpResponseMessage>`
 to deal with transient HTTP errors (failed HTTP requests are retried up to 4 times).  While the default resilience pipeline is appropriate
-for most applications, the default resilience pipeline can be overridden using the `SetHttpErrorPolicy()` API:
+for most applications, the default resilience pipeline can be overridden using the `SetHttpResiliencePipeline()` API:
 
 ```csharp
 services.AddOpenIddict()
@@ -174,7 +174,7 @@ services.AddOpenIddict()
     });
 ```
 
-The OpenIddict client integration also allows configured a provider-specific delegate:
+The OpenIddict client integration also allows configuring a provider-specific delegate:
 
 ```csharp
 services.AddOpenIddict()
@@ -222,7 +222,7 @@ services.AddOpenIddict()
     });
 ```
 
-The OpenIddict client integration also allows configured a provider-specific delegate:
+The OpenIddict client integration also allows configuring a provider-specific delegate:
 
 ```csharp
 services.AddOpenIddict()
