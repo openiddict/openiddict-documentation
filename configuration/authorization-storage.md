@@ -136,7 +136,7 @@ In the same vein, ad-hoc authorizations are also created when a refresh token is
 
 ## Enabling authorization entry validation at the API level <Badge type="tip" text="validation" />
 
-**For performance reasons, OpenIddict 3.0 doesn't check, by default, the status of an authorization entry when receiving an API request**: access tokens are considered
+**For performance reasons, OpenIddict 3.0+ doesn't check, by default, the status of an authorization entry when receiving an API request**: access tokens are considered
 valid even if the attached authorization was revoked. For scenarios that require immediate authorization revocation, the OpenIddict validation handler can be configured
 to enforce authorization entry validation for each API request:
 

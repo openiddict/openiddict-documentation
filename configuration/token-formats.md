@@ -19,7 +19,7 @@ To protect against token substitution and confused deputy attacks, **OpenIddict 
 This mechanism replaces the private `token_usage` claim used for the same purpose in previous versions of OpenIddict.
 
 As required by the [JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens specification](https://datatracker.ietf.org/doc/html/rfc9068),
-**access tokens produced by OpenIddict 3.0 are always issued with a `"typ": "at+jwt"` header** while identity tokens still use `"typ": "JWT"` for backward compatibility.
+**access tokens produced by OpenIddict 3.0+ are always issued with a `"typ": "at+jwt"` header** while identity tokens still use `"typ": "JWT"` for backward compatibility.
 Other types of tokens – only accepted by OpenIddict's own endpoints – use private token types prefixed by `oi_`.
 
 ### Disabling JWT access token encryption
