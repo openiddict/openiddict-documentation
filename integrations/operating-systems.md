@@ -82,15 +82,15 @@ The OpenIddict Android integration requires targeting `net8.0-android34.0` (or h
 
 ### iOS
 
-The OpenIddict iOS integration requires targeting `net8.0-ios17.2` (or higher) but can be used in any application running on iOS 12.0+.
+The OpenIddict iOS integration requires targeting `net8.0-ios17.5` (or higher) but can be used in any application running on iOS 12.0+.
 
 ### Mac Catalyst
 
-The OpenIddict Mac Catalyst integration requires targeting `net8.0-maccatalyst17.2` (or higher) but can be used in any application running on Mac Catalyst 13.1+.
+The OpenIddict Mac Catalyst integration requires targeting `net8.0-maccatalyst17.5` (or higher) but can be used in any application running on Mac Catalyst 13.1+.
 
 ### macOS
 
-The OpenIddict macOS integration requires targeting `net8.0-macos14.2` (or higher) but can be used in any application running on macOS 10.15+.
+The OpenIddict macOS integration requires targeting `net8.0-macos14.5` (or higher) but can be used in any application running on macOS 10.15+.
 
 ### Windows
 
