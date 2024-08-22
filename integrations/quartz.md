@@ -6,7 +6,7 @@ To configure OpenIddict to use Quartz.NET to perform automated cleanup tasks, yo
   - **Reference the `OpenIddict.Quartz` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Quartz" Version="5.7.1" />
+  <PackageReference Include="OpenIddict.Quartz" Version="5.8.0" />
   ```
 
   - **Register the Quartz.NET services and configure it to use dependency injection and an in-memory store**:

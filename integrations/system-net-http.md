@@ -15,8 +15,8 @@ To configure the `System.Net.Http` integration, you'll need to:
   (depending on whether you need the client and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.SystemNetHttp" Version="5.7.1" />
-  <PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="5.7.1" />
+  <PackageReference Include="OpenIddict.Client.SystemNetHttp" Version="5.8.0" />
+  <PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="5.8.0" />
   ```
 
   - **Call `UseSystemNetHttp()` for each OpenIddict feature (client and validation) you want to add**:

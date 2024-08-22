@@ -12,7 +12,7 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Reference the `OpenIddict.AspNetCore` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.1" />
+  <PackageReference Include="OpenIddict.AspNetCore" Version="5.8.0" />
   ```
 
   - **Configure the OpenIddict validation services** in `Startup.ConfigureServices`:

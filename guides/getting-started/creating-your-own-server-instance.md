@@ -16,8 +16,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict.AspNetCore` and `OpenIddict.EntityFrameworkCore` packages:
 
   ```xml
-  <PackageReference Include="OpenIddict.AspNetCore" Version="5.7.1" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.7.1" />
+  <PackageReference Include="OpenIddict.AspNetCore" Version="5.8.0" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.8.0" />
   ```
 
   - **Register your Entity Framework Core database context and configure the OpenIddict core services** in `Program.cs`
