@@ -70,19 +70,16 @@ Unlike other solutions, **OpenIddict exclusively focuses on the OAuth 2.0/OpenID
 and leaves user authentication up to the implementer: OpenIddict can be natively used with any form of user authentication like password, token,
 federated or Integrated Windows Authentication (NTLM/Kerberos). While convenient, using a membership stack like ASP.NET Core Identity is not required.
 
-> [!TIP]
-> When used with ASP.NET or ASP.NET Core, integration with OpenIddict is typically done by enabling the pass-through mode to handle requests in a
-> controller action, in a Razor Page, in a Web Form or in a minimal API handler or, for more complex scenarios, by directly using its advanced events model.
-
 ### Pass-through support
 
-As with `OAuthAuthorizationServerMiddleware`, the OpenIddict server allows handling authorization, logout and token requests in custom controller actions or
+Similarly to `OAuthAuthorizationServerMiddleware`, the OpenIddict server allows handling authorization, logout and token requests in custom controller actions or
 any other middleware able to hook into the ASP.NET Core or OWIN request processing pipeline. In this case, OpenIddict will always validate incoming requests
 first (e.g by ensuring the mandatory parameters are present and valid) before allowing the rest of the pipeline to be invoked: should any validation error occur,
 OpenIddict will automatically reject the request before it reaches user-defined controller actions or custom middleware.
 
 The same exact concept also exists in the OpenIddict client stack, where the pass-through mode can be used to handle callbacks/redirection requests in
-custom code and apply any logic needed by the application (e.g filtering claims, storing the identity in an authentication cookie, etc.). 
+custom code (for instance, a controller action, a Razor Page, a Web Form or a minimal API handler) and apply any logic needed by the application
+(e.g filtering claims, storing the identity in an authentication cookie, etc.). 
 
 ```csharp
 builder.Services.AddOpenIddict()

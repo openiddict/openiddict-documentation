@@ -134,7 +134,7 @@ While the OpenIddict Web providers share some similarities with the
    URIs of a provider when possible, making the OpenIddict Web providers more robust and more future-proof.
 
  - While the aspnet-contrib providers require targeting the latest ASP.NET Core version, **the OpenIddict Web providers can be
-   used in any supported version**. They can also be used in ASP.NET 4.6.1+ websites and Windows/Linux desktop applications.
+   used in any supported version**. They can also be used in ASP.NET 4.6.1+ websites and mobile/desktop applications.
 
  - **OpenIddict uses `Microsoft.Extensions.Http.Polly` (or `Microsoft.Extensions.Http.Resilience` on .NET 8+)
    to make backchannel HTTP communications less prone to transient network errors**.
@@ -333,8 +333,8 @@ public async Task<ActionResult> LogInWithGitHubInstanceA(string returnUrl)
 
 ### Configure a different display name that will be visible by the users
 
-When using in an ASP.NET Core application using ASP.NET Core Identity and its default UI, the login page automatically
-lists the external providers configured in the application, including the OpenIddict Web providers.
+When using ASP.NET Core Identity and its default UI, the login page automatically lists the
+external providers configured in the application, including the OpenIddict Web providers.
 
 While OpenIddict automatically assigns a default display name, that value can be overridden using the `SetProviderDisplayName()` API:
 
