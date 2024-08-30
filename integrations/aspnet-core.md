@@ -199,6 +199,15 @@ To enable this feature, you can use the dedicated `EnableStatusCodePagesIntegrat
 
 ```csharp
 services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.UseAspNetCore()
+               .EnableStatusCodePagesIntegration();
+    });
+```
+
+```csharp
+services.AddOpenIddict()
     .AddServer(options =>
     {
         options.UseAspNetCore()
@@ -227,6 +236,78 @@ services.AddOpenIddict()
 >  });
 >  ```
 
+Once enabled, create an error controller that will be invoked to handle errored responses:
+
+```csharp
+public class ErrorController : Controller
+{
+    [HttpGet, HttpPost, Route("~/error")]
+    public IActionResult Error()
+    {
+        // If the error didn't originate from the OpenIddict client, display a generic error page.
+        var response = HttpContext.GetOpenIddictClientResponse();
+        if (response is null)
+        {
+            return View(new ErrorViewModel());
+        }
+
+        return View(new ErrorViewModel
+        {
+            Error = response.Error,
+            ErrorDescription = response.ErrorDescription
+        });
+    }
+}
+```
+
+```csharp
+public class ErrorController : Controller
+{
+    [HttpGet, HttpPost, Route("~/error")]
+    public IActionResult Error()
+    {
+        // If the error didn't originate from the OpenIddict server, display a generic error page.
+        var response = HttpContext.GetOpenIddictServerResponse();
+        if (response is null)
+        {
+            return View(new ErrorViewModel());
+        }
+
+        return View(new ErrorViewModel
+        {
+            Error = response.Error,
+            ErrorDescription = response.ErrorDescription
+        });
+    }
+}
+```
+
+> [!TIP]
+> If you're using both the OpenIddict client and the OpenIddict server in the same application, you can configure both
+> stacks to use the status code pages middleware. In this case, you'll need to resolve the error response using both
+> `HttpContext.GetOpenIddictClientResponse()` and `HttpContext.GetOpenIddictServerResponse()`:
+>
+> ```csharp
+> public class ErrorController : Controller
+> {
+>     [HttpGet, HttpPost, Route("~/error")]
+>     public IActionResult Error()
+>     {
+>         // If the error didn't originate from the OpenIddict client or server, display a generic error page.
+>         var response = HttpContext.GetOpenIddictClientResponse() ?? HttpContext.GetOpenIddictServerResponse();
+>         if (response is null)
+>         {
+>             return View(new ErrorViewModel());
+>         }
+> 
+>         return View(new ErrorViewModel
+>         {
+>             Error = response.Error,
+>             ErrorDescription = response.ErrorDescription
+>         });
+>     }
+> }
+> ```
 
 ### Authorization and logout request caching <Badge type="danger" text="server" />
 
