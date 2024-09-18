@@ -109,6 +109,12 @@ export default defineConfig({
             ]
           },
           {
+            text: "Token formats",
+            items: [
+              { text: "ASP.NET Core Data Protection", link: "/integrations/aspnet-core-data-protection" }
+            ]
+          },
+          {
             text: "Object-relational mappers and databases",
             items: [
               { text: "Entity Framework", link: "/integrations/entity-framework" },
