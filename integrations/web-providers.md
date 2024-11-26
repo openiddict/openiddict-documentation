@@ -113,6 +113,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | World ID                             | https://docs.worldcoin.org/reference/sign-in                                                                        |
 | Xero                                 | https://developer.xero.com/documentation/xero-app-store/app-partner-guides/sign-in/                                 |
 | Yahoo                                | https://developer.yahoo.com/oauth2/guide/openid_connect/                                                            |
+| Zendesk                              | https://support.zendesk.com/hc/en-us/articles/4408845965210-Using-OAuth-authentication-with-your-application        |
 | Zoho                                 | https://www.zoho.com/accounts/protocol/oauth.html                                                                   |
 | Zoom                                 | https://developers.zoom.us/docs/integrations/oauth/                                                                 |
 
