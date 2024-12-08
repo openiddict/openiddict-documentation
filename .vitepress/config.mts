@@ -66,7 +66,8 @@ export default defineConfig({
             items: [
               { text: "Migration from 2.0 to 3.0", link: "/guides/migration/20-to-30" },
               { text: "Migration from 3.0 to 4.0", link: "/guides/migration/30-to-40" },
-              { text: "Migration from 4.0 to 5.0", link: "/guides/migration/40-to-50" }
+              { text: "Migration from 4.0 to 5.0", link: "/guides/migration/40-to-50" },
+              { text: "Migration from 5.0 to 6.0", link: "/guides/migration/50-to-60" }
             ]
           },
           {
