@@ -46,6 +46,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | DocuSign                             | https://developers.docusign.com/platform/auth/authcode/authcode-get-token/                                          |
 | Dropbox                              | https://developers.dropbox.com/oidc-guide                                                                           |
 | Epic Games                           | https://dev.epicgames.com/docs/web-api-ref/authentication                                                           |
+| EVE Online                           | https://docs.esi.evetech.net/docs/sso/sso_authorization_flow.html                                                   |
 | Exact Online                         | https://support.exactonline.com/community/s/knowledge-base#All-All-DNO-Content-oauth-eol-oauth-dev-impleovervw      |
 | Facebook                             | https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow                                     |
 | FACEIT                               | https://developers.faceit.com/docs/auth/oauth2                                                                      |
