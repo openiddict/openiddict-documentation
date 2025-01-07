@@ -78,7 +78,9 @@ If you don't want to start from one of the recommended samples, you'll need to:
   app.UseRouting();
   app.UseCors();
 
-  app.UseAuthentication();
+  app.UseForwardedHeaders();
+
+  app.UseAuthentication(); // Should be after the app.UseForwardedHeaders(); in the case you rely on headers behind a proxy for https withing your service e.g nginx
   app.UseAuthorization();
 
   app.UseEndpoints(options =>
