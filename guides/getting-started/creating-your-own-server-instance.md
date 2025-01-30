@@ -34,25 +34,26 @@ If you don't want to start from one of the recommended samples, you'll need to:
       options.UseOpenIddict();
   });
 
-  services.AddOpenIddict()
-
+  services.AddOpenIddict(openIddictOptions =>
+  {
       // Register the OpenIddict core components.
-      .AddCore(options =>
+      openIddictOptions.AddCore(options =>
       {
           // Configure OpenIddict to use the Entity Framework Core stores and models.
           // Note: call ReplaceDefaultEntities() to replace the default entities.
           options.UseEntityFrameworkCore()
                  .UseDbContext<ApplicationDbContext>();
       });
+  });
   ```
 
   - **Configure the OpenIddict server services**:
 
   ```csharp
-  services.AddOpenIddict()
-
+  services.AddOpenIddict(openIddictOptions =>
+  {
       // Register the OpenIddict server components.
-      .AddServer(options =>
+      openIddictOptions.AddServer(options =>
       {
           // Enable the token endpoint.
           options.SetTokenEndpointUris("connect/token");
@@ -65,9 +66,12 @@ If you don't want to start from one of the recommended samples, you'll need to:
                  .AddDevelopmentSigningCertificate();
 
           // Register the ASP.NET Core host and configure the ASP.NET Core options.
-          options.UseAspNetCore()
-                 .EnableTokenEndpointPassthrough();
+          options.UseAspNetCore(serverOptions =>
+          {
+                 serverOptions.EnableTokenEndpointPassthrough();
+          });
       });
+  });
   ```
 
   - **Make sure the ASP.NET Core authentication middleware is correctly registered at the right place**:
