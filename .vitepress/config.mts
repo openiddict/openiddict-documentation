@@ -90,6 +90,7 @@ export default defineConfig({
           { text: "Claim destinations", link: "/configuration/claim-destinations" },
           { text: "Encryption and signing credentials", link: "/configuration/encryption-and-signing-credentials" },
           { text: "Proof Key for Code Exchange", link: "/configuration/proof-key-for-code-exchange" },
+          { text: "Pushed Authorization Requests", link: "/configuration/pushed-authorization-requests" },
           { text: "Token formats", link: "/configuration/token-formats" },
           { text: "Token storage", link: "/configuration/token-storage" },
           {

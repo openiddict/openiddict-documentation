@@ -312,8 +312,8 @@ public class ErrorController : Controller
 ### Authorization and logout request caching <Badge type="danger" text="server" />
 
 To simplify flowing large authorization or logout requests, the OpenIddict server ASP.NET Core integration includes a built-in feature
-that allows generating a unique `request_id` and caching the received requests in an `IDistributedCache`: when this feature is enabled,
-an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the cached entry is removed
+that allows generating a unique `request_uri` and caching the received requests in a request token persisted in OpenIddict's tokens table: when this feature is enabled,
+an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the token entry is redeemed
 once the authorization or logout demand has been completed by the user.
 
 To enable this feature, you need to use the dedicated `EnableAuthorizationRequestCaching()` and/or `EnableLogoutEndpointPassthrough()` APIs:
@@ -322,17 +322,10 @@ To enable this feature, you need to use the dedicated `EnableAuthorizationReques
 services.AddOpenIddict()
     .AddServer(options =>
     {
-        options.UseAspNetCore()
-               .EnableAuthorizationRequestCaching()
+        options.EnableAuthorizationRequestCaching()
                .EnableLogoutEndpointPassthrough();
     });
 ```
-
-> [!WARNING]
-> When hosting your application on multiple servers, you'll need to make sure you're using a proper `IDistributedCache`
-> implementation: the default one uses an in-memory cache under the hood won't work well for distributed scenarios.
->
-> For more information, read [Distributed caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed).
 
 ### Authentication scheme forwarding <Badge type="warning" text="client" />
 
