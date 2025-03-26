@@ -528,6 +528,36 @@ update the `FormatNonStandardScopeParameter` event handler present in
 > If you're not familiar with the OpenIddict events model, open a ticket in the
 > [`openiddict-core`](https://github.com/openiddict/openiddict-core/issues) repository to get help.
 
+## Add the ASCII art header
+
+To make providers easier to locate in the XML file, an ASCII art header containing the provider name MUST be added as an XML comment before each provider definition:
+
+```xml
+<!--
+                                ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                                ██ ▄▄▄ ██ ████ ▄▄▀██ ▄▄▀██ █▀▄██
+                                ██▄▄▄▀▀██ ████ ▀▀ ██ █████ ▄▀███
+                                ██ ▀▀▀ ██ ▀▀ █ ██ ██ ▀▀▄██ ██ ██
+                                ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+-->
+
+<Provider Name="Slack" Id="57c5ef63-1fbf-47d2-b4a3-432feae2eafc"
+          Documentation="https://api.slack.com/authentication/sign-in-with-slack">
+  <Environment Issuer="https://slack.com/" />
+
+  <Setting PropertyName="Team" ParameterName="team" Type="String" Required="false"
+           Description="The value used as the 'team' parameter (allowing to bypass the login screen if the user is already authenticated in the specified workspace)" />
+</Provider>
+```
+
+The ASCII art header can be easily generated using the online [TextFancy.com](https://textfancy.com/text-art/) tool and by choosing the `Small Negative` font.
+
+> [!WARNING]
+> When using the TextFancy generator, **make sure to always add a space after the provider name** to ensure it renders correctly.
+
+> [!NOTE]
+> Once pasted in the XML file, **make sure the ASCII art header is correctly centered** relative to the other headers already present in the file.
+
 ## Send a pull request against the `openiddict-core` repository
 
 Once you've been able to confirm that your provider works correctly, all you need to do is send a PR so that it can be added to
