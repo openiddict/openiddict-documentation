@@ -6,14 +6,14 @@
 
 To simplify integrating with well-known OAuth 2.0 or OpenID Connect providers, the OpenIddict client ships with a companion
 package named [`OpenIddict.Client.WebIntegration`](https://www.nuget.org/packages/OpenIddict.Client.WebIntegration)
-that supports 90+ popular services like Amazon, Discord, GitHub, Microsoft or Sign in with Apple.
+that supports 100+ popular services like Amazon, Discord, GitHub, Microsoft or Sign in with Apple.
 
 > [!TIP]
 > The OpenIddict client and its web providers can be used independently of the OpenIddict server feature.
 
 ## Supported platforms
 
-All the providers included in this package can be used in any web application – ASP.NET 4.6.1+ or ASP.NET Core 2.1+ – and any desktop
+All the providers included in this package can be used in any web application – ASP.NET 4.6.2+ or ASP.NET Core 2.1+ – and any desktop
 or mobile application targeting a platform supported by the OpenIddict client (including Android, iOS, Linux, macOS and Windows).
 
 ## Supported services
@@ -23,6 +23,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Active Directory Federation Services | https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios |
 | Adobe                                | https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/                        |
 | Airtable                             | https://airtable.com/developers/web/api/oauth-reference                                                             |
+| Alibaba Cloud (Aliyun)               | https://www.alibabacloud.com/help/en/ram/user-guide/oauth-management/                                               |
 | Amazon                               | https://developer.amazon.com/docs/login-with-amazon/authorization-code-grant.html                                   |
 | Amazon Cognito                       | https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-reference.html                                    |
 | ArcGIS Online                        | https://developers.arcgis.com/documentation/mapping-apis-and-services/security/oauth-2.0/                           |
@@ -66,11 +67,13 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Kroger                               | https://developer.kroger.com/documentation/public/security/customer                                                 |
 | Lark (Feishu)                        | https://open.larksuite.com/document/common-capabilities/sso/web-application-sso/web-app-overview?lang=en-US         |
 | Lichess                              | https://lichess.org/api#tag/OAuth                                                                                   |
+| Linear                               | https://developers.linear.app/docs/oauth/authentication                                                             |
 | LinkedIn                             | https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2                |
 | Mailchimp                            | https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/#oauth-2-workflow-overview                |
 | Mastodon                             | https://docs.joinmastodon.org/spec/oauth/                                                                           |
 | Meetup                               | https://www.meetup.com/api/authentication/#p01-using-oauth2-section                                                 |
 | Microsoft Account/Entra ID           | https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc                                   |
+| Miro                                 | https://developers.miro.com/docs/getting-started-with-oauth                                                         |
 | Mixcloud                             | https://www.mixcloud.com/developers/#authorization                                                                  |
 | MusicBrainz                          | https://musicbrainz.org/doc/Development/OAuth2                                                                      |
 | Nextcloud                            | https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/oauth2.html                              |
@@ -104,12 +107,13 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Trovo                                | https://developer.trovo.live/docs/APIs.html#_3-authentication                                                       |
 | Tumblr                               | https://www.tumblr.com/docs/en/api/v2#oauth2-authorization                                                          |
 | Twitch                               | https://dev.twitch.tv/docs/authentication                                                                           |
-| Twitter                              | https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code                                   |
+| Twitter (X)                          | https://docs.x.com/resources/fundamentals/authentication/oauth-2-0/authorization-code                               |
 | Typeform                             | https://www.typeform.com/developers/get-started/applications/                                                       |
 | Verimi                               | https://docs.verimi.de/#/oidc/oidc_overview                                                                         |
 | Vimeo                                | https://developer.vimeo.com/api/authentication                                                                      |
 | VK ID                                | https://id.vk.com/about/business/go/docs/en/vkid/latest/oauth-vk                                                    |
 | Webex                                | https://developer.webex.com/docs/login-with-webex                                                                   |
+| Webflow                              | https://developers.webflow.com/v2.0.0/data/reference/oauth-app                                                      |
 | Weibo                                | https://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E                                  |
 | Wikimedia                            | https://api.wikimedia.org/wiki/Authentication                                                                       |
 | WordPress                            | https://developer.wordpress.com/docs/oauth2/                                                                        |
@@ -139,7 +143,7 @@ While the OpenIddict Web providers share some similarities with the
    URIs of a provider when possible, making the OpenIddict Web providers more robust and more future-proof.
 
  - While the aspnet-contrib providers require targeting the latest ASP.NET Core version, **the OpenIddict Web providers can be
-   used in any supported version**. They can also be used in ASP.NET 4.6.1+ websites and mobile/desktop applications.
+   used in any supported version**. They can also be used in ASP.NET 4.6.2+ websites and mobile/desktop applications.
 
  - **OpenIddict uses `Microsoft.Extensions.Http.Polly` (or `Microsoft.Extensions.Http.Resilience` on .NET 8+)
    to make backchannel HTTP communications less prone to transient network errors**.

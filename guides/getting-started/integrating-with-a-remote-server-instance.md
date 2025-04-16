@@ -1,7 +1,7 @@
 # Integrating with a remote server instance <Badge type="warning" text="client" />
 
 The OpenIddict client is a universal OAuth 2.0/OpenID Connect .NET client that can be used in both web applications
-(ASP.NET 4.6.1+ or ASP.NET Core 2.1+ required) or desktop applications (.NET 4.6.1+ or .NET 6.0+ required).
+(ASP.NET 4.6.2+ or ASP.NET Core 2.1+ required) or desktop applications (.NET 4.6.2+ or .NET 6.0+ required).
 
 > [!NOTE]
 > Most of the settings apply to both web and desktop applications but interactive flows like the
