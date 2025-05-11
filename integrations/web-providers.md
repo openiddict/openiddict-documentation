@@ -39,6 +39,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Calendly                             | https://developer.calendly.com/api-docs/b3A6NTkxNDA5-get-authorization-code                                         |
 | ClassLink                            | https://help.classlink.com/s/topic/0TO1E0000009PVYWA2/api                                                           |
 | Clever                               | https://dev.clever.com/docs/oauth-oidc-overview                                                                     |
+| Contentful                           | https://www.contentful.com/developers/docs/extensibility/oauth/                                                     |
 | Dailymotion                          | https://developers.dailymotion.com/guides/platform-api-authentication/                                              |
 | Deezer                               | https://developers.deezer.com/api/oauth                                                                             |
 | DeviantArt                           | https://www.deviantart.com/developers/authentication                                                                |
@@ -52,6 +53,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Facebook                             | https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow                                     |
 | FACEIT                               | https://developers.faceit.com/docs/auth/oauth2                                                                      |
 | Fitbit                               | https://dev.fitbit.com/build/reference/web-api/developer-guide/authorization/                                       |
+| Genesys Cloud                        | https://developer.genesys.cloud/authorization/platform-auth/                                                        |
 | GitCode                              | https://docs.gitcode.com/en/docs/oauth/                                                                             |
 | Gitee                                | https://gitee.com/api/v5/oauth_doc#/                                                                                |
 | GitHub                               | https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps                               |
