@@ -36,6 +36,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Bitbucket                            | https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/                                    |
 | Bitly                                | https://dev.bitly.com/docs/getting-started/authentication/                                                          |
 | Box                                  | https://developer.box.com/guides/authentication/oauth2/oauth2-setup/                                                |
+| Bungie.net                           | https://github.com/Bungie-net/api/wiki/OAuth-Documentation                                                          |
 | Calendly                             | https://developer.calendly.com/api-docs/b3A6NTkxNDA5-get-authorization-code                                         |
 | ClassLink                            | https://help.classlink.com/s/topic/0TO1E0000009PVYWA2/api                                                           |
 | Clever                               | https://dev.clever.com/docs/oauth-oidc-overview                                                                     |
@@ -164,7 +165,7 @@ To configure the `System.Net.Http` integration, you'll need to:
   - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="6.2.1" />
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="6.4.0" />
   ```
 
   - **Call `UseWebProviders()` in the client options**:
