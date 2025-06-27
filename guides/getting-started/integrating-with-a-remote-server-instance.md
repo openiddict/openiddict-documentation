@@ -1,7 +1,7 @@
 # Integrating with a remote server instance <Badge type="warning" text="client" />
 
 The OpenIddict client is a universal OAuth 2.0/OpenID Connect .NET client that can be used in both web applications
-(ASP.NET 4.6.2+ or ASP.NET Core 2.1+ required) or desktop applications (.NET 4.6.2+ or .NET 6.0+ required).
+(ASP.NET 4.6.2+ or ASP.NET Core 2.3+ required) or desktop applications (.NET 4.6.2+ or .NET 6.0+ required).
 
 > [!NOTE]
 > Most of the settings apply to both web and desktop applications but interactive flows like the
@@ -18,7 +18,7 @@ in web and desktop applications. If you want to use a non-interactive flow like 
   - **Update your `.csproj` file** to reference the latest `OpenIddict` package:
 
     ```xml
-    <PackageReference Include="OpenIddict" Version="6.4.0" />
+    <PackageReference Include="OpenIddict" Version="7.0.0" />
     ```
 
   - **Configure the OpenIddict client services** in `Program.cs` (or `Startup.cs` if you use the regular ASP.NET Core web host):
@@ -72,8 +72,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict.AspNetCore` and `OpenIddict.EntityFrameworkCore` packages:
 
   ```xml
-  <PackageReference Include="OpenIddict.AspNetCore" Version="6.4.0" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="6.4.0" />
+  <PackageReference Include="OpenIddict.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="7.0.0" />
   ```
 
   - **Configure the OpenIddict core services** in `Program.cs` (or `Startup.cs`, depending on whether you're using the minimal host or the regular host):

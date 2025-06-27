@@ -1,30 +1,17 @@
 # ASP.NET Core integration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 Thanks to their native ASP.NET Core integrations, the client, server and validation features offered by OpenIddict can be used in any
-ASP.NET Core 2.1+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.
+ASP.NET Core 2.3+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.
 
 ## Supported versions
 
-| ASP.NET Core version | .NET runtime version |                                       |
+| ASP.NET Core version | .NET runtime version | Support status                        |
 |----------------------|----------------------|---------------------------------------|
-| ASP.NET Core 2.1     | .NET Framework 4.6.2 | :heavy_check_mark: (with limitations) |
-| ASP.NET Core 2.1     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
-| ASP.NET Core 2.1     | .NET Framework 4.8   | :heavy_check_mark:                    |
-| ASP.NET Core 2.1     | .NET Core 2.1        | :exclamation:                         |
-|                      |                      |                                       |
-| ASP.NET Core 3.1     | .NET Core 3.1        | :exclamation:                         |
-|                      |                      |                                       |
-| ASP.NET Core 5.0     | .NET 5.0             | :exclamation:                         |
-| ASP.NET Core 6.0     | .NET 6.0             | :heavy_check_mark:                    |
-| ASP.NET Core 7.0     | .NET 7.0             | :exclamation:                         |
+| ASP.NET Core 2.3     | .NET Framework 4.6.2 | :heavy_check_mark: (with limitations) |
+| ASP.NET Core 2.3     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
+| ASP.NET Core 2.3     | .NET Framework 4.8   | :heavy_check_mark:                    |
 | ASP.NET Core 8.0     | .NET 8.0             | :heavy_check_mark:                    |
 | ASP.NET Core 9.0     | .NET 9.0             | :heavy_check_mark:                    |
-
-> [!WARNING]
-> **ASP.NET Core 2.1 on .NET Core 2.1, ASP.NET Core 3.1, 5.0 and 7.0 are no longer supported by Microsoft. While OpenIddict can still be used
-> on these platforms thanks to its .NET Standard 2.0 compatibility, users are strongly encouraged to migrate to ASP.NET Core 8.0 or 9.0**.
->
-> ASP.NET Core 2.1 on .NET Framework 4.6.2 (and higher) is still fully supported.
 
 > [!NOTE]
 > **The following features are not available when targeting .NET Framework 4.6.2**:
@@ -41,9 +28,9 @@ To configure the ASP.NET Core integration, you'll need to:
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="6.4.0" />
-  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="6.4.0" />
-  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="6.4.0" />
+  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.0.0" />
   ```
 
   - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:

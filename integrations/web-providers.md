@@ -13,7 +13,7 @@ that supports 100+ popular services like Amazon, Discord, GitHub, Microsoft or S
 
 ## Supported platforms
 
-All the providers included in this package can be used in any web application – ASP.NET 4.6.2+ or ASP.NET Core 2.1+ – and any desktop
+All the providers included in this package can be used in any web application – ASP.NET 4.6.2+ or ASP.NET Core 2.3+ – and any desktop
 or mobile application targeting a platform supported by the OpenIddict client (including Android, iOS, Linux, macOS and Windows).
 
 ## Supported services
@@ -79,6 +79,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Miro                                 | https://developers.miro.com/docs/getting-started-with-oauth                                                         |
 | Mixcloud                             | https://www.mixcloud.com/developers/#authorization                                                                  |
 | MusicBrainz                          | https://musicbrainz.org/doc/Development/OAuth2                                                                      |
+| NetSuite                             | https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_160077062690.html                             |
 | Nextcloud                            | https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/oauth2.html                              |
 | Notion                               | https://developers.notion.com/docs/authorization                                                                    |
 | Okta                                 | https://developer.okta.com/docs/reference/api/oidc/                                                                 |
@@ -165,7 +166,7 @@ To configure the `System.Net.Http` integration, you'll need to:
   - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="6.4.0" />
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="7.0.0" />
   ```
 
   - **Call `UseWebProviders()` in the client options**:
