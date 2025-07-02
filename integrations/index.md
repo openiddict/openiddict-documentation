@@ -10,3 +10,6 @@ Documentation for open-source integrations maintained by the OpenIddict communit
 Commercially supported components provided by Rock Solid Knowledge:
 - **[OpenIddict.AdminUI](https://www.openiddictcomponents.com/products/adminui?utm_source=openiddictgithubdocumentationadminui&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): The N°1 OpenIddict AdminUI tool. Provides a web portal and programmable API to manage your OpenIddict configuration and Users.
 - **[OpenIddict.SAML2P](https://www.openiddictcomponents.com/products/saml2p?utm_source=openiddictgithubdocumentationsaml&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): Ideal for enabling OpenIddict to act as a SAML Identity Provider (IDP) or a SAML Service Provider (SP).
+
+Others commercial products:
+- **[IdentitySuite](https://identitysuite.net)**, lightning-fast, turnkey OpenIddict-based solution supporting common OAuth 2.0/OpenID Connect flows. Manage users, applications, UI themes, and email templates through a unified Blazor interface—all in one place! Includes a free plan for small-scale use.
