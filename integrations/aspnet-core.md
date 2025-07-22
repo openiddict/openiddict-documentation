@@ -317,21 +317,19 @@ services.AddOpenIddict()
 
 ### Authentication scheme forwarding <Badge type="warning" text="client" />
 
-To simplify triggering authentication operations for a specific client registration, the OpenIddict client offers a built-in authentication scheme
-forwarding feature that allows using the provider name assigned to a client registration as an authentication scheme in ASP.NET Core:
+To simplify handling large authorization or end session process, the OpenIddict server ASP.NET Core integration includes a built-in feature
+that allows generating a unique `request_uri` and caching the received requests in a request token persisted in OpenIddict's tokens table: when this feature is enabled,
+an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the token entry is redeemed
+once the authorization or end session demand has been completed by the user.
 
-```csharp
-app.MapGet("challenge", () => Results.Challenge(properties: null, authenticationSchemes: [Providers.GitHub]));
-```
-
-This feature is enabled by default but can be disabled if necessary using `DisableAutomaticAuthenticationSchemeForwarding()`:
+To enable this feature, you need to use the dedicated `EnableAuthorizationRequestCaching()` and/or `EnableEndSessionEndpointPassthrough()` APIs:
 
 ```csharp
 services.AddOpenIddict()
-    .AddClient(options =>
+    .AddServer(options =>
     {
-        options.UseAspNetCore()
-               .DisableAutomaticAuthenticationSchemeForwarding();
+        options.EnableAuthorizationRequestCaching()
+               .EnableEndSessionEndpointPassthrough();
     });
 ```
 
