@@ -1,10 +1,20 @@
-import { defineConfig } from "vitepress"
+import { defineConfig } from "vitepress";
+import { transformerNotationMap } from "@shikijs/transformers";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "OpenIddict",
   description: "Documentation for the OpenIddict project",
   cleanUrls: true,
+  markdown: {
+    codeTransformers: [
+      transformerNotationMap({
+        classMap: { add: "diff add", remove: "diff remove" },
+        classActivePre: "has-diff",
+        matchAlgorithm: "v3",
+      }),
+    ]
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

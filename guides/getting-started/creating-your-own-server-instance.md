@@ -80,8 +80,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   app.UseRouting();
   app.UseCors();
 
-  app.UseAuthentication();
-  app.UseAuthorization();
+  app.UseAuthentication(); // [!code warning]
+  app.UseAuthorization(); // [!code warning]
 
   app.UseEndpoints(options =>
   {

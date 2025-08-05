@@ -74,8 +74,8 @@ To configure the ASP.NET Core integration, you'll need to:
 >  app.UseRouting();
 >  app.UseCors();
 >
->  app.UseAuthentication();
->  app.UseAuthorization();
+>  app.UseAuthentication(); // [!code warning]
+>  app.UseAuthorization(); // [!code warning]
 >
 >  app.UseEndpoints(options =>
 >  {
