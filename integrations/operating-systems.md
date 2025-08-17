@@ -26,12 +26,12 @@ care of starting the authorization/logout process and handling the callbacks pos
 
 ## Supported platforms
 
-OpenIddict 6.0+ supports the following operating systems:
+OpenIddict 7.0+ supports the following operating systems:
   - Android 5.0+ (Android API 21+)
-  - iOS 12.0+
+  - iOS 12.2+
   - Linux
-  - macOS 10.15+
-  - Mac Catalyst 13.1+
+  - macOS 12.0+
+  - Mac Catalyst 15.0+
   - Windows 7 SP1
 
 > [!IMPORTANT]
@@ -76,27 +76,33 @@ OpenIddict 6.0+ supports the following operating systems:
 
 ### Android
 
-The OpenIddict Android integration requires targeting `net8.0-android34.0` (or higher) but can be used in any application running on Android 5.0+ (Android API 21).
+The OpenIddict Android integration requires targeting `net8.0-android34.0` or `net9.0-android34.0`
+but can be used in any application running on Android 5.0+ (Android API 21).
 
 ### iOS
 
-The OpenIddict iOS integration requires targeting `net8.0-ios17.5` (or higher) but can be used in any application running on iOS 12.0+.
+The OpenIddict iOS integration requires targeting `net8.0-ios18.0` or `net9.0-ios18.0`
+but can be used in any application running on iOS 12.2+.
 
 ### Mac Catalyst
 
-The OpenIddict Mac Catalyst integration requires targeting `net8.0-maccatalyst17.5` (or higher) but can be used in any application running on Mac Catalyst 13.1+.
+The OpenIddict Mac Catalyst integration requires targeting `net8.0-maccatalyst18.0` or `net9.0-maccatalyst18.0`
+but can be used in any application running on Mac Catalyst 15.0+.
 
 ### macOS
 
-The OpenIddict macOS integration requires targeting `net8.0-macos14.5` (or higher) but can be used in any application running on macOS 10.15+.
+The OpenIddict macOS integration requires targeting `net8.0-macos15.0` or `net9.0-macos15.0`
+but can be used in any application running on macOS 10.15+.
 
 ### Windows
 
 The OpenIddict Windows integration can be used in any application running on Windows 7 SP1+ and is compatible with the following frameworks:
-  - `net461` (or higher)
-  - `uap10.0.17763` (or higher)
-  - `net6.0-windows7.0` (or higher)
-  - `net6.0-windows10.0.17763` (or higher)
+  - `net461` or higher.
+  - `uap10.0.17763` or higher.
+  - `net8.0-windows7.0`.
+  - `net9.0-windows7.0`.
+  - `net8.0-windows10.0.17763` or higher.
+  - `net9.0-windows10.0.17763` or higher.
 
 > [!IMPORTANT]
 > The ability to use the OpenIddict system integration package with a specific application model depends on the .NET runtime version and the Windows version:
@@ -106,49 +112,44 @@ The OpenIddict Windows integration can be used in any application running on Win
 > | Windows 7 SP1   | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 7 SP1   | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 7 SP1   | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
-> | Windows 7 SP1   | .NET 6.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
-> | Windows 7 SP1   | .NET 7.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 7 SP1   | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 7 SP1   | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 8.1     | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
-> | Windows 8.1     | .NET 6.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
-> | Windows 8.1     | .NET 7.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 8.1     | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Native/UAP      | :x:                | :x:                | :x:                | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 10 1507 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
-> | Windows 10 1507 | .NET 6.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
-> | Windows 10 1507 | .NET 7.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 10 1507 | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET Native/UAP      | :x:                | :x:                | :x:                | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 10 1809 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 10 1809 | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 10 1809 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
-> | Windows 10 1809 | .NET 6.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
-> | Windows 10 1809 | .NET 7.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 10 1809 | .NET 8.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
+> | Windows 10 1809 | .NET 9.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 10 1809 | .NET Native/UAP      | :x:                | :x:                | :x:                | :warning: | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 11 21H2 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 11 21H2 | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 11 21H2 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
-> | Windows 11 21H2 | .NET 6.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
-> | Windows 11 21H2 | .NET 7.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 11 21H2 | .NET 8.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
+> | Windows 11 21H2 | .NET 9.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 11 21H2 | .NET Native/UAP      | :x:                | :x:                | :x:                | :warning: | :x:       | :x:       |
 > 
 > > [!TIP]
-> > WinRT support is only offered when targeting `net461`, `uap10.0.17763` or `net6.0-windows10.0.17763`:
-> > the `net6.0-windows7.0` target framework moniker doesn't reference the WinRT APIs.
+> > WinRT support is only offered when targeting `net461`, `uap10.0.17763`, `net8.0-windows10.0.17763` or `net9.0-windows10.0.17763`:
+> > the `net8.0-windows7.0` and `net9.0-windows7.0` target framework monikers don't reference the WinRT APIs.
 > 
 > > [!WARNING]
-> > Microsoft officially stopped supporting Windows 7 in .NET 7.0. As such, applications that still need to be usable on Windows 7
-> > should probably stay on .NET Framework 4.8 (or .NET 6.0, but it should be noted that it will reach EoL in November 2024).
+> > Microsoft officially stopped supporting Windows 7 in .NET 7.0. As such, applications
+> > that still need to be usable on Windows 7 should probably stay on .NET Framework 4.8.
 
 ## Supported interaction methods
 
