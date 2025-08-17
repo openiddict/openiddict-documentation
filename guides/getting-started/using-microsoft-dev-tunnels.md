@@ -16,7 +16,8 @@ Explaining these tools in detail is outside the scope of this guide. Please refe
 
 ### Configure the issuer
 
-In order to use this tunnel now, you need to set the `IssuerUrl` in the client project (e.g. `MauiProgram.cs`)
+In order to use this tunnel now, you need to change the `Issuer` in the client project (e.g. `MauiProgram.cs`).
+
 ```csharp
     // Register the OpenIddict client components.
     .AddClient(options =>
