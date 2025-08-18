@@ -64,8 +64,7 @@ export default defineConfig({
             items: [
               { text: "Creating your own server instance", link: "/guides/getting-started/creating-your-own-server-instance" },
               { text: "Implementing token validation in your APIs", link: "/guides/getting-started/implementing-token-validation-in-your-apis" },
-              { text: "Integrating with a remote server instance", link: "/guides/getting-started/integrating-with-a-remote-server-instance" },
-              { text: "Using Microsoft dev tunnels", link: "/guides/getting-started/using-microsoft-dev-tunnels" }
+              { text: "Integrating with a remote server instance", link: "/guides/getting-started/integrating-with-a-remote-server-instance" }
             ]
           },
           {
@@ -85,6 +84,10 @@ export default defineConfig({
           {
             text: "Contributing a new Web provider",
             link: "/guides/contributing-a-new-web-provider"
+          },
+          {
+            text: "Using Microsoft dev tunnels",
+            link: "/guides/using-microsoft-dev-tunnels"
           },
           {
             text: "External resources",
