@@ -11,7 +11,7 @@ and the first OpenID Connect server ever created for ASP.NET Core.
 In 2020, ASOS was merged into OpenIddict 3.0+ to form a unified stack under the OpenIddict umbrella, while still offering an easy-to-use approach for new users
 and a low-level experience for advanced users thanks to a "degraded mode" that allows using OpenIddict in a stateless way (i.e without a backing database).
 
-As part of this process, native support for `Microsoft.Owin` was added to OpenIddict 3.0+ to allow using it in legacy ASP.NET 4.6.1 (and higher) applications,
+As part of this process, native support for `Microsoft.Owin` was added to OpenIddict 3.0+ to allow using it in legacy ASP.NET 4.6.2 (and higher) applications,
 making it an excellent candidate for replacing `OAuthAuthorizationServerMiddleware` and `OAuthBearerAuthenticationMiddleware` without having to migrate to ASP.NET Core.
 
 In 2022, a whole new OAuth 2.0 + OpenID Connect client stack was added to OpenIddict and shipped with an `OpenIddict.Client.WebIntegration` companion

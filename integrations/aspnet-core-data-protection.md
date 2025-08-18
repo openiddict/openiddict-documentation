@@ -25,7 +25,7 @@ To configure the ASP.NET Core integration, you'll need to:
 
   > [!IMPORTANT]
   > These packages are referenced by the `OpenIddict.AspNetCore` metapackage (and therefore don't have to be referenced explicitly when using it)
-  > but they are not referenced by the `OpenIddict.Owin` metapackage: if you want to use ASP.NET Core Data Protection in a legacy ASP.NET 4.6.1+ application,
+  > but they are not referenced by the `OpenIddict.Owin` metapackage: if you want to use ASP.NET Core Data Protection in a legacy ASP.NET 4.6.2+ application,
   > you need to manually reference the `OpenIddict.Client.DataProtection`, `OpenIddict.Server.DataProtection` and `OpenIddict.Validation.DataProtection` packages.
 
   - **Call `options.UseDataProtection()` for each OpenIddict feature (client, server and validation) with which you want to use ASP.NET Core Data Protection**:

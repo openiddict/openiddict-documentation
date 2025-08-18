@@ -9,7 +9,7 @@ the client application is not allowed to perform the requested action.
   - Endpoint permissions.
   - Grant type permissions.
   - Scope permissions.
-  - Response type permissions (*introduced in OpenIddict 3.0*).
+  - Response type permissions.
 
 ## Endpoint permissions
 
@@ -19,17 +19,19 @@ Endpoint permissions limit the endpoints a client application can use.
 
 ### Supported permissions
 
-|      Endpoint      |                          Constant                         |
-|:------------------:|:---------------------------------------------------------:|
-| Authorization      | `OpenIddictConstants.Permissions.Endpoints.Authorization` |
-| Introspection      | `OpenIddictConstants.Permissions.Endpoints.Introspection` |
-| Logout/end session | `OpenIddictConstants.Permissions.Endpoints.Logout`        |
-| Revocation         | `OpenIddictConstants.Permissions.Endpoints.Revocation`    |
-| Token              | `OpenIddictConstants.Permissions.Endpoints.Token`         |
+|       Endpoint       |                             Constant                            |
+|:--------------------:|:---------------------------------------------------------------:|
+| Authorization        | `OpenIddictConstants.Permissions.Endpoints.Authorization`       |
+| Device authorization | `OpenIddictConstants.Permissions.Endpoints.DeviceAuthorization` |
+| Introspection        | `OpenIddictConstants.Permissions.Endpoints.Introspection`       |
+| End session          | `OpenIddictConstants.Permissions.Endpoints.EndSession`          |
+| Pushed authorization | `OpenIddictConstants.Permissions.Endpoints.PushedAuthorization` |
+| Revocation           | `OpenIddictConstants.Permissions.Endpoints.Revocation`          |
+| Token                | `OpenIddictConstants.Permissions.Endpoints.Token`               |
 
 ### Example
 
-In the following example, the `mvc` application is allowed to use the authorization, logout and
+In the following example, the `mvc` application is allowed to use the authorization, end session and
 token endpoints but will get an error when trying to send an introspection or revocation request:
 
 ```csharp
@@ -45,7 +47,7 @@ if (await manager.FindByClientIdAsync("mvc") is null)
         Permissions =
         {
             OpenIddictConstants.Permissions.Endpoints.Authorization,
-            OpenIddictConstants.Permissions.Endpoints.Logout,
+            OpenIddictConstants.Permissions.Endpoints.EndSession,
             OpenIddictConstants.Permissions.Endpoints.Token
         }
     });

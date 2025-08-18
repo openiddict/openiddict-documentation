@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > This guide assumes you're using ASP.NET Core to host your authorization server. For samples showing how to use the OpenIddict server feature in
-> ASP.NET 4.6.1+ applications, see [OWIN/ASP.NET 4.8 samples](https://github.com/openiddict/openiddict-samples?tab=readme-ov-file#owinaspnet-48-samples).
+> ASP.NET 4.6.2+ applications, see [OWIN/ASP.NET 4.8 samples](https://github.com/openiddict/openiddict-samples?tab=readme-ov-file#owinaspnet-48-samples).
 
 **To implement a custom OpenID Connect server using OpenIddict, the simplest option is to clone one of the official samples**
 from the [openiddict-samples repository](https://github.com/openiddict/openiddict-samples).
@@ -16,8 +16,8 @@ If you don't want to start from one of the recommended samples, you'll need to:
   - **Update your `.csproj` file** to reference the latest `OpenIddict.AspNetCore` and `OpenIddict.EntityFrameworkCore` packages:
 
   ```xml
-  <PackageReference Include="OpenIddict.AspNetCore" Version="5.8.0" />
-  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.8.0" />
+  <PackageReference Include="OpenIddict.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="7.0.0" />
   ```
 
   - **Register your Entity Framework Core database context and configure the OpenIddict core services** in `Program.cs`
@@ -75,11 +75,13 @@ If you don't want to start from one of the recommended samples, you'll need to:
   ```csharp
   app.UseDeveloperExceptionPage();
 
+  app.UseForwardedHeaders();
+
   app.UseRouting();
   app.UseCors();
 
-  app.UseAuthentication();
-  app.UseAuthorization();
+  app.UseAuthentication(); // [!code warning]
+  app.UseAuthorization(); // [!code warning]
 
   app.UseEndpoints(options =>
   {

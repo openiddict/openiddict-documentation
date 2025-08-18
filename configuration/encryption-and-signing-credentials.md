@@ -67,7 +67,7 @@ services.AddOpenIddict()
 ```
 
 > [!WARNING]
-> This feature is not available on .NET Framework 4.6.1: calling `options.AddDevelopmentEncryptionCertificate()` or `options.AddDevelopmentSigningCertificate()`
+> This feature is not available on .NET Framework 4.6.2: calling `options.AddDevelopmentEncryptionCertificate()` or `options.AddDevelopmentSigningCertificate()`
 > will result in a `PlatformNotSupportedException` being thrown at runtime if no valid development certificate can be found and a new one must be generated.
 
 > [!CAUTION]

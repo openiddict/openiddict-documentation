@@ -1,32 +1,20 @@
 # ASP.NET Core integration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
 Thanks to their native ASP.NET Core integrations, the client, server and validation features offered by OpenIddict can be used in any
-ASP.NET Core 2.1+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.
+ASP.NET Core 2.3+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.
 
 ## Supported versions
 
-| ASP.NET Core version | .NET runtime version |                                       |
+| ASP.NET Core version | .NET runtime version | Support status                        |
 |----------------------|----------------------|---------------------------------------|
-| ASP.NET Core 2.1     | .NET Framework 4.6.1 | :heavy_check_mark: (with limitations) |
-| ASP.NET Core 2.1     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
-| ASP.NET Core 2.1     | .NET Framework 4.8   | :heavy_check_mark:                    |
-| ASP.NET Core 2.1     | .NET Core 2.1        | :exclamation:                         |
-|                      |                      |                                       |
-| ASP.NET Core 3.1     | .NET Core 3.1        | :heavy_check_mark:                    |
-|                      |                      |                                       |
-| ASP.NET Core 5.0     | .NET 5.0             | :exclamation:                         |
-| ASP.NET Core 6.0     | .NET 6.0             | :heavy_check_mark:                    |
-| ASP.NET Core 7.0     | .NET 7.0             | :heavy_check_mark:                    |
+| ASP.NET Core 2.3     | .NET Framework 4.6.2 | :heavy_check_mark: (with limitations) |
+| ASP.NET Core 2.3     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
+| ASP.NET Core 2.3     | .NET Framework 4.8   | :heavy_check_mark:                    |
 | ASP.NET Core 8.0     | .NET 8.0             | :heavy_check_mark:                    |
-
-> [!WARNING]
-> **ASP.NET Core 2.1 on .NET Core 2.1, ASP.NET Core 3.1, 5.0 and 7.0 are no longer supported by Microsoft. While OpenIddict can still be used
-> on these platforms thanks to its .NET Standard 2.0 compatibility, users are strongly encouraged to migrate to ASP.NET Core 8.0**.
->
-> ASP.NET Core 2.1 on .NET Framework 4.6.1 (and higher) is still fully supported.
+| ASP.NET Core 9.0     | .NET 9.0             | :heavy_check_mark:                    |
 
 > [!NOTE]
-> **The following features are not available when targeting .NET Framework 4.6.1**:
+> **The following features are not available when targeting .NET Framework 4.6.2**:
 >  - X.509 development encryption/signing certificates: calling `AddDevelopmentEncryptionCertificate()` or `AddDevelopmentSigningCertificate()`
 > will result in a `PlatformNotSupportedException` being thrown at runtime if no valid development certificate can be found and a new one must be generated.
 >  - X.509 ECDSA signing certificates/keys: calling `AddSigningCertificate()` or `AddSigningKey()`
@@ -40,9 +28,9 @@ To configure the ASP.NET Core integration, you'll need to:
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="5.8.0" />
-  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="5.8.0" />
-  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="5.8.0" />
+  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.0.0" />
   ```
 
   - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:
@@ -86,8 +74,8 @@ To configure the ASP.NET Core integration, you'll need to:
 >  app.UseRouting();
 >  app.UseCors();
 >
->  app.UseAuthentication();
->  app.UseAuthorization();
+>  app.UseAuthentication(); // [!code warning]
+>  app.UseAuthorization(); // [!code warning]
 >
 >  app.UseEndpoints(options =>
 >  {
@@ -312,8 +300,8 @@ public class ErrorController : Controller
 ### Authorization and logout request caching <Badge type="danger" text="server" />
 
 To simplify flowing large authorization or logout requests, the OpenIddict server ASP.NET Core integration includes a built-in feature
-that allows generating a unique `request_id` and caching the received requests in an `IDistributedCache`: when this feature is enabled,
-an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the cached entry is removed
+that allows generating a unique `request_uri` and caching the received requests in a request token persisted in OpenIddict's tokens table: when this feature is enabled,
+an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the token entry is redeemed
 once the authorization or logout demand has been completed by the user.
 
 To enable this feature, you need to use the dedicated `EnableAuthorizationRequestCaching()` and/or `EnableLogoutEndpointPassthrough()` APIs:
@@ -322,17 +310,10 @@ To enable this feature, you need to use the dedicated `EnableAuthorizationReques
 services.AddOpenIddict()
     .AddServer(options =>
     {
-        options.UseAspNetCore()
-               .EnableAuthorizationRequestCaching()
+        options.EnableAuthorizationRequestCaching()
                .EnableLogoutEndpointPassthrough();
     });
 ```
-
-> [!WARNING]
-> When hosting your application on multiple servers, you'll need to make sure you're using a proper `IDistributedCache`
-> implementation: the default one uses an in-memory cache under the hood won't work well for distributed scenarios.
->
-> For more information, read [Distributed caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed).
 
 ### Authentication scheme forwarding <Badge type="warning" text="client" />
 

@@ -1,10 +1,20 @@
-import { defineConfig } from "vitepress"
+import { defineConfig } from "vitepress";
+import { transformerNotationMap } from "@shikijs/transformers";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "OpenIddict",
   description: "Documentation for the OpenIddict project",
   cleanUrls: true,
+  markdown: {
+    codeTransformers: [
+      transformerNotationMap({
+        classMap: { add: "diff add", remove: "diff remove" },
+        classActivePre: "has-diff",
+        matchAlgorithm: "v3",
+      }),
+    ]
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -67,7 +77,9 @@ export default defineConfig({
             items: [
               { text: "Migration from 2.0 to 3.0", link: "/guides/migration/20-to-30" },
               { text: "Migration from 3.0 to 4.0", link: "/guides/migration/30-to-40" },
-              { text: "Migration from 4.0 to 5.0", link: "/guides/migration/40-to-50" }
+              { text: "Migration from 4.0 to 5.0", link: "/guides/migration/40-to-50" },
+              { text: "Migration from 5.0 to 6.0", link: "/guides/migration/50-to-60" },
+              { text: "Migration from 6.0 to 7.0", link: "/guides/migration/60-to-70" }
             ]
           },
           {
@@ -90,6 +102,7 @@ export default defineConfig({
           { text: "Claim destinations", link: "/configuration/claim-destinations" },
           { text: "Encryption and signing credentials", link: "/configuration/encryption-and-signing-credentials" },
           { text: "Proof Key for Code Exchange", link: "/configuration/proof-key-for-code-exchange" },
+          { text: "Pushed Authorization Requests", link: "/configuration/pushed-authorization-requests" },
           { text: "Token formats", link: "/configuration/token-formats" },
           { text: "Token storage", link: "/configuration/token-storage" },
           {
