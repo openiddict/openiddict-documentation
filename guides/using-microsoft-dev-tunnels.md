@@ -13,7 +13,7 @@ Explaining these tools in detail is outside the scope of this guide. For that, r
 - [Create a dev tunnel in Visual Studio Code](https://code.visualstudio.com/docs/editor/port-forwarding).
 - [Create a dev tunnel in Visual Studio 2022](https://learn.microsoft.com/en-us/aspnet/core/test/dev-tunnels).
 
-## Change the issuer
+## Change the issuer <Badge type="warning" text="client" />
 
 In order to use the tunnel, you need to change the `Issuer` of the client
 registration in the client project to point to the tunnel URL (e.g. `MauiProgram.cs`):
@@ -64,13 +64,13 @@ created using the tunnel domain (and thus not served to `localhost`) being lost 
 >
 > ![Microsoft dev tunnels](using-microsoft-dev-tunnels/devtunnels.png)
 
-## Add a binding for IIS Express
+## Add a binding for IIS Express <Badge type="danger" text="server" />
 
-When running your app in IIS Express, you will also have edit the _applicationhost.config_ and add a binding for your dev
-tunnel (otherwise you will get an error message when trying to connect to your app via the tunnel URL).
+When running your authorization server in IIS Express, you will also have edit the _applicationhost.config_ file and add a binding for your dev
+tunnel (otherwise you will get an error message when trying to connect to your authorization server via the tunnel URL).
 
 > [!TIP]
-> For example, if your web application listens on `https://localhost:44359/` locally and your tunnel URL is `https://contoso.euw.devtunnels.ms/`:
+> For example, if your application listens on `https://localhost:44359/` locally and your tunnel URL is `https://contoso.euw.devtunnels.ms/`:
 > 
 > ```xml
 > <bindings>
