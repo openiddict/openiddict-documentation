@@ -12,6 +12,7 @@ ASP.NET Core 2.3+ application, independently of whether they are using MVC contr
 | ASP.NET Core 2.3     | .NET Framework 4.8   | :heavy_check_mark:                    |
 | ASP.NET Core 8.0     | .NET 8.0             | :heavy_check_mark:                    |
 | ASP.NET Core 9.0     | .NET 9.0             | :heavy_check_mark:                    |
+| ASP.NET Core 10.0    | .NET 10.0            | :heavy_check_mark:                    |
 
 > [!NOTE]
 > **The following features are not available when targeting .NET Framework 4.6.2**:
@@ -28,9 +29,9 @@ To configure the ASP.NET Core integration, you'll need to:
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.0.0" />
-  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.0.0" />
-  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.2.0" />
+  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.2.0" />
+  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.2.0" />
   ```
 
   - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:
