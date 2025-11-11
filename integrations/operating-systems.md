@@ -26,7 +26,7 @@ care of starting the authorization/logout process and handling the callbacks pos
 
 ## Supported platforms
 
-OpenIddict 7.0+ supports the following operating systems:
+OpenIddict 7.2 supports the following operating systems:
   - Android 5.0+ (Android API 21+)
   - iOS 12.2+
   - Linux
@@ -76,23 +76,19 @@ OpenIddict 7.0+ supports the following operating systems:
 
 ### Android
 
-The OpenIddict Android integration requires targeting `net8.0-android34.0` or `net9.0-android34.0`
-but can be used in any application running on Android 5.0+ (Android API 21).
+The OpenIddict Android integration requires targeting `net9.0-android` or `net10.0-android` and can be used in any application running on Android 5.0+ (Android API 21).
 
 ### iOS
 
-The OpenIddict iOS integration requires targeting `net8.0-ios18.0` or `net9.0-ios18.0`
-but can be used in any application running on iOS 12.2+.
+The OpenIddict iOS integration requires targeting `net9.0-ios` or `net10.0-ios` and can be used in any application running on iOS 12.2+.
 
 ### Mac Catalyst
 
-The OpenIddict Mac Catalyst integration requires targeting `net8.0-maccatalyst18.0` or `net9.0-maccatalyst18.0`
-but can be used in any application running on Mac Catalyst 15.0+.
+The OpenIddict Mac Catalyst integration requires targeting `net9.0-maccatalyst` or `net10.0-maccatalyst` and can be used in any application running on Mac Catalyst 15.0+.
 
 ### macOS
 
-The OpenIddict macOS integration requires targeting `net8.0-macos15.0` or `net9.0-macos15.0`
-but can be used in any application running on macOS 10.15+.
+The OpenIddict macOS integration requires targeting `net9.0-macos` or `net10.0-macos` and can be used in any application running on macOS 10.15+.
 
 ### Windows
 
@@ -101,8 +97,10 @@ The OpenIddict Windows integration can be used in any application running on Win
   - `uap10.0.17763` or higher.
   - `net8.0-windows7.0`.
   - `net9.0-windows7.0`.
+  - `net10.0-windows7.0`.
   - `net8.0-windows10.0.17763` or higher.
   - `net9.0-windows10.0.17763` or higher.
+  - `net10.0-windows10.0.17763` or higher.
 
 > [!IMPORTANT]
 > The ability to use the OpenIddict system integration package with a specific application model depends on the .NET runtime version and the Windows version:
@@ -114,12 +112,14 @@ The OpenIddict Windows integration can be used in any application running on Win
 > | Windows 7 SP1   | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 7 SP1   | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 7 SP1   | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 7 SP1   | .NET 10.0            | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 8.1     | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Framework 4.7.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 8.1     | .NET 10.0            | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 8.1     | .NET Native/UAP      | :x:                | :x:                | :x:                | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 10 1507 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
@@ -127,6 +127,7 @@ The OpenIddict Windows integration can be used in any application running on Win
 > | Windows 10 1507 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET 8.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET 9.0             | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
+> | Windows 10 1507 | .NET 10.0            | :exclamation:      | :exclamation:      | :exclamation:      | :x:       | :x:       | :x:       |
 > | Windows 10 1507 | .NET Native/UAP      | :x:                | :x:                | :x:                | :x:       | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 10 1809 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
@@ -134,6 +135,7 @@ The OpenIddict Windows integration can be used in any application running on Win
 > | Windows 10 1809 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 10 1809 | .NET 8.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 10 1809 | .NET 9.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
+> | Windows 10 1809 | .NET 10.0            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 10 1809 | .NET Native/UAP      | :x:                | :x:                | :x:                | :warning: | :x:       | :x:       |
 > |                 |                      |                    |                    |                    |           |           |           |
 > | Windows 11 21H2 | .NET Framework 4.6.2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
@@ -141,11 +143,12 @@ The OpenIddict Windows integration can be used in any application running on Win
 > | Windows 11 21H2 | .NET Framework 4.8   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :x:       |
 > | Windows 11 21H2 | .NET 8.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 11 21H2 | .NET 9.0             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
+> | Windows 11 21H2 | .NET 10.0            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:       | :warning: | :warning: |
 > | Windows 11 21H2 | .NET Native/UAP      | :x:                | :x:                | :x:                | :warning: | :x:       | :x:       |
 > 
 > > [!TIP]
-> > WinRT support is only offered when targeting `net461`, `uap10.0.17763`, `net8.0-windows10.0.17763` or `net9.0-windows10.0.17763`:
-> > the `net8.0-windows7.0` and `net9.0-windows7.0` target framework monikers don't reference the WinRT APIs.
+> > WinRT support is only offered when targeting `net461`, `uap10.0.17763`, `net8.0-windows10.0.17763`, `net9.0-windows10.0.17763` or `net10.0-windows10.0.17763`:
+> > the `net8.0-windows7.0`, `net9.0-windows7.0` and `net10.0-windows7.0` target framework monikers don't reference the WinRT APIs.
 > 
 > > [!WARNING]
 > > Microsoft officially stopped supporting Windows 7 in .NET 7.0. As such, applications
@@ -292,7 +295,7 @@ To configure the operating system integration, you'll need to:
   - **Reference the `OpenIddict.Client.SystemIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.SystemIntegration" Version="7.0.0" />
+  <PackageReference Include="OpenIddict.Client.SystemIntegration" Version="7.2.0" />
   ```
 
   - **Call `UseSystemIntegration()` in the client options**:
