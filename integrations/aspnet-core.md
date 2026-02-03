@@ -298,21 +298,21 @@ public class ErrorController : Controller
 > }
 > ```
 
-### Authorization and logout request caching <Badge type="danger" text="server" />
+### Authorization and end session request caching <Badge type="danger" text="server" />
 
 To simplify flowing large authorization or logout requests, the OpenIddict server ASP.NET Core integration includes a built-in feature
 that allows generating a unique `request_uri` and caching the received requests in a request token persisted in OpenIddict's tokens table: when this feature is enabled,
 an automatic redirection to the current page with the other parameters removed is triggered by OpenIddict and the token entry is redeemed
 once the authorization or logout demand has been completed by the user.
 
-To enable this feature, you need to use the dedicated `EnableAuthorizationRequestCaching()` and/or `EnableLogoutEndpointPassthrough()` APIs:
+To enable this feature, you need to use the dedicated `EnableAuthorizationRequestCaching()` and/or `EnableEndSessionEndpointPassthrough()` APIs:
 
 ```csharp
 services.AddOpenIddict()
     .AddServer(options =>
     {
         options.EnableAuthorizationRequestCaching()
-               .EnableLogoutEndpointPassthrough();
+               .EnableEndSessionEndpointPassthrough();
     });
 ```
 
