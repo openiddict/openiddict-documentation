@@ -16,7 +16,6 @@ OpenIddict features three independent stacks:
 > [!NOTE]
 > The three stacks can be used together or independently, depending on your specific scenario.
 
-
 # Going Further
 
 - A quick start .NET Core OpenIddict OAuth 2.0/OpenID Connect server instance with a management portal for clients and users.
