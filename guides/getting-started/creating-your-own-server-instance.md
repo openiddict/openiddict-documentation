@@ -143,42 +143,36 @@ If you don't want to start from one of the recommended samples, you'll need to:
   }
   ```
 
-  - **Register your client application** (e.g using an `IHostedService` implementation):
+  - **Register your client application** (for instance, using a setup script or directly in `Program.cs` before the host starts):
 
   ```csharp
-  public class Worker : IHostedService
+  // ...
+
+  // Before starting the host, create the database used to store the application data.
+  //
+  // Note: in a real world application, this step should be part of a setup script.
+  await using (var scope = app.Services.CreateAsyncScope())
   {
-      private readonly IServiceProvider _serviceProvider;
+      var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+      await context.Database.EnsureCreatedAsync();
 
-      public Worker(IServiceProvider serviceProvider)
-          => _serviceProvider = serviceProvider;
-
-      public async Task StartAsync(CancellationToken cancellationToken)
+      var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
+      if (await manager.FindByClientIdAsync("service-worker") is null)
       {
-          using var scope = _serviceProvider.CreateScope();
-
-          var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-          await context.Database.EnsureCreatedAsync();
-
-          var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
-
-          if (await manager.FindByClientIdAsync("service-worker") is null)
+          await manager.CreateAsync(new OpenIddictApplicationDescriptor
           {
-              await manager.CreateAsync(new OpenIddictApplicationDescriptor
+              ClientId = "service-worker",
+              ClientSecret = "388D45FA-B36B-4988-BA59-B187D329C207",
+              Permissions =
               {
-                  ClientId = "service-worker",
-                  ClientSecret = "388D45FA-B36B-4988-BA59-B187D329C207",
-                  Permissions =
-                  {
-                      Permissions.Endpoints.Token,
-                      Permissions.GrantTypes.ClientCredentials
-                  }
-              });
-          }
+                  Permissions.Endpoints.Token,
+                  Permissions.GrantTypes.ClientCredentials
+              }
+          });
       }
-
-      public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
   }
+  
+  await app.RunAsync();
   ```
 
   > [!NOTE]
