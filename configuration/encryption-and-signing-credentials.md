@@ -14,40 +14,16 @@ To protect the tokens they generate, the OpenIddict client and server stacks use
 
 ## Registering credentials in the client or server options <Badge type="warning" text="client" /><Badge type="danger" text="server" />
 
-OpenIddict allows registering one or multiple keys (raw keys or embedded in X.509 certificates).
+OpenIddict allows registering one or multiple credentials (raw keys or keys embedded in X.509 certificates).
 
 > [!NOTE]
-> When multiple keys/certificates are registered (which can be useful to implement keys rotation), OpenIddict chooses the most appropriate key based on the following algorithm:
+> When multiple keys/certificates are registered (which can be useful to implement keys rotation), OpenIddict chooses the most appropriate key based on the following logic:
 >  - Symmetric keys are always chosen first, except for identity tokens, that can only be signed using asymmetric keys.
 >  - Asymmetric keys embedded in X.509 certificates are ordered based on the `NotAfter` and `NotBefore` dates (certificates that are not yet valid
 > are not used by OpenIddict and certificates with the furthest expiration date are always preferred).
 >  - X.509 certificates are always preferred to raw RSA/ECDSA keys.
 
-### Registering an ephemeral key
-
-For development purposes, an ephemeral key – that is not persisted or shared across instances – can be used to sign or encrypt tokens:
-
-```csharp
-services.AddOpenIddict()
-    .AddClient(options =>
-    {
-        options.AddEphemeralEncryptionKey()
-               .AddEphemeralSigningKey();
-    })
-    .AddServer(options =>
-    {
-        options.AddEphemeralEncryptionKey()
-               .AddEphemeralSigningKey();
-    });
-```
-
-> [!NOTE]
-> `options.AddEphemeralEncryptionKey()` generates an asymmetric RSA key which is not directly used as-is to encrypt the tokens but is used to encrypt an
-> intermediate *per-token* symmetric key with which the token content is first encrypted using [AES](https://datatracker.ietf.org/doc/html/rfc7518#section-5.2.6).
->
-> For more information about this mechanism, read [Key Encryption with RSAES OAEP](https://datatracker.ietf.org/doc/html/rfc7518#section-4.3).
-
-### Registering a development certificate
+### Registering a development certificate (recommended for local development)
 
 For development purposes, a certificate can be generated and stored by OpenIddict in the certificates store of the user account running the application host.
 Unlike ephemeral keys, development certificates are persisted - but not shared across instances - and will be reused when the application host is restarted.
@@ -73,43 +49,20 @@ services.AddOpenIddict()
 > [!CAUTION]
 > `options.AddDevelopmentEncryptionCertificate()` or `options.AddDevelopmentSigningCertificate()` cannot be used in applications deployed on IIS or Azure App Service:
 > trying to use them on IIS or Azure App Service will result in an exception being thrown at runtime (unless the application pool is configured to load a user profile).
+>
 > To avoid that, consider creating self-signed certificates and storing them in the X.509 certificates store of the host machine(s).
 
-### Registering a key
-
-To register a signing or encryption key, an instance of a `SecurityKey` - typically a `SymmetricSecurityKey` or a `RsaSecurityKey` -
-can be provided to the `options.AddSigningKey()`/`options.AddEncryptionKey()` methods:
-
-```csharp
-services.AddOpenIddict()
-    .AddClient(options =>
-    {
-        options.AddEncryptionKey(new SymmetricSecurityKey(
-            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
-    })
-    .AddServer(options =>
-    {
-        options.AddEncryptionKey(new SymmetricSecurityKey(
-            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
-    });
-```
-
-> [!NOTE]
-> While signing keys can be either symmetric or asymmetric, the OpenIddict server requires registering at least one asymmetric key to sign identity tokens.
-> If both an asymmetric and a symmetric signing key are registered, the symmetric key will always be preferred when protecting access tokens,
-> authorization codes or refresh tokens, while the asymmetric key will be used to sign identity tokens, that are meant to be publicly validated.
-
-### Registering a certificate (recommended for production-ready scenarios)
+### Registering a certificate (recommended for production)
 
 To register a signing or encryption certificate, the `options.AddSigningCertificate()`/`options.AddEncryptionCertificate()` methods can be called
-with an instance of `X509Certificate2`. Alternatively, a unique `thumbprint` identifying the certificate in the machine or user certificate store
-of the operating system can also be provided.
+with the unique `thumbprint` identifying the certificate in the machine or user certificate store of the operating system.
+Alternatively, an instance of `X509Certificate2` can also be directly provided.
 
 **In production, it is recommended to use two RSA certificates, distinct from the certificate(s) used for HTTPS: one for encryption, one for signing**.
 Certificates can be generated and self-signed locally using the .NET Core `CertificateRequest` API:
 
 ```csharp
-using var algorithm = RSA.Create(keySizeInBits: 2048);
+using var algorithm = RSA.Create(keySizeInBits: 4096);
 
 var subject = new X500DistinguishedName("CN=Fabrikam Server Encryption Certificate");
 var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
@@ -121,7 +74,7 @@ File.WriteAllBytes("server-encryption-certificate.pfx", certificate.Export(X509C
 ```
 
 ```csharp
-using var algorithm = RSA.Create(keySizeInBits: 2048);
+using var algorithm = RSA.Create(keySizeInBits: 4096);
 
 var subject = new X500DistinguishedName("CN=Fabrikam Server Signing Certificate");
 var request = new CertificateRequest(subject, algorithm, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
@@ -136,6 +89,56 @@ The best place to store your certificates will depend on your host:
   - For IIS applications, [storing the certificates in the machine store](https://www.sonicwall.com/support/knowledge-base/how-can-i-import-certificates-into-the-ms-windows-local-machine-certificate-store/170504615105398/) is the recommended option.
   - On Azure, certificates can be uploaded and exposed to Azure App Service applications using the special `WEBSITE_LOAD_CERTIFICATES` flag.
 For more information, visit [Use a TLS/SSL certificate in your code in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate-in-code).
+
+### Registering a raw key
+
+While certificates are the recommended option in most cases, raw signing and encryption keys - i.e keys that are not embedded in X.509 certificates - can also be used.
+
+To register a raw signing or encryption key, an instance of a `SecurityKey` - typically a `SymmetricSecurityKey` or a `RsaSecurityKey` -
+must be provided to the `options.AddSigningKey()`/`options.AddEncryptionKey()` methods:
+
+```csharp
+services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.AddEncryptionKey(new SymmetricSecurityKey(
+            Convert.FromBase64String("eGztWK7NMvHAqUZrczQgLKjH8oFSg0ovnknlfahXxGg=")));
+    })
+    .AddServer(options =>
+    {
+        options.AddEncryptionKey(new SymmetricSecurityKey(
+            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+    });
+```
+
+> [!NOTE]
+> While signing keys can be either symmetric or asymmetric, the OpenIddict server requires registering at least one asymmetric key to sign identity tokens.
+> If both an asymmetric and a symmetric signing key are registered, the symmetric key will always be preferred when protecting access tokens,
+> authorization codes or refresh tokens, while the asymmetric key will be used to sign identity tokens, that are meant to be publicly validated.
+
+### Registering an ephemeral key
+
+For specific scenarios, raw ephemeral keys – that are not embedded in certificates and not persisted or shared across instances – can also be used to sign or encrypt tokens:
+
+```csharp
+services.AddOpenIddict()
+    .AddClient(options =>
+    {
+        options.AddEphemeralEncryptionKey()
+               .AddEphemeralSigningKey();
+    })
+    .AddServer(options =>
+    {
+        options.AddEphemeralEncryptionKey()
+               .AddEphemeralSigningKey();
+    });
+```
+
+> [!NOTE]
+> `options.AddEphemeralEncryptionKey()` generates an asymmetric RSA key which is not directly used as-is to encrypt the tokens but is used to encrypt an
+> intermediate *per-token* symmetric key with which the token content is first encrypted using [AES](https://datatracker.ietf.org/doc/html/rfc7518#section-5.2.6).
+>
+> For more information about this mechanism, read [Key Encryption with RSAES OAEP](https://datatracker.ietf.org/doc/html/rfc7518#section-4.3).
 
 ## Importing credentials in the validation options of the API projects <Badge type="tip" text="validation" />
 
