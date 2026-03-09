@@ -101,6 +101,7 @@ export default defineConfig({
       "/configuration/": {
         items: [
           { text: "Application permissions", link: "/configuration/application-permissions" },
+          { text: "Assertion-based client authentication", link: "/configuration/assertion-based-client-authentication" },
           { text: "Authorization storage", link: "/configuration/authorization-storage" },
           { text: "Claim destinations", link: "/configuration/claim-destinations" },
           { text: "Encryption and signing credentials", link: "/configuration/encryption-and-signing-credentials" },
