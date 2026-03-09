@@ -104,6 +104,7 @@ export default defineConfig({
           { text: "Authorization storage", link: "/configuration/authorization-storage" },
           { text: "Claim destinations", link: "/configuration/claim-destinations" },
           { text: "Encryption and signing credentials", link: "/configuration/encryption-and-signing-credentials" },
+          { text: "Mutual TLS authentication", link: "/configuration/mutual-tls-authentication" },
           { text: "Proof Key for Code Exchange", link: "/configuration/proof-key-for-code-exchange" },
           { text: "Pushed Authorization Requests", link: "/configuration/pushed-authorization-requests" },
           { text: "Token formats", link: "/configuration/token-formats" },
