@@ -19,4 +19,5 @@ OpenIddict features three independent stacks:
 # Going Further
 
 - A quick start .NET Core OpenIddict OAuth 2.0/OpenID Connect server instance with a management portal for clients and users.
-  [Creating your own server instance with Management UI](https://www.openiddictcomponents.com/articles/quick-start-openiddict-sso-solution-with-management-ui). Watch this [short video](https://www.youtube.com/watch?v=-QuutC0OFFE) on how 
+  - Step by step article, [Creating your own server instance with Management UI](https://www.openiddictcomponents.com/articles/quick-start-openiddict-sso-solution-with-management-ui).
+  - Or see it come to life via this [short video](https://www.youtube.com/watch?v=-QuutC0OFFE).
