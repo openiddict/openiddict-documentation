@@ -53,6 +53,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Exact Online                         | https://support.exactonline.com/community/s/knowledge-base#All-All-DNO-Content-oauth-eol-oauth-dev-impleovervw      |
 | Facebook                             | https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow                                     |
 | FACEIT                               | https://developers.faceit.com/docs/auth/oauth2                                                                      |
+| Figma                                | https://developers.figma.com/docs/rest-api/authentication/                                                          |
 | Fitbit                               | https://dev.fitbit.com/build/reference/web-api/developer-guide/authorization/                                       |
 | Genesys Cloud                        | https://developer.genesys.cloud/authorization/platform-auth/                                                        |
 | GitCode                              | https://docs.gitcode.com/en/docs/oauth/                                                                             |
@@ -61,6 +62,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | GitLab                               | https://docs.gitlab.com/ee/integration/openid_connect_provider.html                                                 |
 | Google                               | https://developers.google.com/identity/protocols/oauth2/openid-connect                                              |
 | Harvest                              | https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/                                |
+| HeyBoxChat                           | https://s.apifox.cn/43256fe4-9a8c-4f22-949a-74a3f8b431f5/7145802m0                                                  |
 | Huawei                               | https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001053629189                    |
 | HubSpot                              | https://developers.hubspot.com/docs/api/oauth-quickstart-guide                                                      |
 | JumpCloud                            | https://jumpcloud.com/support/sso-with-oidc                                                                         |
@@ -85,6 +87,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Okta                                 | https://developer.okta.com/docs/reference/api/oidc/                                                                 |
 | OpenStreetMap                        | https://wiki.openstreetmap.org/wiki/OAuth#OAuth_2.0                                                                 |
 | Orange France                        | https://developer.orange.com/apis/authentication-fr/getting-started                                                 |
+| osu!                                 | https://osu.ppy.sh/docs/index.html#authentication                                                                   |
 | Patreon                              | https://docs.patreon.com/#oauth                                                                                     |
 | PayPal                               | https://developer.paypal.com/docs/log-in-with-paypal/                                                               |
 | PingOne                              | https://docs.pingidentity.com/r/en-us/pingoneforenterprise/p14e_connect_oidc                                        |
