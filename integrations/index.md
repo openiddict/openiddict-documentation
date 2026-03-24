@@ -9,8 +9,16 @@ Documentation for open-source integrations maintained by the OpenIddict communit
 - **[identity-base](https://github.com/Amaretto-Software-Labs/identity-base)** by [Amaretto Software Labs](https://github.com/Amaretto-Software-Labs): Identity Base simplifies the setup of ASP.NET Core Identity, OpenIddict, user databases, and all user flows, including user registration, email confirmation, password reset, multi-factor authentication (MFA), and social logins. Identity Base is a drop-in NuGet package that handles all the complexities—you bring your UI, and Identity Base manages the user database and OIDC flows through OpenIddict. It also includes a ReactJS package to facilitate easy integration with your ReactJS frontends.
 
 Commercially supported components provided by Rock Solid Knowledge:
-- **[OpenIddict.AdminUI](https://www.openiddictcomponents.com/products/adminui?utm_source=openiddictgithubdocumentationadminui&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): The N°1 OpenIddict AdminUI tool. Provides a web portal and programmable API to manage your OpenIddict configuration and Users.
-- **[OpenIddict.SAML2P](https://www.openiddictcomponents.com/products/saml2p?utm_source=openiddictgithubdocumentationsaml&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): Ideal for enabling OpenIddict to act as a SAML Identity Provider (IDP) or a SAML Service Provider (SP).
+- **[OpenIddict.AdminUI](https://www.openiddictcomponents.com/products/adminui?utm_source=openiddictgithubdocumentationadminui&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): the n°1 OpenIddict AdminUI tool. Provides a web portal and programmable API to manage your OpenIddict configuration and Users.
+
+<div style="display: flex; justify-content: center;">
+  <iframe src="https://www.youtube.com/embed/-QuutC0OFFE" title="YouTube video player"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+          style="width: 100%; aspect-ratio: 16/9"></iframe>
+</div>
+
+- **[OpenIddict.SAML2P](https://www.openiddictcomponents.com/products/saml2p?utm_source=openiddictgithubdocumentationsaml&utm_campaign=openiddict)** by [Rock Solid Knowledge](https://www.rocksolidknowledge.com/): ideal for enabling OpenIddict to act as a SAML Identity Provider (IDP) or a SAML Service Provider (SP).
 
 Others commercial products:
 - **[IdentitySuite](https://identitysuite.net)**, lightning-fast, turnkey OpenIddict-based solution supporting common OAuth 2.0/OpenID Connect flows. Manage users, applications, UI themes, and email templates through a unified Blazor interface—all in one place! Includes a free plan for small-scale use.
