@@ -24,7 +24,25 @@ Directly inspired by [basic authentication](https://en.wikipedia.org/wiki/Basic_
 to the authorization server with the user credentials (and depending on the client authentication policy defined by the authorization server,
 its own client credentials) and gets back an access token it can use to retrieve the user's resources.
 
-![Resource owner password credentials flow](choosing-the-right-flow/resource-owner-password-flow.png)
+```ansi
+     +----------+
+     | Resource |
+     |  Owner   |
+     |          |
+     +----------+
+          v
+          |    Resource Owner
+         (A) Password Credentials
+          |
+          v
+     +---------+                                  +---------------+
+     |         |>--(B)---- Resource Owner ------->|               |
+     |         |         Password Credentials     | Authorization |
+     | Client  |                                  |     Server    |
+     |         |<--(C)---- Access Token ---------<|               |
+     |         |    (w/ Optional Refresh Token)   |               |
+     +---------+                                  +---------------+
+```
 
 ```http
 POST /connect/token HTTP/1.1
@@ -62,7 +80,15 @@ Pragma: no-cache
 The client credentials grant is almost identical to the resource owner password credentials grant, except it's been specifically designed for **client-to-server scenarios**
 (no user is involved in this flow): the client application sends a token request containing its credentials and gets back an access token it can use to query its own resources.
 
-![Client credentials flow](choosing-the-right-flow/client-credentials-flow.png)
+```ansi
+     +---------+                                  +---------------+
+     |         |                                  |               |
+     |         |>--(A)- Client Authentication --->| Authorization |
+     | Client  |                                  |     Server    |
+     |         |<--(B)---- Access Token ---------<|               |
+     |         |                                  |               |
+     +---------+                                  +---------------+
+```
 
 ```http
 POST /connect/token HTTP/1.1
@@ -103,7 +129,33 @@ In return for its complexity, this flow has a great advantage when used in serve
 
 There are basically 2 steps in the authorization code flow: the authorization request/response and the token request/response.
 
-![Authorization code flow](choosing-the-right-flow/authorization-code-flow.png)
+```ansi
+     +----------+
+     | Resource |
+     |   Owner  |
+     |          |
+     +----------+
+          ^
+          |
+         (B)
+     +----|-----+          Client Identifier      +---------------+
+     |         -+----(A)-- & Redirection URI ---->|               |
+     |  User-   |                                 | Authorization |
+     |  Agent  -+----(B)-- User authenticates --->|     Server    |
+     |          |                                 |               |
+     |         -+----(C)-- Authorization Code ---<|               |
+     +-|----|---+                                 +---------------+
+       |    |                                         ^      v
+      (A)  (C)                                        |      |
+       |    |                                         |      |
+       ^    v                                         |      |
+     +---------+                                      |      |
+     |         |>---(D)-- Authorization Code ---------'      |
+     |  Client |          & Redirection URI                  |
+     |         |                                             |
+     |         |<---(E)----- Access Token -------------------'
+     +---------+       (w/ Optional Refresh Token)
+```
 
 - **Step 1: the authorization request**
 
@@ -190,7 +242,40 @@ to the client application as part of the authorization response in the URI fragm
 > When using the OpenID Connect version of the implicit flow, an additional token called *identity token*
 > is returned and can be used by client applications to retrieved standardized information about the user.
 
-![Implicit flow](choosing-the-right-flow/implicit-flow.png)
+```ansi
+     +----------+
+     | Resource |
+     |  Owner   |
+     |          |
+     +----------+
+          ^
+          |
+         (B)
+     +----|-----+          Client Identifier     +---------------+
+     |         -+----(A)-- & Redirection URI --->|               |
+     |  User-   |                                | Authorization |
+     |  Agent  -|----(B)-- User authenticates -->|     Server    |
+     |          |                                |               |
+     |          |<---(C)--- Redirection URI ----<|               |
+     |          |          with Access Token     +---------------+
+     |          |            in Fragment
+     |          |                                +---------------+
+     |          |----(D)--- Redirection URI ---->|   Web-Hosted  |
+     |          |          without Fragment      |     Client    |
+     |          |                                |    Resource   |
+     |     (F)  |<---(E)------- Script ---------<|               |
+     |          |                                +---------------+
+     +-|--------+
+       |    |
+      (A)  (G) Access Token
+       |    |
+       ^    v
+     +---------+
+     |         |
+     |  Client |
+     |         |
+     +---------+
+```
 
 ```http
 GET /connect/authorize?response_type=token&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj HTTP/1.1
