@@ -1,18 +1,15 @@
-# ASP.NET Core integration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
+# OWIN integration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
-Thanks to their native ASP.NET Core integrations, the client, server and validation features offered by OpenIddict can be used in any
-ASP.NET Core 2.3+ application, independently of whether they are using MVC controllers, Razor Pages, minimal API handlers or raw middleware.
+Thanks to their native OWIN integrations, the client, server and validation features offered by OpenIddict can be used in any
+ASP.NET 4.6.2+ application, independently of whether they are using Web Forms, MVC controllers, Web API controllers or raw OWIN middleware.
 
 ## Supported versions
 
-| ASP.NET Core version | .NET runtime version | Support status                        |
-|----------------------|----------------------|---------------------------------------|
-| ASP.NET Core 2.3     | .NET Framework 4.6.2 | :heavy_check_mark: (with limitations) |
-| ASP.NET Core 2.3     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
-| ASP.NET Core 2.3     | .NET Framework 4.8   | :heavy_check_mark:                    |
-| ASP.NET Core 8.0     | .NET 8.0             | :heavy_check_mark:                    |
-| ASP.NET Core 9.0     | .NET 9.0             | :heavy_check_mark:                    |
-| ASP.NET Core 10.0    | .NET 10.0            | :heavy_check_mark:                    |
+| `Microsoft.Owin` version | .NET runtime version | Support status                        |
+|--------------------------|----------------------|---------------------------------------|
+| `Microsoft.Owin` 4.2     | .NET Framework 4.6.2 | :heavy_check_mark: (with limitations) |
+| `Microsoft.Owin` 4.2     | .NET Framework 4.7.2 | :heavy_check_mark:                    |
+| `Microsoft.Owin` 4.2     | .NET Framework 4.8   | :heavy_check_mark:                    |
 
 > [!NOTE]
 > **The following features are not available when targeting .NET Framework 4.6.2**:
@@ -23,18 +20,18 @@ ASP.NET Core 2.3+ application, independently of whether they are using MVC contr
 
 ## Basic configuration <Badge type="warning" text="client" /><Badge type="danger" text="server" /><Badge type="tip" text="validation" />
 
-To configure the ASP.NET Core integration, you'll need to:
-  - **Reference the `OpenIddict.Client.AspNetCore` and/or `OpenIddict.Server.AspNetCore` and/or
-  `OpenIddict.Validation.AspNetCore` packages**
+To configure the OWIN integration, you'll need to:
+  - **Reference the `OpenIddict.Client.Owin` and/or `OpenIddict.Server.Owin` and/or
+  `OpenIddict.Validation.Owin` packages**
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.5.0" />
-  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.5.0" />
-  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.5.0" />
+  <PackageReference Include="OpenIddict.Client.Owin" Version="7.5.0" />
+  <PackageReference Include="OpenIddict.Server.Owin" Version="7.5.0" />
+  <PackageReference Include="OpenIddict.Validation.Owin" Version="7.5.0" />
   ```
 
-  - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:
+  - **Call `UseOwin()` for each OpenIddict feature (client, server and validation) you want to add**:
 
   ```csharp
   services.AddOpenIddict()
@@ -46,24 +43,24 @@ To configure the ASP.NET Core integration, you'll need to:
       {
           // ...
   
-          options.UseAspNetCore();
+          options.UseOwin();
       })
       .AddServer(options =>
       {
           // ...
   
-          options.UseAspNetCore();
+          options.UseOwin();
       })
       .AddValidation(options =>
       {
           // ...
   
-          options.UseAspNetCore();
+          options.UseOwin();
       });
   ```
 
 > [!WARNING]
-> OpenIddict integrates with ASP.NET Core using an `IAuthenticationRequestHandler` service.
+> OpenIddict integrates with OWIN using an `AuthenticationMiddleware`.
 >
 > As such, it is critical that the ASP.NET Core authentication middleware be registered at the
 > right place in the pipeline (i.e after `app.UseCors()` and before `app.UseEndpoint()`):
@@ -101,12 +98,12 @@ While disabling this requirement is strongly discouraged in most cases, it can b
 services.AddOpenIddict()
     .AddClient(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .DisableTransportSecurityRequirement();
     })
     .AddServer(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .DisableTransportSecurityRequirement();
     });
 ```
@@ -127,8 +124,8 @@ for some of the built-in endpoints (typically, endpoints for which users will wa
 > [!NOTE]
 > For more information on the pass-through mode, read [Pass-through support](/introduction.md#pass-through-support).
 
-Pass-through mode for a specific endpoint can be enabled using the APIs exposed by `OpenIddictClientAspNetCoreBuilder`
-or `OpenIddictServerAspNetCoreBuilder`. E.g for the authorization endpoint:
+Pass-through mode for a specific endpoint can be enabled using the APIs exposed by `OpenIddictClientOwinBuilder`
+or `OpenIddictServerOwinBuilder`. E.g for the authorization endpoint:
 
 ```csharp
 services.AddOpenIddict()
@@ -136,7 +133,7 @@ services.AddOpenIddict()
     {
         // ...
 
-        options.UseAspNetCore()
+        options.UseOwin()
                .EnableAuthorizationEndpointPassthrough();
     });
 ```
@@ -175,7 +172,7 @@ app.MapMethods("authorize", [HttpMethods.Get, HttpMethods.Post], async (HttpCont
     identity.AddClaim(new Claim(Claims.Name, identifier).SetDestinations(Destinations.AccessToken));
     identity.AddClaim(new Claim(Claims.PreferredUsername, identifier).SetDestinations(Destinations.AccessToken));
 
-    return Results.SignIn(new ClaimsPrincipal(identity), properties: null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+    return Results.SignIn(new ClaimsPrincipal(identity), properties: null, OpenIddictServerOwinDefaults.AuthenticationScheme);
 });
 ```
 
@@ -190,7 +187,7 @@ To enable this feature, you can use the dedicated `EnableStatusCodePagesIntegrat
 services.AddOpenIddict()
     .AddClient(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .EnableStatusCodePagesIntegration();
     });
 ```
@@ -199,7 +196,7 @@ services.AddOpenIddict()
 services.AddOpenIddict()
     .AddServer(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .EnableStatusCodePagesIntegration();
     });
 ```
@@ -331,7 +328,7 @@ This feature is enabled by default but can be disabled if necessary using `Disab
 services.AddOpenIddict()
     .AddClient(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .DisableAutomaticAuthenticationSchemeForwarding();
     });
 ```
@@ -343,14 +340,14 @@ If you need to enable forwarding for specific registrations only, you can use th
 services.AddOpenIddict()
     .AddClient(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .DisableAutomaticAuthenticationSchemeForwarding()
                .AddForwardedAuthenticationScheme(provider: "Contoso", caption: "Contoso Intranet login");
     });
 ```
 
 When automatic forwarding is disabled, authentication operations cannot directly use the provider name as an authentication scheme
-if no explicit forwarding was configured and must instead use `OpenIddictClientAspNetCoreDefaults.AuthenticationScheme` with an
+if no explicit forwarding was configured and must instead use `OpenIddictClientOwinDefaults.AuthenticationScheme` with an
 `AuthenticationProperties` instance containing the provider name, the issuer URI or the registration identifier:
 
 ```csharp
@@ -358,10 +355,10 @@ app.MapGet("challenge", () =>
 {
     var properties = new AuthenticationProperties(new Dictionary<string, string?>
     {
-        [OpenIddictClientAspNetCoreConstants.Properties.ProviderName] = Providers.GitHub
+        [OpenIddictClientOwinConstants.Properties.ProviderName] = Providers.GitHub
     });
 
-    return Results.Challenge(properties, authenticationSchemes: [OpenIddictClientAspNetCoreDefaults.AuthenticationScheme]);
+    return Results.Challenge(properties, authenticationSchemes: [OpenIddictClientOwinDefaults.AuthenticationScheme]);
 });
 ```
 
@@ -375,7 +372,7 @@ Users who prefer disabling indentation for JSON responses can do so by calling `
 services.AddOpenIddict()
     .AddServer(options =>
     {
-        options.UseAspNetCore()
+        options.UseOwin()
                .SuppressJsonResponseIndentation();
     });
 ```
