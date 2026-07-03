@@ -553,7 +553,7 @@ To make providers easier to locate in the XML file, an ASCII art header containi
 The ASCII art header can be easily generated using the online [TextFancy.com](https://textfancy.com/text-art/) tool and by choosing the `Small Negative` font.
 
 > [!WARNING]
-> When using the TextFancy generator, **make sure to always add a space after the provider name** to ensure it renders correctly.
+> When using the TextFancy generator, **make sure to exclusively use uppercase characters and always add a space after the provider name** to ensure it renders correctly.
 
 > [!NOTE]
 > Once pasted in the XML file, **make sure the ASCII art header is correctly centered** relative to the other headers already present in the file.
