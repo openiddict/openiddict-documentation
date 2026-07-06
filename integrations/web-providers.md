@@ -65,6 +65,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | HeyBoxChat                           | https://s.apifox.cn/43256fe4-9a8c-4f22-949a-74a3f8b431f5/7145802m0                                                  |
 | Huawei                               | https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001053629189                    |
 | HubSpot                              | https://developers.hubspot.com/docs/api/oauth-quickstart-guide                                                      |
+| ID Austria                           | https://www.id-austria.gv.at/de/developer/anbinden/anbindung-mit-openid-connect                                     |
 | JumpCloud                            | https://jumpcloud.com/support/sso-with-oidc                                                                         |
 | Kakao                                | https://developers.kakao.com/docs/latest/en/kakaologin/rest-api                                                     |
 | Keycloak                             | https://www.keycloak.org/getting-started/getting-started-docker                                                     |
