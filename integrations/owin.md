@@ -26,9 +26,9 @@ To configure the OWIN integration, you'll need to:
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.Owin" Version="7.5.0" />
-  <PackageReference Include="OpenIddict.Server.Owin" Version="7.5.0" />
-  <PackageReference Include="OpenIddict.Validation.Owin" Version="7.5.0" />
+  <PackageReference Include="OpenIddict.Client.Owin" Version="7.6.0" />
+  <PackageReference Include="OpenIddict.Server.Owin" Version="7.6.0" />
+  <PackageReference Include="OpenIddict.Validation.Owin" Version="7.6.0" />
   ```
 
   - **Call `UseOwin()` for each OpenIddict feature (client, server and validation) you want to add**:
