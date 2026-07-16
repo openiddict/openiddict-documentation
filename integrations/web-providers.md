@@ -117,6 +117,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Twitch                               | https://dev.twitch.tv/docs/authentication                                                                           |
 | Twitter (X)                          | https://docs.x.com/resources/fundamentals/authentication/oauth-2-0/authorization-code                               |
 | Typeform                             | https://www.typeform.com/developers/get-started/applications/                                                       |
+| Vercel                               | https://vercel.com/docs/sign-in-with-vercel/getting-started                                                         |
 | Verimi                               | https://docs.verimi.de/#/oidc/oidc_overview                                                                         |
 | Vimeo                                | https://developer.vimeo.com/api/authentication                                                                      |
 | VK ID                                | https://id.vk.com/about/business/go/docs/en/vkid/latest/oauth-vk                                                    |
@@ -170,7 +171,7 @@ To configure the `System.Net.Http` integration, you'll need to:
   - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="7.5.0" />
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="7.6.0" />
   ```
 
   - **Call `UseWebProviders()` in the client options**:
