@@ -41,7 +41,7 @@ export default defineConfig({
       },
       { text: "Website", link: "https://openiddict.com/" },
       { text: "Samples", link: "https://github.com/openiddict/openiddict-samples" },
-      { text: "Changelog", link: "https://github.com/openiddict/openiddict-core/releases" }
+      { text: "Support", link: "https://openiddict.com/support" }
     ],
 
     sidebar: {
