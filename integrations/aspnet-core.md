@@ -365,6 +365,27 @@ app.MapGet("challenge", () =>
 });
 ```
 
+### Custom challenge parameters <Badge type="warning" text="client" />
+
+When necessary, custom challenge parameters can be added to the `AuthenticationProperties.Parameters` property. Parameters added to
+`AuthenticationProperties.Parameters` are automatically attached by OpenIddict to the authorization request (or to the pushed authorization
+request when [Pushed authorization requests](/configuration/pushed-authorization-requests.md) are supported by the authorization server).
+
+```csharp
+app.MapGet("challenge", () =>
+{
+    var properties = new AuthenticationProperties
+    {
+        Parameters =
+        {
+            ["parameter_name"] = "parameter_value"
+        }
+    };
+
+    return Results.Challenge(properties, authenticationSchemes: ["Contoso"]);
+});
+```
+
 ### JSON responses indentation <Badge type="danger" text="server" />
 
 By default, the OpenIddict server ASP.NET Core host will return indented JSON responses to make them easier to read.
