@@ -29,9 +29,9 @@ To configure the ASP.NET Core integration, you'll need to:
   (depending on whether you need the client and/or server and/or validation features in your project):
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.6.0" />
-  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.6.0" />
-  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.6.0" />
+  <PackageReference Include="OpenIddict.Client.AspNetCore" Version="7.7.0" />
+  <PackageReference Include="OpenIddict.Server.AspNetCore" Version="7.7.0" />
+  <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="7.7.0" />
   ```
 
   - **Call `UseAspNetCore()` for each OpenIddict feature (client, server and validation) you want to add**:
