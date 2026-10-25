@@ -36,6 +36,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Bitbucket                            | https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/                                    |
 | Bitly                                | https://dev.bitly.com/docs/getting-started/authentication/                                                          |
 | Box                                  | https://developer.box.com/guides/authentication/oauth2/oauth2-setup/                                                |
+| Buffer                               | https://developers.buffer.com/guides/authentication                                                                 |
 | Bungie.net                           | https://github.com/Bungie-net/api/wiki/OAuth-Documentation                                                          |
 | Calendly                             | https://developer.calendly.com/api-docs/b3A6NTkxNDA5-get-authorization-code                                         |
 | ClassLink                            | https://help.classlink.com/s/topic/0TO1E0000009PVYWA2/api                                                           |
@@ -66,6 +67,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Huawei                               | https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001053629189                    |
 | HubSpot                              | https://developers.hubspot.com/docs/api/oauth-quickstart-guide                                                      |
 | ID Austria                           | https://www.id-austria.gv.at/de/developer/anbinden/anbindung-mit-openid-connect                                     |
+| JoinRpg                              | https://github.com/joinrpg/joinrpg-net/blob/master/docs/adr004-oauth-server.md                                      |
 | JumpCloud                            | https://jumpcloud.com/support/sso-with-oidc                                                                         |
 | Kakao                                | https://developers.kakao.com/docs/latest/en/kakaologin/rest-api                                                     |
 | Keycloak                             | https://www.keycloak.org/getting-started/getting-started-docker                                                     |
