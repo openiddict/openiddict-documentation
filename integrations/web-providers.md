@@ -121,6 +121,7 @@ or mobile application targeting a platform supported by the OpenIddict client (i
 | Typeform                             | https://www.typeform.com/developers/get-started/applications/                                                       |
 | Vercel                               | https://vercel.com/docs/sign-in-with-vercel/getting-started                                                         |
 | Verimi                               | https://docs.verimi.de/#/oidc/oidc_overview                                                                         |
+| Veriqa                               | https://veriqa.app/docs/quickstart/self-hosted                                                                      |
 | Vimeo                                | https://developer.vimeo.com/api/authentication                                                                      |
 | VK ID                                | https://id.vk.com/about/business/go/docs/en/vkid/latest/oauth-vk                                                    |
 | Webex                                | https://developer.webex.com/docs/login-with-webex                                                                   |
@@ -173,7 +174,7 @@ To configure the `System.Net.Http` integration, you'll need to:
   - **Reference the `OpenIddict.Client.WebIntegration` package**:
 
   ```xml
-  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="7.7.2" />
+  <PackageReference Include="OpenIddict.Client.WebIntegration" Version="7.9.0" />
   ```
 
   - **Call `UseWebProviders()` in the client options**:
